@@ -1,6 +1,7 @@
 import { FileText, MessageSquare, BarChart2, Zap } from "lucide-react";
 import DashboardLayout from "@/components/DashboardLayout";
 import StatsCard from "@/components/dashboard/StatsCard";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Index = () => {
   return (
