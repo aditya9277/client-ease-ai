@@ -1,12 +1,15 @@
 import streamlit as st
 import google.generativeai as genai
+import os
 from io import BytesIO
+from dotenv import load_dotenv
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet
+load_dotenv()
 
-
-genai.configure(api_key="AIzaSyDUL-mHuGs37Mcr6EvYw-z_4OUKV_IRr50")
+genai.configure(api_key=os.getenv('GEMINI_KEY'))
+# genai.configure(api_key="GEMINI_KEY")
 
 def generate_claim_document(customer_details, claim_description, agent_notes):
     prompt = f"""
