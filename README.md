@@ -2,7 +2,7 @@
 
 ## 🌟 Project Overview
 
-This project leverages **Artificial Intelligence (AI)** and **Robotic Process Automation (RPA)** to enhance operational efficiency and streamline workflows in Indian BPOs. The platform focuses on automation, intelligent decision-making, and real-time insights to address challenges in customer support, agent productivity, and process scalability.
+This project leverages **Artificial Intelligence (AI)** and modern technologies to enhance operational efficiency and streamline workflows in Indian BPOs. The platform focuses on automation, intelligent decision-making, and real-time insights to address challenges in customer support, agent productivity, and process scalability.
 
 ---
 
