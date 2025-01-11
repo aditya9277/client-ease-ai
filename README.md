@@ -1,62 +1,154 @@
-Project Name: BPO/BPM Assistant
-Overview
-eflexi-dashboard is a modern web dashboard project built using TypeScript, Vite, and Tailwind CSS. It provides an efficient and scalable solution for managing various data visualizations and interactions in a responsive and user-friendly interface.
+# AI-Driven Workflow and Efficiency Enhancement for Indian BPOs
 
-This project is designed to be easily customizable, providing a solid foundation for developing interactive dashboards with real-time data.
+## 🌟 Project Overview
 
-Features
-Responsive Dashboard: Built with Tailwind CSS for fast, responsive layouts.
-Component-based Structure: Components organized to ensure easy maintainability and reusability.
-TypeScript Support: Type-safe coding with TypeScript for better developer experience and fewer runtime errors.
-Customizable Configurations: Flexibility in configuration using Vite, ESLint, PostCSS, and Tailwind.
-Installation
-Prerequisites
-Before you begin, ensure you have the following installed:
+This project leverages **Artificial Intelligence (AI)** and **Robotic Process Automation (RPA)** to enhance operational efficiency and streamline workflows in Indian BPOs. The platform focuses on automation, intelligent decision-making, and real-time insights to address challenges in customer support, agent productivity, and process scalability.
 
-Node.js (v16 or higher)
-npm or yarn
-Steps
-Clone the repository:
+---
 
-bash
-Copy code
-git clone https://github.com/yourusername/eflexi-dashboard.git
-cd eflexi-dashboard
-Install the dependencies:
+## 🚀 Key Highlights
 
-bash
-Copy code
-npm install
-Or if you prefer yarn:
+- **Unified Dashboard**: A centralized hub integrating multiple AI-powered components for seamless operations.
+- **AI-Driven Tools**: Real-time sentiment analysis, automated claim resolution, and virtual co-agents to assist customer service teams.
+- **Automation**: Task automation with RPA for data entry, form filling, and other repetitive tasks.
+- **Generative AI**: Documentation creation powered by advanced AI, reducing manual effort and ensuring compliance.
 
-bash
-Copy code
-yarn install
-Run the development server:
+---
 
-bash
-Copy code
-npm run dev
-This will start the Vite development server at http://localhost:3000.
+## 🛠️ Tech Stack
 
-Directory Structure
-src/: The source code of the application, including components, hooks, and utilities.
-public/: Contains static assets, such as images, icons, and the index.html file.
-package.json: Project metadata and dependencies.
-tailwind.config.ts: Tailwind CSS configuration file.
-vite.config.ts: Configuration for the Vite bundler.
-tsconfig.json: TypeScript configuration file for the project.
-Configuration
-ESLint: The project uses ESLint for code linting. You can modify the configuration in eslint.config.js.
-PostCSS: For additional CSS transformations and optimizations, configure in postcss.config.js.
-Tailwind: Customize your utility-first design system using tailwind.config.ts.
-Development
-To contribute or make changes to this project:
+### Frontend
+- **Framework**: React.js
+- **Styling**: TailwindCSS
+- **Build Tool**: Vite.js
+- **Language**: TypeScript
 
-Fork the repository.
-Create a new branch for your feature or bugfix.
-Install the dependencies and run the development server.
-Test your changes thoroughly.
-Submit a pull request for review.
-License
-This project is licensed under the MIT License.
+### Backend
+- **Framework**: Node.js with Express.js
+- **APIs**: REST-based architecture
+- **Integration**: Gemini API for workflow automation and generative AI
+
+### AI/ML
+- **Libraries**: Hugging Face Transformers, Python NLP
+- **Sentiment Analysis**: Pre-trained NLP models
+- **Generative AI**: Gemini API
+- **Automation**: `pyautogui` for RPA
+
+### Others
+- **Version Control**: Git
+- **Package Management**: npm, pip
+- **Configuration**: ESLint, Tailwind Config, Vite Config
+
+---
+
+## 🗂️ Folder Structure
+
+```plaintext
+root
+├── models/                    # Backend AI and automation scripts
+│   ├── claim-generator/       # Automated claim documentation generation
+│   ├── rpa-automation/        # RPA scripts for repetitive tasks
+│   └── sentiment-analyzer/    # Sentiment analysis models
+├── public/                    # Static assets (images, icons, etc.)
+├── src/                       # Frontend React code
+│   ├── components/            # Reusable UI and dashboard components
+│   ├── hooks/                 # Custom hooks
+│   ├── lib/                   # Utility functions
+│   └── pages/                 # React pages
+├── .devcontainer/             # Dev environment setup
+├── package.json               # Frontend dependencies
+├── tailwind.config.ts         # TailwindCSS configuration
+├── vite.config.ts             # Vite.js configuration
+└── README.md                  # Project documentation
+```
+
+---
+
+## 💻 Installation
+
+### Prerequisites
+- **Node.js**: v16 or higher
+- **Python**: v3.8 or higher
+- **npm**: v6 or higher
+- **pip**: Latest version
+
+### Steps
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/your-repo-name/your-project.git
+   cd your-project
+   ```
+
+2. **Install Frontend Dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Install Backend and ML Dependencies**
+   Navigate to specific `models/` subfolders and install requirements:
+   ```bash
+   cd models/<specific-model-folder>
+   pip install -r requirements.txt
+   ```
+
+4. **Run the Frontend**
+   ```bash
+   npm run dev
+   ```
+
+5. **Run Backend or Specific Models**
+   ```bash
+   python models/<model-folder>/main.py
+   ```
+
+---
+
+## 🌐 Usage
+
+### Access the Dashboard
+- Start the frontend using `npm run dev`.
+- Access the dashboard at `http://localhost:3000`.
+
+### AI-Powered Components
+- Enable sentiment analysis, generative AI, or RPA automation through the dashboard.
+
+### Monitoring and Automation
+- Use the unified dashboard to track operations, review sentiment insights, and manage automation workflows.
+
+---
+
+## 🤝 Contribution
+
+Contributions are welcome! To get started:
+
+1. **Fork the repository** and create a feature branch:
+   ```bash
+   git checkout -b feature/<your-feature>
+   ```
+
+2. **Commit your changes** with clear messages:
+   ```bash
+   git commit -m "Add <your-feature>"
+   ```
+
+3. **Push to your fork**:
+   ```bash
+   git push origin feature/<your-feature>
+   ```
+
+4. **Create a Pull Request** and include detailed descriptions.
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**. See the `LICENSE` file for details.
+
+---
+
+<!-- ## 📧 Contact
+
+For further inquiries or collaboration opportunities, reach out to us at:
+- **Email**: support@example.com
+- **GitHub**: [Your GitHub Profile](https://github.com/your-profile) -->
