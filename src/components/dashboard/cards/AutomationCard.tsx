@@ -17,10 +17,10 @@ export const AutomationCard = () => {
           </div>
           <div className="space-y-2">
             <Button variant="outline" className="w-full justify-start text-left font-normal">
-              <span>Configure RPA Bots</span>
+              <span>Data Entry Assistant</span>
             </Button>
             <Button variant="outline" className="w-full justify-start text-left font-normal">
-              <span>View Active Tasks</span>
+              <span>Form Auto-Fill</span>
             </Button>
           </div>
         </div>

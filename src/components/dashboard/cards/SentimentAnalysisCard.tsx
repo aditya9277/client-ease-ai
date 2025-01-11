@@ -1,6 +1,7 @@
 import { ChartBar, Speech } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
 
 export const SentimentAnalysisCard = () => {
   return (
@@ -10,17 +11,22 @@ export const SentimentAnalysisCard = () => {
         <ChartBar className="h-4 w-4 text-muted-foreground" />
       </CardHeader>
       <CardContent>
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">Real-time Analysis</span>
-            <Speech className="h-4 w-4 text-muted-foreground" />
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium">Current Sentiment</span>
+              <span className="text-sm text-green-600">85%</span>
+            </div>
+            <Progress value={85} className="h-2" />
           </div>
           <div className="space-y-2">
             <Button variant="outline" className="w-full justify-start text-left font-normal">
-              <span>View Sentiment Trends</span>
+              <Speech className="mr-2 h-4 w-4" />
+              <span>View Sentiment History</span>
             </Button>
             <Button variant="outline" className="w-full justify-start text-left font-normal">
-              <span>Configure Analysis</span>
+              <ChartBar className="mr-2 h-4 w-4" />
+              <span>Analyze Current Call</span>
             </Button>
           </div>
         </div>

@@ -17,9 +17,11 @@ export const SmartRemindersCard = () => {
           </div>
           <div className="space-y-2">
             <Button variant="outline" className="w-full justify-start text-left font-normal">
+              <Calendar className="mr-2 h-4 w-4" />
               <span>Schedule Follow-up</span>
             </Button>
             <Button variant="outline" className="w-full justify-start text-left font-normal">
+              <Bell className="mr-2 h-4 w-4" />
               <span>View Priority Tasks</span>
             </Button>
           </div>
