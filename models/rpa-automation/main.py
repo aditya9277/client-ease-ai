@@ -2,10 +2,6 @@ import streamlit as st
 import json
 import pyautogui
 import time
-from pyvirtualdisplay import Display
-
-display = Display(visible=0, size=(1024, 768))
-display.start()
 
 def read_json(file):
     data = json.load(file)
@@ -39,5 +35,3 @@ if uploaded_file is not None:
     if st.button("Autofill Customer Data"):
         st.info("Starting autofill process...")
         automate_form_filling(input_data)
-
-display.stop()
