@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import { LiveCallCard } from "./cards/LiveCallCard";
 import { PreCallCard } from "./cards/PreCallCard";
 import { ClaimsCard } from "./cards/ClaimsCard";
-import { ReportCard } from "./cards/ReportCard";
+import { SmartRemindersCard } from "./cards/SmartRemindersCard";
+import { AutomationCard } from "./cards/AutomationCard";
+import { SentimentAnalysisCard } from "./cards/SentimentAnalysisCard";
+import { LastCallReport } from "./LastCallReport";
 
 const AgentDashboard = () => {
   const [isCallActive, setIsCallActive] = useState(false);
@@ -16,15 +20,15 @@ const AgentDashboard = () => {
     if (isCallActive) {
       const report = `Call_Report_${new Date().toISOString().split('T')[0]}.pdf`;
       setLastCallReport(report);
-    }
-    setIsCallActive(!isCallActive);
-    if (!isCallActive) {
+      toast.success("Call ended successfully");
+    } else {
       setCallDuration(0);
       const timer = setInterval(() => {
         setCallDuration(prev => prev + 1);
       }, 1000);
       return () => clearInterval(timer);
     }
+    setIsCallActive(!isCallActive);
   };
 
   const formatTime = (seconds: number) => {
@@ -42,17 +46,8 @@ const AgentDashboard = () => {
           className="gap-2"
           onClick={handleCallToggle}
         >
-          {isCallActive ? (
-            <>
-              <Phone className="h-4 w-4" />
-              End Call
-            </>
-          ) : (
-            <>
-              <Phone className="h-4 w-4" />
-              Start Call
-            </>
-          )}
+          <Phone className="h-4 w-4" />
+          {isCallActive ? "End Call" : "Start Call"}
         </Button>
       </div>
 
@@ -63,11 +58,21 @@ const AgentDashboard = () => {
           formatTime={formatTime}
         />
       ) : (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <PreCallCard />
-          <ClaimsCard />
-          {lastCallReport && <ReportCard reportName={lastCallReport} />}
-        </div>
+        <>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <PreCallCard />
+            <ClaimsCard />
+            <SmartRemindersCard />
+            <AutomationCard />
+            <SentimentAnalysisCard />
+          </div>
+          {lastCallReport && (
+            <LastCallReport 
+              reportName={lastCallReport}
+              customerId="CUS-001"
+            />
+          )}
+        </>
       )}
     </div>
   );
