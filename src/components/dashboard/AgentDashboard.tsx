@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -15,18 +15,31 @@ const AgentDashboard = () => {
   const [currentSentiment, setCurrentSentiment] = useState(85);
   const [callDuration, setCallDuration] = useState(0);
   const [lastCallReport, setLastCallReport] = useState<string | null>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (isCallActive) {
+      timerRef.current = setInterval(() => {
+        setCallDuration(prev => prev + 1);
+      }, 1000);
+    }
+
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
+  }, [isCallActive]);
 
   const handleCallToggle = () => {
     if (isCallActive) {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
       const report = `Call_Report_${new Date().toISOString().split('T')[0]}.pdf`;
       setLastCallReport(report);
-      toast.success("Call ended successfully");
-    } else {
       setCallDuration(0);
-      const timer = setInterval(() => {
-        setCallDuration(prev => prev + 1);
-      }, 1000);
-      return () => clearInterval(timer);
+      toast.success("Call ended successfully");
     }
     setIsCallActive(!isCallActive);
   };
