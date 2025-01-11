@@ -1,3 +1,0 @@
-google-generativeai
-transformers
-python-dotenv
