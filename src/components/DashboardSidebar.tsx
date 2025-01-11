@@ -12,9 +12,8 @@ import {
 
 const menuItems = [
   { title: "Dashboard", icon: Home, href: "/" },
-  { title: "Claims", icon: FileText, href: "#" },
-  { title: "Chatbot", icon: MessageSquare, href: "#" },
-  { title: "Sentiment", icon: BarChart2, href: "#" },
+  { title: "Claims", icon: FileText, href: "https://bpo-claimgen.streamlit.app/" },
+  { title: "Sentiment", icon: BarChart2, href: "https://bpo-sentiment.streamlit.app/" },
   { title: "Automation", icon: Zap, href: "#" },
 ];
 

@@ -12,19 +12,19 @@ import {
 } from "recharts";
 
 const sentimentData = [
-  { name: "Jan", positive: 65, negative: 35 },
-  { name: "Feb", positive: 59, negative: 41 },
-  { name: "Mar", positive: 80, negative: 20 },
-  { name: "Apr", positive: 71, negative: 29 },
-  { name: "May", positive: 56, negative: 44 },
-  { name: "Jun", positive: 89, negative: 11 },
+  { name: "Aug", positive: 65, negative: 35 },
+  { name: "Sep", positive: 59, negative: 41 },
+  { name: "Oct", positive: 50, negative: 60 },
+  { name: "Nov", positive: 71, negative: 29 },
+  { name: "Dec", positive: 56, negative: 44 },
+  { name: "Jan", positive: 89, negative: 11 },
 ];
 
 const recentClaims = [
-  { id: "CLM001", customer: "John Doe", type: "Insurance", status: "Pending", sentiment: "Positive" },
-  { id: "CLM002", customer: "Jane Smith", type: "Warranty", status: "Processing", sentiment: "Neutral" },
-  { id: "CLM003", customer: "Mike Johnson", type: "Refund", status: "Resolved", sentiment: "Negative" },
-  { id: "CLM004", customer: "Sarah Williams", type: "Insurance", status: "Pending", sentiment: "Positive" },
+  { id: "CLM001", customer: "Kanishk Shukla", type: "Insurance", status: "Pending", sentiment: "Positive" },
+  { id: "CLM002", customer: "Aditya Gupta", type: "Warranty", status: "Processing", sentiment: "Neutral" },
+  { id: "CLM003", customer: "Priyanshi Sharma", type: "Insurance", status: "Pending", sentiment: "Positive" },
+  { id: "CLM004", customer: "Nisha", type: "Refund", status: "Resolved", sentiment: "Negative" },
 ];
 
 const ManagerDashboard = () => (

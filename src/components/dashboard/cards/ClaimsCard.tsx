@@ -27,7 +27,7 @@ export const ClaimsCard = () => {
             </div>
           </div>
           <Button className="w-full" asChild>
-            <a href="#">Open Claims Assistant</a>
+            <a href="https://bpo-claimgen.streamlit.app/" target="_blank">Open Claims Assistant</a>
           </Button>
         </div>
       </CardContent>

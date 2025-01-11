@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 
 export const SentimentAnalysisCard = () => {
+  const handleButtonClick = () => {
+    window.open('https://bpo-sentiment.streamlit.app/', '_blank', 'noopener,noreferrer');
+  };
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -24,9 +27,9 @@ export const SentimentAnalysisCard = () => {
               <Speech className="mr-2 h-4 w-4" />
               <span>View Sentiment History</span>
             </Button>
-            <Button variant="outline" className="w-full justify-start text-left font-normal">
+            <Button onClick={handleButtonClick} variant="outline" className="w-full justify-start text-left font-normal">
               <ChartBar className="mr-2 h-4 w-4" />
-              <span>Analyze Current Call</span>
+              <span >Analyze Current Call</span>
             </Button>
           </div>
         </div>
