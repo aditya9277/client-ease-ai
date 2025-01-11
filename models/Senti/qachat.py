@@ -36,14 +36,14 @@ def get_gemini_response(question):
 
 st.set_page_config(page_title="Q&A Chatbot")
 
-st.header("customer Sentiment aNalyser")
+st.header("Customer Sentiment Analyzer")
 
 # Initialize session state for chat history if it doesn't exist
 if 'chat_history' not in st.session_state:
     st.session_state['chat_history'] = []
 
 input=st.text_input("Input: ",key="input")
-submit=st.button("Ask the question")
+submit=st.button("Check the sentiment")
 
 if submit and input:
     response=get_gemini_response(f'{input} give me an responce within one line')
