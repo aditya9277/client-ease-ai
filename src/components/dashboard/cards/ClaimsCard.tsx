@@ -26,7 +26,7 @@ export const ClaimsCard = () => {
               <span>Completion rate: 95%</span>
             </div>
           </div>
-          <Button className="w-full" variant="secondary" asChild>
+          <Button className="w-full" asChild>
             <a href="#">Open Claims Assistant</a>
           </Button>
         </div>
