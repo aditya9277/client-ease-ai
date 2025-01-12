@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Phone, FileText, Brain, Lightbulb, AlertCircle } from "lucide-react";
+import { Phone, FileText, Brain, Lightbulb, AlertCircle, BookOpen, BarChart2, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { LiveCallCard } from "./cards/LiveCallCard";
@@ -12,6 +12,9 @@ import { LastCallReport } from "./LastCallReport";
 import { CallTranscriptCard } from "./cards/CallTranscriptCard";
 import { ActionRecommendationsCard } from "./cards/ActionRecommendationsCard";
 import { CustomerInsightsCard } from "./cards/CustomerInsightsCard";
+import { KnowledgeBaseCard } from "./cards/KnowledgeBaseCard";
+import { PerformanceMetricsCard } from "./cards/PerformanceMetricsCard";
+import { QuickResponseCard } from "./cards/QuickResponseCard";
 
 const AgentDashboard = () => {
   const [isCallActive, setIsCallActive] = useState(false);
@@ -118,23 +121,30 @@ const AgentDashboard = () => {
             <CallTranscriptCard transcriptText={transcriptText} />
             <ActionRecommendationsCard sentiment={currentSentiment} />
           </div>
-          <CustomerInsightsCard />
+          <div className="grid gap-6 md:grid-cols-2">
+            <CustomerInsightsCard />
+            <QuickResponseCard sentiment={currentSentiment} />
+          </div>
         </div>
       ) : (
         <>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <PreCallCard />
             <ClaimsCard />
             <SmartRemindersCard />
             <AutomationCard />
             <SentimentAnalysisCard />
+            <KnowledgeBaseCard />
           </div>
-          {lastCallReport && (
-            <LastCallReport 
-              reportName={lastCallReport}
-              customerId="CUS-001"
-            />
-          )}
+          <div className="grid gap-6 md:grid-cols-2">
+            <PerformanceMetricsCard />
+            {lastCallReport && (
+              <LastCallReport 
+                reportName={lastCallReport}
+                customerId="CUS-001"
+              />
+            )}
+          </div>
         </>
       )}
     </div>
