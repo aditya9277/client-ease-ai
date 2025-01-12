@@ -1,34 +1,49 @@
-import { Bell, Calendar, CheckCircle } from "lucide-react";
+import { useState } from "react";
+import { Bell, Check } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 import { toast } from "sonner";
 
-export const SmartRemindersCard = () => {
-  const [reminders, setReminders] = useState([
-    { id: 1, text: "Follow up with John regarding insurance claim", completed: false },
-    { id: 2, text: "Review customer feedback from last call", completed: false },
-  ]);
+interface Reminder {
+  id: string;
+  text: string;
+  completed: boolean;
+  dueDate: string;
+}
 
-  const handleComplete = (id: number) => {
-    setReminders(prev => 
-      prev.map(reminder => 
-        reminder.id === id 
+const initialReminders: Reminder[] = [
+  {
+    id: "1",
+    text: "Follow up with customer regarding claim #CLM001",
+    completed: false,
+    dueDate: "2024-02-20",
+  },
+  {
+    id: "2",
+    text: "Review documentation for warranty case #WAR003",
+    completed: false,
+    dueDate: "2024-02-21",
+  },
+  {
+    id: "3",
+    text: "Schedule callback for insurance inquiry #INS005",
+    completed: false,
+    dueDate: "2024-02-22",
+  },
+];
+
+export const SmartRemindersCard = () => {
+  const [reminders, setReminders] = useState<Reminder[]>(initialReminders);
+
+  const handleComplete = (id: string) => {
+    setReminders(prev =>
+      prev.map(reminder =>
+        reminder.id === id
           ? { ...reminder, completed: true }
           : reminder
       )
     );
-    toast.success("Reminder marked as complete");
-  };
-
-  const handleScheduleFollowUp = () => {
-    const newId = reminders.length + 1;
-    setReminders(prev => [...prev, {
-      id: newId,
-      text: "New follow-up scheduled for tomorrow",
-      completed: false
-    }]);
-    toast.success("Follow-up scheduled successfully");
+    toast.success("Reminder marked as completed");
   };
 
   return (
@@ -38,37 +53,32 @@ export const SmartRemindersCard = () => {
         <Bell className="h-4 w-4 text-muted-foreground" />
       </CardHeader>
       <CardContent>
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <span className="text-sm font-medium">Active Reminders</span>
-            <Calendar className="h-4 w-4 text-muted-foreground" />
-          </div>
-          <div className="space-y-2">
-            {reminders.map(reminder => (
-              <div key={reminder.id} className="flex items-center justify-between p-2 rounded-lg bg-muted/50">
-                <span className={`text-sm ${reminder.completed ? 'line-through text-muted-foreground' : ''}`}>
+        <div className="space-y-4">
+          {reminders.map(reminder => (
+            <div
+              key={reminder.id}
+              className={`flex items-center justify-between p-3 rounded-lg ${
+                reminder.completed ? "bg-muted/30" : "bg-muted/50"
+              }`}
+            >
+              <div className="space-y-1">
+                <p className={`text-sm ${reminder.completed ? "line-through text-muted-foreground" : ""}`}>
                   {reminder.text}
-                </span>
-                {!reminder.completed && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => handleComplete(reminder.id)}
-                  >
-                    <CheckCircle className="h-4 w-4" />
-                  </Button>
-                )}
+                </p>
+                <p className="text-xs text-muted-foreground">Due: {reminder.dueDate}</p>
               </div>
-            ))}
-          </div>
-          <Button 
-            variant="outline" 
-            className="w-full justify-start text-left font-normal"
-            onClick={handleScheduleFollowUp}
-          >
-            <Calendar className="mr-2 h-4 w-4" />
-            <span>Schedule New Follow-up</span>
-          </Button>
+              {!reminder.completed && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => handleComplete(reminder.id)}
+                  className="ml-2"
+                >
+                  <Check className="h-4 w-4" />
+                </Button>
+              )}
+            </div>
+          ))}
         </div>
       </CardContent>
     </Card>
