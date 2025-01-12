@@ -3,6 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export const AutomationCard = () => {
+  const handleButtonClick = () => {
+    window.open('http://localhost:8501/', '_blank', 'noopener,noreferrer');
+  };
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -16,7 +19,7 @@ export const AutomationCard = () => {
             <Database className="h-4 w-4 text-muted-foreground" />
           </div>
           <div className="space-y-2">
-            <Button variant="outline" className="w-full justify-start text-left font-normal">
+            <Button onClick={handleButtonClick} variant="outline" className="w-full justify-start text-left font-normal">
               <span>Data Entry Assistant</span>
             </Button>
             <Button variant="outline" className="w-full justify-start text-left font-normal">
