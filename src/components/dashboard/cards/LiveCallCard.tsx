@@ -6,7 +6,7 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Toggle } from "@/components/ui/toggle";
 import { useToast } from "@/hooks/use-toast";
-import CustomerForm from "./CustomerFormCard";
+
 
 interface LiveCallCardProps {
   currentSentiment: number;
@@ -128,7 +128,6 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime }: Liv
         </div>
       </CardContent>
     </Card>
-    <CustomerForm/>
     </>
   );
 };

@@ -15,6 +15,7 @@ import { CustomerInsightsCard } from "./cards/CustomerInsightsCard";
 import { KnowledgeBaseCard } from "./cards/KnowledgeBaseCard";
 import { PerformanceMetricsCard } from "./cards/PerformanceMetricsCard";
 import { QuickResponseCard } from "./cards/QuickResponseCard";
+import CustomerForm from "./cards/CustomerFormCard";
 
 const AgentDashboard = () => {
   const [isCallActive, setIsCallActive] = useState(false);
@@ -117,6 +118,7 @@ const AgentDashboard = () => {
             callDuration={callDuration}
             formatTime={formatTime}
           />
+          
           <div className="grid gap-6 md:grid-cols-2">
             <CallTranscriptCard transcriptText={transcriptText} />
             <ActionRecommendationsCard sentiment={currentSentiment} />
@@ -125,6 +127,7 @@ const AgentDashboard = () => {
             <CustomerInsightsCard />
             <QuickResponseCard sentiment={currentSentiment} />
           </div>
+          <CustomerForm/>
         </div>
       ) : (
         <>
