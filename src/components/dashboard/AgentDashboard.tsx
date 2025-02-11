@@ -99,91 +99,82 @@ const AgentDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-slate-900 via-purple-900 to-slate-900 p-6">
-      <div className="relative">
-        {/* Glassmorphism container */}
-        <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-3xl rounded-3xl" />
-        
-        {/* Header */}
-        <div className="relative flex items-center justify-between p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-lg shadow-2xl">
-          <div className="space-y-1">
-            <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100">
-              AI-Powered Agent Hub
-            </h2>
-            <p className="text-blue-100/80">
-              Elevating customer interactions with intelligent insights
-            </p>
-          </div>
-          <Button 
-            variant={isCallActive ? "destructive" : "default"}
-            size="lg"
-            className={`gap-2 ${
-              isCallActive 
-                ? "bg-red-500/90 hover:bg-red-600/90 shadow-red-500/20" 
-                : "bg-gradient-to-r from-blue-500/90 via-purple-500/90 to-pink-500/90 hover:from-blue-600/90 hover:via-purple-600/90 hover:to-pink-600/90"
-            } text-white shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-md border border-white/10`}
-            onClick={handleCallToggle}
-          >
-            <Phone className="h-4 w-4" />
-            {isCallActive ? "End Call" : "Start Call"}
-          </Button>
+    <div className="space-y-8 p-4 bg-gradient-to-br from-indigo-50 via-white to-purple-50 min-h-screen">
+      <div className="flex items-center justify-between bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+        <div className="space-y-1">
+          <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text">
+            AI-Powered Agent Assistance Hub
+          </h2>
+          <p className="text-sm text-gray-500">
+            Enhance your customer interactions with AI-driven insights
+          </p>
         </div>
+        <Button 
+          variant={isCallActive ? "destructive" : "default"}
+          size="lg"
+          className={`gap-2 ${
+            isCallActive 
+              ? "bg-red-500 hover:bg-red-600" 
+              : "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+          } text-white shadow-lg hover:shadow-xl transition-all duration-300`}
+          onClick={handleCallToggle}
+        >
+          <Phone className="h-4 w-4" />
+          {isCallActive ? "End Call" : "Start Call"}
+        </Button>
+      </div>
 
-        {/* Main Content */}
-        <div className="mt-6">
-          {isCallActive ? (
-            <div className="space-y-6 animate-fade-in">
-              <LiveCallCard 
-                currentSentiment={currentSentiment}
-                callDuration={callDuration}
-                formatTime={formatTime}
-              />
-              
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="space-y-6">
-                  <CallTranscriptCard transcriptText={transcriptText} />
-                  <CustomerInsightsCard />
-                </div>
-                <div className="space-y-6">
-                  <ActionRecommendationsCard sentiment={currentSentiment} />
-                  <QuickResponseCard sentiment={currentSentiment} />
-                </div>
-              </div>
-              <CustomerForm />
+      {isCallActive ? (
+        <div className="space-y-6 animate-fade-in">
+          <LiveCallCard 
+            currentSentiment={currentSentiment}
+            callDuration={callDuration}
+            formatTime={formatTime}
+          />
+          
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="space-y-6">
+              <CallTranscriptCard transcriptText={transcriptText} />
+              <CustomerInsightsCard />
             </div>
-          ) : (
-            <div className="animate-fade-in">
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                <div className="col-span-full lg:col-span-2">
-                  <div className="grid gap-6 md:grid-cols-2">
-                    <PreCallCard />
-                    <ClaimsCard />
-                  </div>
-                </div>
-                <div className="lg:row-span-2">
-                  <PerformanceMetricsCard />
-                </div>
-                <SmartRemindersCard />
-                <AutomationCard />
-                <div className="md:col-span-2 lg:col-span-1">
-                  <SentimentAnalysisCard />
-                </div>
-                <div className="md:col-span-2 lg:col-span-2">
-                  <KnowledgeBaseCard />
-                </div>
+            <div className="space-y-6">
+              <ActionRecommendationsCard sentiment={currentSentiment} />
+              <QuickResponseCard sentiment={currentSentiment} />
+            </div>
+          </div>
+          <CustomerForm />
+        </div>
+      ) : (
+        <div className="animate-fade-in">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="col-span-full lg:col-span-2">
+              <div className="grid gap-6 md:grid-cols-2">
+                <PreCallCard />
+                <ClaimsCard />
               </div>
-              {lastCallReport && (
-                <div className="mt-6">
-                  <LastCallReport 
-                    reportName={lastCallReport}
-                    customerId="CUS-001"
-                  />
-                </div>
-              )}
+            </div>
+            <div className="lg:row-span-2">
+              <PerformanceMetricsCard />
+            </div>
+            <SmartRemindersCard />
+            <AutomationCard />
+            <div className="md:col-span-2 lg:col-span-1">
+              <SentimentAnalysisCard />
+            </div>
+            <div className="md:col-span-2 lg:col-span-2">
+              <KnowledgeBaseCard />
+            </div>
+          </div>
+          {lastCallReport && (
+            <div className="mt-6">
+              <LastCallReport 
+                reportName={lastCallReport}
+                customerId="CUS-001"
+              />
             </div>
           )}
         </div>
-      </div>
+      )}
     </div>
   );
 };
