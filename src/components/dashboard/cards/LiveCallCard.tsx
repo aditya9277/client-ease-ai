@@ -35,101 +35,103 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime }: Liv
   };
 
   return (
-    <Card className="border-2 border-primary/20 shadow-lg hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm">
-      <CardHeader>
+    <Card className="border border-white/10 bg-white/5 shadow-2xl backdrop-blur-xl">
+      <CardHeader className="border-b border-white/5">
         <CardTitle className="flex items-center justify-between">
-          <span className="bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text">Live Call Assistance</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100">
+            Live Call Assistance
+          </span>
           <div className="flex items-center gap-2">
-            <Badge variant="outline" className="animate-pulse bg-green-50 text-green-700 border-green-200">Live</Badge>
-            <span className="text-sm font-normal">
+            <Badge variant="outline" className="animate-pulse bg-emerald-500/10 text-emerald-300 border-emerald-500/20">
+              Live
+            </Badge>
+            <span className="text-sm font-normal text-blue-100/80">
               Call Duration: {formatTime(callDuration)}
             </span>
           </div>
         </CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="grid gap-6">
+      <CardContent className="space-y-6 mt-4">
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <h3 className="font-medium text-blue-100">Customer Sentiment</h3>
+            <span className={`text-sm font-medium ${
+              currentSentiment > 70 ? "text-emerald-300" :
+              currentSentiment > 40 ? "text-amber-300" :
+              "text-rose-300"
+            }`}>
+              {currentSentiment}%
+            </span>
+          </div>
+          <Progress 
+            value={currentSentiment} 
+            className="h-2 bg-white/5"
+            style={{
+              background: 'linear-gradient(to right, rgba(248,113,113,0.2), rgba(251,191,36,0.2), rgba(52,211,153,0.2))',
+            }}
+          />
+        </div>
+
+        <div className="flex justify-center gap-4">
+          <Toggle
+            pressed={isMuted}
+            onPressedChange={setIsMuted}
+            className="data-[state=on]:bg-rose-500/20 hover:bg-white/5 border border-white/10"
+          >
+            {isMuted ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
+          </Toggle>
+          <Toggle
+            pressed={isPaused}
+            onPressedChange={setIsPaused}
+            className="data-[state=on]:bg-amber-500/20 hover:bg-white/5 border border-white/10"
+          >
+            {isPaused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}
+          </Toggle>
+          <Toggle className="data-[state=on]:bg-blue-500/20 hover:bg-white/5 border border-white/10">
+            <Volume2 className="h-4 w-4" />
+          </Toggle>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="font-medium text-blue-100">AI Suggestions</h3>
           <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <h3 className="font-medium">Customer Sentiment</h3>
-              <span className={`text-sm font-medium ${
-                currentSentiment > 70 ? "text-green-600" :
-                currentSentiment > 40 ? "text-yellow-600" :
-                "text-red-600"
-              }`}>
-                {currentSentiment}%
-              </span>
-            </div>
-            <Progress 
-              value={currentSentiment} 
-              className="h-2"
-              style={{
-                background: 'linear-gradient(to right, #f87171, #fbbf24, #34d399)',
-              }}
-            />
+            {suggestions.map((suggestion, index) => (
+              <div
+                key={index}
+                className={`p-4 rounded-xl transition-all cursor-pointer border border-white/10 ${
+                  activeSuggestion === index
+                    ? "bg-purple-500/10 border-purple-500/20"
+                    : "bg-white/5 hover:bg-white/10"
+                }`}
+                onClick={() => setActiveSuggestion(index)}
+              >
+                <p className="text-sm text-blue-100/80">{suggestion}</p>
+              </div>
+            ))}
           </div>
+        </div>
 
-          <div className="flex justify-center gap-4">
-            <Toggle
-              pressed={isMuted}
-              onPressedChange={setIsMuted}
-              className="data-[state=on]:bg-red-100 hover:bg-gray-100"
-            >
-              {isMuted ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
-            </Toggle>
-            <Toggle
-              pressed={isPaused}
-              onPressedChange={setIsPaused}
-              className="data-[state=on]:bg-yellow-100 hover:bg-gray-100"
-            >
-              {isPaused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}
-            </Toggle>
-            <Toggle className="data-[state=on]:bg-blue-100 hover:bg-gray-100">
-              <Volume2 className="h-4 w-4" />
-            </Toggle>
-          </div>
-
-          <div className="space-y-4">
-            <h3 className="font-medium text-gray-700">AI Suggestions</h3>
-            <div className="space-y-2">
-              {suggestions.map((suggestion, index) => (
-                <div
-                  key={index}
-                  className={`p-4 rounded-lg transition-all cursor-pointer ${
-                    activeSuggestion === index
-                      ? "bg-purple-50 border border-purple-200"
-                      : "bg-gray-50 hover:bg-purple-50/50"
-                  }`}
-                  onClick={() => setActiveSuggestion(index)}
-                >
-                  <p className="text-sm text-gray-600">{suggestion}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <Button variant="outline" className="w-full hover:bg-purple-50" asChild>
-              <a href="#">
-                <Bot className="mr-2 h-4 w-4 text-purple-600" />
-                Launch AI Support
-              </a>
-            </Button>
-            <Button variant="outline" className="w-full hover:bg-blue-50" asChild>
-              <a href="#">
-                <ClipboardList className="mr-2 h-4 w-4 text-blue-600" />
-                View Case History
-              </a>
-            </Button>
-            <Button 
-              variant="outline" 
-              className="w-full col-span-2 hover:bg-green-50"
-              onClick={handleAutofillData}
-            >
-              <UserCheck className="mr-2 h-4 w-4 text-green-600" />
-              Autofill Customer Data
-            </Button>
-          </div>
+        <div className="grid grid-cols-2 gap-4">
+          <Button variant="outline" className="w-full hover:bg-purple-500/10 border-white/10 text-blue-100" asChild>
+            <a href="#">
+              <Bot className="mr-2 h-4 w-4 text-purple-300" />
+              Launch AI Support
+            </a>
+          </Button>
+          <Button variant="outline" className="w-full hover:bg-blue-500/10 border-white/10 text-blue-100" asChild>
+            <a href="#">
+              <ClipboardList className="mr-2 h-4 w-4 text-blue-300" />
+              View Case History
+            </a>
+          </Button>
+          <Button 
+            variant="outline" 
+            className="w-full col-span-2 hover:bg-emerald-500/10 border-white/10 text-blue-100"
+            onClick={handleAutofillData}
+          >
+            <UserCheck className="mr-2 h-4 w-4 text-emerald-300" />
+            Autofill Customer Data
+          </Button>
         </div>
       </CardContent>
     </Card>
