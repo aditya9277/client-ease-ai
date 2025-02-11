@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import { Phone, FileText, Brain, Lightbulb, AlertCircle, BookOpen, BarChart2, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -98,12 +99,24 @@ const AgentDashboard = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold">AI-Powered Agent Assistance Hub</h2>
+    <div className="space-y-8 p-4 bg-gradient-to-br from-indigo-50 via-white to-purple-50 min-h-screen">
+      <div className="flex items-center justify-between bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+        <div className="space-y-1">
+          <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text">
+            AI-Powered Agent Assistance Hub
+          </h2>
+          <p className="text-sm text-gray-500">
+            Enhance your customer interactions with AI-driven insights
+          </p>
+        </div>
         <Button 
           variant={isCallActive ? "destructive" : "default"}
-          className="gap-2"
+          size="lg"
+          className={`gap-2 ${
+            isCallActive 
+              ? "bg-red-500 hover:bg-red-600" 
+              : "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+          } text-white shadow-lg hover:shadow-xl transition-all duration-300`}
           onClick={handleCallToggle}
         >
           <Phone className="h-4 w-4" />
@@ -112,7 +125,7 @@ const AgentDashboard = () => {
       </div>
 
       {isCallActive ? (
-        <div className="space-y-6">
+        <div className="space-y-6 animate-fade-in">
           <LiveCallCard 
             currentSentiment={currentSentiment}
             callDuration={callDuration}
@@ -120,35 +133,47 @@ const AgentDashboard = () => {
           />
           
           <div className="grid gap-6 md:grid-cols-2">
-            <CallTranscriptCard transcriptText={transcriptText} />
-            <ActionRecommendationsCard sentiment={currentSentiment} />
+            <div className="space-y-6">
+              <CallTranscriptCard transcriptText={transcriptText} />
+              <CustomerInsightsCard />
+            </div>
+            <div className="space-y-6">
+              <ActionRecommendationsCard sentiment={currentSentiment} />
+              <QuickResponseCard sentiment={currentSentiment} />
+            </div>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            <CustomerInsightsCard />
-            <QuickResponseCard sentiment={currentSentiment} />
-          </div>
-          <CustomerForm/>
+          <CustomerForm />
         </div>
       ) : (
-        <>
+        <div className="animate-fade-in">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <PreCallCard />
-            <ClaimsCard />
+            <div className="col-span-full lg:col-span-2">
+              <div className="grid gap-6 md:grid-cols-2">
+                <PreCallCard />
+                <ClaimsCard />
+              </div>
+            </div>
+            <div className="lg:row-span-2">
+              <PerformanceMetricsCard />
+            </div>
             <SmartRemindersCard />
             <AutomationCard />
-            <SentimentAnalysisCard />
-            <KnowledgeBaseCard />
+            <div className="md:col-span-2 lg:col-span-1">
+              <SentimentAnalysisCard />
+            </div>
+            <div className="md:col-span-2 lg:col-span-2">
+              <KnowledgeBaseCard />
+            </div>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            <PerformanceMetricsCard />
-            {lastCallReport && (
+          {lastCallReport && (
+            <div className="mt-6">
               <LastCallReport 
                 reportName={lastCallReport}
                 customerId="CUS-001"
               />
-            )}
-          </div>
-        </>
+            </div>
+          )}
+        </div>
       )}
     </div>
   );
