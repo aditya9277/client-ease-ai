@@ -10,7 +10,7 @@ export default function DashboardLayout({
   const [isAgent, setIsAgent] = useState(true);
 
   return (
-    <div className="min-h-screen flex w-full bg-gray-50">
+    <div className="min-h-screen flex w-full bg-[#1A1F2C]">
       <div className="flex-1">
         <TopNav isAgent={isAgent} setIsAgent={setIsAgent} />
         <main className="p-6">{children({ isAgent })}</main>

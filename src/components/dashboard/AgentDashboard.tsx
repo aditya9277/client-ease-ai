@@ -99,13 +99,13 @@ const AgentDashboard = () => {
   };
 
   return (
-    <div className="space-y-8 p-4 bg-gradient-to-br from-indigo-50 via-white to-purple-50 min-h-screen">
-      <div className="flex items-center justify-between bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+    <div className="space-y-8 p-4 bg-[#1A1F2C] min-h-screen">
+      <div className="flex items-center justify-between bg-[#252A3C]/80 backdrop-blur-sm p-6 rounded-xl border border-purple-500/20">
         <div className="space-y-1">
-          <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text">
+          <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">
             AI-Powered Agent Assistance Hub
           </h2>
-          <p className="text-sm text-gray-500">
+          <p className="text-gray-400">
             Enhance your customer interactions with AI-driven insights
           </p>
         </div>
