@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Lightbulb } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -39,10 +40,10 @@ export const ActionRecommendationsCard = ({ sentiment }: ActionRecommendationsCa
   };
 
   return (
-    <Card>
+    <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium">AI Recommendations</CardTitle>
-        <Lightbulb className="h-4 w-4 text-muted-foreground" />
+        <CardTitle className="text-sm font-medium text-gray-100">AI Recommendations</CardTitle>
+        <Lightbulb className="h-4 w-4 text-purple-400" />
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
@@ -50,10 +51,10 @@ export const ActionRecommendationsCard = ({ sentiment }: ActionRecommendationsCa
             <Button
               key={index}
               variant="outline"
-              className="w-full justify-start text-left"
+              className="w-full justify-start text-left border-purple-500/20 text-gray-300 hover:bg-purple-500/10"
               onClick={() => handleActionClick(action)}
             >
-              <Lightbulb className="mr-2 h-4 w-4" />
+              <Lightbulb className="mr-2 h-4 w-4 text-purple-400" />
               {action}
             </Button>
           ))}

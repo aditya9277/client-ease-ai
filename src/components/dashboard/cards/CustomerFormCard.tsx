@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -28,9 +29,9 @@ const CustomerForm = () => {
   };
 
   return (
-    <Card className="border-2 border-secondary mt-6 animate-fade-in">
+    <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40 mt-6">
       <CardHeader>
-        <CardTitle>Customer Data Form</CardTitle>
+        <CardTitle className="text-gray-100">Customer Data Form</CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -40,35 +41,35 @@ const CustomerForm = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              placeholder=" Customer Name"
-              className="input-field w-full"
+              placeholder="Customer Name"
+              className="w-full bg-[#1A1F2C] border-purple-500/20 text-gray-200 placeholder:text-gray-500 rounded-md px-3 py-2"
             />
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder=" Email"
-              className="input-field w-full"
+              placeholder="Email"
+              className="w-full bg-[#1A1F2C] border-purple-500/20 text-gray-200 placeholder:text-gray-500 rounded-md px-3 py-2"
             />
             <input
               type="text"
               name="address"
               value={formData.address}
               onChange={handleChange}
-              placeholder=" Address"
-              className="input-field w-full"
+              placeholder="Address"
+              className="w-full bg-[#1A1F2C] border-purple-500/20 text-gray-200 placeholder:text-gray-500 rounded-md px-3 py-2"
             />
             <input
               type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              placeholder=" Phone Number"
-              className="input-field w-full"
+              placeholder="Phone Number"
+              className="w-full bg-[#1A1F2C] border-purple-500/20 text-gray-200 placeholder:text-gray-500 rounded-md px-3 py-2"
             />
           </div>
-          <Button type="submit" variant="outline" className="w-full">
+          <Button type="submit" variant="outline" className="w-full border-purple-500/20 text-purple-300 hover:bg-purple-500/10">
             Submit
           </Button>
         </form>

@@ -1,3 +1,4 @@
+
 import { MessageSquare, Send } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -39,10 +40,10 @@ export const QuickResponseCard = ({ sentiment }: QuickResponseCardProps) => {
   };
 
   return (
-    <Card>
+    <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <MessageSquare className="h-5 w-5 text-primary" />
+        <CardTitle className="flex items-center gap-2 text-gray-100">
+          <MessageSquare className="h-5 w-5 text-purple-400" />
           Quick Responses
         </CardTitle>
       </CardHeader>
@@ -51,13 +52,14 @@ export const QuickResponseCard = ({ sentiment }: QuickResponseCardProps) => {
           {suggestions.map((suggestion, index) => (
             <div
               key={index}
-              className="flex items-center justify-between gap-2 p-3 bg-muted rounded-lg"
+              className="flex items-center justify-between gap-2 p-3 bg-[#1A1F2C]/60 rounded-lg"
             >
-              <p className="text-sm">{suggestion}</p>
+              <p className="text-sm text-gray-300">{suggestion}</p>
               <Button
                 size="sm"
                 variant="ghost"
                 onClick={() => handleSendResponse(suggestion)}
+                className="text-purple-400 hover:text-purple-300 hover:bg-purple-500/10"
               >
                 <Send className="h-4 w-4" />
               </Button>
