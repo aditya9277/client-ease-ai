@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const recentClaims = [
@@ -8,32 +9,32 @@ const recentClaims = [
 ];
 
 export const RecentClaims = () => (
-  <Card>
+  <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40">
     <CardHeader>
-      <CardTitle>Recent Claims</CardTitle>
+      <CardTitle className="text-gray-100">Recent Claims</CardTitle>
     </CardHeader>
     <CardContent>
       <div className="space-y-4">
         {recentClaims.map((claim) => (
           <div
             key={claim.id}
-            className="flex items-center justify-between p-4 rounded-lg bg-muted/50"
+            className="flex items-center justify-between p-4 rounded-lg bg-[#1A1F2C]/60"
           >
             <div className="space-y-1">
-              <p className="text-sm font-medium">{claim.customer}</p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-sm font-medium text-gray-100">{claim.customer}</p>
+              <p className="text-xs text-gray-400">
                 {claim.id} - {claim.type}
               </p>
             </div>
             <div className="flex items-center gap-4">
               <span className={`text-xs px-2 py-1 rounded-full ${
-                claim.sentiment === "Positive" ? "bg-green-100 text-green-700" :
-                claim.sentiment === "Negative" ? "bg-red-100 text-red-700" :
-                "bg-yellow-100 text-yellow-700"
+                claim.sentiment === "Positive" ? "bg-green-500/20 text-green-300" :
+                claim.sentiment === "Negative" ? "bg-red-500/20 text-red-300" :
+                "bg-yellow-500/20 text-yellow-300"
               }`}>
                 {claim.sentiment}
               </span>
-              <span className="text-xs text-muted-foreground">{claim.status}</span>
+              <span className="text-xs text-gray-400">{claim.status}</span>
             </div>
           </div>
         ))}

@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, CheckCircle2, Rocket, Star, Users, Brain, Shield, Zap, ChartBarIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -56,18 +55,13 @@ const Index = () => {
         <div className="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-purple-500/10 to-transparent" />
         
         <div className="container mx-auto px-4 py-32 relative">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <div className="inline-flex items-center px-4 py-2 rounded-full border border-purple-500/20 bg-purple-500/10 text-purple-300 mb-4">
-              <Star className="w-4 h-4 mr-2" />
-              <span>Winner of Best AI Innovation Award 2024</span>
-            </div>
-            
+          <div className="max-w-4xl mx-auto text-center space-y-8">            
             <h1 className="text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 leading-tight">
-              Client Ease AI
+              Revolutionizing BPO <br /> with AI Innovation
             </h1>
             
             <h2 className="text-3xl text-gray-300 max-w-2xl mx-auto">
-              Harnessing AI to Empower Bharat: Transforming Customer Service
+              Transform Customer Service with Next-Gen AI Technology
             </h2>
             
             <div className="flex items-center justify-center gap-4">
@@ -76,7 +70,7 @@ const Index = () => {
                 size="lg"
                 className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-6 text-lg rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
               >
-                Try Now
+                Experience AI Power
                 <ArrowRight className="ml-2" />
               </Button>
               <Button 
@@ -111,7 +105,7 @@ const Index = () => {
       <div className="container mx-auto px-4 py-32">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
-            Powerful Features
+            Enterprise-Grade Features
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
             Transform your customer service with our cutting-edge AI solutions
@@ -150,7 +144,7 @@ const Index = () => {
       <div className="bg-gradient-to-b from-[#1A1F2C] to-purple-900/20">
         <div className="container mx-auto px-4 py-32">
           <h2 className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
-            Why Our AI Solution is a Game-Changer for Bharat
+            Transforming Customer Service Across India
           </h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Card className="bg-[#252A3C]/50 border-purple-500/20 hover:border-purple-500/40 p-8 rounded-xl backdrop-blur-sm">
