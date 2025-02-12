@@ -140,6 +140,43 @@ const Index = () => {
         </div>
       </div>
 
+      {/* Tech Stack Section - NEW */}
+      <div className="container mx-auto px-4 py-24">
+        <h2 className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
+          Cutting-Edge Technology Stack
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <Card className="bg-[#252A3C]/50 border-purple-500/20 p-6 text-center">
+            <div className="h-16 w-16 rounded-full bg-purple-500/10 flex items-center justify-center mx-auto mb-4">
+              <Brain className="h-8 w-8 text-purple-400" />
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-2">Advanced ML Models</h3>
+            <p className="text-gray-400">Real-time sentiment analysis and prediction</p>
+          </Card>
+          <Card className="bg-[#252A3C]/50 border-purple-500/20 p-6 text-center">
+            <div className="h-16 w-16 rounded-full bg-purple-500/10 flex items-center justify-center mx-auto mb-4">
+              <Zap className="h-8 w-8 text-purple-400" />
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-2">Real-time Processing</h3>
+            <p className="text-gray-400">Instant insights and recommendations</p>
+          </Card>
+          <Card className="bg-[#252A3C]/50 border-purple-500/20 p-6 text-center">
+            <div className="h-16 w-16 rounded-full bg-purple-500/10 flex items-center justify-center mx-auto mb-4">
+              <Shield className="h-8 w-8 text-purple-400" />
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-2">Enterprise Security</h3>
+            <p className="text-gray-400">End-to-end encryption and compliance</p>
+          </Card>
+          <Card className="bg-[#252A3C]/50 border-purple-500/20 p-6 text-center">
+            <div className="h-16 w-16 rounded-full bg-purple-500/10 flex items-center justify-center mx-auto mb-4">
+              <Users className="h-8 w-8 text-purple-400" />
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-2">Scalable Infrastructure</h3>
+            <p className="text-gray-400">Built for growing enterprises</p>
+          </Card>
+        </div>
+      </div>
+
       {/* Impact Section */}
       <div className="bg-gradient-to-b from-[#1A1F2C] to-purple-900/20">
         <div className="container mx-auto px-4 py-32">
@@ -156,6 +193,41 @@ const Index = () => {
               <Shield className="h-8 w-8 text-purple-400 mb-4" />
               <h3 className="text-xl font-semibold text-white mb-2">Bridges the Digital Divide</h3>
               <p className="text-gray-400">Making advanced technology accessible to businesses of all sizes.</p>
+            </Card>
+          </div>
+        </div>
+      </div>
+
+      {/* Success Stories - NEW */}
+      <div className="bg-gradient-to-b from-[#1A1F2C] to-purple-900/20 py-24">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
+            Success Stories
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="bg-[#252A3C]/50 border-purple-500/20 p-8 rounded-xl backdrop-blur-sm">
+              <blockquote className="space-y-4">
+                <p className="text-gray-300">"Reduced our response time by 60% and improved customer satisfaction significantly."</p>
+                <footer className="text-sm text-gray-400">
+                  - Leading Insurance Provider
+                </footer>
+              </blockquote>
+            </Card>
+            <Card className="bg-[#252A3C]/50 border-purple-500/20 p-8 rounded-xl backdrop-blur-sm">
+              <blockquote className="space-y-4">
+                <p className="text-gray-300">"The AI-powered insights have transformed how we handle customer interactions."</p>
+                <footer className="text-sm text-gray-400">
+                  - Major Telecom Company
+                </footer>
+              </blockquote>
+            </Card>
+            <Card className="bg-[#252A3C]/50 border-purple-500/20 p-8 rounded-xl backdrop-blur-sm">
+              <blockquote className="space-y-4">
+                <p className="text-gray-300">"A game-changer for our customer support operations across India."</p>
+                <footer className="text-sm text-gray-400">
+                  - E-commerce Giant
+                </footer>
+              </blockquote>
             </Card>
           </div>
         </div>
