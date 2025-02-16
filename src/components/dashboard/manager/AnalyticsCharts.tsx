@@ -12,7 +12,7 @@ export const AnalyticsCharts = () => {
   ];
 
   return (
-    <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40">
+    <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-cyan-500/20 hover:border-cyan-500/40">
       <CardHeader>
         <CardTitle className="text-gray-100">Weekly Analytics</CardTitle>
       </CardHeader>
@@ -33,15 +33,15 @@ export const AnalyticsCharts = () => {
                 />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: '#1A1F2C',
-                    border: '1px solid rgba(139, 92, 246, 0.2)',
+                    backgroundColor: '#0F172A',
+                    border: '1px solid rgba(6, 182, 212, 0.2)',
                     borderRadius: '8px',
                     color: '#e2e8f0'
                   }}
                 />
                 <Bar 
                   dataKey="calls" 
-                  fill="rgba(139, 92, 246, 0.6)" 
+                  fill="rgba(6, 182, 212, 0.6)" 
                   radius={[4, 4, 0, 0]}
                 />
               </BarChart>
@@ -63,8 +63,8 @@ export const AnalyticsCharts = () => {
                 />
                 <Tooltip 
                   contentStyle={{ 
-                    backgroundColor: '#1A1F2C',
-                    border: '1px solid rgba(139, 92, 246, 0.2)',
+                    backgroundColor: '#0F172A',
+                    border: '1px solid rgba(6, 182, 212, 0.2)',
                     borderRadius: '8px',
                     color: '#e2e8f0'
                   }}
@@ -72,7 +72,7 @@ export const AnalyticsCharts = () => {
                 <Line 
                   type="monotone" 
                   dataKey="resolution" 
-                  stroke="#a78bfa" 
+                  stroke="#06b6d4" 
                   strokeWidth={2}
                 />
               </LineChart>

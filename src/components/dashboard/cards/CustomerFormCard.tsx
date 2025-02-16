@@ -20,7 +20,7 @@ const CustomerForm = () => {
       description: "Customer data has been successfully submitted",
       duration: 3000,
     });
-    setFormData({ name: "", email: "", address: "", phone: "" }); // Clear form
+    setFormData({ name: "", email: "", address: "", phone: "" });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +29,7 @@ const CustomerForm = () => {
   };
 
   return (
-    <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40 mt-6">
+    <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-cyan-500/20 hover:border-cyan-500/40 mt-6">
       <CardHeader>
         <CardTitle className="text-gray-100">Customer Data Form</CardTitle>
       </CardHeader>
@@ -42,7 +42,7 @@ const CustomerForm = () => {
               value={formData.name}
               onChange={handleChange}
               placeholder="Customer Name"
-              className="w-full bg-[#1A1F2C] border-purple-500/20 text-gray-200 placeholder:text-gray-500 rounded-md px-3 py-2"
+              className="w-full bg-[#0F172A]/60 border-cyan-500/20 text-gray-200 placeholder:text-gray-500 rounded-md px-3 py-2"
             />
             <input
               type="email"
@@ -50,7 +50,7 @@ const CustomerForm = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Email"
-              className="w-full bg-[#1A1F2C] border-purple-500/20 text-gray-200 placeholder:text-gray-500 rounded-md px-3 py-2"
+              className="w-full bg-[#0F172A]/60 border-cyan-500/20 text-gray-200 placeholder:text-gray-500 rounded-md px-3 py-2"
             />
             <input
               type="text"
@@ -58,7 +58,7 @@ const CustomerForm = () => {
               value={formData.address}
               onChange={handleChange}
               placeholder="Address"
-              className="w-full bg-[#1A1F2C] border-purple-500/20 text-gray-200 placeholder:text-gray-500 rounded-md px-3 py-2"
+              className="w-full bg-[#0F172A]/60 border-cyan-500/20 text-gray-200 placeholder:text-gray-500 rounded-md px-3 py-2"
             />
             <input
               type="tel"
@@ -66,10 +66,10 @@ const CustomerForm = () => {
               value={formData.phone}
               onChange={handleChange}
               placeholder="Phone Number"
-              className="w-full bg-[#1A1F2C] border-purple-500/20 text-gray-200 placeholder:text-gray-500 rounded-md px-3 py-2"
+              className="w-full bg-[#0F172A]/60 border-cyan-500/20 text-gray-200 placeholder:text-gray-500 rounded-md px-3 py-2"
             />
           </div>
-          <Button type="submit" variant="outline" className="w-full border-purple-500/20 text-purple-300 hover:bg-purple-500/10">
+          <Button type="submit" variant="outline" className="w-full border-cyan-500/20 text-cyan-300 hover:bg-cyan-500/10">
             Submit
           </Button>
         </form>

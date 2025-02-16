@@ -28,7 +28,7 @@ export const RecentClaims = () => {
   ];
 
   return (
-    <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40">
+    <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-cyan-500/20 hover:border-cyan-500/40">
       <CardHeader>
         <CardTitle className="text-gray-100">Recent Claims</CardTitle>
       </CardHeader>
@@ -37,10 +37,10 @@ export const RecentClaims = () => {
           {claims.map((claim) => (
             <div
               key={claim.id}
-              className="flex items-center justify-between p-4 bg-[#1A1F2C]/60 rounded-lg border border-purple-500/20"
+              className="flex items-center justify-between p-4 bg-[#0F172A]/60 rounded-lg border border-cyan-500/20"
             >
               <div className="flex items-center gap-3">
-                <FileBox className="h-5 w-5 text-purple-400" />
+                <FileBox className="h-5 w-5 text-cyan-400" />
                 <div>
                   <p className="font-medium text-gray-200">{claim.customer}</p>
                   <p className="text-sm text-gray-400">{claim.id}</p>
@@ -50,10 +50,10 @@ export const RecentClaims = () => {
                 <p className="font-medium text-gray-200">{claim.amount}</p>
                 <p className={`text-sm ${
                   claim.status === 'Approved' 
-                    ? 'text-green-400' 
+                    ? 'text-teal-400' 
                     : claim.status === 'Pending' 
-                    ? 'text-yellow-400' 
-                    : 'text-blue-400'
+                    ? 'text-amber-400' 
+                    : 'text-cyan-400'
                 }`}>
                   {claim.status}
                 </p>
@@ -64,4 +64,4 @@ export const RecentClaims = () => {
       </CardContent>
     </Card>
   );
-};
+}

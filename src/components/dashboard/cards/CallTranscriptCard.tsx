@@ -9,13 +9,13 @@ interface CallTranscriptCardProps {
 
 export const CallTranscriptCard = ({ transcriptText }: CallTranscriptCardProps) => {
   return (
-    <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40">
+    <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-cyan-500/20 hover:border-cyan-500/40">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium text-gray-100">Live Call Transcript</CardTitle>
-        <FileText className="h-4 w-4 text-purple-400" />
+        <FileText className="h-4 w-4 text-cyan-400" />
       </CardHeader>
       <CardContent>
-        <ScrollArea className="h-[300px] w-full rounded-md border border-purple-500/20 bg-[#1A1F2C] p-4">
+        <ScrollArea className="h-[300px] w-full rounded-md border border-cyan-500/20 bg-[#0F172A]/60 p-4">
           <pre className="text-sm whitespace-pre-wrap font-mono text-gray-300">
             {transcriptText || "Waiting for call to begin..."}
           </pre>
