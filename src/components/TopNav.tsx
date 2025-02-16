@@ -9,9 +9,9 @@ interface TopNavProps {
 
 export default function TopNav({ isAgent, setIsAgent }: TopNavProps) {
   return (
-    <div className="border-b border-indigo-500/20 bg-[#252A3C]/90 backdrop-blur-sm px-6 py-3 shadow-lg shadow-indigo-500/5">
+    <div className="border-b border-cyan-500/20 bg-[#1E293B]/90 backdrop-blur-sm px-6 py-3 shadow-lg shadow-cyan-500/5">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
+        <h1 className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-teal-400">
           Client Ease AI - BPO Workflow Dashboard
         </h1>
         <div className="flex items-center gap-3">
@@ -22,7 +22,7 @@ export default function TopNav({ isAgent, setIsAgent }: TopNavProps) {
             id="role-switch"
             checked={isAgent}
             onCheckedChange={setIsAgent}
-            className="data-[state=checked]:bg-indigo-600"
+            className="data-[state=checked]:bg-cyan-600"
           />
         </div>
       </div>

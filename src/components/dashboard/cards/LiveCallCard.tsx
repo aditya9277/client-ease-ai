@@ -11,10 +11,10 @@ interface LiveCallCardProps {
 
 export const LiveCallCard = ({ currentSentiment, callDuration, formatTime }: LiveCallCardProps) => {
   return (
-    <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40">
+    <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-cyan-500/20 shadow-lg shadow-cyan-500/5 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="flex items-center gap-2 text-gray-100">
-          <Phone className="h-5 w-5 text-purple-400 animate-pulse" />
+          <Phone className="h-5 w-5 text-cyan-400 animate-pulse" />
           Live Call Status
         </CardTitle>
         <div className="text-sm text-gray-300">{formatTime(callDuration)}</div>
@@ -28,23 +28,23 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime }: Liv
             </div>
             <Progress 
               value={currentSentiment} 
-              className="h-2 bg-purple-900/20"
+              className="h-2 bg-slate-800/50"
               style={{
                 backgroundImage: 'linear-gradient(to right, #ef4444, #eab308, #22c55e)',
               }}
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <div className="p-3 bg-[#1A1F2C]/60 rounded-lg border border-purple-500/20">
+            <div className="p-3 bg-[#0F172A]/60 rounded-lg border border-cyan-500/20">
               <div className="flex items-center gap-2">
-                <TrendingUp className="h-4 w-4 text-green-400" />
+                <TrendingUp className="h-4 w-4 text-teal-400" />
                 <span className="text-sm font-medium text-gray-300">Call Quality</span>
               </div>
               <p className="text-lg font-bold text-gray-200 mt-1">96%</p>
             </div>
-            <div className="p-3 bg-[#1A1F2C]/60 rounded-lg border border-purple-500/20">
+            <div className="p-3 bg-[#0F172A]/60 rounded-lg border border-cyan-500/20">
               <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-blue-400" />
+                <Phone className="h-4 w-4 text-cyan-400" />
                 <span className="text-sm font-medium text-gray-300">Connection</span>
               </div>
               <p className="text-lg font-bold text-gray-200 mt-1">Stable</p>

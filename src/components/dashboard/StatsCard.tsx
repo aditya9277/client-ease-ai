@@ -10,7 +10,7 @@ interface StatsCardProps {
 
 export default function StatsCard({ title, value, icon, description }: StatsCardProps) {
   return (
-    <Card className="bg-[#252A3C]/90 backdrop-blur-sm border-indigo-500/20 shadow-lg shadow-indigo-500/5 hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300">
+    <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-cyan-500/20 shadow-lg shadow-cyan-500/5 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium text-slate-200">{title}</CardTitle>
         {icon}
