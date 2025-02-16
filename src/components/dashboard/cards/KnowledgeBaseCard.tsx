@@ -36,10 +36,10 @@ export const KnowledgeBaseCard = () => {
   };
 
   return (
-    <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40">
+    <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-cyan-500/20 hover:border-cyan-500/40">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-gray-100">
-          <BookOpen className="h-5 w-5 text-purple-400" />
+          <BookOpen className="h-5 w-5 text-cyan-400" />
           Knowledge Base
         </CardTitle>
       </CardHeader>
@@ -50,9 +50,9 @@ export const KnowledgeBaseCard = () => {
               placeholder="Search knowledge base..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-[#1A1F2C] border-purple-500/20 text-gray-200 placeholder:text-gray-500"
+              className="bg-[#0F172A]/60 border-cyan-500/20 text-gray-200 placeholder:text-gray-500"
             />
-            <Button type="submit" variant="outline" className="border-purple-500/20 text-purple-400 hover:text-purple-300">
+            <Button type="submit" variant="outline" className="border-cyan-500/20 text-cyan-400 hover:text-cyan-300">
               <Search className="h-4 w-4" />
             </Button>
           </div>
@@ -61,10 +61,10 @@ export const KnowledgeBaseCard = () => {
               <Button
                 key={article.id}
                 variant="ghost"
-                className="w-full justify-start text-left hover:bg-purple-500/10 text-gray-300"
+                className="w-full justify-start text-left hover:bg-cyan-500/10 text-gray-300"
                 onClick={() => handleArticleClick(article.title)}
               >
-                <BookOpen className="mr-2 h-4 w-4 text-purple-400" />
+                <BookOpen className="mr-2 h-4 w-4 text-cyan-400" />
                 <div>
                   <p className="font-medium">{article.title}</p>
                   <p className="text-xs text-gray-500">{article.category}</p>

@@ -4,18 +4,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 
 export const AIInsights = () => (
-  <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40">
+  <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-cyan-500/20 hover:border-cyan-500/40">
     <CardHeader>
       <CardTitle className="text-lg font-semibold flex items-center gap-2 text-gray-100">
-        <BrainCircuit className="h-5 w-5 text-purple-500" />
+        <BrainCircuit className="h-5 w-5 text-cyan-500" />
         AI Insights & Predictions
       </CardTitle>
     </CardHeader>
     <CardContent>
       <div className="space-y-6">
-        <div className="p-4 bg-[#1A1F2C]/60 rounded-lg border border-purple-500/20">
+        <div className="p-4 bg-[#0F172A]/60 rounded-lg border border-cyan-500/20">
           <div className="flex items-center gap-4">
-            <TrendingUp className="h-8 w-8 text-purple-500" />
+            <TrendingUp className="h-8 w-8 text-cyan-500" />
             <div>
               <h4 className="font-medium text-gray-200">Predicted Peak Hours</h4>
               <p className="text-sm text-gray-400">Expected high call volume between 2-4 PM today</p>
@@ -23,9 +23,9 @@ export const AIInsights = () => (
           </div>
         </div>
 
-        <div className="p-4 bg-[#1A1F2C]/60 rounded-lg border border-purple-500/20">
+        <div className="p-4 bg-[#0F172A]/60 rounded-lg border border-cyan-500/20">
           <div className="flex items-center gap-4">
-            <HeartPulse className="h-8 w-8 text-purple-500" />
+            <HeartPulse className="h-8 w-8 text-cyan-500" />
             <div>
               <h4 className="font-medium text-gray-200">Agent Wellness Alert</h4>
               <p className="text-sm text-gray-400">3 agents showing signs of high stress</p>
@@ -33,9 +33,9 @@ export const AIInsights = () => (
           </div>
         </div>
 
-        <div className="p-4 bg-[#1A1F2C]/60 rounded-lg border border-purple-500/20">
+        <div className="p-4 bg-[#0F172A]/60 rounded-lg border border-cyan-500/20">
           <div className="flex items-center gap-4">
-            <Target className="h-8 w-8 text-purple-500" />
+            <Target className="h-8 w-8 text-cyan-500" />
             <div>
               <h4 className="font-medium text-gray-200">Performance Optimization</h4>
               <p className="text-sm text-gray-400">Team efficiency increased by 12% this week</p>
@@ -48,13 +48,13 @@ export const AIInsights = () => (
             <span className="text-sm font-medium text-gray-300">Daily Goal Progress</span>
             <span className="text-sm text-gray-400">78%</span>
           </div>
-          <Progress value={78} className="h-2 bg-purple-900/20" />
+          <Progress value={78} className="h-2 bg-slate-800/20" />
         </div>
 
-        <div className="grid grid-cols-2 gap-4 pt-4 border-t border-purple-500/20">
+        <div className="grid grid-cols-2 gap-4 pt-4 border-t border-cyan-500/20">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <Clock className="h-4 w-4 text-purple-400" />
+              <Clock className="h-4 w-4 text-cyan-400" />
               <span className="text-sm font-medium text-gray-300">Average Wait Time</span>
             </div>
             <p className="text-2xl font-bold text-gray-200">3.5m</p>

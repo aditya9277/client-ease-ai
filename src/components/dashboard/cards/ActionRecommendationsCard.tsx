@@ -40,10 +40,10 @@ export const ActionRecommendationsCard = ({ sentiment }: ActionRecommendationsCa
   };
 
   return (
-    <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40">
+    <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-cyan-500/20 hover:border-cyan-500/40">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium text-gray-100">AI Recommendations</CardTitle>
-        <Lightbulb className="h-4 w-4 text-purple-400" />
+        <Lightbulb className="h-4 w-4 text-cyan-400" />
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
@@ -51,10 +51,10 @@ export const ActionRecommendationsCard = ({ sentiment }: ActionRecommendationsCa
             <Button
               key={index}
               variant="outline"
-              className="w-full justify-start text-left border-purple-500/20 text-gray-300 hover:bg-purple-500/10"
+              className="w-full justify-start text-left border-cyan-500/20 text-gray-300 hover:bg-cyan-500/10"
               onClick={() => handleActionClick(action)}
             >
-              <Lightbulb className="mr-2 h-4 w-4 text-purple-400" />
+              <Lightbulb className="mr-2 h-4 w-4 text-cyan-400" />
               {action}
             </Button>
           ))}
