@@ -99,13 +99,13 @@ const AgentDashboard = () => {
   };
 
   return (
-    <div className="space-y-8 p-4 bg-[#1A1F2C] min-h-screen">
-      <div className="flex items-center justify-between bg-[#252A3C]/80 backdrop-blur-sm p-6 rounded-xl border border-purple-500/20">
+    <div className="space-y-8 p-4 bg-gradient-to-b from-[#1A1F2C] to-[#151922] min-h-screen">
+      <div className="flex items-center justify-between bg-[#252A3C]/90 backdrop-blur-sm p-6 rounded-xl border border-indigo-500/20 shadow-lg shadow-indigo-500/5">
         <div className="space-y-1">
-          <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">
+          <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
             AI-Powered Agent Assistance Hub
           </h2>
-          <p className="text-gray-400">
+          <p className="text-slate-400">
             Enhance your customer interactions with AI-driven insights
           </p>
         </div>
@@ -114,9 +114,9 @@ const AgentDashboard = () => {
           size="lg"
           className={`gap-2 ${
             isCallActive 
-              ? "bg-red-500 hover:bg-red-600" 
-              : "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
-          } text-white shadow-lg hover:shadow-xl transition-all duration-300`}
+              ? "bg-red-500/90 hover:bg-red-600/90" 
+              : "bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
+          } text-white shadow-lg shadow-indigo-500/10 hover:shadow-xl hover:shadow-indigo-500/20 transition-all duration-300`}
           onClick={handleCallToggle}
         >
           <Phone className="h-4 w-4" />
