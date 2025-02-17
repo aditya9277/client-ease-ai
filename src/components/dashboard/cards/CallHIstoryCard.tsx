@@ -27,7 +27,7 @@ export const CallHistoryCard = () => {
   // ✅ Fetch & Display Selected Summary
   const handleViewSummary = async (filePath: string) => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}${filePath}`, { responseType: "text" });
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}${filePath}`, { responseType: "text" });
       setSelectedSummary(data);
       setOpen(true);
     } catch (error) {

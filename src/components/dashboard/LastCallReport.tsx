@@ -10,7 +10,7 @@ export const LastCallReport = ({ phoneNumber, customerId = "CUS-001" }: LastCall
   if (!phoneNumber) return null;
 
   // ✅ Construct the file download URL
-  const fileUrl = `http://localhost:5000/logs/claim_doc_${phoneNumber}.pdf`;
+  const fileUrl = `${import.meta.env.VITE_API_URL}/logs/claim_doc_${phoneNumber}.pdf`;
 
   return (
     <div className="mt-6 border rounded-lg p-4">
