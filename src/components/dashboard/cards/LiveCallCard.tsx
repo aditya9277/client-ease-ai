@@ -5,9 +5,9 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Toggle } from "@/components/ui/toggle";
 import { useToast } from "@/hooks/use-toast";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useState } from "node_modules/react-resizable-panels/dist/declarations/src/vendor/react";
+
 interface LiveCallCardProps {
   currentSentiment: number;
   callDuration: number;
