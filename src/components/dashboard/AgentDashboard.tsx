@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import {
   Phone,
@@ -51,7 +50,7 @@ const AgentDashboard = () => {
   const startCall = async () => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/call`, // ✅ REPLACE WITH YOUR NGROK URL
+        `${import.meta.env.VITE_API_URL}/call`,
         { to: phoneNumber },
         {
           headers: { "Content-Type": "application/json" },
@@ -67,7 +66,6 @@ const AgentDashboard = () => {
     }
   };
 
-  // Call duration timer
   useEffect(() => {
     if (isCallActive) {
       timerRef.current = setInterval(() => {
@@ -122,16 +120,15 @@ const AgentDashboard = () => {
           } text-white shadow-lg hover:shadow-xl transition-all duration-300`}
           onClick={() => {
             if (isCallActive) {
-              handleCallToggle(); // ✅ End Call
+              handleCallToggle();
             } else {
-              setIsDialogOpen(true); // ✅ Open Phone Number Modal
+              setIsDialogOpen(true);
             }
           }}>
           <Phone className="h-4 w-4" />
           {isCallActive ? "End Call" : "Start Call"}
         </Button>
 
-        {/* ✅ Phone Number Input Popup */}
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent>
             <DialogTitle>Enter Phone Number</DialogTitle>
@@ -177,13 +174,6 @@ const AgentDashboard = () => {
       ) : (
         <div className="animate-fade-in">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {/* <div className="col-span-full lg:col-span-2">
-              <div className="grid gap-6 md:grid-cols-2">
-                <PreCallCard />
-                <ClaimsCard />
-                
-              </div>
-            </div> */}
             <div className="lg:row-span-1">
               <PerformanceMetricsCard />
             </div>
@@ -191,18 +181,17 @@ const AgentDashboard = () => {
             <CallHistoryCard />
             <KnowledgeBaseCard />
             {lastCallReport && (
-            <div className="mt-6">
-              <LastCallReport phoneNumber={phoneNumber} customerId="CUS-001" />
-            </div>
-          )}
+              <div className="mt-6">
+                <LastCallReport phoneNumber={phoneNumber} customerId="CUS-001" />
+              </div>
+            )}
             <div className="md:col-span-2 lg:col-span-1">
               <SentimentAnalysisCard />
             </div>
             <div className="md:col-span-2 lg:col-span-1">
-              <CallbackSchedulerCard /> 
+              <CallbackSchedulerCard />
             </div>
           </div>
-          
         </div>
       )}
     </div>
