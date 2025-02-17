@@ -2,12 +2,15 @@ import { FileText, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface LastCallReportProps {
-  reportName: string | null;
+  phoneNumber: string | null; // ✅ Pass the phone number to dynamically fetch the file
   customerId?: string;
 }
 
-export const LastCallReport = ({ reportName, customerId = "CUS-001" }: LastCallReportProps) => {
-  if (!reportName) return null;
+export const LastCallReport = ({ phoneNumber, customerId = "CUS-001" }: LastCallReportProps) => {
+  if (!phoneNumber) return null;
+
+  // ✅ Construct the file download URL
+  const fileUrl = `http://localhost:5000/logs/claim_doc_${phoneNumber}.pdf`;
 
   return (
     <div className="mt-6 border rounded-lg p-4">
@@ -16,7 +19,11 @@ export const LastCallReport = ({ reportName, customerId = "CUS-001" }: LastCallR
           <h3 className="text-lg font-medium">Last Call Report</h3>
           <p className="text-sm text-muted-foreground">Customer ID: {customerId}</p>
         </div>
-        <Button variant="outline" className="gap-2">
+        <Button
+          variant="outline"
+          className="gap-2"
+          onClick={() => window.open(fileUrl, "_blank")} // ✅ Open PDF in new tab
+        >
           <FileText className="h-4 w-4" />
           <span>Download Report</span>
           <Download className="h-4 w-4" />

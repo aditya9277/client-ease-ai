@@ -1,6 +1,8 @@
-
 import { useState, useEffect, useRef } from "react";
 import { Phone, FileText, Brain, Lightbulb, AlertCircle, BookOpen, BarChart2, MessageSquare } from "lucide-react";
+import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { LiveCallCard } from "./cards/LiveCallCard";
@@ -17,28 +19,37 @@ import { KnowledgeBaseCard } from "./cards/KnowledgeBaseCard";
 import { PerformanceMetricsCard } from "./cards/PerformanceMetricsCard";
 import { QuickResponseCard } from "./cards/QuickResponseCard";
 import CustomerForm from "./cards/CustomerFormCard";
+import { CallbackSchedulerCard } from "./cards/CallbackSchedulerCard";
+import { LiveKnowledgeBaseCard } from "./cards/LiveKnowledgeBaseCard";
+import { CallHistoryCard } from "./cards/CallHIstoryCard";
 
 const AgentDashboard = () => {
   const [isCallActive, setIsCallActive] = useState(false);
   const [currentSentiment, setCurrentSentiment] = useState(85);
   const [callDuration, setCallDuration] = useState(0);
-  const [lastCallReport, setLastCallReport] = useState<string | null>(null);
-  const [transcriptText, setTranscriptText] = useState<string>("");
+  const [lastCallReport, setLastCallReport] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
 
-  // Simulate real-time sentiment analysis
-  useEffect(() => {
-    if (isCallActive) {
-      const sentimentInterval = setInterval(() => {
-        setCurrentSentiment(prev => {
-          const change = Math.random() * 10 - 5;
-          return Math.max(0, Math.min(100, prev + change));
-        });
-      }, 3000);
+  const startCall = async () => {
+    try {
+      const response = await axios.post(
+        "https://92f6-2409-40c4-1f-306-65f9-f1ad-d255-cce0.ngrok-free.app/call", // ✅ REPLACE WITH YOUR NGROK URL
+        { to: phoneNumber },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      setIsCallActive(!isCallActive);
+      setIsDialogOpen(!isDialogOpen);
 
-      return () => clearInterval(sentimentInterval);
+      toast.success("Call initiated successfully!");
+    } catch (error) {
+      console.error("Call failed:", error);
+      toast.error("Call failed! Check console.");
     }
-  }, [isCallActive]);
+  };
 
   // Call duration timer
   useEffect(() => {
@@ -55,41 +66,15 @@ const AgentDashboard = () => {
     };
   }, [isCallActive]);
 
-  // Simulate real-time transcription
-  useEffect(() => {
-    if (isCallActive) {
-      const phrases = [
-        "Customer: I've been having issues with my recent claim...",
-        "Agent: I understand your concern, let me look into that for you...",
-        "Customer: Thank you, I appreciate your help...",
-      ];
-      let phraseIndex = 0;
-
-      const transcriptInterval = setInterval(() => {
-        if (phraseIndex < phrases.length) {
-          setTranscriptText(prev => prev + "\n" + phrases[phraseIndex]);
-          phraseIndex++;
-        }
-      }, 5000);
-
-      return () => clearInterval(transcriptInterval);
-    }
-  }, [isCallActive]);
-
   const handleCallToggle = () => {
     if (isCallActive) {
       if (timerRef.current) {
         clearInterval(timerRef.current);
       }
-      const report = `Call_Report_${new Date().toISOString().split('T')[0]}.pdf`;
-      setLastCallReport(report);
+      setLastCallReport(!lastCallReport);
       setCallDuration(0);
-      setTranscriptText("");
-      toast.success("Call ended successfully");
-    } else {
-      toast.success("Call started - AI assistance activated");
-    }
-    setIsCallActive(!isCallActive);
+    } 
+    setIsCallActive(!isCallActive)
   };
 
   const formatTime = (seconds: number) => {
@@ -109,20 +94,46 @@ const AgentDashboard = () => {
             Enhance your customer interactions with AI-driven insights
           </p>
         </div>
-        <Button 
+          <Button
           variant={isCallActive ? "destructive" : "default"}
           size="lg"
           className={`gap-2 ${
             isCallActive 
-              ? "bg-red-500/90 hover:bg-red-600/90" 
-              : "bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
-          } text-white shadow-lg shadow-cyan-500/10 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-300`}
-          onClick={handleCallToggle}
+              ? "bg-red-500 hover:bg-red-600" 
+              : "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+          } text-white shadow-lg hover:shadow-xl transition-all duration-300`}
+          onClick={() => {
+            if (isCallActive) {
+
+              handleCallToggle(); // ✅ End Call
+            } else {
+              setIsDialogOpen(true); // ✅ Open Phone Number Modal
+            }
+          }}
         >
           <Phone className="h-4 w-4" />
           {isCallActive ? "End Call" : "Start Call"}
         </Button>
-      </div>
+
+        {/* ✅ Phone Number Input Popup */}
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogContent>
+            <DialogTitle>Enter Phone Number</DialogTitle>
+            <DialogDescription>Enter the number you want to call.</DialogDescription>
+
+            <Input
+              type="tel"
+              placeholder="+91XXXXXXXXXX"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+
+            <DialogFooter>
+              <Button onClick={startCall}>Start Call</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </div>  
 
       {isCallActive ? (
         <div className="space-y-6 animate-fade-in">
@@ -130,16 +141,17 @@ const AgentDashboard = () => {
             currentSentiment={currentSentiment}
             callDuration={callDuration}
             formatTime={formatTime}
+            phoneNumber={phoneNumber}
           />
-          
           <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-6">
-              <CallTranscriptCard transcriptText={transcriptText} />
+              <CallTranscriptCard phoneNumber={phoneNumber} />
               <CustomerInsightsCard />
             </div>
             <div className="space-y-6">
               <ActionRecommendationsCard sentiment={currentSentiment} />
               <QuickResponseCard sentiment={currentSentiment} />
+              <LiveKnowledgeBaseCard/>
             </div>
           </div>
           <CustomerForm />
@@ -151,13 +163,16 @@ const AgentDashboard = () => {
               <div className="grid gap-6 md:grid-cols-2">
                 <PreCallCard />
                 <ClaimsCard />
+                
               </div>
             </div>
-            <div className="lg:row-span-2">
+            <div className="lg:row-span-1">
               <PerformanceMetricsCard />
             </div>
             <SmartRemindersCard />
+            <CallHistoryCard/>
             <AutomationCard />
+            <CallbackSchedulerCard/>
             <div className="md:col-span-2 lg:col-span-1">
               <SentimentAnalysisCard />
             </div>
@@ -168,7 +183,7 @@ const AgentDashboard = () => {
           {lastCallReport && (
             <div className="mt-6">
               <LastCallReport 
-                reportName={lastCallReport}
+                phoneNumber={phoneNumber} 
                 customerId="CUS-001"
               />
             </div>

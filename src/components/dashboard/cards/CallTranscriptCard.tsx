@@ -1,13 +1,32 @@
-
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { FileText } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface CallTranscriptCardProps {
-  transcriptText: string;
+  phoneNumber: string; // 🔥 Make phone number dynamic
 }
 
-export const CallTranscriptCard = ({ transcriptText }: CallTranscriptCardProps) => {
+export const CallTranscriptCard = ({ phoneNumber }: CallTranscriptCardProps) => {
+  const [transcriptText, setTranscriptText] = useState("Waiting for call to begin...");
+
+  // ✅ Fetch transcript in real-time
+  const fetchTranscript = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5000/logs/transcript/${phoneNumber}`);
+      setTranscriptText(response.data);
+    } catch (error) {
+      console.error("❌ Failed to fetch transcript:", error);
+    }
+  };
+
+  useEffect(() => {
+    // 🔄 Fetch transcript every 3 seconds
+    const interval = setInterval(fetchTranscript, 3000);
+    return () => clearInterval(interval); // ✅ Cleanup interval on unmount
+  }, [phoneNumber]);
+
   return (
     <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-cyan-500/20 hover:border-cyan-500/40">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -17,7 +36,7 @@ export const CallTranscriptCard = ({ transcriptText }: CallTranscriptCardProps) 
       <CardContent>
         <ScrollArea className="h-[300px] w-full rounded-md border border-cyan-500/20 bg-[#0F172A]/60 p-4">
           <pre className="text-sm whitespace-pre-wrap font-mono text-gray-300">
-            {transcriptText || "Waiting for call to begin..."}
+            {transcriptText}
           </pre>
         </ScrollArea>
       </CardContent>
