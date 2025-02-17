@@ -1,6 +1,21 @@
 import { useState, useEffect, useRef } from "react";
-import { Phone, FileText, Brain, Lightbulb, AlertCircle, BookOpen, BarChart2, MessageSquare } from "lucide-react";
-import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import {
+  Phone,
+  FileText,
+  Brain,
+  Lightbulb,
+  AlertCircle,
+  BookOpen,
+  BarChart2,
+  MessageSquare,
+} from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
@@ -22,7 +37,6 @@ import CustomerForm from "./cards/CustomerFormCard";
 import { CallbackSchedulerCard } from "./cards/CallbackSchedulerCard";
 import { LiveKnowledgeBaseCard } from "./cards/LiveKnowledgeBaseCard";
 import { CallHistoryCard } from "./cards/CallHIstoryCard";
-;
 const AgentDashboard = () => {
   const [isCallActive, setIsCallActive] = useState(false);
   const [currentSentiment, setCurrentSentiment] = useState(85);
@@ -55,7 +69,7 @@ const AgentDashboard = () => {
   useEffect(() => {
     if (isCallActive) {
       timerRef.current = setInterval(() => {
-        setCallDuration(prev => prev + 1);
+        setCallDuration((prev) => prev + 1);
       }, 1000);
     }
 
@@ -73,14 +87,16 @@ const AgentDashboard = () => {
       }
       setLastCallReport(!lastCallReport);
       setCallDuration(0);
-    } 
-    setIsCallActive(!isCallActive)
+    }
+    setIsCallActive(!isCallActive);
   };
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    return `${mins.toString().padStart(2, "0")}:${secs
+      .toString()
+      .padStart(2, "0")}`;
   };
 
   return (
@@ -94,23 +110,21 @@ const AgentDashboard = () => {
             Enhance your customer interactions with AI-driven insights
           </p>
         </div>
-          <Button
+        <Button
           variant={isCallActive ? "destructive" : "default"}
           size="lg"
           className={`gap-2 ${
-            isCallActive 
-              ? "bg-red-500 hover:bg-red-600" 
+            isCallActive
+              ? "bg-red-500 hover:bg-red-600"
               : "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
           } text-white shadow-lg hover:shadow-xl transition-all duration-300`}
           onClick={() => {
             if (isCallActive) {
-
               handleCallToggle(); // ✅ End Call
             } else {
               setIsDialogOpen(true); // ✅ Open Phone Number Modal
             }
-          }}
-        >
+          }}>
           <Phone className="h-4 w-4" />
           {isCallActive ? "End Call" : "Start Call"}
         </Button>
@@ -119,7 +133,9 @@ const AgentDashboard = () => {
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent>
             <DialogTitle>Enter Phone Number</DialogTitle>
-            <DialogDescription>Enter the number you want to call.</DialogDescription>
+            <DialogDescription>
+              Enter the number you want to call.
+            </DialogDescription>
 
             <Input
               type="tel"
@@ -133,11 +149,11 @@ const AgentDashboard = () => {
             </DialogFooter>
           </DialogContent>
         </Dialog>
-      </div>  
+      </div>
 
       {isCallActive ? (
         <div className="space-y-6 animate-fade-in">
-          <LiveCallCard 
+          <LiveCallCard
             currentSentiment={currentSentiment}
             callDuration={callDuration}
             formatTime={formatTime}
@@ -151,7 +167,7 @@ const AgentDashboard = () => {
             <div className="space-y-6">
               <ActionRecommendationsCard sentiment={currentSentiment} />
               <QuickResponseCard sentiment={currentSentiment} />
-              <LiveKnowledgeBaseCard/>
+              <LiveKnowledgeBaseCard />
             </div>
           </div>
           <CustomerForm />
@@ -159,35 +175,32 @@ const AgentDashboard = () => {
       ) : (
         <div className="animate-fade-in">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <div className="col-span-full lg:col-span-2">
+            {/* <div className="col-span-full lg:col-span-2">
               <div className="grid gap-6 md:grid-cols-2">
                 <PreCallCard />
                 <ClaimsCard />
                 
               </div>
-            </div>
+            </div> */}
             <div className="lg:row-span-1">
               <PerformanceMetricsCard />
             </div>
             <SmartRemindersCard />
-            <CallHistoryCard/>
-            <AutomationCard />
-            <CallbackSchedulerCard/>
+            <CallHistoryCard />
+            <KnowledgeBaseCard />
+            {lastCallReport && (
+            <div className="mt-6">
+              <LastCallReport phoneNumber={phoneNumber} customerId="CUS-001" />
+            </div>
+          )}
             <div className="md:col-span-2 lg:col-span-1">
               <SentimentAnalysisCard />
             </div>
-            <div className="md:col-span-2 lg:col-span-2">
-              <KnowledgeBaseCard />
+            <div className="md:col-span-2 lg:col-span-1">
+              <CallbackSchedulerCard /> 
             </div>
           </div>
-          {lastCallReport && (
-            <div className="mt-6">
-              <LastCallReport 
-                phoneNumber={phoneNumber} 
-                customerId="CUS-001"
-              />
-            </div>
-          )}
+          
         </div>
       )}
     </div>
