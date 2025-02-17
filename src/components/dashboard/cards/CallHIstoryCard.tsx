@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import dotenv from "dotenv";
-dotenv.config();
+
 
 export const CallHistoryCard = () => {
   const [callHistory, setCallHistory] = useState<{ phoneNumber: string; filePath: string }[]>([]);

@@ -3,8 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import dotenv from "dotenv";
-dotenv.config();
 
 export const CallbackSchedulerCard = () => {
   const [callbacks, setCallbacks] = useState([]);

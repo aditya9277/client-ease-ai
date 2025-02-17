@@ -5,8 +5,6 @@ import { Input } from "@/components/ui/input";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import axios from "axios";
-import dotenv from "dotenv";
-dotenv.config();
 
 export const LiveKnowledgeBaseCard = () => {
   const [searchQuery, setSearchQuery] = useState("");
