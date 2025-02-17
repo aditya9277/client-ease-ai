@@ -22,7 +22,7 @@ export const LiveKnowledgeBaseCard = () => {
 
     const fetchSuggestions = async () => {
       try {
-        const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/knowledge-base/search?query=${searchQuery}`);
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/knowledge-base/search?query=${searchQuery}`);
         setSuggestions(data.suggestions || []);
       } catch (error) {
         console.error("❌ Error fetching suggestions:", error);
@@ -39,7 +39,7 @@ export const LiveKnowledgeBaseCard = () => {
 
     setLoading(true);
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/knowledge-base/query?query=${searchQuery}`);
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/knowledge-base/query?query=${searchQuery}`);
       setAiResponse(data.answer);
       toast.success("AI-powered response fetched!");
     } catch (error) {

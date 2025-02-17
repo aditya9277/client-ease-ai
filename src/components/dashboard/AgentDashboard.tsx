@@ -35,7 +35,7 @@ const AgentDashboard = () => {
   const startCall = async () => {
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/call`, // ✅ REPLACE WITH YOUR NGROK URL
+        `${import.meta.env.VITE_API_URL}/call`, // ✅ REPLACE WITH YOUR NGROK URL
         { to: phoneNumber },
         {
           headers: { "Content-Type": "application/json" },
