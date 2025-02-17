@@ -1,3 +1,4 @@
+
 import { PhoneIncoming, Clock, ListChecks } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -18,16 +19,16 @@ export const CallbackSchedulerCard = () => {
     };
 
     fetchCallbacks();
-    const interval = setInterval(fetchCallbacks, 60000); // Refresh every 60 sec
+    const interval = setInterval(fetchCallbacks, 60000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40 transition-shadow">
+    <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-cyan-500/20 hover:border-cyan-500/40">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-gray-100">
-          <PhoneIncoming className="h-5 w-5 text-purple-400" />
+          <PhoneIncoming className="h-5 w-5 text-cyan-400" />
           Scheduled Callbacks
         </CardTitle>
       </CardHeader>
@@ -39,17 +40,17 @@ export const CallbackSchedulerCard = () => {
             {callbacks.map((callback, index) => (
               <div
                 key={index}
-                className="p-3 rounded-lg bg-gray-900 text-gray-200">
+                className="p-3 rounded-lg bg-[#0F172A]/60 border border-cyan-500/20 text-gray-200">
                 <p className="text-sm">
                   📞 <strong>{callback.phoneNumber}</strong>
                 </p>
                 <p className="text-xs text-gray-400">
-                  <Clock className="inline-block h-4 w-4 text-purple-400 mr-1" />
+                  <Clock className="inline-block h-4 w-4 text-cyan-400 mr-1" />
                   Scheduled at:{" "}
                   {new Date(callback.callbackTime).toLocaleString()}
                 </p>
                 <p className="text-xs text-gray-400">
-                  <ListChecks className="inline-block h-4 w-4 text-purple-400 mr-1" />
+                  <ListChecks className="inline-block h-4 w-4 text-cyan-400 mr-1" />
                   Priority: <strong>{callback.priority}</strong>
                 </p>
               </div>
