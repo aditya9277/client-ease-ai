@@ -36,7 +36,7 @@ import { QuickResponseCard } from "./cards/QuickResponseCard";
 import CustomerForm from "./cards/CustomerFormCard";
 import { CallbackSchedulerCard } from "./cards/CallbackSchedulerCard";
 import { LiveKnowledgeBaseCard } from "./cards/LiveKnowledgeBaseCard";
-import { CallHistoryCard } from "./cards/CallHIstoryCard";
+import { CallHistoryCard } from "./cards/CallHistoryCard";
 const AgentDashboard = () => {
   const [isCallActive, setIsCallActive] = useState(false);
   const [currentSentiment, setCurrentSentiment] = useState(85);
