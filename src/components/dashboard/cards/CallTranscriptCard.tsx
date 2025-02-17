@@ -14,7 +14,7 @@ export const CallTranscriptCard = ({ phoneNumber }: CallTranscriptCardProps) => 
   // ✅ Fetch transcript in real-time
   const fetchTranscript = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/logs/transcript/${phoneNumber}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/logs/transcript/${phoneNumber}`);
       setTranscriptText(response.data);
     } catch (error) {
       console.error("❌ Failed to fetch transcript:", error);

@@ -33,7 +33,7 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phone
   // ✅ Fetch AI Suggestions in real-time
   const fetchSuggestions = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/logs/suggestions/${phoneNumber}`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/logs/suggestions/${phoneNumber}`);
       const suggestionText = response.data;
 
       // ✅ Convert the text file content into an array of suggestions

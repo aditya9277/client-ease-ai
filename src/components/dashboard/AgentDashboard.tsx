@@ -22,7 +22,6 @@ import CustomerForm from "./cards/CustomerFormCard";
 import { CallbackSchedulerCard } from "./cards/CallbackSchedulerCard";
 import { LiveKnowledgeBaseCard } from "./cards/LiveKnowledgeBaseCard";
 import { CallHistoryCard } from "./cards/CallHIstoryCard";
-
 const AgentDashboard = () => {
   const [isCallActive, setIsCallActive] = useState(false);
   const [currentSentiment, setCurrentSentiment] = useState(85);
@@ -35,7 +34,7 @@ const AgentDashboard = () => {
   const startCall = async () => {
     try {
       const response = await axios.post(
-        "https://92f6-2409-40c4-1f-306-65f9-f1ad-d255-cce0.ngrok-free.app/call", // ✅ REPLACE WITH YOUR NGROK URL
+        `${process.env.REACT_APP_API_URL}/call`, // ✅ REPLACE WITH YOUR NGROK URL
         { to: phoneNumber },
         {
           headers: { "Content-Type": "application/json" },

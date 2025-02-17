@@ -14,7 +14,7 @@ export const CallHistoryCard = () => {
   useEffect(() => {
     const fetchCallHistory = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/logs/call-history");
+        const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/logs/call-history`);
         setCallHistory(data);
       } catch (error) {
         console.error("❌ Error fetching call history:", error);
@@ -26,7 +26,7 @@ export const CallHistoryCard = () => {
   // ✅ Fetch & Display Selected Summary
   const handleViewSummary = async (filePath: string) => {
     try {
-      const { data } = await axios.get(`http://localhost:5000${filePath}`, { responseType: "text" });
+      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}${filePath}`, { responseType: "text" });
       setSelectedSummary(data);
       setOpen(true);
     } catch (error) {
