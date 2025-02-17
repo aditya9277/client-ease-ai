@@ -22,6 +22,8 @@ import CustomerForm from "./cards/CustomerFormCard";
 import { CallbackSchedulerCard } from "./cards/CallbackSchedulerCard";
 import { LiveKnowledgeBaseCard } from "./cards/LiveKnowledgeBaseCard";
 import { CallHistoryCard } from "./cards/CallHIstoryCard";
+import dotenv from "dotenv";
+dotenv.config();
 const AgentDashboard = () => {
   const [isCallActive, setIsCallActive] = useState(false);
   const [currentSentiment, setCurrentSentiment] = useState(85);

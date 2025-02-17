@@ -3,6 +3,8 @@ import axios from "axios";
 import { FileText } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import dotenv from "dotenv";
+dotenv.config();
 
 interface CallTranscriptCardProps {
   phoneNumber: string; // 🔥 Make phone number dynamic

@@ -7,6 +7,8 @@ import { Toggle } from "@/components/ui/toggle";
 import { useToast } from "@/hooks/use-toast";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import dotenv from "dotenv";
+dotenv.config();
 
 interface LiveCallCardProps {
   currentSentiment: number;

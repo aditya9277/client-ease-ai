@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 
+
 export const SentimentAnalysisCard = () => {
   const handleButtonClick = () => {
     window.open('https://bpo-sentiment.streamlit.app/', '_blank', 'noopener,noreferrer');
