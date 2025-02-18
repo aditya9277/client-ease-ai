@@ -140,7 +140,7 @@ const AgentDashboard = () => {
                 <span>
                   <strong>NOTE:</strong> As we are using Twilio for call functionality, free-tier limitations prevent direct calls to unverified numbers.  
                   <br />
-                  To test our prototype, please <strong>email us with your phone number</strong>, so we can add it to our verified list for the trial period.
+                  To test our prototype, please <strong>email at adisamarth20@gmail.com with your phone number</strong>, so we can add it to our verified list for the trial period.
                 </span>
               </div>
             </DialogDescription>
