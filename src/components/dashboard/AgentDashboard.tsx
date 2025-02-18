@@ -178,7 +178,6 @@ const AgentDashboard = () => {
               <LiveKnowledgeBaseCard />
             </div>
           </div>
-          <CustomerForm />
         </div>
       ) : (
         <div className="animate-fade-in">
