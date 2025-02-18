@@ -110,24 +110,34 @@ const AgentDashboard = () => {
             Enhance your customer interactions with AI-driven insights
           </p>
         </div>
-        <Button
-          variant={isCallActive ? "destructive" : "default"}
-          size="lg"
-          className={`gap-2 ${
-            isCallActive
-              ? "bg-red-500 hover:bg-red-600"
-              : "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
-          } text-white shadow-lg hover:shadow-xl transition-all duration-300`}
-          onClick={() => {
-            if (isCallActive) {
-              handleCallToggle();
-            } else {
-              setIsDialogOpen(true);
-            }
-          }}>
-          <Phone className="h-4 w-4" />
-          {isCallActive ? "End Call" : "Start Call"}
-        </Button>
+
+        <div className="flex items-center">
+          <div className="mr-4 flex items-center">
+            <span className="text-white font-medium mr-2">Click here to test our prototype!</span>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </div>  
+
+          <Button
+            variant={isCallActive ? "destructive" : "default"}
+            size="lg"
+            className={`gap-2 ${
+              isCallActive
+                ? "bg-red-500 hover:bg-red-600"
+                : "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+            } text-white shadow-lg hover:shadow-xl transition-all duration-300`}
+            onClick={() => {
+              if (isCallActive) {
+                handleCallToggle();
+              } else {
+                setIsDialogOpen(true);
+              }
+            }}>
+            <Phone className="h-4 w-4" />
+            {isCallActive ? "End Call" : "Start Call"}
+          </Button>
+        </div>
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent>
@@ -140,7 +150,7 @@ const AgentDashboard = () => {
                 <span>
                   <strong>NOTE:</strong> As we are using Twilio for call functionality, free-tier limitations prevent direct calls to unverified numbers.  
                   <br />
-                  To test our prototype, please <strong>email at adisamarth20@gmail.com with your phone number</strong>, so we can add it to our verified list for the trial period.
+                  To test our prototype, please <strong>email at adisamarth20@gmail.com, with your phone number</strong>, so we can add it to our verified list for the trial period and your testing.
                 </span>
               </div>
             </DialogDescription>
