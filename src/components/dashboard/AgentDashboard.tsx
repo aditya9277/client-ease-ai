@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import {
   Phone,
@@ -149,33 +150,59 @@ const AgentDashboard = () => {
               <Phone className="h-4 w-4" />
               {isCallActive ? "End Call" : "Start Call"}
             </Button>
-
-            {/* Walkthrough Overlay */}
-            {showWalkthrough && !isCallActive && (
-              <div className="absolute -right-4 top-full mt-4 w-72 p-4 bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg border border-cyan-500/20 shadow-xl shadow-cyan-500/10 z-50">
-                <div className="absolute -top-2 right-8 w-4 h-4 bg-slate-800 rotate-45 border-t border-l border-cyan-500/20" />
-                <div className="flex items-start gap-3">
-                  <HelpCircle className="h-5 w-5 text-cyan-400 flex-shrink-0 mt-1" />
-                  <div className="space-y-2">
-                    <p className="text-sm text-gray-300">
-                      Welcome! Click here to test our prototype with a live call. 
-                      You'll need to verify your phone number first.
-                    </p>
-                    <Button 
-                      size="sm" 
-                      variant="outline"
-                      className="border-cyan-500/20 hover:bg-cyan-500/10 text-cyan-400"
-                      onClick={() => setShowWalkthrough(false)}
-                    >
-                      <Check className="h-4 w-4 mr-2" />
-                      Got it
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
         </div>
+
+        {showWalkthrough && !isCallActive && (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center">
+            <div className="bg-gradient-to-br from-slate-800 to-slate-900 p-6 rounded-xl border border-cyan-500/20 shadow-xl shadow-cyan-500/10 max-w-md">
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <HelpCircle className="h-6 w-6 text-cyan-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-2">Welcome to the Agent Dashboard!</h3>
+                    <p className="text-gray-300 mb-4">
+                      Click the "Start Call" button in the top right to test our prototype with a live call. 
+                      You'll need to verify your phone number first.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex justify-end">
+                  <Button 
+                    variant="default"
+                    className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700"
+                    onClick={() => setShowWalkthrough(false)}
+                  >
+                    <Check className="h-4 w-4 mr-2" />
+                    Got it
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Dialog for phone number input */}
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogContent>
+            <DialogTitle>Enter Phone Number</DialogTitle>
+            <DialogDescription>
+              Please enter your phone number to start the call.
+            </DialogDescription>
+            <Input
+              type="tel"
+              placeholder="Enter phone number"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
+                Cancel
+              </Button>
+              <Button onClick={startCall}>Start Call</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
 
         {isCallActive ? (
           <div className="space-y-6 animate-fade-in">
