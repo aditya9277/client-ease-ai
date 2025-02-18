@@ -29,10 +29,10 @@ export const PerformanceMetricsCard = () => {
   ];
 
   return (
-    <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-cyan-500/20 hover:border-cyan-500/40">
+    <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-gray-100">
-          <BarChart2 className="h-5 w-5 text-cyan-400" />
+          <BarChart2 className="h-5 w-5 text-purple-400" />
           Performance Metrics
         </CardTitle>
       </CardHeader>
@@ -42,7 +42,7 @@ export const PerformanceMetricsCard = () => {
             <div key={metric.title} className="space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <metric.icon className="h-4 w-4 text-cyan-400" />
+                  <metric.icon className="h-4 w-4 text-purple-400" />
                   <span className="text-sm font-medium text-gray-300">{metric.title}</span>
                 </div>
                 <div className="flex items-center gap-2">

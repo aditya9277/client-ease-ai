@@ -186,7 +186,7 @@ const Index = () => {
               Our Mission: Harnessing AI to Power Bharat's Progress
             </h2>
             <p className="text-xl text-gray-300">
-              We leverage cutting-edge AI to redefine customer service for BPOs, empowering agents like Nisha to handle claims faster, smarter, and stress-free.
+              We leverage cutting-edge AI to redefine customer service for BPOs, empowering agents to handle claims faster, smarter, and stress-free.
             </p>
             <Button 
               onClick={() => navigate("/dashboard")} 
