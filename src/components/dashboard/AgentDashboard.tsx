@@ -132,13 +132,22 @@ const AgentDashboard = () => {
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent>
             <DialogTitle>Enter Phone Number</DialogTitle>
-            <DialogDescription>
-              Enter the number you want to call.
+            <DialogDescription className="text-md text-gray-500">
+              <div className="flex items-start gap-2">
+                <span className="text-red-500">
+                  ⚠️
+                </span>
+                <span>
+                  <strong>NOTE:</strong> As we are using Twilio for call functionality, free-tier limitations prevent direct calls to unverified numbers.  
+                  <br />
+                  To test our prototype, please <strong>email us with your phone number</strong>, so we can add it to our verified list for the trial period.
+                </span>
+              </div>
             </DialogDescription>
 
             <Input
               type="tel"
-              placeholder="+91XXXXXXXXXX"
+              placeholder="91XXXXXXXXXX"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
             />
