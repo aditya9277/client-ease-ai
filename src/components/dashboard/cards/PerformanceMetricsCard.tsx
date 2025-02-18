@@ -29,20 +29,20 @@ export const PerformanceMetricsCard = () => {
   ];
 
   return (
-    <Card className="bg-[#1E293B]/90 backdrop-blur-xl border-cyan-500/20 hover:border-cyan-500/30 transition-all duration-300 group">
+    <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-gray-100">
-          <BarChart2 className="h-5 w-5 text-cyan-400" />
+          <BarChart2 className="h-5 w-5 text-purple-400" />
           Performance Metrics
         </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-6">
           {metrics.map((metric) => (
-            <div key={metric.title} className="space-y-2 p-3 rounded-lg bg-slate-800/50 border border-cyan-500/10 group-hover:border-cyan-500/20 transition-colors">
+            <div key={metric.title} className="space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <metric.icon className="h-4 w-4 text-cyan-400" />
+                  <metric.icon className="h-4 w-4 text-purple-400" />
                   <span className="text-sm font-medium text-gray-300">{metric.title}</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -50,11 +50,7 @@ export const PerformanceMetricsCard = () => {
                   <span className="text-xs text-green-400">{metric.trend}</span>
                 </div>
               </div>
-              <Progress 
-                value={metric.progress} 
-                className="h-2 bg-slate-900/50" 
-                indicatorClassName="bg-gradient-to-r from-cyan-500 to-blue-500"
-              />
+              <Progress value={metric.progress} className="h-2 bg-purple-900/20" />
             </div>
           ))}
         </div>
