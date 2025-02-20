@@ -76,7 +76,6 @@ Built to handle complex tasks, automate routine processes, and provide real-time
 
 ```
 Client_Ease_AI/
-│   README.md                         # Main project documentation
 │
 ├── backend/                          # Backend code and services
 │   ├── .env                          # Environment variables
@@ -94,72 +93,17 @@ Client_Ease_AI/
 │
 ├── src/                              # Frontend React code
 │   ├── App.tsx                       # Main React App
-│   ├── App.css                       # Global styles
-│   ├── index.css                     # TailwindCSS configurations
 │   ├── main.tsx                      # Entry point for React
-│   ├── vite-env.d.ts                  # Vite environment types
 │
 │   ├── components/                   # Reusable UI and dashboard components
-│   │   ├── DashboardLayout.tsx       # Main layout
-│   │   ├── DashboardSidebar.tsx      # Sidebar for navigation
-│   │   ├── TopNav.tsx                # Top navigation bar
 │   │   ├── dashboard/                # Agent and Manager dashboards
-│   │   │   ├── AgentDashboard.tsx    # Agent's main dashboard
-│   │   │   ├── ManagerDashboard.tsx  # Manager's main dashboard
-│   │   │   ├── LastCallReport.tsx    # Last call report component
-│   │   │   └── StatsCard.tsx         # Stats card
 │   │   ├── cards/                    # Card Components
-│   │   │   ├── ActionRecommendationsCard.tsx
-│   │   │   ├── AutomationCard.tsx
-│   │   │   ├── CallbackSchedulerCard.tsx
-│   │   │   ├── CallHistoryCard.tsx
-│   │   │   ├── CallTranscriptCard.tsx
-│   │   │   ├── ClaimsCard.tsx
-│   │   │   ├── CustomerFormCard.tsx
-│   │   │   ├── CustomerInsightsCard.tsx
-│   │   │   ├── KnowledgeBaseCard.tsx
-│   │   │   ├── LiveCallCard.tsx
-│   │   │   ├── PerformanceMetricsCard.tsx
-│   │   │   ├── PreCallCard.tsx
-│   │   │   ├── QuickResponseCard.tsx
-│   │   │   ├── ReportCard.tsx
-│   │   │   ├── SentimentAnalysisCard.tsx
-│   │   │   └── SmartRemindersCard.tsx
 │   │   ├── manager/                  # Manager-specific components
-│   │   │   ├── AIInsights.tsx
-│   │   │   ├── AnalyticsCharts.tsx
-│   │   │   ├── RecentClaims.tsx
-│   │   │   ├── StatsOverview.tsx
-│   │   │   └── TeamCommunication.tsx
 │   │   └── ui/                       # UI Library Components
-│   │       ├── accordion.tsx
-│   │       ├── button.tsx
-│   │       ├── card.tsx
-│   │       ├── dialog.tsx
-│   │       ├── form.tsx
-│   │       ├── input.tsx
-│   │       ├── table.tsx
-│   │       └── toast.tsx
-│
 │   ├── hooks/                        # Custom hooks
-│   │   ├── use-mobile.tsx
-│   │   └── use-toast.ts
-│
 │   ├── lib/                          # Utility functions
-│   │   └── utils.ts
-│
-│   ├── integrations/                 # External integrations
-│   │   └── supabase/                 # Example: Supabase config
-│   │       ├── client.ts
-│   │       └── types.ts
-│
 │   └── pages/                        # React pages
-│       ├── Dashboard.tsx
-│       ├── Index.tsx
-│       └── test.tsx
-│
 ├── supabase/                         # Supabase config
-│   └── config.toml
 │
 ├── .devcontainer/                    # Dev environment setup
 ├── package.json                      # Frontend dependencies
