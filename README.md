@@ -1,154 +1,228 @@
-# AI-Driven Workflow and Efficiency Enhancement for Indian BPOs
+
+# 📊 Client Ease AI - AI-Driven Workflow and Efficiency Enhancement for Indian BPOs 🇮🇳
 
 ## 🌟 Project Overview
 
-This project leverages **Artificial Intelligence (AI)** and modern technologies to enhance operational efficiency and streamline workflows in Indian BPOs. The platform focuses on automation, intelligent decision-making, and real-time insights to address challenges in customer support, agent productivity, and process scalability.
+**Client Ease AI** is a comprehensive AI-powered solution designed to revolutionize claims processing and customer service operations in Indian BPOs. By leveraging the power of **Generative AI (Gemini API)**, **Twilio**, and **Google Cloud Speech-to-Text**, this platform streamlines workflows, enhances agent efficiency, and significantly improves client experiences.
+
+Built to handle complex tasks, automate routine processes, and provide real-time insights, **Client Ease AI** ensures higher productivity and reduced operational costs while maintaining a human-centric approach.
 
 ---
 
-## 🚀 Key Highlights
+## 🚀 Key Features
 
-- **Unified Dashboard**: A centralized hub integrating multiple AI-powered components for seamless operations.
-- **AI-Driven Tools**: Real-time sentiment analysis, automated claim resolution, and virtual co-agents to assist customer service teams.
-- **Automation**: Task automation with RPA for data entry, form filling, and other repetitive tasks.
-- **Generative AI**: Documentation creation powered by advanced AI, reducing manual effort and ensuring compliance.
+### 🔮 AI-Powered Sentiment Analysis Tool
+- Real-time sentiment tracking during calls using Google Cloud Speech-to-Text and Gemini AI.
+- Detects customer emotions (Positive, Neutral, Frustrated, Disappointed) and reflects live sentiment on the dashboard.
+
+### 📅 Smart Reminders and Follow-Up Scheduler
+- AI analyzes call transcripts to schedule automatic follow-ups and callbacks.
+- Prioritizes claims based on urgency and customer sentiment.
+
+### 📚 AI Knowledge Base Assistant
+- Integrated Gemini AI searches knowledge base dynamically based on call context.
+- Instant recommendations and FAQs directly to the agent.
+
+### 📑 Generative AI for Automated Claim Resolution Documentation
+- Post-call, Gemini AI generates a professional claim document based on the transcript and agent notes.
+- Reduces manual documentation time and ensures consistency.
+
+### 📊 Unified Dashboard and Integration Layer
+- Centralized dashboard for agents and managers.
+- Real-time data visualizations, KPIs, and sentiment insights.
+- **Manager View** for team monitoring and agent performance tracking.
+
+### 🧠 AI-Powered Smart Summarization of Call Logs
+- Generates concise summaries for every completed call.
+- Stores summaries for historical reference and manager insights.
+
+### 🎯 Real-Time AI Sentiment & Call Quality Monitoring
+- Real-time call quality scoring based on customer interactions.
+- Alerts for high-risk calls and immediate manager intervention.
+
+### 📆 Smart AI-Powered Callback Scheduler (Priority-Based)
+- Intelligent scheduling system for callbacks and follow-ups.
+- Ensures no high-priority customer is left unattended.
 
 ---
 
 ## 🛠️ Tech Stack
 
-### Frontend
-- **Framework**: React.js
+### 💻 Frontend
+- **Framework**: React.js (Vite)
 - **Styling**: TailwindCSS
-- **Build Tool**: Vite.js
 - **Language**: TypeScript
+- **State Management**: React Context API
 
-### Backend
+### ⚙️ Backend
 - **Framework**: Node.js with Express.js
+- **Real-Time Communication**: WebSocket
 - **APIs**: REST-based architecture
-- **Integration**: Gemini API for workflow automation and generative AI
+- **AI Integration**: Gemini API, Google Cloud Speech-to-Text, Twilio
 
-### AI/ML
-- **Libraries**: Hugging Face Transformers, Python NLP
-- **Sentiment Analysis**: Pre-trained NLP models
-- **Generative AI**: Gemini API
-- **Automation**: `pyautogui` for RPA
+### 🧠 AI/ML
+- **Sentiment Analysis**: Google Cloud Speech-to-Text + Gemini AI
+- **Generative AI**: Gemini API for document creation and insights
+- **Natural Language Processing (NLP)**: Real-time transcription and knowledge extraction
 
-### Others
-- **Version Control**: Git
-- **Package Management**: npm, pip
-- **Configuration**: ESLint, Tailwind Config, Vite Config
+### 🏗️ Infrastructure
+- **Hosting**: Azure App Service (Backend & Frontend)
+- **Cloud Storage**: Azure Storage for transcripts, summaries, and generated documents
+- **Version Control**: GitHub
 
 ---
 
-## 🗂️ Folder Structure
+## 📁 Folder Structure
 
-```plaintext
-root
-├── models/                    # Backend AI and automation scripts
-│   ├── claim-generator/       # Automated claim documentation generation
-│   ├── rpa-automation/        # RPA scripts for repetitive tasks
-│   └── sentiment-analyzer/    # Sentiment analysis models
-├── public/                    # Static assets (images, icons, etc.)
-├── src/                       # Frontend React code
-│   ├── components/            # Reusable UI and dashboard components
-│   ├── hooks/                 # Custom hooks
-│   ├── lib/                   # Utility functions
-│   └── pages/                 # React pages
-├── .devcontainer/             # Dev environment setup
-├── package.json               # Frontend dependencies
-├── tailwind.config.ts         # TailwindCSS configuration
-├── vite.config.ts             # Vite.js configuration
-└── README.md                  # Project documentation
+```
+Client_Ease_AI/
+│
+├── backend/                          # Backend code and services
+│   ├── .env                          # Environment variables
+│   ├── package.json                  # Backend dependencies
+│   ├── server.js                     # Main Express backend server
+│   ├── sentimentAnalyzer.js          # Sentiment analysis module
+│   ├── generateClaimDocument.js      # Claim document generation using Gemini API
+│   ├── knowledgeBase.js              # Knowledge base integration
+│   └── callbacksHandler.js           # Callback scheduler logic
+│
+├── public/                           # Static assets (images, icons, etc.)
+│   ├── favicon.ico
+│   ├── og-image.png
+│   └── placeholder.svg
+│
+├── src/                              # Frontend React code
+│   ├── App.tsx                       # Main React App
+│   ├── main.tsx                      # Entry point for React
+│
+│   ├── components/                   # Reusable UI and dashboard components
+│   │   ├── dashboard/                # Agent and Manager dashboards
+│   │   ├── cards/                    # Card Components
+│   │   ├── manager/                  # Manager-specific components
+│   │   └── ui/                       # UI Library Components
+│   ├── hooks/                        # Custom hooks
+│   ├── lib/                          # Utility functions
+│   └── pages/                        # React pages
+├── supabase/                         # Supabase config
+│
+├── .devcontainer/                    # Dev environment setup
+├── package.json                      # Frontend dependencies
+├── tailwind.config.ts                # TailwindCSS configuration
+├── vite.config.ts                    # Vite.js configuration
+└── README.md                         # Project documentation
+
 ```
 
 ---
 
-## 💻 Installation
+## 💻 Installation & Setup
 
-### Prerequisites
+### 📋 Prerequisites
 - **Node.js**: v16 or higher
-- **Python**: v3.8 or higher
 - **npm**: v6 or higher
-- **pip**: Latest version
+- **Python**: v3.8 or higher (for RPA/Automation Scripts)
+- **Google Cloud API Key**
+- **Twilio Account SID & Auth Token**
+- **Gemini API Key**
 
-### Steps
+### 🔧 Backend Setup
 
 1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/your-repo-name/your-project.git
-   cd your-project
-   ```
+    ```bash
+    git clone https://github.com/aditya9277/client-ease-ai.git
+    cd backend
+    ```
+
+2. **Install Dependencies**
+    ```bash
+    npm install
+    ```
+
+3. **Configure Environment Variables**
+   Create a `.env` file and add:
+    ```
+    TWILIO_ACCOUNT_SID=your_twilio_sid
+    TWILIO_AUTH_TOKEN=your_twilio_auth
+    TWILIO_PHONE_NUMBER=your_twilio_number
+    GOOGLE_APPLICATION_CREDENTIALS=path_to_google_creds.json
+    GEMINI_API_KEY=your_gemini_api_key
+    ```
+
+4. **Run Backend**
+    ```bash
+    npm run dev
+    ```
+
+### 🌐 Frontend Setup
+
+1. Navigate to the root directory
+  
 
 2. **Install Frontend Dependencies**
-   ```bash
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 
-3. **Install Backend and ML Dependencies**
-   Navigate to specific `models/` subfolders and install requirements:
-   ```bash
-   cd models/<specific-model-folder>
-   pip install -r requirements.txt
-   ```
+3. **Run Frontend**
+    ```bash
+    npm run dev
+    ```
 
-4. **Run the Frontend**
-   ```bash
-   npm run dev
-   ```
-
-5. **Run Backend or Specific Models**
-   ```bash
-   python models/<model-folder>/main.py
-   ```
+4. Access the app at `http://localhost:8080`.
 
 ---
 
-## 🌐 Usage
+## 🧪 Usage Guide
 
-### Access the Dashboard
-- Start the frontend using `npm run dev`.
-- Access the dashboard at `http://localhost:3000`.
+### 📞 Start a Call
+1. Enter a verified phone number.
+2. Real-time transcription, sentiment analysis, and AI suggestions appear on the agent dashboard.
 
-### AI-Powered Components
-- Enable sentiment analysis, generative AI, or RPA automation through the dashboard.
+### 📋 Post-Call Workflow
+1. Automatic claim document generated after call ends.
+2. AI-powered call summary and sentiment report.
+3. View call history and download call reports from the dashboard.
 
-### Monitoring and Automation
-- Use the unified dashboard to track operations, review sentiment insights, and manage automation workflows.
+### 📊 Manager Dashboard
+- Monitor agent performance.
+- Access KPIs, call quality metrics, and team stats.
 
 ---
 
 ## 🤝 Contribution
 
-Contributions are welcome! To get started:
+We welcome community contributions! 🚀
 
-1. **Fork the repository** and create a feature branch:
-   ```bash
-   git checkout -b feature/<your-feature>
-   ```
-
-2. **Commit your changes** with clear messages:
-   ```bash
-   git commit -m "Add <your-feature>"
-   ```
-
-3. **Push to your fork**:
-   ```bash
-   git push origin feature/<your-feature>
-   ```
-
-4. **Create a Pull Request** and include detailed descriptions.
+1. **Fork the repository**
+2. **Create a new branch**
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
+3. **Commit your changes**
+    ```bash
+    git commit -m "Add: your feature"
+    ```
+4. **Push to the branch**
+    ```bash
+    git push origin feature/your-feature-name
+    ```
+5. **Open a Pull Request**
 
 ---
 
 ## 📜 License
 
-This project is licensed under the **MIT License**. See the `LICENSE` file for details.
+Distributed under the **MIT License**. See `LICENSE` for more information.
 
 ---
 
-<!-- ## 📧 Contact
+## 📬 Contact
 
-For further inquiries or collaboration opportunities, reach out to us at:
-- **Email**: support@example.com
-- **GitHub**: [Your GitHub Profile](https://github.com/your-profile) -->
+For queries, collaborations, or testing access, feel free to reach out:
+
+- **Email**: support@clienteaseai.com
+- **GitHub**: [Your GitHub Profile](https://github.com/your-profile)
+
+---
+
+🚀 _Empowering Indian BPOs with AI. One call at a time._ 🇮🇳
