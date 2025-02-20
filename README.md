@@ -129,8 +129,8 @@ Client_Ease_AI/
 
 1. **Clone the Repository**
     ```bash
-    git clone https://github.com/your-repo-name/ClientEaseAI.git
-    cd ClientEaseAI
+    git clone https://github.com/aditya9277/client-ease-ai.git
+    cd backend
     ```
 
 2. **Install Dependencies**
@@ -155,10 +155,8 @@ Client_Ease_AI/
 
 ### 🌐 Frontend Setup
 
-1. Navigate to the frontend directory:
-    ```bash
-    cd frontend
-    ```
+1. Navigate to the root directory
+  
 
 2. **Install Frontend Dependencies**
     ```bash
@@ -170,7 +168,7 @@ Client_Ease_AI/
     npm run dev
     ```
 
-4. Access the app at `http://localhost:3000`.
+4. Access the app at `http://localhost:8080`.
 
 ---
 
