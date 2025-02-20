@@ -110,6 +110,7 @@ const Index = () => {
                 <ArrowRight className="ml-2" />
               </Button>
               <Button 
+                onClick={() => window.open("https://drive.google.com/file/d/1PkOEKa1KfzJxh4YU_5WWwqPvnM0z81D7/view?usp=sharing", "_blank")}
                 variant="outline" 
                 size="lg"
                 className="border-cyan-500/20 hover:bg-cyan-500/10 text-white px-8 py-6 text-lg rounded-full"
