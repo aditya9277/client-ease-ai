@@ -46,7 +46,7 @@ export const CallHistoryCard = () => {
           {callHistory.length === 0 ? (
             <p className="text-gray-400">No past calls found.</p>
           ) : (
-            <ul className="space-y-3">
+            <ul className="max-h-64 overflow-y-auto space-y-3 scrollbar-hide">
               {callHistory.map((call) => (
                 <li key={call.phoneNumber} className="flex items-center justify-between p-3 rounded-md bg-[#0F172A]/60 border border-cyan-500/20">
                   <span className="text-gray-300">📞 {call.phoneNumber}</span>

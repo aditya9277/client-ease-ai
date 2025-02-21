@@ -36,7 +36,7 @@ export const CallbackSchedulerCard = () => {
         {callbacks.length === 0 ? (
           <p className="text-sm text-gray-400">No callbacks scheduled</p>
         ) : (
-          <div className="space-y-3">
+          <div className="max-h-64 overflow-y-auto space-y-3 scrollbar-hide">
             {callbacks.map((callback, index) => (
               <div
                 key={index}
