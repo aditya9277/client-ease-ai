@@ -19,8 +19,9 @@ export const EscalationAlertCard = ({phoneNumber}) => {
       }
     };
 
-    fetchEscalations();
-  }, [phoneNumber]); // ✅ Refetch when phone number changes
+    const interval = setInterval(fetchEscalations, 5000);
+    return () => clearInterval(interval);
+  }, []);// ✅ Refetch when phone number changes
 
   return (
     <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-red-500/20 hover:border-red-500/40">
