@@ -4,23 +4,23 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export const EscalationAlertCard = () => {
+export const EscalationAlertCard = ({phoneNumber}) => {
   const [escalations, setEscalations] = useState([]);
 
   useEffect(() => {
     const fetchEscalations = async () => {
       try {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/logs/escalations`);
+        if (!phoneNumber) return; // ✅ Avoid fetching if phone number is not available
+
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/logs/escalations/${phoneNumber}`);
         setEscalations(data);
       } catch (error) {
         console.error("Error fetching escalations:", error);
       }
     };
 
-    // ✅ Poll every 5 seconds for new escalations
-    const interval = setInterval(fetchEscalations, 5000);
-    return () => clearInterval(interval);
-  }, []);
+    fetchEscalations();
+  }, [phoneNumber]); // ✅ Refetch when phone number changes
 
   return (
     <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-red-500/20 hover:border-red-500/40">

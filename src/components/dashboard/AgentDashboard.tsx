@@ -186,7 +186,7 @@ const AgentDashboard = () => {
               
             </div>
             <div className="space-y-6">
-              <EscalationAlertCard/>
+              <EscalationAlertCard phoneNumber={phoneNumber} />
               <ActionRecommendationsCard sentiment={currentSentiment} />
               <QuickResponseCard sentiment={currentSentiment} />
               <LiveKnowledgeBaseCard />
