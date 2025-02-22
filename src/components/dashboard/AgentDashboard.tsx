@@ -103,63 +103,82 @@ const AgentDashboard = () => {
   };
 
   return (
-    <div className="space-y-8 p-4 min-h-screen bg-gradient-to-br from-slate-900 via-[#0B1121] to-[#090E1D] relative">
-      {/* Gradient Overlay Effects */}
-      <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/5 via-transparent to-purple-500/5 animate-gradient" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-900/20 via-transparent to-transparent" />
+    <div className="space-y-8 p-4 min-h-screen relative overflow-hidden bg-[#030711]">
+      {/* Modern Gradient Background */}
+      <div className="fixed inset-0 bg-gradient-to-br from-[#0f1829] via-[#0f172a] to-[#0c1222] -z-10" />
+      <div className="fixed inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] -z-10" />
       
-      {/* Content with relative positioning */}
+      {/* Ambient background effects */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-tr from-teal-400/10 via-transparent to-purple-400/10 animate-gradient" />
+        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px)] bg-[size:40px] bg-[0_0] dark:[mask-image:linear-gradient(to_bottom,transparent,black)]" />
+      </div>
+
+      {/* Content */}
       <div className="relative">
-        <div className="flex items-center justify-between bg-[#1E293B]/80 backdrop-blur-md p-6 rounded-xl border border-cyan-500/20 shadow-lg shadow-cyan-500/5 hover:shadow-cyan-500/10 transition-all duration-500">
-          <div className="space-y-1">
-            <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-teal-400 animate-gradient">
-              AI-Powered Agent Assistance Hub
-            </h2>
-            <p className="text-slate-400">
-              Enhance your customer interactions with AI-driven insights
-            </p>
-          </div>
+        {/* Header Card */}
+        <div className="glass-card rounded-2xl p-6 mb-8">
+          <div className="flex items-center justify-between">
+            <div className="space-y-2">
+              <h2 className="text-2xl font-bold">
+                <span className="bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+                  AI-Powered Agent Assistance Hub
+                </span>
+              </h2>
+              <p className="text-zinc-400">
+                Enhance your customer interactions with AI-driven insights
+              </p>
+            </div>
 
-          <div className="flex items-center">
-            <div className="mr-4 flex items-center">
-              <span className="text-white font-medium mr-2">Click here to test our prototype!</span>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-cyan-400 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </div>  
+            <div className="flex items-center gap-6">
+              <div className="hidden md:flex items-center">
+                <span className="text-zinc-300 font-medium mr-3">Test our prototype!</span>
+                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-teal-400 to-emerald-400 flex items-center justify-center animate-bounce">
+                  <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </div>
+              </div>
 
-            <Button
-              variant={isCallActive ? "destructive" : "default"}
-              size="lg"
-              className={`gap-2 transform hover:scale-105 transition-all duration-300 ${
-                isCallActive
-                  ? "bg-red-500 hover:bg-red-600 animate-pulse"
-                  : "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
-              } text-white shadow-lg hover:shadow-xl`}
-              onClick={() => {
-                if (isCallActive) {
-                  handleCallToggle();
-                } else {
-                  setIsDialogOpen(true);
-                }
-              }}>
-              <Phone className={`h-4 w-4 ${isCallActive ? 'animate-pulse' : 'animate-bounce'}`} />
-              {isCallActive ? "End Call" : "Start Call"}
-            </Button>
+              <Button
+                variant={isCallActive ? "destructive" : "default"}
+                size="lg"
+                className={`relative overflow-hidden group ${
+                  isCallActive
+                    ? "bg-red-500/90 hover:bg-red-600/90"
+                    : "bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600"
+                } text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}
+                onClick={() => {
+                  if (isCallActive) {
+                    handleCallToggle();
+                  } else {
+                    setIsDialogOpen(true);
+                  }
+                }}>
+                <span className="absolute inset-0 w-full h-full animate-shimmer" />
+                <span className="relative flex items-center gap-2">
+                  <Phone className={`h-4 w-4 ${isCallActive ? 'animate-pulse' : ''}`} />
+                  {isCallActive ? "End Call" : "Start Call"}
+                </span>
+              </Button>
+            </div>
           </div>
         </div>
 
+        {/* Dialog styling */}
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogContent className="bg-gradient-to-br from-slate-800 to-slate-900 border-cyan-500/20">
-            <DialogTitle>Enter Phone Number</DialogTitle>
-            <DialogDescription className="text-md text-gray-500">
-              <div className="flex items-start gap-2">
-                <span className="text-red-500">⚠️</span>
-                <span>
-                  <strong>NOTE:</strong> As we are using Twilio for call functionality, free-tier limitations prevent direct calls to unverified numbers.  
-                  <br />
-                  To test our prototype, please <strong>email at adisamarth20@gmail.com, with your phone number</strong>, so we can add it to our verified list for the trial period and ensure your successful testing.
-                </span>
+          <DialogContent className="glass-card border-none bg-gradient-to-b from-zinc-900/95 to-black/95">
+            <DialogTitle className="text-zinc-200">Enter Phone Number</DialogTitle>
+            <DialogDescription>
+              <div className="flex items-start gap-3 bg-red-500/10 p-4 rounded-lg border border-red-500/20">
+                <AlertCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
+                <div className="space-y-1 text-sm">
+                  <p className="font-semibold text-red-400">Important Note</p>
+                  <p className="text-zinc-400 leading-relaxed">
+                    Due to Twilio free-tier limitations, only verified numbers can receive calls. 
+                    Email <span className="text-teal-400">adisamarth20@gmail.com</span> to get your number verified for testing.
+                  </p>
+                </div>
               </div>
             </DialogDescription>
 
@@ -168,13 +187,13 @@ const AgentDashboard = () => {
               placeholder="91XXXXXXXXXX"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
-              className="bg-slate-800/50 border-cyan-500/20"
+              className="bg-white/5 border-white/10 text-zinc-200 placeholder:text-zinc-600"
             />
 
             <DialogFooter>
               <Button 
                 onClick={startCall}
-                className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300"
+                className="bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 text-white transition-all duration-300 hover:scale-105"
               >
                 Start Call
               </Button>
@@ -182,6 +201,7 @@ const AgentDashboard = () => {
           </DialogContent>
         </Dialog>
 
+        {/* Main content area with modern card styling */}
         {isCallActive ? (
           <div className="space-y-6 animate-fade-in">
             <LiveCallCard
@@ -191,42 +211,54 @@ const AgentDashboard = () => {
               phoneNumber={phoneNumber}
             />
             <div className="grid gap-6 md:grid-cols-2">
-              <div className="space-y-6 transform hover:scale-[1.02] transition-all duration-500">
-                <CallTranscriptCard phoneNumber={phoneNumber} />
-                <CustomerInsightsCard />
+              <div className="space-y-6">
+                <div className="hover-card glass-card rounded-xl">
+                  <CallTranscriptCard phoneNumber={phoneNumber} />
+                </div>
+                <div className="hover-card glass-card rounded-xl">
+                  <CustomerInsightsCard />
+                </div>
               </div>
-              <div className="space-y-6 transform hover:scale-[1.02] transition-all duration-500">
-                <EscalationAlertCard phoneNumber={phoneNumber} />
-                <ActionRecommendationsCard sentiment={currentSentiment} />
-                <QuickResponseCard sentiment={currentSentiment} />
-                <LiveKnowledgeBaseCard />
+              <div className="space-y-6">
+                <div className="hover-card glass-card rounded-xl">
+                  <EscalationAlertCard phoneNumber={phoneNumber} />
+                </div>
+                <div className="hover-card glass-card rounded-xl">
+                  <ActionRecommendationsCard sentiment={currentSentiment} />
+                </div>
+                <div className="hover-card glass-card rounded-xl">
+                  <QuickResponseCard sentiment={currentSentiment} />
+                </div>
+                <div className="hover-card glass-card rounded-xl">
+                  <LiveKnowledgeBaseCard />
+                </div>
               </div>
             </div>
           </div>
         ) : (
           <div className="animate-fade-in">
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <div className="lg:row-span-1 transform hover:scale-[1.02] transition-all duration-500">
+              <div className="hover-card glass-card rounded-xl">
                 <PerformanceMetricsCard />
               </div>
-              <div className="transform hover:scale-[1.02] transition-all duration-500">
+              <div className="hover-card glass-card rounded-xl">
                 <SmartRemindersCard />
               </div>
-              <div className="transform hover:scale-[1.02] transition-all duration-500">
+              <div className="hover-card glass-card rounded-xl">
                 <CallHistoryCard />
               </div>
-              <div className="transform hover:scale-[1.02] transition-all duration-500">
+              <div className="hover-card glass-card rounded-xl">
                 <KnowledgeBaseCard />
               </div>
               {lastCallReport && (
-                <div className="mt-6 transform hover:scale-[1.02] transition-all duration-500">
+                <div className="hover-card glass-card rounded-xl">
                   <LastCallReport phoneNumber={phoneNumber} customerId="CUS-001" />
                 </div>
               )}
-              <div className="md:col-span-2 lg:col-span-1 transform hover:scale-[1.02] transition-all duration-500">
-                <ClaimDocumentsCard/>
+              <div className="md:col-span-2 lg:col-span-1 hover-card glass-card rounded-xl">
+                <ClaimDocumentsCard />
               </div>
-              <div className="md:col-span-2 lg:col-span-1 transform hover:scale-[1.02] transition-all duration-500">
+              <div className="md:col-span-2 lg:col-span-1 hover-card glass-card rounded-xl">
                 <CallbackSchedulerCard />
               </div>
             </div>
