@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import {
   Phone,
@@ -103,58 +102,53 @@ const AgentDashboard = () => {
   };
 
   return (
-    <div className="space-y-8 p-4 min-h-screen bg-gradient-to-br from-slate-900 via-[#0B1121] to-[#090E1D] relative">
-      {/* Gradient Overlay Effects */}
-      <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/5 via-transparent to-purple-500/5 animate-gradient" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-900/20 via-transparent to-transparent" />
-      
-      {/* Content with relative positioning */}
-      <div className="relative">
-        <div className="flex items-center justify-between bg-[#1E293B]/80 backdrop-blur-md p-6 rounded-xl border border-cyan-500/20 shadow-lg shadow-cyan-500/5 hover:shadow-cyan-500/10 transition-all duration-500">
-          <div className="space-y-1">
-            <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-teal-400 animate-gradient">
-              AI-Powered Agent Assistance Hub
-            </h2>
-            <p className="text-slate-400">
-              Enhance your customer interactions with AI-driven insights
-            </p>
-          </div>
+    <div className="space-y-8 p-4 bg-gradient-to-b from-[#0F172A] to-[#0B1121] min-h-screen">
+      <div className="flex items-center justify-between bg-[#1E293B]/90 backdrop-blur-sm p-6 rounded-xl border border-cyan-500/20 shadow-lg shadow-cyan-500/5">
+        <div className="space-y-1">
+          <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-teal-400">
+            AI-Powered Agent Assistance Hub
+          </h2>
+          <p className="text-slate-400">
+            Enhance your customer interactions with AI-driven insights
+          </p>
+        </div>
 
-          <div className="flex items-center">
-            <div className="mr-4 flex items-center">
-              <span className="text-white font-medium mr-2">Click here to test our prototype!</span>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-cyan-400 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </div>  
+        <div className="flex items-center">
+          <div className="mr-4 flex items-center">
+            <span className="text-white font-medium mr-2">Click here to test our prototype!</span>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </div>  
 
-            <Button
-              variant={isCallActive ? "destructive" : "default"}
-              size="lg"
-              className={`gap-2 transform hover:scale-105 transition-all duration-300 ${
-                isCallActive
-                  ? "bg-red-500 hover:bg-red-600 animate-pulse"
-                  : "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
-              } text-white shadow-lg hover:shadow-xl`}
-              onClick={() => {
-                if (isCallActive) {
-                  handleCallToggle();
-                } else {
-                  setIsDialogOpen(true);
-                }
-              }}>
-              <Phone className={`h-4 w-4 ${isCallActive ? 'animate-pulse' : 'animate-bounce'}`} />
-              {isCallActive ? "End Call" : "Start Call"}
-            </Button>
-          </div>
+          <Button
+            variant={isCallActive ? "destructive" : "default"}
+            size="lg"
+            className={`gap-2 ${
+              isCallActive
+                ? "bg-red-500 hover:bg-red-600"
+                : "bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+            } text-white shadow-lg hover:shadow-xl transition-all duration-300`}
+            onClick={() => {
+              if (isCallActive) {
+                handleCallToggle();
+              } else {
+                setIsDialogOpen(true);
+              }
+            }}>
+            <Phone className="h-4 w-4" />
+            {isCallActive ? "End Call" : "Start Call"}
+          </Button>
         </div>
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-          <DialogContent className="bg-gradient-to-br from-slate-800 to-slate-900 border-cyan-500/20">
+          <DialogContent>
             <DialogTitle>Enter Phone Number</DialogTitle>
             <DialogDescription className="text-md text-gray-500">
               <div className="flex items-start gap-2">
-                <span className="text-red-500">⚠️</span>
+                <span className="text-red-500">
+                  ⚠️
+                </span>
                 <span>
                   <strong>NOTE:</strong> As we are using Twilio for call functionality, free-tier limitations prevent direct calls to unverified numbers.  
                   <br />
@@ -168,71 +162,61 @@ const AgentDashboard = () => {
               placeholder="91XXXXXXXXXX"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
-              className="bg-slate-800/50 border-cyan-500/20"
             />
 
             <DialogFooter>
-              <Button 
-                onClick={startCall}
-                className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300"
-              >
-                Start Call
-              </Button>
+              <Button onClick={startCall}>Start Call</Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
-
-        {isCallActive ? (
-          <div className="space-y-6 animate-fade-in">
-            <LiveCallCard
-              currentSentiment={currentSentiment}
-              callDuration={callDuration}
-              formatTime={formatTime}
-              phoneNumber={phoneNumber}
-            />
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="space-y-6 transform hover:scale-[1.02] transition-all duration-500">
-                <CallTranscriptCard phoneNumber={phoneNumber} />
-                <CustomerInsightsCard />
-              </div>
-              <div className="space-y-6 transform hover:scale-[1.02] transition-all duration-500">
-                <EscalationAlertCard phoneNumber={phoneNumber} />
-                <ActionRecommendationsCard sentiment={currentSentiment} />
-                <QuickResponseCard sentiment={currentSentiment} />
-                <LiveKnowledgeBaseCard />
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="animate-fade-in">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <div className="lg:row-span-1 transform hover:scale-[1.02] transition-all duration-500">
-                <PerformanceMetricsCard />
-              </div>
-              <div className="transform hover:scale-[1.02] transition-all duration-500">
-                <SmartRemindersCard />
-              </div>
-              <div className="transform hover:scale-[1.02] transition-all duration-500">
-                <CallHistoryCard />
-              </div>
-              <div className="transform hover:scale-[1.02] transition-all duration-500">
-                <KnowledgeBaseCard />
-              </div>
-              {lastCallReport && (
-                <div className="mt-6 transform hover:scale-[1.02] transition-all duration-500">
-                  <LastCallReport phoneNumber={phoneNumber} customerId="CUS-001" />
-                </div>
-              )}
-              <div className="md:col-span-2 lg:col-span-1 transform hover:scale-[1.02] transition-all duration-500">
-                <ClaimDocumentsCard/>
-              </div>
-              <div className="md:col-span-2 lg:col-span-1 transform hover:scale-[1.02] transition-all duration-500">
-                <CallbackSchedulerCard />
-              </div>
-            </div>
-          </div>
-        )}
       </div>
+
+      {isCallActive ? (
+        <div className="space-y-6 animate-fade-in">
+          <LiveCallCard
+            currentSentiment={currentSentiment}
+            callDuration={callDuration}
+            formatTime={formatTime}
+            phoneNumber={phoneNumber}
+          />
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="space-y-6">
+              <CallTranscriptCard phoneNumber={phoneNumber} />
+              <CustomerInsightsCard />
+              
+            </div>
+            <div className="space-y-6">
+              <EscalationAlertCard phoneNumber={phoneNumber} />
+              <ActionRecommendationsCard sentiment={currentSentiment} />
+              <QuickResponseCard sentiment={currentSentiment} />
+              <LiveKnowledgeBaseCard />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="animate-fade-in">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="lg:row-span-1">
+              <PerformanceMetricsCard />
+            </div>
+            <SmartRemindersCard />
+            <CallHistoryCard />
+            <KnowledgeBaseCard />
+            {lastCallReport && (
+              <div className="mt-6">
+                <LastCallReport phoneNumber={phoneNumber} customerId="CUS-001" />
+              </div>
+            )}
+            <div className="md:col-span-2 lg:col-span-1">
+              <ClaimDocumentsCard/>
+              
+            </div>
+            <div className="md:col-span-2 lg:col-span-1">
+              <CallbackSchedulerCard />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
