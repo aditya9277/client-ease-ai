@@ -6,24 +6,24 @@ export const RecentClaims = () => {
   const claims = [
     {
       id: "CLM-1234",
-      customer: "Sarah Johnson",
+      customer: "Aditya Gupta",
       status: "Pending",
-      date: "2024-03-15",
-      amount: "$1,200",
+      date: "2025-02-15",
+      amount: "$120",
     },
     {
       id: "CLM-1235",
-      customer: "Mike Chen",
+      customer: "Priyanshi Sharma",
       status: "Approved",
-      date: "2024-03-14",
-      amount: "$850",
+      date: "2025-02-14",
+      amount: "$85",
     },
     {
       id: "CLM-1236",
-      customer: "Emily Davis",
+      customer: "Kanishk Shukla",
       status: "Processing",
-      date: "2024-03-14",
-      amount: "$2,300",
+      date: "2025-02-17",
+      amount: "$230",
     },
   ];
 

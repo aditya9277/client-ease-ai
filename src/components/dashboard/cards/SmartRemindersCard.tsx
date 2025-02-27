@@ -16,19 +16,19 @@ const initialReminders: Reminder[] = [
     id: "1",
     text: "Follow up with customer regarding claim #CLM001",
     completed: false,
-    dueDate: "2024-02-20",
+    dueDate: "2025-02-21",
   },
   {
     id: "2",
     text: "Review documentation for warranty case #WAR003",
     completed: false,
-    dueDate: "2024-02-21",
+    dueDate: "2025-02-19",
   },
   {
     id: "3",
-    text: "Schedule callback for insurance inquiry #INS005",
+    text: "Schedule callback from senior team for insurance inquiry #INS005",
     completed: false,
-    dueDate: "2024-02-22",
+    dueDate: "2025-02-25",
   },
 ];
 
