@@ -39,6 +39,7 @@ import { LiveKnowledgeBaseCard } from "./cards/LiveKnowledgeBaseCard";
 import { CallHistoryCard } from "./cards/CallHistoryCard";
 import { ClaimDocumentsCard } from "./cards/ClaimDocumentsCard";
 import { EscalationAlertCard } from "./cards/EscalationAlertCard";
+import { ResolutionCard } from "./cards/ResolutionCard";
 
 const AgentDashboard = () => {
   const [isCallActive, setIsCallActive] = useState(false);
@@ -183,13 +184,14 @@ const AgentDashboard = () => {
             <div className="space-y-6">
               <CallTranscriptCard phoneNumber={phoneNumber} />
               <CustomerInsightsCard />
+              <LiveKnowledgeBaseCard />
               
             </div>
             <div className="space-y-6">
               <EscalationAlertCard phoneNumber={phoneNumber} />
-              <ActionRecommendationsCard sentiment={currentSentiment} />
+              <ResolutionCard/>
               <QuickResponseCard sentiment={currentSentiment} />
-              <LiveKnowledgeBaseCard />
+              
             </div>
           </div>
         </div>

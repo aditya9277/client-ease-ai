@@ -45,7 +45,7 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phone
 
   useEffect(() => {
     // 🔄 Fetch AI suggestions every 3 seconds
-    const interval = setInterval(fetchSuggestions, 1000);
+    const interval = setInterval(fetchSuggestions, 500);
     return () => clearInterval(interval); // ✅ Cleanup interval on unmount
   }, [phoneNumber]);
 
@@ -61,7 +61,7 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phone
             </span>
           </div>
         </CardTitle>
-        <div className="text-sm text-gray-300">{formatTime(callDuration)}</div>
+        
       </CardHeader>
       <CardContent>
         <div className="space-y-6">
@@ -88,7 +88,7 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phone
           
 
           <div className="space-y-4">
-            <h3 className="font-medium text-gray-700">AI Suggestions</h3>
+            <h3 className="font-medium text-white-700">AI Suggestions</h3>
             <div className="space-y-2">
               {suggestions.length > 0 ? (
                 suggestions.map((suggestion, index) => (
