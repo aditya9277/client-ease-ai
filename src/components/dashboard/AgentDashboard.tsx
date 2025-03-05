@@ -47,6 +47,7 @@ import { CallHistoryCard } from "./cards/CallHistoryCard";
 import { ClaimDocumentsCard } from "./cards/ClaimDocumentsCard";
 import { EscalationAlertCard } from "./cards/EscalationAlertCard";
 import { ResolutionCard } from "./cards/ResolutionCard";
+import { CustomerAlertsCard } from "./cards/CustomerAlertsCard";
 
 const AgentDashboard = () => {
   const [isCallActive, setIsCallActive] = useState(false);

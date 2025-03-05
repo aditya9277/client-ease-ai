@@ -18,7 +18,7 @@ export const ResolutionCard = () => {
     };
 
     // ✅ Fetch AI resolution every 2 seconds
-    const interval = setInterval(fetchResolution, 2000);
+    const interval = setInterval(fetchResolution, 1000);
 
     return () => clearInterval(interval);
   }, []);

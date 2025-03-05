@@ -50,9 +50,9 @@ export const LiveKnowledgeBaseCard = () => {
   };
 
   return (
-    <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-cyan-500/20 hover:border-cyan-500/40">
+    <Card className="medical-card card-gradient-info">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-gray-100">
+        <CardTitle className="flex items-center gap-2 text-slate-800">
           <BookOpen className="h-5 w-5 text-cyan-400" />
           Knowledge Base
         </CardTitle>
