@@ -68,33 +68,33 @@ export const EscalationAlertCard = ({ phoneNumber }) => {
 
   return (
     <>
-      <Card className="border-red-500/20 hover:border-red-500/40 shadow-lg shadow-red-500/5">
+      <Card className="modern-card border-destructive/20 hover:border-destructive/30">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-red-400 animate-pulse">
+          <CardTitle className="flex items-center gap-2 text-destructive animate-pulse">
             <AlertTriangle className="h-5 w-5" />
             Critical Escalations
           </CardTitle>
         </CardHeader>
         <CardContent>
           {escalations.length === 0 ? (
-            <div className="p-4 rounded-lg bg-slate-900/60 border border-slate-700/40 flex items-center justify-center h-32">
-              <p className="text-slate-400">No escalations at the moment.</p>
+            <div className="p-4 rounded-lg bg-secondary border border-slate-200 flex items-center justify-center h-32">
+              <p className="text-slate-500">No escalations at the moment.</p>
             </div>
           ) : (
             <ul className="space-y-3 max-h-60 overflow-y-auto scrollbar-hide">
               {escalations.map((escalation, index) => (
                 <li
                   key={index}
-                  className="flex justify-between items-center p-3 bg-slate-900/60 rounded-lg border border-red-500/20 hover:border-red-500/40 transition-all duration-300"
+                  className="flex justify-between items-center p-3 bg-secondary rounded-lg border border-destructive/10 hover:border-destructive/30 transition-all duration-300"
                 >
                   <div>
-                    <p className="text-slate-300">📞 Escalation at: {new Date(escalation.timestamp).toLocaleString()}</p>
-                    <p className="text-sm text-red-300">Reason: {escalation.reason}</p>
+                    <p className="text-slate-700">📞 Escalation at: {new Date(escalation.timestamp).toLocaleString()}</p>
+                    <p className="text-sm text-destructive">Reason: {escalation.reason}</p>
                   </div>
                   <Button
                     size="sm"
                     variant="outline"
-                    className="text-red-400 border-red-500/20 hover:text-red-300 hover:bg-red-500/10"
+                    className="text-destructive border-destructive/20 hover:text-destructive hover:bg-destructive/5"
                     onClick={() => handleViewEscalation(escalation)}
                   >
                     <Eye className="h-4 w-4 mr-1" /> View
@@ -108,22 +108,22 @@ export const EscalationAlertCard = ({ phoneNumber }) => {
 
       {/* 📌 Escalation Details Modal */}
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="bg-gradient-to-b from-slate-800 to-slate-900 border border-red-500/20">
+        <DialogContent className="bg-white border border-destructive/10">
           <DialogHeader>
-            <DialogTitle className="text-slate-200">Escalation Details</DialogTitle>
+            <DialogTitle className="text-slate-800">Escalation Details</DialogTitle>
           </DialogHeader>
           {selectedEscalation && (
-            <div className="p-4 bg-slate-900/60 rounded-lg border border-red-500/10">
-              <p className="text-sm text-slate-300">
-                <strong className="text-red-400">📞 Customer:</strong> {selectedEscalation.phoneNumber}
+            <div className="p-4 bg-secondary rounded-lg border border-destructive/10">
+              <p className="text-sm text-slate-700">
+                <strong className="text-destructive">📞 Customer:</strong> {selectedEscalation.phoneNumber}
               </p>
-              <p className="text-sm text-slate-300">
-                <strong className="text-red-400">🕒 Time:</strong> {new Date(selectedEscalation.timestamp).toLocaleString()}
+              <p className="text-sm text-slate-700">
+                <strong className="text-destructive">🕒 Time:</strong> {new Date(selectedEscalation.timestamp).toLocaleString()}
               </p>
-              <p className="text-sm text-red-300 mt-2">
+              <p className="text-sm text-destructive mt-2">
                 <strong>⚠️ Reason:</strong> {selectedEscalation.reason}
               </p>
-              <p className="text-sm text-slate-300">
+              <p className="text-sm text-slate-700">
                 <strong>🧠 Sentiment:</strong> {selectedEscalation.sentiment}
               </p>
             </div>
@@ -132,7 +132,7 @@ export const EscalationAlertCard = ({ phoneNumber }) => {
             <Button
               size="sm"
               variant="outline"
-              className="text-red-400 border-red-500/20 hover:text-red-300 hover:bg-red-500/10"
+              className="text-destructive border-destructive/20 hover:text-destructive hover:bg-destructive/5"
               onClick={handleEscalateToManager}
             >
               <Send className="h-4 w-4 mr-1" /> Escalate to Manager

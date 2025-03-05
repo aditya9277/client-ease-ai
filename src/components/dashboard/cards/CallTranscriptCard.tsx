@@ -4,6 +4,7 @@ import axios from "axios";
 import { FileText } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
+
 interface CallTranscriptCardProps {
   phoneNumber: string;
 }
@@ -28,14 +29,14 @@ export const CallTranscriptCard = ({ phoneNumber }: CallTranscriptCardProps) => 
   }, [phoneNumber]);
 
   return (
-    <Card className="border-indigo-500/20 hover:border-indigo-500/40 shadow-lg shadow-indigo-500/5">
+    <Card className="modern-card border-primary/10 hover:border-primary/30">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium text-slate-200">Live Call Transcript</CardTitle>
-        <FileText className="h-4 w-4 text-indigo-400" />
+        <CardTitle className="text-sm font-medium text-slate-800">Live Call Transcript</CardTitle>
+        <FileText className="h-4 w-4 text-primary" />
       </CardHeader>
       <CardContent>
-        <ScrollArea className="h-[300px] w-full rounded-md border border-indigo-500/20 bg-slate-900/60 p-4">
-          <pre className="text-sm whitespace-pre-wrap font-mono text-slate-300 leading-relaxed">
+        <ScrollArea className="h-[300px] w-full rounded-md border border-slate-200 bg-secondary p-4 shadow-soft">
+          <pre className="text-sm whitespace-pre-wrap font-mono text-slate-600 leading-relaxed">
             {transcriptText}
           </pre>
         </ScrollArea>

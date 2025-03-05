@@ -29,10 +29,10 @@ export const RecentClaims = () => {
   ];
 
   return (
-    <Card className="backdrop-blur-lg border-indigo-500/20 hover:border-indigo-500/40 transition-all duration-300 shadow-lg shadow-indigo-500/5">
+    <Card className="modern-card border-primary/10 hover:border-primary/30">
       <CardHeader className="pb-3">
-        <CardTitle className="text-slate-200 text-xl flex items-center">
-          <FileBox className="h-5 w-5 text-indigo-400 mr-2" />
+        <CardTitle className="text-slate-800 text-xl flex items-center">
+          <FileBox className="h-5 w-5 text-primary mr-2" />
           Recent Claims
         </CardTitle>
       </CardHeader>
@@ -41,17 +41,17 @@ export const RecentClaims = () => {
           {claims.map((claim) => (
             <div
               key={claim.id}
-              className="flex items-center justify-between p-4 bg-gradient-to-r from-slate-900/80 to-slate-800/40 rounded-lg border border-indigo-500/20 hover:border-indigo-500/40 hover:shadow-lg hover:shadow-indigo-500/5 transition-all duration-300 group"
+              className="flex items-center justify-between p-4 bg-secondary rounded-lg border border-slate-200/50 hover:border-primary/20 hover:shadow-soft transition-all duration-300 group"
             >
               <div className="flex items-center gap-3">
-                <div className="bg-indigo-900/30 p-2 rounded-lg group-hover:bg-indigo-800/30 transition-colors">
-                  <FileBox className="h-5 w-5 text-indigo-400" />
+                <div className="bg-primary/10 p-2 rounded-lg group-hover:bg-primary/20 transition-colors">
+                  <FileBox className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <p className="font-medium text-slate-200 group-hover:text-white transition-colors">{claim.customer}</p>
-                  <div className="flex items-center text-sm text-slate-400 gap-1 mt-1">
-                    <span className="text-indigo-500">{claim.id}</span>
-                    <span className="text-slate-500">•</span>
+                  <p className="font-medium text-slate-800 group-hover:text-slate-900 transition-colors">{claim.customer}</p>
+                  <div className="flex items-center text-sm text-slate-500 gap-1 mt-1">
+                    <span className="text-primary">{claim.id}</span>
+                    <span className="text-slate-400">•</span>
                     <div className="flex items-center">
                       <Calendar className="h-3 w-3 mr-1" />
                       {claim.date}
@@ -61,15 +61,15 @@ export const RecentClaims = () => {
               </div>
               <div className="text-right flex flex-col items-end">
                 <div className="flex items-center">
-                  <Banknote className="h-4 w-4 text-emerald-400 mr-1" />
-                  <p className="font-medium text-slate-200 group-hover:text-white transition-colors">{claim.amount}</p>
+                  <Banknote className="h-4 w-4 text-success mr-1" />
+                  <p className="font-medium text-slate-800 group-hover:text-slate-900 transition-colors">{claim.amount}</p>
                 </div>
                 <Badge className={`mt-1 ${
                   claim.status === 'Approved' 
-                    ? 'bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30' 
+                    ? 'badge-success' 
                     : claim.status === 'Pending' 
-                    ? 'bg-amber-500/20 text-amber-400 hover:bg-amber-500/30' 
-                    : 'bg-indigo-500/20 text-indigo-400 hover:bg-indigo-500/30'
+                    ? 'badge-warning' 
+                    : 'badge-info'
                 }`}>
                   {claim.status}
                 </Badge>

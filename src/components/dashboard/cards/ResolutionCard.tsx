@@ -24,17 +24,17 @@ export const ResolutionCard = () => {
   }, []);
 
   return (
-    <Card className="border-indigo-500/20 hover:border-indigo-500/40 shadow-lg shadow-indigo-500/5 transition-all duration-300">
+    <Card className="modern-card border-primary/10 hover:border-primary/30">
       <CardHeader className="flex items-center justify-between">
-        <CardTitle className="flex items-center gap-2 text-indigo-400">
+        <CardTitle className="flex items-center gap-2 text-primary">
           <ClipboardList className="h-5 w-5" />
           AI-Powered Resolutions
         </CardTitle>
-        <RefreshCw className="h-4 w-4 animate-spin text-indigo-300" />
+        <RefreshCw className="h-4 w-4 animate-spin text-primary/70" />
       </CardHeader>
       <CardContent>
-        <div className="p-4 rounded-lg bg-slate-900/60 border border-indigo-500/10">
-          <p className="text-slate-300">{resolution}</p>
+        <div className="p-4 rounded-lg bg-secondary border border-primary/5 shadow-soft">
+          <p className="text-slate-600">{resolution}</p>
         </div>
       </CardContent>
     </Card>

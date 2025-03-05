@@ -6,12 +6,12 @@ import { RecentClaims } from "./manager/RecentClaims";
 import { TeamCommunication } from "./manager/TeamCommunication";
 
 const ManagerDashboard = () => (
-  <div className="space-y-8 p-6 bg-gradient-to-b from-[#0F172A] to-[#0B1121] min-h-screen">
+  <div className="space-y-8 p-6 bg-gradient-to-b from-blue-50 to-slate-50 min-h-screen">
     <div className="space-y-2">
-      <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-teal-400">
+      <h2 className="text-3xl font-bold gradient-text">
         Call Center Analytics
       </h2>
-      <p className="text-slate-400">
+      <p className="text-slate-500">
         Real-time insights and performance metrics
       </p>
     </div>
