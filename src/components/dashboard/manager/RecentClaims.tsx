@@ -1,5 +1,5 @@
 
-import { FileBox, Banknote, Calendar } from "lucide-react";
+import { FileBox, Banknote, Calendar, AlertCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -29,10 +29,12 @@ export const RecentClaims = () => {
   ];
 
   return (
-    <Card className="modern-card border-primary/10 hover:border-primary/30">
+    <Card className="medical-card card-gradient-primary">
       <CardHeader className="pb-3">
         <CardTitle className="text-slate-800 text-xl flex items-center">
-          <FileBox className="h-5 w-5 text-primary mr-2" />
+          <div className="icon-container icon-container-primary mr-2">
+            <FileBox className="h-5 w-5" />
+          </div>
           Recent Claims
         </CardTitle>
       </CardHeader>
@@ -41,7 +43,7 @@ export const RecentClaims = () => {
           {claims.map((claim) => (
             <div
               key={claim.id}
-              className="flex items-center justify-between p-4 bg-secondary rounded-lg border border-slate-200/50 hover:border-primary/20 hover:shadow-soft transition-all duration-300 group"
+              className="flex items-center justify-between p-4 bg-slate-50 rounded-lg border border-slate-200 hover:border-primary/20 hover:shadow-sm transition-all duration-300 group"
             >
               <div className="flex items-center gap-3">
                 <div className="bg-primary/10 p-2 rounded-lg group-hover:bg-primary/20 transition-colors">
@@ -64,13 +66,13 @@ export const RecentClaims = () => {
                   <Banknote className="h-4 w-4 text-success mr-1" />
                   <p className="font-medium text-slate-800 group-hover:text-slate-900 transition-colors">{claim.amount}</p>
                 </div>
-                <Badge className={`mt-1 ${
+                <Badge className={
                   claim.status === 'Approved' 
                     ? 'badge-success' 
                     : claim.status === 'Pending' 
                     ? 'badge-warning' 
                     : 'badge-info'
-                }`}>
+                }>
                   {claim.status}
                 </Badge>
               </div>

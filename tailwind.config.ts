@@ -26,15 +26,15 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#4361ee",
+          DEFAULT: "#0088ff",
           foreground: "#ffffff",
         },
         secondary: {
-          DEFAULT: "#f8f9fa",
-          foreground: "#4361ee",
+          DEFAULT: "#ffa500",
+          foreground: "#ffffff",
         },
         destructive: {
-          DEFAULT: "#ef476f",
+          DEFAULT: "#ff3366",
           foreground: "#ffffff",
         },
         muted: {
@@ -42,7 +42,7 @@ export default {
           foreground: "#64748b",
         },
         accent: {
-          DEFAULT: "#06b6d4",
+          DEFAULT: "#6c7ae0",
           foreground: "#ffffff",
         },
         popover: {
@@ -54,15 +54,15 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         success: {
-          DEFAULT: "#06d6a0",
+          DEFAULT: "#00cc88",
           foreground: "#ffffff",
         },
         warning: {
-          DEFAULT: "#ffd166",
-          foreground: "#1e293b",
+          DEFAULT: "#ffc107",
+          foreground: "#ffffff",
         },
         info: {
-          DEFAULT: "#3a86ff",
+          DEFAULT: "#6c7ae0",
           foreground: "#ffffff",
         },
       },

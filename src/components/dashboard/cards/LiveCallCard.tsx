@@ -1,11 +1,9 @@
 
-import { Phone, TrendingUp } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Phone, TrendingUp, AlertCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { Toggle } from "@/components/ui/toggle";
-import { useToast } from "@/hooks/use-toast";
-import { useEffect, useState } from "react";
 import axios from "axios";
 
 interface LiveCallCardProps {
@@ -16,17 +14,6 @@ interface LiveCallCardProps {
 }
 
 export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phoneNumber }: LiveCallCardProps) => {
-  const [isMuted, setIsMuted] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-  const { toast } = useToast();
-
-  const handleAutofillData = () => {
-    toast({
-      title: "Success",
-      description: "Customer data successfully filled in form",
-      duration: 3000,
-    });
-  };
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [activeSuggestion, setActiveSuggestion] = useState<number | null>(null);
 
@@ -49,11 +36,23 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phone
     return () => clearInterval(interval); // ✅ Cleanup interval on unmount
   }, [phoneNumber]);
 
+  const getSentimentColor = () => {
+    if (currentSentiment > 70) return "text-success";
+    if (currentSentiment > 40) return "text-warning";
+    return "text-destructive";
+  };
+
+  const getSentimentProgressColor = () => {
+    if (currentSentiment > 70) return "progress-bar-success";
+    if (currentSentiment > 40) return "progress-bar-warning";
+    return "progress-bar-destructive";
+  };
+
   return (
-    <Card className="modern-card border-primary/30 shadow-card bg-gradient-to-br from-white to-blue-50/50">
+    <Card className="medical-card card-gradient-primary">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
-          <span className="gradient-text">Live Call Assistance</span>
+          <span className="gradient-text text-xl">Live Call Assistance</span>
           <div className="flex items-center gap-2">
             <Badge variant="outline" className="animate-pulse bg-success/20 text-success border-success/20">Live</Badge>
             <span className="text-sm font-normal text-slate-600">
@@ -68,21 +67,13 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phone
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <h3 className="font-medium text-slate-700">Customer Sentiment</h3>
-              <span className={`text-sm font-medium ${
-                currentSentiment > 70 ? "text-success" :
-                currentSentiment > 40 ? "text-warning" :
-                "text-destructive"
-              }`}>
+              <span className={`text-sm font-medium ${getSentimentColor()}`}>
                 {currentSentiment}%
               </span>
             </div>
-            <Progress 
-              value={currentSentiment} 
-              className="h-2.5 rounded-full bg-slate-100"
-              style={{
-                backgroundImage: 'linear-gradient(to right, rgb(239, 71, 111), rgb(255, 209, 102), rgb(6, 214, 160))',
-              }}
-            />
+            <div className="progress-container">
+              <div className={`${getSentimentProgressColor()}`} style={{ width: `${currentSentiment}%` }}></div>
+            </div>
           </div>
 
           <div className="space-y-4">
@@ -94,8 +85,8 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phone
                     key={index}
                     className={`p-4 rounded-lg transition-all cursor-pointer ${
                       activeSuggestion === index
-                        ? "bg-primary/10 border border-primary/40 shadow-soft"
-                        : "bg-secondary hover:bg-primary/5 border border-slate-200 hover:border-primary/20"
+                        ? "bg-primary/10 border border-primary/40 shadow-sm"
+                        : "bg-slate-50 hover:bg-primary/5 border border-slate-200 hover:border-primary/20"
                     }`}
                     onClick={() => setActiveSuggestion(index)}
                   >
@@ -103,7 +94,7 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phone
                   </div>
                 ))
               ) : (
-                <div className="flex items-center justify-center h-32 bg-secondary rounded-lg border border-slate-200">
+                <div className="flex items-center justify-center h-32 bg-slate-50 rounded-lg border border-slate-200">
                   <div className="text-sm text-slate-500 flex flex-col items-center">
                     <svg className="animate-spin h-6 w-6 text-primary mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>

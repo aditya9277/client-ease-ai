@@ -14,26 +14,35 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 221 83% 60%;
+    --primary: 210 100% 50%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 39 100% 50%;
+    --secondary-foreground: 39 100% 10%;
 
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 199 89% 48%;
+    --accent: 243 75% 59%;
     --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 346 87% 60%;
     --destructive-foreground: 210 40% 98%;
+
+    --success: 160 100% 40%;
+    --success-foreground: 160 100% 10%;
+
+    --warning: 45 100% 50%;
+    --warning-foreground: 45 100% 10%;
+
+    --info: 227 68% 64%;
+    --info-foreground: 227 68% 10%;
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
     --ring: 221 83% 60%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
   }
 }
 
@@ -44,6 +53,10 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    background-image: 
+      radial-gradient(circle at 90% 5%, rgba(0, 136, 255, 0.03) 0%, transparent 20%),
+      radial-gradient(circle at 10% 25%, rgba(0, 204, 136, 0.03) 0%, transparent 20%),
+      radial-gradient(circle at 50% 85%, rgba(108, 122, 224, 0.03) 0%, transparent 30%);
   }
 }
 
@@ -57,6 +70,7 @@
   scrollbar-width: none;     /* Firefox */
 }
 
+/* Animation styles */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -65,6 +79,16 @@
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
 
 .animate-fade-in {
@@ -80,106 +104,136 @@
   animation: shimmer 2s infinite;
 }
 
-.gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-info;
-}
-
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
 
-.glass-panel {
-  @apply backdrop-blur-sm bg-white/70 border border-white/20 shadow-card;
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-info;
 }
 
-.card-hover {
-  @apply transition-all duration-300 hover:shadow-lg hover:border-primary/20;
+/* Card styles */
+.medical-card {
+  @apply bg-white rounded-xl border border-slate-100 shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/20;
 }
 
-/* Modern card styles */
-.modern-card {
-  @apply bg-white rounded-xl border border-slate-200/80 shadow-card 
-    transition-all duration-300 hover:shadow-lg hover:border-primary/20;
+.card-gradient-primary {
+  @apply bg-gradient-to-br from-white to-blue-50/50 border-l-4 border-l-primary;
 }
 
-.card-gradient {
-  @apply bg-gradient-to-br from-white to-secondary/30;
+.card-gradient-success {
+  @apply bg-gradient-to-br from-white to-green-50/50 border-l-4 border-l-success;
 }
 
-.floating-card {
-  @apply animate-float;
+.card-gradient-info {
+  @apply bg-gradient-to-br from-white to-indigo-50/50 border-l-4 border-l-info;
 }
 
-.soft-shadow {
-  @apply shadow-soft;
+.card-gradient-warning {
+  @apply bg-gradient-to-br from-white to-amber-50/50 border-l-4 border-l-warning;
+}
+
+.card-gradient-destructive {
+  @apply bg-gradient-to-br from-white to-red-50/50 border-l-4 border-l-destructive;
+}
+
+/* Icon containers */
+.icon-container {
+  @apply rounded-xl p-3 inline-flex items-center justify-center;
+}
+
+.icon-container-primary {
+  @apply bg-primary/10 text-primary;
+}
+
+.icon-container-success {
+  @apply bg-success/10 text-success;
+}
+
+.icon-container-info {
+  @apply bg-info/10 text-info;
+}
+
+.icon-container-warning {
+  @apply bg-warning/10 text-warning;
+}
+
+.icon-container-destructive {
+  @apply bg-destructive/10 text-destructive;
 }
 
 /* Badge styles */
 .badge-primary {
-  @apply bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium;
+  @apply bg-primary/10 text-primary rounded-full px-2 py-1 text-xs font-medium;
 }
 
 .badge-success {
-  @apply bg-success/10 text-success px-2 py-1 rounded-full text-xs font-medium;
+  @apply bg-success/10 text-success rounded-full px-2 py-1 text-xs font-medium;
 }
 
 .badge-warning {
-  @apply bg-warning/10 text-warning px-2 py-1 rounded-full text-xs font-medium;
+  @apply bg-warning/10 text-warning rounded-full px-2 py-1 text-xs font-medium;
 }
 
 .badge-danger {
-  @apply bg-destructive/10 text-destructive px-2 py-1 rounded-full text-xs font-medium;
+  @apply bg-destructive/10 text-destructive rounded-full px-2 py-1 text-xs font-medium;
 }
 
 .badge-info {
-  @apply bg-info/10 text-info px-2 py-1 rounded-full text-xs font-medium;
+  @apply bg-info/10 text-info rounded-full px-2 py-1 text-xs font-medium;
+}
+
+/* Progress styles */
+.progress-container {
+  @apply h-2 bg-slate-100 rounded-full overflow-hidden;
+}
+
+.progress-bar-primary {
+  @apply h-full bg-primary rounded-full;
+}
+
+.progress-bar-success {
+  @apply h-full bg-success rounded-full;
+}
+
+.progress-bar-warning {
+  @apply h-full bg-warning rounded-full;
+}
+
+.progress-bar-destructive {
+  @apply h-full bg-destructive rounded-full;
+}
+
+.progress-bar-info {
+  @apply h-full bg-info rounded-full;
+}
+
+/* Data text styles */
+.data-label {
+  @apply text-sm text-slate-500 font-medium;
+}
+
+.data-value {
+  @apply text-xl font-bold text-slate-800;
+}
+
+.data-trend-up {
+  @apply text-xs text-success flex items-center;
+}
+
+.data-trend-down {
+  @apply text-xs text-destructive flex items-center;
 }
 
 /* Button styles */
-.btn-primary {
-  @apply bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors;
+.btn-primary-medical {
+  @apply bg-primary text-white px-4 py-2 rounded-lg font-medium shadow-sm hover:shadow-md transition-all duration-300 hover:bg-primary/90;
 }
 
-.btn-outline {
-  @apply border border-slate-200 hover:border-primary/30 hover:bg-primary/5 px-4 py-2 rounded-lg transition-colors;
-}
-
-.shine-effect {
-  position: relative;
-  overflow: hidden;
-}
-
-.shine-effect::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.3) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: rotate(30deg);
-  animation: shine 3s infinite;
-}
-
-@keyframes shine {
-  0% {
-    transform: translateX(-100%) rotate(30deg);
-  }
-  100% {
-    transform: translateX(100%) rotate(30deg);
-  }
+.btn-outline-medical {
+  @apply bg-white text-primary px-4 py-2 rounded-lg font-medium shadow-sm border border-primary/20 hover:bg-primary/5 transition-all duration-300;
 }

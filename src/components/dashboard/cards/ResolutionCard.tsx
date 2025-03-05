@@ -24,17 +24,19 @@ export const ResolutionCard = () => {
   }, []);
 
   return (
-    <Card className="modern-card border-primary/10 hover:border-primary/30">
+    <Card className="medical-card card-gradient-success">
       <CardHeader className="flex items-center justify-between">
-        <CardTitle className="flex items-center gap-2 text-primary">
-          <ClipboardList className="h-5 w-5" />
+        <CardTitle className="flex items-center gap-2 text-slate-800">
+          <div className="icon-container icon-container-success">
+            <ClipboardList className="h-4 w-4" />
+          </div>
           AI-Powered Resolutions
         </CardTitle>
-        <RefreshCw className="h-4 w-4 animate-spin text-primary/70" />
+        <RefreshCw className="h-4 w-4 animate-spin text-success/70" />
       </CardHeader>
       <CardContent>
-        <div className="p-4 rounded-lg bg-secondary border border-primary/5 shadow-soft">
-          <p className="text-slate-600">{resolution}</p>
+        <div className="p-4 rounded-lg bg-slate-50 border border-success/10 shadow-sm">
+          <p className="text-slate-700">{resolution}</p>
         </div>
       </CardContent>
     </Card>

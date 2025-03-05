@@ -6,9 +6,9 @@ import { RecentClaims } from "./manager/RecentClaims";
 import { TeamCommunication } from "./manager/TeamCommunication";
 
 const ManagerDashboard = () => (
-  <div className="space-y-8 p-6 bg-gradient-to-b from-blue-50 to-slate-50 min-h-screen">
+  <div className="space-y-8 p-6 bg-gradient-to-b from-slate-100 to-slate-50 min-h-screen">
     <div className="space-y-2">
-      <h2 className="text-3xl font-bold gradient-text">
+      <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-info to-accent">
         Call Center Analytics
       </h2>
       <p className="text-slate-500">

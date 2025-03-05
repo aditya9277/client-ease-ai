@@ -37,17 +37,254 @@
 .card {
   padding: 2em;
   background: white;
-  border-radius: 0.75rem;
-  box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(67, 97, 238, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(230, 235, 245, 0.7);
   transition: all 0.3s ease;
 }
 
 .card:hover {
-  border-color: rgba(67, 97, 238, 0.3);
-  box-shadow: 0 4px 20px -5px rgba(67, 97, 238, 0.1);
+  box-shadow: 0 6px 25px rgba(0, 136, 255, 0.1);
+  transform: translateY(-2px);
 }
 
 .read-the-docs {
   color: #64748b;
+}
+
+/* Medical-style dashboard */
+.medical-theme {
+  --primary: #0088ff;
+  --primary-light: #e6f3ff;
+  --secondary: #ffa500;
+  --secondary-light: #fff5e6;
+  --success: #00cc88;
+  --success-light: #e6fff4;
+  --warning: #ffc107;
+  --warning-light: #fffbeb;
+  --danger: #ff3366;
+  --danger-light: #ffe6ec;
+  --info: #6c7ae0;
+  --info-light: #eef0ff;
+  --neutral: #f1f5f9;
+  --neutral-dark: #64748b;
+  --white: #ffffff;
+  --black: #111827;
+  --background: #f8fafc;
+  --card-border: #e2e8f0;
+}
+
+.dashboard-bg {
+  background-color: var(--background);
+  background-image: 
+    radial-gradient(circle at 90% 5%, rgba(0, 136, 255, 0.03) 0%, transparent 20%),
+    radial-gradient(circle at 10% 25%, rgba(0, 204, 136, 0.03) 0%, transparent 20%),
+    radial-gradient(circle at 50% 85%, rgba(108, 122, 224, 0.03) 0%, transparent 30%);
+}
+
+.card-gradient-blue {
+  background: linear-gradient(145deg, #ffffff, #f5faff);
+  border-left: 3px solid var(--primary);
+}
+
+.card-gradient-orange {
+  background: linear-gradient(145deg, #ffffff, #fff9f0);
+  border-left: 3px solid var(--secondary);
+}
+
+.card-gradient-green {
+  background: linear-gradient(145deg, #ffffff, #f0fff7);
+  border-left: 3px solid var(--success);
+}
+
+.card-gradient-purple {
+  background: linear-gradient(145deg, #ffffff, #f5f0ff);
+  border-left: 3px solid var(--info);
+}
+
+.card-gradient-red {
+  background: linear-gradient(145deg, #ffffff, #fff0f3);
+  border-left: 3px solid var(--danger);
+}
+
+.medical-card {
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(230, 235, 245, 0.7);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.medical-card:hover {
+  box-shadow: 0 6px 25px rgba(0, 136, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.svg-icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.svg-icon-blue {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.svg-icon-orange {
+  background-color: var(--secondary-light);
+  color: var(--secondary);
+}
+
+.svg-icon-green {
+  background-color: var(--success-light);
+  color: var(--success);
+}
+
+.svg-icon-red {
+  background-color: var(--danger-light);
+  color: var(--danger);
+}
+
+.svg-icon-purple {
+  background-color: var(--info-light);
+  color: var(--info);
+}
+
+.gradient-heading {
+  background: linear-gradient(90deg, #0088ff, #6c7ae0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.data-label {
+  font-size: 0.85rem;
+  color: var(--neutral-dark);
+  font-weight: 500;
+}
+
+.data-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--black);
+}
+
+.data-change-positive {
+  font-size: 0.75rem;
+  color: var(--success);
+  font-weight: 500;
+}
+
+.data-change-negative {
+  font-size: 0.75rem;
+  color: var(--danger);
+  font-weight: 500;
+}
+
+.progress-container {
+  height: 8px;
+  background-color: var(--neutral);
+  border-radius: 4px;
+  margin: 8px 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.progress-primary {
+  background-color: var(--primary);
+}
+
+.progress-success {
+  background-color: var(--success);
+}
+
+.progress-warning {
+  background-color: var(--warning);
+}
+
+.progress-danger {
+  background-color: var(--danger);
+}
+
+/* Button styles */
+.btn-primary-medical {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 136, 255, 0.2);
+}
+
+.btn-primary-medical:hover {
+  background-color: #007ae8;
+  box-shadow: 0 6px 15px rgba(0, 136, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-outline-medical {
+  background-color: white;
+  color: var(--primary);
+  border: 1px solid rgba(0, 136, 255, 0.3);
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-medical:hover {
+  background-color: var(--primary-light);
+  border-color: var(--primary);
+}
+
+/* Badge styles */
+.badge-medical {
+  padding: 0.2rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.badge-primary {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.badge-warning {
+  background-color: var(--warning-light);
+  color: var(--warning);
+}
+
+.badge-danger {
+  background-color: var(--danger-light);
+  color: var(--danger);
+}
+
+.badge-success {
+  background-color: var(--success-light);
+  color: var(--success);
+}
+
+.badge-info {
+  background-color: var(--info-light);
+  color: var(--info);
+}
+
+/* Chart container */
+.chart-container {
+  background: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }

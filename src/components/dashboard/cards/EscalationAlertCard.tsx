@@ -68,16 +68,18 @@ export const EscalationAlertCard = ({ phoneNumber }) => {
 
   return (
     <>
-      <Card className="modern-card border-destructive/20 hover:border-destructive/30">
+      <Card className="medical-card card-gradient-destructive">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-destructive animate-pulse">
-            <AlertTriangle className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-2 text-destructive">
+            <div className="icon-container icon-container-destructive">
+              <AlertTriangle className="h-4 w-4" />
+            </div>
             Critical Escalations
           </CardTitle>
         </CardHeader>
         <CardContent>
           {escalations.length === 0 ? (
-            <div className="p-4 rounded-lg bg-secondary border border-slate-200 flex items-center justify-center h-32">
+            <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center h-32">
               <p className="text-slate-500">No escalations at the moment.</p>
             </div>
           ) : (
@@ -85,7 +87,7 @@ export const EscalationAlertCard = ({ phoneNumber }) => {
               {escalations.map((escalation, index) => (
                 <li
                   key={index}
-                  className="flex justify-between items-center p-3 bg-secondary rounded-lg border border-destructive/10 hover:border-destructive/30 transition-all duration-300"
+                  className="flex justify-between items-center p-3 bg-slate-50 rounded-lg border border-destructive/10 hover:border-destructive/30 transition-all duration-300"
                 >
                   <div>
                     <p className="text-slate-700">📞 Escalation at: {new Date(escalation.timestamp).toLocaleString()}</p>
@@ -108,12 +110,12 @@ export const EscalationAlertCard = ({ phoneNumber }) => {
 
       {/* 📌 Escalation Details Modal */}
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="bg-white border border-destructive/10">
+        <DialogContent className="bg-white border border-destructive/10 rounded-xl">
           <DialogHeader>
             <DialogTitle className="text-slate-800">Escalation Details</DialogTitle>
           </DialogHeader>
           {selectedEscalation && (
-            <div className="p-4 bg-secondary rounded-lg border border-destructive/10">
+            <div className="p-4 bg-slate-50 rounded-lg border border-destructive/10">
               <p className="text-sm text-slate-700">
                 <strong className="text-destructive">📞 Customer:</strong> {selectedEscalation.phoneNumber}
               </p>
