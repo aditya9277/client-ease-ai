@@ -37,24 +37,24 @@ export const ClaimDocumentsCard = () => {
     }
   };  
   return (
-    <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-cyan-500/20 hover:border-cyan-500/40">
+    <Card className="medical-card card-gradient-success">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-gray-100">
+        <CardTitle className="flex items-center gap-2 text-slate-800">
           <FileText className="h-5 w-5 text-cyan-400" />
           Claim Documents
         </CardTitle>
       </CardHeader>
       <CardContent>
         {claimDocs.length === 0 ? (
-          <p className="text-gray-400">No claim documents found.</p>
+          <p className="text-slate-800">No claim documents found.</p>
         ) : (
           <ul className="max-h-64 overflow-y-auto space-y-3 scrollbar-hide">
             {claimDocs.map((doc) => (
               <li
                 key={doc.phoneNumber}
-                className="flex items-center justify-between p-3 rounded-md bg-[#0F172A]/60 border border-cyan-500/20"
+                className="flex items-center justify-between p-3 rounded-md bg-slate-50 border border-slate-200 text-slate-800"
               >
-                <span className="text-gray-300">📞 {doc.phoneNumber}</span>
+                <span className="text-slate-800">📞 {doc.phoneNumber}</span>
                 <Button
                   size="sm"
                   variant="outline"

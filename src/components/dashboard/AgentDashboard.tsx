@@ -215,17 +215,19 @@ const AgentDashboard = () => {
             <SmartRemindersCard />
             <CallHistoryCard />
             <KnowledgeBaseCard />
+            
+            <div className="md:col-span-2 lg:col-span-1">
+              <ClaimDocumentsCard/>
+            </div>
+            
+            <div className="md:col-span-2 lg:col-span-1">
+              <CallbackSchedulerCard />
+            </div>
             {lastCallReport && (
               <div className="mt-6">
                 <LastCallReport phoneNumber={phoneNumber} customerId="CUS-001" />
               </div>
             )}
-            <div className="md:col-span-2 lg:col-span-1">
-              <ClaimDocumentsCard/>
-            </div>
-            <div className="md:col-span-2 lg:col-span-1">
-              <CallbackSchedulerCard />
-            </div>
           </div>
         </div>
       )}

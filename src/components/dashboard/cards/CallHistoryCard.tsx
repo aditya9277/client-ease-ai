@@ -35,21 +35,21 @@ export const CallHistoryCard = () => {
 
   return (
     <>
-      <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-cyan-500/20 hover:border-cyan-500/40">
+      <Card className="medical-card card-gradient-primary">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-gray-100">
+          <CardTitle className="flex items-center gap-2 text-slate-800">
             <History className="h-5 w-5 text-cyan-400" />
             Call History
           </CardTitle>
         </CardHeader>
         <CardContent>
           {callHistory.length === 0 ? (
-            <p className="text-gray-400">No past calls found.</p>
+            <p className="text-sm text-slate-600">No past calls found.</p>
           ) : (
             <ul className="max-h-64 overflow-y-auto space-y-3 scrollbar-hide">
               {callHistory.map((call) => (
-                <li key={call.phoneNumber} className="flex items-center justify-between p-3 rounded-md bg-[#0F172A]/60 border border-cyan-500/20">
-                  <span className="text-gray-300">📞 {call.phoneNumber}</span>
+                <li key={call.phoneNumber} className="flex items-center justify-between p-3 rounded-md bg-slate-50 border border-slate-200 text-slate-800">
+                  <span className="text-slate-800">📞 {call.phoneNumber}</span>
                   <Button
                     size="sm"
                     variant="outline"
