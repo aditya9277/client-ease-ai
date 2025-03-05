@@ -8,22 +8,28 @@ export const AutomationCard = () => {
     window.open('http://localhost:8501/', '_blank', 'noopener,noreferrer');
   };
   return (
-    <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40">
+    <Card className="medical-card card-gradient-warning">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium text-gray-100">Workflow Automation</CardTitle>
-        <Bot className="h-4 w-4 text-purple-400" />
+        <CardTitle className="text-sm font-medium text-slate-800">
+          <div className="flex items-center gap-2">
+            <div className="icon-container icon-container-warning">
+              <Bot className="h-4 w-4" />
+            </div>
+            Workflow Automation
+          </div>
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-sm font-medium text-gray-300">Active Automations</span>
-            <Database className="h-4 w-4 text-purple-400" />
+            <span className="text-sm font-medium text-slate-700">Active Automations</span>
+            <Database className="h-4 w-4 text-warning" />
           </div>
           <div className="space-y-2">
-            <Button onClick={handleButtonClick} variant="outline" className="w-full justify-start text-left font-normal border-purple-500/20 text-gray-300 hover:bg-purple-500/10">
+            <Button onClick={handleButtonClick} variant="outline" className="w-full justify-start text-left font-normal border-warning/20 text-slate-700 hover:bg-warning/5">
               <span>Data Entry Assistant</span>
             </Button>
-            <Button variant="outline" className="w-full justify-start text-left font-normal border-purple-500/20 text-gray-300 hover:bg-purple-500/10">
+            <Button variant="outline" className="w-full justify-start text-left font-normal border-warning/20 text-slate-700 hover:bg-warning/5">
               <span>Form Auto-Fill</span>
             </Button>
           </div>

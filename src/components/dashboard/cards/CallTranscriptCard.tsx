@@ -31,10 +31,14 @@ export const CallTranscriptCard = ({ phoneNumber }: CallTranscriptCardProps) => 
   return (
     <Card className="medical-card card-gradient-info">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium text-slate-800">Live Call Transcript</CardTitle>
-        <div className="icon-container icon-container-info">
-          <MessageSquareText className="h-4 w-4" />
-        </div>
+        <CardTitle className="text-md font-medium text-slate-800">
+          <div className="flex items-center gap-2">
+            <div className="icon-container icon-container-info">
+              <MessageSquareText className="h-5 w-5" />
+            </div>
+            Live Call Transcript
+          </div>
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <ScrollArea className="h-[300px] w-full rounded-md border border-slate-200 bg-slate-50 p-4 shadow-sm">

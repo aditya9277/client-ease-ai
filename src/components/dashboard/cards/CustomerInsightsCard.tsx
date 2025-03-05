@@ -26,29 +26,36 @@ export const CustomerInsightsCard = () => {
   ];
 
   return (
-    <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40">
+    <Card className="medical-card card-gradient-warning">
       <CardHeader>
-        <CardTitle className="text-sm font-medium text-gray-100">Real-time Customer Insights</CardTitle>
+        <CardTitle className="text-md font-medium text-slate-800">
+          <div className="flex items-center gap-2">
+            <div className="icon-container icon-container-warning">
+              <Brain className="h-5 w-5" />
+            </div>
+            Real-time Customer Insights
+          </div>
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           {insights.map((insight, index) => (
             <div
               key={index}
-              className="flex items-center justify-between p-3 bg-[#1A1F2C]/60 rounded-lg"
+              className="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200"
             >
               <div className="flex items-center gap-3">
                 <insight.icon className={`h-5 w-5 ${
-                  insight.priority === "high" ? "text-red-400" :
-                  insight.priority === "medium" ? "text-yellow-400" :
-                  "text-blue-400"
+                  insight.priority === "high" ? "text-destructive" :
+                  insight.priority === "medium" ? "text-warning" :
+                  "text-info"
                 }`} />
                 <div>
-                  <p className="font-medium text-sm text-gray-200">{insight.type}</p>
-                  <p className="text-sm text-gray-400">{insight.detail}</p>
+                  <p className="font-medium text-sm text-slate-800">{insight.type}</p>
+                  <p className="text-sm text-slate-600">{insight.detail}</p>
                 </div>
               </div>
-              <Badge variant={insight.priority === "high" ? "destructive" : "secondary"} className="bg-purple-500/20 text-purple-300">
+              <Badge variant={insight.priority === "high" ? "destructive" : "secondary"} className="bg-warning/20 text-warning border-warning/30">
                 {insight.priority}
               </Badge>
             </div>

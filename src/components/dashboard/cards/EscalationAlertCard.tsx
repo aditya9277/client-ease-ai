@@ -70,7 +70,7 @@ export const EscalationAlertCard = ({ phoneNumber }) => {
     <>
       <Card className="medical-card card-gradient-destructive">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-destructive">
+          <CardTitle className="flex items-center gap-2 text-slate-800">
             <div className="icon-container icon-container-destructive">
               <AlertTriangle className="h-4 w-4" />
             </div>

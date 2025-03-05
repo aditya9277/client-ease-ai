@@ -12,7 +12,7 @@ import {
   Clock,
   PieChart,
   Activity,
-  Refresh,
+  RefreshCw,
   User,
   CalendarDays
 } from "lucide-react";

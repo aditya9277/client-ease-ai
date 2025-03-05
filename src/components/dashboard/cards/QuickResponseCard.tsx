@@ -40,10 +40,12 @@ export const QuickResponseCard = ({ sentiment }: QuickResponseCardProps) => {
   };
 
   return (
-    <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-cyan-500/20 hover:border-cyan-500/40">
+    <Card className="medical-card card-gradient-primary">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-gray-100">
-          <MessageSquare className="h-5 w-5 text-cyan-400" />
+        <CardTitle className="flex items-center gap-2 text-slate-800">
+          <div className="icon-container icon-container-primary">
+            <MessageSquare className="h-5 w-5" />
+          </div>
           Quick Responses
         </CardTitle>
       </CardHeader>
@@ -52,14 +54,14 @@ export const QuickResponseCard = ({ sentiment }: QuickResponseCardProps) => {
           {suggestions.map((suggestion, index) => (
             <div
               key={index}
-              className="flex items-center justify-between gap-2 p-3 bg-[#0F172A]/60 rounded-lg"
+              className="flex items-center justify-between gap-2 p-3 bg-slate-50 rounded-lg border border-slate-200"
             >
-              <p className="text-sm text-gray-300">{suggestion}</p>
+              <p className="text-sm text-slate-700">{suggestion}</p>
               <Button
                 size="sm"
                 variant="ghost"
                 onClick={() => handleSendResponse(suggestion)}
-                className="text-cyan-400 hover:text-cyan-300 hover:bg-cyan-500/10"
+                className="text-primary hover:text-primary hover:bg-primary/10"
               >
                 <Send className="h-4 w-4" />
               </Button>

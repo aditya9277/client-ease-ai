@@ -29,10 +29,12 @@ export const PerformanceMetricsCard = () => {
   ];
 
   return (
-    <Card className="bg-[#252A3C] border-purple-500/20 hover:border-purple-500/40">
+    <Card className="medical-card card-gradient-primary">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-gray-100">
-          <BarChart2 className="h-5 w-5 text-purple-400" />
+        <CardTitle className="flex items-center gap-2 text-slate-800">
+          <div className="icon-container icon-container-primary">
+            <BarChart2 className="h-5 w-5" />
+          </div>
           Performance Metrics
         </CardTitle>
       </CardHeader>
@@ -42,15 +44,15 @@ export const PerformanceMetricsCard = () => {
             <div key={metric.title} className="space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <metric.icon className="h-4 w-4 text-purple-400" />
-                  <span className="text-sm font-medium text-gray-300">{metric.title}</span>
+                  <metric.icon className="h-4 w-4 text-primary" />
+                  <span className="text-sm font-medium text-slate-700">{metric.title}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-bold text-gray-200">{metric.value}</span>
-                  <span className="text-xs text-green-400">{metric.trend}</span>
+                  <span className="text-sm font-bold text-slate-800">{metric.value}</span>
+                  <span className="text-xs text-success">{metric.trend}</span>
                 </div>
               </div>
-              <Progress value={metric.progress} className="h-2 bg-purple-900/20" />
+              <Progress value={metric.progress} className="h-2 bg-slate-100" />
             </div>
           ))}
         </div>

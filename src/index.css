@@ -147,44 +147,44 @@
 }
 
 .icon-container-primary {
-  @apply bg-primary/10 text-primary;
+  @apply bg-primary-50 text-primary;
 }
 
 .icon-container-success {
-  @apply bg-success/10 text-success;
+  @apply bg-success-50 text-success;
 }
 
 .icon-container-info {
-  @apply bg-info/10 text-info;
+  @apply bg-info-50 text-info;
 }
 
 .icon-container-warning {
-  @apply bg-warning/10 text-warning;
+  @apply bg-warning-50 text-warning;
 }
 
 .icon-container-destructive {
-  @apply bg-destructive/10 text-destructive;
+  @apply bg-destructive-50 text-destructive;
 }
 
 /* Badge styles */
 .badge-primary {
-  @apply bg-primary/10 text-primary rounded-full px-2 py-1 text-xs font-medium;
+  @apply bg-primary-50 text-primary rounded-full px-2 py-1 text-xs font-medium;
 }
 
 .badge-success {
-  @apply bg-success/10 text-success rounded-full px-2 py-1 text-xs font-medium;
+  @apply bg-success-50 text-success rounded-full px-2 py-1 text-xs font-medium;
 }
 
 .badge-warning {
-  @apply bg-warning/10 text-warning rounded-full px-2 py-1 text-xs font-medium;
+  @apply bg-warning-50 text-warning rounded-full px-2 py-1 text-xs font-medium;
 }
 
 .badge-danger {
-  @apply bg-destructive/10 text-destructive rounded-full px-2 py-1 text-xs font-medium;
+  @apply bg-destructive-50 text-destructive rounded-full px-2 py-1 text-xs font-medium;
 }
 
 .badge-info {
-  @apply bg-info/10 text-info rounded-full px-2 py-1 text-xs font-medium;
+  @apply bg-info-50 text-info rounded-full px-2 py-1 text-xs font-medium;
 }
 
 /* Progress styles */
