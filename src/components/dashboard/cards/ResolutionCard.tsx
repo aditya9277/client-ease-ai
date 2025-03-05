@@ -1,3 +1,4 @@
+
 import { ClipboardList, RefreshCw } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useEffect, useState } from "react";
@@ -23,16 +24,18 @@ export const ResolutionCard = () => {
   }, []);
 
   return (
-    <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-cyan-500/20 hover:border-cyan-500/40">
+    <Card className="border-indigo-500/20 hover:border-indigo-500/40 shadow-lg shadow-indigo-500/5 transition-all duration-300">
       <CardHeader className="flex items-center justify-between">
-        <CardTitle className="flex items-center gap-2 text-cyan-400">
+        <CardTitle className="flex items-center gap-2 text-indigo-400">
           <ClipboardList className="h-5 w-5" />
           AI-Powered Resolutions
         </CardTitle>
-        <RefreshCw className="h-4 w-4 animate-spin text-cyan-300" />
+        <RefreshCw className="h-4 w-4 animate-spin text-indigo-300" />
       </CardHeader>
       <CardContent>
-        <p className="text-gray-300">{resolution}</p>
+        <div className="p-4 rounded-lg bg-slate-900/60 border border-indigo-500/10">
+          <p className="text-slate-300">{resolution}</p>
+        </div>
       </CardContent>
     </Card>
   );

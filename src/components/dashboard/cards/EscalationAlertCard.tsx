@@ -1,3 +1,4 @@
+
 import { AlertTriangle, Eye, Send } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -67,7 +68,7 @@ export const EscalationAlertCard = ({ phoneNumber }) => {
 
   return (
     <>
-      <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-red-500/20 hover:border-red-500/40">
+      <Card className="border-red-500/20 hover:border-red-500/40 shadow-lg shadow-red-500/5">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-red-400 animate-pulse">
             <AlertTriangle className="h-5 w-5" />
@@ -76,16 +77,18 @@ export const EscalationAlertCard = ({ phoneNumber }) => {
         </CardHeader>
         <CardContent>
           {escalations.length === 0 ? (
-            <p className="text-gray-400">No escalations at the moment.</p>
+            <div className="p-4 rounded-lg bg-slate-900/60 border border-slate-700/40 flex items-center justify-center h-32">
+              <p className="text-slate-400">No escalations at the moment.</p>
+            </div>
           ) : (
             <ul className="space-y-3 max-h-60 overflow-y-auto scrollbar-hide">
               {escalations.map((escalation, index) => (
                 <li
                   key={index}
-                  className="flex justify-between items-center p-3 bg-[#0F172A]/60 rounded-lg border border-red-500/20"
+                  className="flex justify-between items-center p-3 bg-slate-900/60 rounded-lg border border-red-500/20 hover:border-red-500/40 transition-all duration-300"
                 >
                   <div>
-                    <p className="text-gray-300">📞 Escalation at: {new Date(escalation.timestamp).toLocaleString()}</p>
+                    <p className="text-slate-300">📞 Escalation at: {new Date(escalation.timestamp).toLocaleString()}</p>
                     <p className="text-sm text-red-300">Reason: {escalation.reason}</p>
                   </div>
                   <Button
@@ -105,22 +108,22 @@ export const EscalationAlertCard = ({ phoneNumber }) => {
 
       {/* 📌 Escalation Details Modal */}
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="bg-[#1E293B]/90 border border-red-500/20">
+        <DialogContent className="bg-gradient-to-b from-slate-800 to-slate-900 border border-red-500/20">
           <DialogHeader>
-            <DialogTitle className="text-gray-100">Escalation Details</DialogTitle>
+            <DialogTitle className="text-slate-200">Escalation Details</DialogTitle>
           </DialogHeader>
           {selectedEscalation && (
-            <div className="p-4 bg-[#0F172A]/60 rounded-lg">
-              <p className="text-sm text-gray-300">
+            <div className="p-4 bg-slate-900/60 rounded-lg border border-red-500/10">
+              <p className="text-sm text-slate-300">
                 <strong className="text-red-400">📞 Customer:</strong> {selectedEscalation.phoneNumber}
               </p>
-              <p className="text-sm text-gray-300">
+              <p className="text-sm text-slate-300">
                 <strong className="text-red-400">🕒 Time:</strong> {new Date(selectedEscalation.timestamp).toLocaleString()}
               </p>
               <p className="text-sm text-red-300 mt-2">
                 <strong>⚠️ Reason:</strong> {selectedEscalation.reason}
               </p>
-              <p className="text-sm text-gray-300">
+              <p className="text-sm text-slate-300">
                 <strong>🧠 Sentiment:</strong> {selectedEscalation.sentiment}
               </p>
             </div>
