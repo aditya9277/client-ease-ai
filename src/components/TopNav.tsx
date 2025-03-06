@@ -37,12 +37,12 @@ export default function TopNav({ isAgent, setIsAgent }: TopNavProps) {
 
   const handleManagerLogin = () => {
     // Hardcoded credentials for demo purposes
-    if (managerId === "manager123" && password === "manager123") {
+    if (managerId === "manager" && password === "manager") {
       setIsAgent(false);
       setShowLoginDialog(false);
       toast.success("Manager authenticated successfully!");
     } else {
-      toast.error("Invalid credentials. Try manager123/manager123");
+      toast.error("Invalid credentials. Try manager/manager");
     }
     // Reset fields
     setManagerId("");
@@ -114,7 +114,7 @@ export default function TopNav({ isAgent, setIsAgent }: TopNavProps) {
                   onChange={(e) => setManagerId(e.target.value)}
                 />
               </div>
-              <div className="text-xs text-primary">Hint: manager123</div>
+              <div className="text-xs text-primary">Hint: manager</div>
             </div>
             <div className="space-y-2">
               <Label htmlFor="password" className="text-slate-700">Password</Label>
@@ -129,7 +129,7 @@ export default function TopNav({ isAgent, setIsAgent }: TopNavProps) {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <div className="text-xs text-primary">Hint: manager123</div>
+              <div className="text-xs text-primary">Hint: manager</div>
             </div>
           </div>
           <DialogFooter>
