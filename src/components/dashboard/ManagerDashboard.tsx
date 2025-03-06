@@ -12,7 +12,10 @@ import {
   Clock, 
   ChartPie, 
   ArrowUpRight, 
-  TrendingUp
+  TrendingUp,
+  Filter,
+  Download,
+  Share2
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -23,9 +26,14 @@ import {
   Tooltip,
   Legend
 } from 'recharts';
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { toast } from "sonner";
 
 const ManagerDashboard = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("week");
+  const [selectedTeam, setSelectedTeam] = useState("all");
+  const [isExporting, setIsExporting] = useState(false);
 
   // Sample data for the agent performance pie chart
   const performanceData = [
@@ -35,8 +43,20 @@ const ManagerDashboard = () => {
     { name: "Needs Improvement", value: 4, color: "#ff3366" },
   ];
 
+  const handleExport = () => {
+    setIsExporting(true);
+    setTimeout(() => {
+      setIsExporting(false);
+      toast.success("Dashboard exported successfully!");
+    }, 1500);
+  };
+
+  const handleShare = () => {
+    toast.success("Dashboard link copied to clipboard!");
+  };
+
   return (
-    <div className="space-y-8 p-6 bg-gradient-to-b from-slate-100 to-slate-50 min-h-screen">
+    <div className="space-y-8 p-6 bg-gradient-to-b from-slate-100 to-slate-50 min-h-screen animate-fade-in">
       <div className="flex items-center justify-between">
         <div className="space-y-2">
           <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-info to-accent">
@@ -47,37 +67,102 @@ const ManagerDashboard = () => {
           </p>
         </div>
 
-        <div className="flex space-x-2">
-          <button 
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-              selectedPeriod === "day" 
-                ? "bg-primary text-white shadow-md" 
-                : "bg-white text-slate-600 hover:bg-slate-50"
-            }`}
-            onClick={() => setSelectedPeriod("day")}
-          >
-            Daily
-          </button>
-          <button 
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-              selectedPeriod === "week" 
-                ? "bg-primary text-white shadow-md" 
-                : "bg-white text-slate-600 hover:bg-slate-50"
-            }`}
-            onClick={() => setSelectedPeriod("week")}
-          >
-            Weekly
-          </button>
-          <button 
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-              selectedPeriod === "month" 
-                ? "bg-primary text-white shadow-md" 
-                : "bg-white text-slate-600 hover:bg-slate-50"
-            }`}
-            onClick={() => setSelectedPeriod("month")}
-          >
-            Monthly
-          </button>
+        <div className="flex space-x-4">
+          <div className="flex space-x-2">
+            <button 
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                selectedPeriod === "day" 
+                  ? "bg-primary text-white shadow-md" 
+                  : "bg-white text-slate-600 hover:bg-slate-50"
+              }`}
+              onClick={() => setSelectedPeriod("day")}
+            >
+              Daily
+            </button>
+            <button 
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                selectedPeriod === "week" 
+                  ? "bg-primary text-white shadow-md" 
+                  : "bg-white text-slate-600 hover:bg-slate-50"
+              }`}
+              onClick={() => setSelectedPeriod("week")}
+            >
+              Weekly
+            </button>
+            <button 
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                selectedPeriod === "month" 
+                  ? "bg-primary text-white shadow-md" 
+                  : "bg-white text-slate-600 hover:bg-slate-50"
+              }`}
+              onClick={() => setSelectedPeriod("month")}
+            >
+              Monthly
+            </button>
+          </div>
+          
+          <div className="flex space-x-2">
+            <Button 
+              variant="outline"
+              size="sm"
+              className="bg-white border-slate-200"
+              onClick={handleExport}
+            >
+              <Download className={`h-4 w-4 mr-1 ${isExporting ? 'animate-bounce' : ''}`} />
+              {isExporting ? 'Exporting...' : 'Export'}
+            </Button>
+            
+            <Button 
+              variant="outline"
+              size="sm"
+              className="bg-white border-slate-200"
+              onClick={handleShare}
+            >
+              <Share2 className="h-4 w-4 mr-1" />
+              Share
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm mb-6 animate-fade-in">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <div className="bg-primary/10 p-3 rounded-lg">
+              <Filter className="h-5 w-5 text-primary" />
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-slate-800">Team View</h3>
+              <p className="text-sm text-slate-500">Filter dashboard by team</p>
+            </div>
+          </div>
+
+          <div className="flex space-x-2">
+            <Badge 
+              className={`px-3 py-1 cursor-pointer transition-all ${selectedTeam === 'all' ? 'bg-primary text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
+              onClick={() => setSelectedTeam('all')}
+            >
+              All Teams
+            </Badge>
+            <Badge 
+              className={`px-3 py-1 cursor-pointer transition-all ${selectedTeam === 'claims' ? 'bg-primary text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
+              onClick={() => setSelectedTeam('claims')}
+            >
+              Claims
+            </Badge>
+            <Badge 
+              className={`px-3 py-1 cursor-pointer transition-all ${selectedTeam === 'customer' ? 'bg-primary text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
+              onClick={() => setSelectedTeam('customer')}
+            >
+              Customer Service
+            </Badge>
+            <Badge 
+              className={`px-3 py-1 cursor-pointer transition-all ${selectedTeam === 'tech' ? 'bg-primary text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
+              onClick={() => setSelectedTeam('tech')}
+            >
+              Technical Support
+            </Badge>
+          </div>
         </div>
       </div>
 
@@ -85,7 +170,7 @@ const ManagerDashboard = () => {
       
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div className="lg:col-span-2">
-          <AnalyticsCharts />
+          <AnalyticsCharts selectedPeriod={selectedPeriod} />
         </div>
         <div className="space-y-6">
           <AIInsights />
@@ -120,6 +205,8 @@ const ManagerDashboard = () => {
                     fill="#8884d8"
                     dataKey="value"
                     label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                    animationDuration={1000}
+                    animationBegin={200}
                   >
                     {performanceData.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={entry.color} />

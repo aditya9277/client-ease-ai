@@ -1,12 +1,14 @@
 
-import { ClipboardList, RefreshCw } from "lucide-react";
+import { ClipboardList, RefreshCw, Check, Copy } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "sonner";
 
 export const ResolutionCard = () => {
   const [resolution, setResolution] = useState("Waiting for live call data...");
   const [isLoading, setIsLoading] = useState(true);
+  const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
     const fetchResolution = async () => {
@@ -27,6 +29,19 @@ export const ResolutionCard = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const handleCopyToResponse = () => {
+    navigator.clipboard.writeText(resolution)
+      .then(() => {
+        setIsCopied(true);
+        toast.success("Resolution copied to clipboard!");
+        setTimeout(() => setIsCopied(false), 2000);
+      })
+      .catch(err => {
+        console.error("Failed to copy:", err);
+        toast.error("Failed to copy resolution");
+      });
+  };
+
   return (
     <Card className="medical-card card-gradient-success hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
       <CardHeader className="flex items-center justify-between">
@@ -38,12 +53,12 @@ export const ResolutionCard = () => {
             AI-Powered Resolutions
           </span>
         </CardTitle>
-        <RefreshCw className="h-4 w-4 animate-spin text-success/70" />
+        <RefreshCw className={`h-4 w-4 text-success/70 ${isLoading ? 'animate-spin' : ''}`} />
       </CardHeader>
       <CardContent>
         <div className="p-4 rounded-lg bg-slate-50 border border-success/10 shadow-sm transition-all duration-300 hover:border-success/20">
           {isLoading ? (
-            <div className="flex items-center justify-center space-x-2 animate-pulse">
+            <div className="flex items-center justify-center space-x-2 animate-pulse py-6">
               <div className="w-3 h-3 bg-success/60 rounded-full animate-bounce"></div>
               <div className="w-3 h-3 bg-success/60 rounded-full animate-bounce delay-100"></div>
               <div className="w-3 h-3 bg-success/60 rounded-full animate-bounce delay-200"></div>
@@ -56,8 +71,23 @@ export const ResolutionCard = () => {
                   <div className="w-2 h-2 rounded-full bg-success"></div>
                   <span className="text-xs text-success font-medium">AI confidence: 92%</span>
                 </div>
-                <button className="text-xs text-primary hover:text-primary/80 font-medium transition-colors">
-                  Copy to response
+                <button 
+                  className={`flex items-center text-xs font-medium transition-colors ${
+                    isCopied ? 'text-success' : 'text-primary hover:text-primary/80'
+                  }`}
+                  onClick={handleCopyToResponse}
+                >
+                  {isCopied ? (
+                    <>
+                      <Check className="h-3 w-3 mr-1" />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="h-3 w-3 mr-1" />
+                      Copy to response
+                    </>
+                  )}
                 </button>
               </div>
             </div>
