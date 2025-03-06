@@ -30,21 +30,21 @@ export const CustomerAlertsCard = ({ phoneNumber }) => {
   if (!alertData) return null;
 
   return (
-    <Card className="bg-[#1E293B]/90 backdrop-blur-sm border-red-500/20 hover:border-red-500/40 animate-pulse">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-red-400">
+    <Card className="medical-card border-orange-400/20 hover:border-orange-400/40 animate-float">
+      <CardHeader className="bg-orange-500/10">
+        <CardTitle className="flex items-center gap-2 text-orange-500">
           <AlertTriangle className="h-5 w-5" />
           Customer Alert
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-gray-300">
+        <p className="text-slate-800">
           <strong>🚨 Risk Score:</strong> {alertData.riskScore}/10
         </p>
         <p className="text-red-400">
           <strong>⚠️ Warning:</strong> {alertData.agentWarning}
         </p>
-        <p className="text-green-300">
+        <p className="text-green-600">
           <strong>💡 Suggested Action:</strong> {alertData.agentSuggestion}
         </p>
       </CardContent>
