@@ -113,7 +113,7 @@ const Index = () => {
                 onClick={() => window.open("https://drive.google.com/file/d/1PkOEKa1KfzJxh4YU_5WWwqPvnM0z81D7/view?usp=sharing", "_blank")}
                 variant="outline" 
                 size="lg"
-                className="border-cyan-500/20 hover:bg-cyan-500/10 text-white px-8 py-6 text-lg rounded-full"
+                className="bg-gradient-to-r from-red-600 to-red-600 hover:from-red-700 hover:to-red-700 text-white px-8 py-6 text-lg rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/25"
               >
                 Watch Demo
               </Button>
