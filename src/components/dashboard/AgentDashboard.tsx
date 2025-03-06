@@ -54,6 +54,7 @@ import { ResolutionCard } from "./cards/ResolutionCard";
 import { CustomerAlertsCard } from "./cards/CustomerAlertsCard";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ProfileCard } from "./cards/ProfileCard";
 
 const AgentDashboard = () => {
   const [isCallActive, setIsCallActive] = useState(false);
@@ -193,9 +194,10 @@ const AgentDashboard = () => {
           </DialogContent>
         </Dialog>
       </div>
-
       {/* Agent Profile Header */}
-      <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm animate-fade-in">
+      {!isCallActive && <ProfileCard/> }
+      
+      {/* <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm animate-fade-in">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <div className="relative group">
@@ -252,7 +254,7 @@ const AgentDashboard = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {isCallActive ? (
         <div className="space-y-6 animate-fade-in">

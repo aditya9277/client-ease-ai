@@ -3,45 +3,57 @@ import { BookOpen, Search } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
+import axios from "axios";
 
 export const KnowledgeBaseCard = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [articles] = useState([
-    {
-      id: 1,
-      title: "Common Insurance Claims Process",
-      category: "Claims",
-    },
-    {
-      id: 2,
-      title: "Customer Service Best Practices",
-      category: "Service",
-    },
-    {
-      id: 3,
-      title: "Policy Coverage Guidelines",
-      category: "Policy",
-    },
-  ]);
+  const [loading, setLoading] = useState(false);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [aiResponse, setAiResponse] = useState<string | null>(null);
 
-  const handleSearch = (e: React.FormEvent) => {
+  useEffect(() => {
+    if (!searchQuery.trim()) {
+      setSuggestions([]);
+      setAiResponse(null);
+      return;
+    }
+
+    const fetchSuggestions = async () => {
+      try {
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/knowledge-base/search?query=${searchQuery}`);
+        setSuggestions(data.suggestions || []);
+      } catch (error) {
+        console.error("Error fetching suggestions:", error);
+      }
+    };
+
+    fetchSuggestions();
+  }, [searchQuery]);
+
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success(`Searching knowledge base for: ${searchQuery}`);
-  };
+    if (!searchQuery.trim()) return;
 
-  const handleArticleClick = (title: string) => {
-    toast.success(`Opening article: ${title}`);
+    setLoading(true);
+    try {
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/knowledge-base/query?query=${searchQuery}`);
+      setAiResponse(data.answer);
+      toast.success("AI-powered response fetched!");
+    } catch (error) {
+      console.error("Error fetching AI response:", error);
+      toast.error("Could not fetch response. Try again!");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <Card className="medical-card card-gradient-info">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-slate-800">
-          <div className="icon-container icon-container-info">
-            <BookOpen className="h-5 w-5" />
-          </div>
+          <BookOpen className="h-5 w-5 text-cyan-400" />
           Knowledge Base
         </CardTitle>
       </CardHeader>
@@ -49,31 +61,29 @@ export const KnowledgeBaseCard = () => {
         <form onSubmit={handleSearch} className="space-y-4">
           <div className="flex gap-2">
             <Input
-              placeholder="Search knowledge base..."
+              placeholder="Ask AI a question..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-slate-50 border-slate-200 text-slate-800 placeholder:text-slate-500"
+              className="bg-white/60 border-cyan-500/20 text-slate-800 placeholder:text-slate-800"
             />
-            <Button type="submit" variant="outline" className="border-info/20 text-info hover:text-info hover:bg-info/5">
-              <Search className="h-4 w-4" />
+            <Button type="submit" variant="outline" className="border-cyan-500/20 text-cyan-400 hover:text-cyan-300">
+              {loading ? "Searching..." : <Search className="h-4 w-4" />}
             </Button>
           </div>
-          <div className="space-y-2">
-            {articles.map((article) => (
-              <Button
-                key={article.id}
-                variant="ghost"
-                className="w-full justify-start text-left hover:bg-info/5 text-slate-700"
-                onClick={() => handleArticleClick(article.title)}
-              >
-                <BookOpen className="mr-2 h-4 w-4 text-info" />
-                <div>
-                  <p className="font-medium">{article.title}</p>
-                  <p className="text-xs text-slate-500">{article.category}</p>
-                </div>
-              </Button>
-            ))}
-          </div>
+
+          {suggestions.length > 0 && (
+            <div className="space-y-2 p-3 bg-white/60 border border-cyan-500/20 rounded-md">
+              {suggestions.map((s, idx) => (
+                <p key={idx} className="text-sm text-gray-300">{s}</p>
+              ))}
+            </div>
+          )}
+
+          {aiResponse && (
+            <div className="p-4 bg-white/60 border border-cyan-500/20 rounded-md text-slate-800">
+              <p className="text-sm">{aiResponse}</p>
+            </div>
+          )}
         </form>
       </CardContent>
     </Card>
