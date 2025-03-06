@@ -64,7 +64,7 @@ export const LiveKnowledgeBaseCard = () => {
               placeholder="Ask AI a question..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-[#0F172A]/60 border-cyan-500/20 text-gray-200 placeholder:text-gray-500"
+              className="bg-white/60 border-cyan-500/20 text-gray-200 placeholder:text-gray-500"
             />
             <Button type="submit" variant="outline" className="border-cyan-500/20 text-cyan-400 hover:text-cyan-300">
               {loading ? "Searching..." : <Search className="h-4 w-4" />}
@@ -72,7 +72,7 @@ export const LiveKnowledgeBaseCard = () => {
           </div>
 
           {suggestions.length > 0 && (
-            <div className="space-y-2 p-3 bg-[#0F172A]/60 border border-cyan-500/20 rounded-md">
+            <div className="space-y-2 p-3 bg-white/60 border border-cyan-500/20 rounded-md">
               {suggestions.map((s, idx) => (
                 <p key={idx} className="text-sm text-gray-300">{s}</p>
               ))}
@@ -80,7 +80,7 @@ export const LiveKnowledgeBaseCard = () => {
           )}
 
           {aiResponse && (
-            <div className="p-4 bg-[#0F172A]/60 border border-cyan-500/20 rounded-md text-gray-300">
+            <div className="p-4 bg-white/60 border border-cyan-500/20 rounded-md text-gray-300">
               <p className="text-sm">{aiResponse}</p>
             </div>
           )}

@@ -268,11 +268,11 @@ const AgentDashboard = () => {
             <div className="space-y-6">
               <CallTranscriptCard phoneNumber={phoneNumber} />
               <CustomerInsightsCard />
-              <LiveKnowledgeBaseCard />              
             </div>
             <div className="space-y-6">
               <EscalationAlertCard phoneNumber={phoneNumber} />
-              <ResolutionCard/>
+              <LiveKnowledgeBaseCard />              
+
               <QuickResponseCard sentiment={currentSentiment} />              
             </div>
           </div>
