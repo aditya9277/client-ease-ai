@@ -14,7 +14,11 @@ import {
   Activity,
   RefreshCw,
   User,
-  CalendarDays
+  CalendarDays,
+  Bell,
+  Crown,
+  Star,
+  Sparkles
 } from "lucide-react";
 import {
   Dialog,
@@ -48,6 +52,8 @@ import { ClaimDocumentsCard } from "./cards/ClaimDocumentsCard";
 import { EscalationAlertCard } from "./cards/EscalationAlertCard";
 import { ResolutionCard } from "./cards/ResolutionCard";
 import { CustomerAlertsCard } from "./cards/CustomerAlertsCard";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const AgentDashboard = () => {
   const [isCallActive, setIsCallActive] = useState(false);
@@ -122,6 +128,36 @@ const AgentDashboard = () => {
           </p>
         </div>
 
+        {/* Nisha's Profile Section */}
+        <div className="flex items-center space-x-4 mr-4 bg-white p-2 rounded-full shadow-md border border-slate-100 animate-fade-in">
+          <div className="flex flex-col items-end">
+            <div className="flex items-center">
+              <span className="text-sm font-semibold text-slate-700">Nisha Sharma</span>
+              <Badge className="ml-2 bg-gradient-to-r from-primary to-accent text-white animate-pulse">
+                <Crown className="h-3 w-3 mr-1" /> Top Agent
+              </Badge>
+            </div>
+            <div className="flex items-center text-xs text-slate-500">
+              <Clock className="h-3 w-3 mr-1" /> 
+              <span>Active since 08:30 AM</span>
+              <div className="ml-2 flex items-center">
+                <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
+                <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
+                <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
+                <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
+                <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
+              </div>
+            </div>
+          </div>
+          <div className="relative">
+            <Avatar className="h-12 w-12 border-2 border-primary shadow-lg ring-2 ring-white">
+              <AvatarImage src="https://randomuser.me/api/portraits/women/44.jpg" alt="Nisha Sharma" />
+              <AvatarFallback className="bg-gradient-to-br from-primary to-accent text-white">NS</AvatarFallback>
+            </Avatar>
+            <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-success border-2 border-white"></span>
+          </div>
+        </div>
+
         <div className="flex items-center">
           <div className="mr-4 flex items-center">
             <span className="text-slate-700 font-medium mr-2">Click here to test our prototype!</span>
@@ -135,8 +171,8 @@ const AgentDashboard = () => {
             size="lg"
             className={`gap-2 transition-all duration-300 shadow-md hover:shadow-lg ${
               isCallActive
-                ? "bg-destructive hover:bg-destructive/90"
-                : "bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90"
+                ? "bg-destructive hover:bg-destructive/90 animate-pulse"
+                : "bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 animate-float"
             } text-white font-medium rounded-full`}
             onClick={() => {
               if (isCallActive) {
@@ -147,6 +183,7 @@ const AgentDashboard = () => {
             }}>
             <Phone className="h-4 w-4" />
             {isCallActive ? "End Call" : "Start Call"}
+            {!isCallActive && <Sparkles className="h-3 w-3 ml-1 text-yellow-200" />}
           </Button>
         </div>
 
@@ -171,14 +208,15 @@ const AgentDashboard = () => {
               placeholder="91XXXXXXXXXX"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
-              className="bg-slate-50 border-slate-200 text-slate-800 rounded-lg"
+              className="bg-slate-50 border-slate-200 text-slate-800 rounded-lg focus:ring-2 focus:ring-primary/20 transition-all"
             />
 
             <DialogFooter>
               <Button 
                 onClick={startCall}
-                className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white rounded-lg"
+                className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white rounded-lg transition-all duration-300 hover:shadow-md"
               >
+                <Phone className="h-4 w-4 mr-2" />
                 Start Call
               </Button>
             </DialogFooter>
