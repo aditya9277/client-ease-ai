@@ -7,11 +7,7 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import axios from "axios";
 
-interface LiveKnowledgeBaseCardProps {
-  isLoading?: boolean;
-}
-
-export const LiveKnowledgeBaseCard = ({ isLoading = false }: LiveKnowledgeBaseCardProps) => {
+export const LiveKnowledgeBaseCard = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [suggestions, setSuggestions] = useState<string[]>([]);
@@ -52,32 +48,6 @@ export const LiveKnowledgeBaseCard = ({ isLoading = false }: LiveKnowledgeBaseCa
       setLoading(false);
     }
   };
-
-  if (isLoading) {
-    return (
-      <Card className="medical-card card-gradient-info">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-slate-800">
-            <BookOpen className="h-5 w-5 text-cyan-400" />
-            Knowledge Base
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div className="flex gap-2">
-              <div className="h-10 bg-slate-200 rounded-md animate-pulse flex-grow"></div>
-              <div className="h-10 w-10 bg-slate-200 rounded-md animate-pulse"></div>
-            </div>
-            <div className="space-y-2">
-              <div className="h-16 bg-slate-200 rounded-md animate-pulse"></div>
-              <div className="h-16 bg-slate-200 rounded-md animate-pulse"></div>
-              <div className="h-16 bg-slate-200 rounded-md animate-pulse"></div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    );
-  }
 
   return (
     <Card className="medical-card card-gradient-info">

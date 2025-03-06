@@ -7,23 +7,18 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface CallTranscriptCardProps {
   phoneNumber: string;
-  isLoading?: boolean;
 }
 
-export const CallTranscriptCard = ({ phoneNumber, isLoading = false }: CallTranscriptCardProps) => {
+export const CallTranscriptCard = ({ phoneNumber }: CallTranscriptCardProps) => {
   const [transcriptText, setTranscriptText] = useState("Waiting for call to begin...");
-  const [isCardLoading, setIsCardLoading] = useState(true);
 
   // ✅ Fetch transcript in real-time
   const fetchTranscript = async () => {
     try {
-      setIsCardLoading(true);
       const response = await axios.get(`${import.meta.env.VITE_API_URL}/logs/transcript/${phoneNumber}`);
       setTranscriptText(response.data);
-      setIsCardLoading(false);
     } catch (error) {
       console.error("❌ Failed to fetch transcript:", error);
-      setIsCardLoading(false);
     }
   };
 
@@ -46,22 +41,11 @@ export const CallTranscriptCard = ({ phoneNumber, isLoading = false }: CallTrans
         </CardTitle>
       </CardHeader>
       <CardContent>
-        {isCardLoading || isLoading ? (
-          <div className="h-[300px] w-full rounded-md border border-slate-200 bg-slate-50 p-4 shadow-sm flex flex-col justify-center items-center space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-info rounded-full animate-bounce"></div>
-              <div className="w-3 h-3 bg-info rounded-full animate-bounce delay-100"></div>
-              <div className="w-3 h-3 bg-info rounded-full animate-bounce delay-200"></div>
-            </div>
-            <p className="text-sm text-slate-500 text-center">Loading call transcript...</p>
-          </div>
-        ) : (
-          <ScrollArea className="h-[300px] w-full rounded-md border border-slate-200 bg-slate-50 p-4 shadow-sm">
-            <pre className="text-sm whitespace-pre-wrap font-mono text-slate-600 leading-relaxed">
-              {transcriptText}
-            </pre>
-          </ScrollArea>
-        )}
+        <ScrollArea className="h-[300px] w-full rounded-md border border-slate-200 bg-slate-50 p-4 shadow-sm">
+          <pre className="text-sm whitespace-pre-wrap font-mono text-slate-600 leading-relaxed">
+            {transcriptText}
+          </pre>
+        </ScrollArea>
       </CardContent>
     </Card>
   );

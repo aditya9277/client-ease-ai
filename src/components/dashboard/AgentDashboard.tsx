@@ -54,7 +54,6 @@ import { ResolutionCard } from "./cards/ResolutionCard";
 import { CustomerAlertsCard } from "./cards/CustomerAlertsCard";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ProfileCard } from "./cards/ProfileCard";
 
 const AgentDashboard = () => {
   const [isCallActive, setIsCallActive] = useState(false);
@@ -64,37 +63,6 @@ const AgentDashboard = () => {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [isLoading, setIsLoading] = useState({
-    transcript: true,
-    insights: true,
-    knowledgeBase: true,
-    escalation: true,
-    resolution: true,
-    quickResponse: true
-  });
-
-  // Simulate data loading for all cards
-  useEffect(() => {
-    if (isCallActive) {
-      // Reset loading states when call starts
-      setIsLoading({
-        transcript: true,
-        insights: true,
-        knowledgeBase: true,
-        escalation: true,
-        resolution: true,
-        quickResponse: true
-      });
-
-      // Simulate different loading times for each card
-      setTimeout(() => setIsLoading(prev => ({ ...prev, transcript: false })), 2000);
-      setTimeout(() => setIsLoading(prev => ({ ...prev, insights: false })), 3000);
-      setTimeout(() => setIsLoading(prev => ({ ...prev, knowledgeBase: false })), 3500);
-      setTimeout(() => setIsLoading(prev => ({ ...prev, escalation: false })), 2800);
-      setTimeout(() => setIsLoading(prev => ({ ...prev, resolution: false })), 2500);
-      setTimeout(() => setIsLoading(prev => ({ ...prev, quickResponse: false })), 4000);
-    }
-  }, [isCallActive]);
 
   const startCall = async () => {
     try {
@@ -105,8 +73,8 @@ const AgentDashboard = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-      setIsCallActive(true);
-      setIsDialogOpen(false);
+      setIsCallActive(!isCallActive);
+      setIsDialogOpen(!isDialogOpen);
 
       toast.success("Call initiated successfully!");
     } catch (error) {
@@ -226,8 +194,65 @@ const AgentDashboard = () => {
         </Dialog>
       </div>
 
-      {/* Agent Profile Header - Only show when call is not active */}
-      {!isCallActive && <ProfileCard />}
+      {/* Agent Profile Header */}
+      <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm animate-fade-in">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <div className="relative group">
+              <Avatar className="h-14 w-14 border-2 border-primary shadow-lg ring-2 ring-white transition-all duration-300 group-hover:scale-105">
+                <AvatarImage src="https://randomuser.me/api/portraits/women/44.jpg" alt="Nisha Sharma" />
+                <AvatarFallback className="bg-gradient-to-br from-primary to-accent text-white">NS</AvatarFallback>
+              </Avatar>
+              <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-success border-2 border-white animate-pulse"></span>
+            </div>
+            <div>
+              <div className="flex items-center">
+                <h3 className="text-lg font-semibold text-slate-800">Nisha Sharma</h3>
+                <Badge className="ml-2 bg-gradient-to-r from-primary to-accent text-white animate-pulse">
+                  <Crown className="h-3 w-3 mr-1" /> Top Agent
+                </Badge>
+              </div>
+              <div className="flex items-center text-sm text-slate-500 mt-1">
+                <div className="flex items-center mr-3">
+                  <Clock className="h-3 w-3 mr-1" /> 
+                  <span>Active since 08:30 AM</span>
+                </div>
+                <div className="flex items-center">
+                  <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
+                  <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
+                  <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
+                  <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
+                  <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="space-y-2">
+            <div className="flex items-center space-x-3">
+              <div className="bg-success/10 px-3 py-1 rounded-full flex items-center">
+                <div className="h-2 w-2 bg-success rounded-full animate-pulse mr-2"></div>
+                <span className="text-sm font-medium text-success">Available</span>
+              </div>
+              <div className="bg-primary/10 px-3 py-1 rounded-full flex items-center">
+                <MessageSquare className="h-3 w-3 text-primary mr-1" />
+                <span className="text-sm font-medium text-primary">24 Calls Today</span>
+              </div>
+              <div className="bg-accent/10 px-3 py-1 rounded-full flex items-center">
+                <Activity className="h-3 w-3 text-accent mr-1" />
+                <span className="text-sm font-medium text-accent">96% Resolution Rate</span>
+              </div>
+            </div>
+            <div className="h-2 bg-slate-100 rounded-full w-full">
+              <div className="h-2 bg-gradient-to-r from-success to-primary rounded-full w-[85%]"></div>
+            </div>
+            <div className="flex justify-between text-xs text-slate-500">
+              <span>Daily Goal: 85%</span>
+              <span>30/35 Resolved</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {isCallActive ? (
         <div className="space-y-6 animate-fade-in">
@@ -239,14 +264,14 @@ const AgentDashboard = () => {
           />
           <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-6">
-              <CallTranscriptCard phoneNumber={phoneNumber} isLoading={isLoading.transcript} />
-              <CustomerInsightsCard isLoading={isLoading.insights} />
-              <LiveKnowledgeBaseCard isLoading={isLoading.knowledgeBase} />              
+              <CallTranscriptCard phoneNumber={phoneNumber} />
+              <CustomerInsightsCard />
+              <LiveKnowledgeBaseCard />              
             </div>
             <div className="space-y-6">
-              <EscalationAlertCard phoneNumber={phoneNumber} isLoading={isLoading.escalation} />
-              <ResolutionCard isLoading={isLoading.resolution} />
-              <QuickResponseCard sentiment={currentSentiment} isLoading={isLoading.quickResponse} />              
+              <EscalationAlertCard phoneNumber={phoneNumber} />
+              <ResolutionCard/>
+              <QuickResponseCard sentiment={currentSentiment} />              
             </div>
           </div>
         </div>
