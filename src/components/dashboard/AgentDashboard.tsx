@@ -200,7 +200,7 @@ const AgentDashboard = () => {
           <div className="flex items-center space-x-4">
             <div className="relative group">
               <Avatar className="h-14 w-14 border-2 border-primary shadow-lg ring-2 ring-white transition-all duration-300 group-hover:scale-105">
-                <AvatarImage src="https://randomuser.me/api/portraits/women/44.jpg" alt="Nisha Sharma" />
+                <AvatarImage src="https://randomuser.me/api/portraits/women/40.jpg" alt="Nisha Sharma" />
                 <AvatarFallback className="bg-gradient-to-br from-primary to-accent text-white">NS</AvatarFallback>
               </Avatar>
               <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-success border-2 border-white animate-pulse"></span>
