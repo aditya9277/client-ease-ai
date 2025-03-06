@@ -1,65 +1,103 @@
 
-import { Brain, TrendingUp, AlertCircle } from "lucide-react";
+import { User, Clock, CalendarDays, CreditCard, Heart, Activity } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
-export const CustomerInsightsCard = () => {
-  const insights = [
-    {
-      type: "Behavior Pattern",
-      detail: "Prefers email communication for follow-ups",
-      priority: "medium",
-      icon: Brain,
-    },
-    {
-      type: "Purchase History",
-      detail: "Premium subscriber for 2+ years",
-      priority: "high",
-      icon: TrendingUp,
-    },
-    {
-      type: "Risk Alert",
-      detail: "Recent negative experience with billing",
-      priority: "high",
-      icon: AlertCircle,
-    },
-  ];
+interface CustomerInsightsCardProps {
+  isLoading?: boolean;
+}
+
+export const CustomerInsightsCard = ({ isLoading = false }: CustomerInsightsCardProps) => {
+  const customerInfo = {
+    name: "Sarah Johnson",
+    age: 34,
+    memberSince: "March 2019",
+    planType: "Premium Health Plus",
+    recentClaims: 3,
+    careStatus: "Active Treatment",
+  };
+
+  if (isLoading) {
+    return (
+      <Card className="medical-card card-gradient-primary animate-pulse">
+        <CardHeader>
+          <CardTitle className="text-slate-800">
+            <div className="flex items-center gap-2">
+              <User className="h-5 w-5 text-primary" />
+              Customer Insights
+            </div>
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            <div className="flex items-center justify-center h-[180px]">
+              <div className="flex flex-col items-center space-y-4">
+                <div className="w-12 h-12 rounded-full bg-primary/20"></div>
+                <div className="h-4 w-32 bg-slate-200 rounded"></div>
+                <div className="h-3 w-24 bg-slate-200 rounded"></div>
+                <div className="flex space-x-2">
+                  <div className="h-3 w-3 bg-slate-200 rounded-full"></div>
+                  <div className="h-3 w-3 bg-slate-200 rounded-full"></div>
+                  <div className="h-3 w-3 bg-slate-200 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
-    <Card className="medical-card card-gradient-warning">
+    <Card className="medical-card card-gradient-primary">
       <CardHeader>
-        <CardTitle className="text-md font-medium text-slate-800">
+        <CardTitle className="text-slate-800">
           <div className="flex items-center gap-2">
-            <div className="icon-container icon-container-warning">
-              <Brain className="h-5 w-5" />
-            </div>
-            Real-time Customer Insights
+            <User className="h-5 w-5 text-primary" />
+            Customer Insights
           </div>
         </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          {insights.map((insight, index) => (
-            <div
-              key={index}
-              className="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200"
-            >
-              <div className="flex items-center gap-3">
-                <insight.icon className={`h-5 w-5 ${
-                  insight.priority === "high" ? "text-destructive" :
-                  insight.priority === "medium" ? "text-warning" :
-                  "text-info"
-                }`} />
-                <div>
-                  <p className="font-medium text-sm text-slate-800">{insight.type}</p>
-                  <p className="text-sm text-slate-600">{insight.detail}</p>
-                </div>
+          <div className="flex items-center space-x-4 bg-slate-50 p-4 rounded-lg border border-slate-200">
+            <div className="relative">
+              <div className="h-14 w-14 rounded-full flex items-center justify-center bg-primary/20 text-primary text-2xl font-bold">
+                SJ
               </div>
-              <Badge variant={insight.priority === "high" ? "destructive" : "secondary"} className="bg-warning/20 text-warning border-warning/30">
-                {insight.priority}
-              </Badge>
+              <span className="absolute -top-1 -right-1 h-4 w-4 bg-success rounded-full border-2 border-white" />
             </div>
-          ))}
+            <div>
+              <h3 className="font-semibold text-slate-800">{customerInfo.name}</h3>
+              <div className="flex items-center space-x-1 text-xs text-slate-500">
+                <Clock className="h-3 w-3" />
+                <span>Member since {customerInfo.memberSince}</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
+              <div className="flex items-center space-x-2">
+                <CreditCard className="h-4 w-4 text-primary" />
+                <span className="text-xs font-medium text-slate-700">Plan Type</span>
+              </div>
+              <p className="text-slate-900 text-sm mt-1">{customerInfo.planType}</p>
+            </div>
+            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
+              <div className="flex items-center space-x-2">
+                <CalendarDays className="h-4 w-4 text-primary" />
+                <span className="text-xs font-medium text-slate-700">Recent Claims</span>
+              </div>
+              <p className="text-slate-900 text-sm mt-1">{customerInfo.recentClaims} in last 90 days</p>
+            </div>
+            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 col-span-2">
+              <div className="flex items-center space-x-2">
+                <Activity className="h-4 w-4 text-primary" />
+                <span className="text-xs font-medium text-slate-700">Care Status</span>
+              </div>
+              <p className="text-slate-900 text-sm mt-1">{customerInfo.careStatus}</p>
+            </div>
+          </div>
         </div>
       </CardContent>
     </Card>

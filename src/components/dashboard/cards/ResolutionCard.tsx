@@ -5,21 +5,25 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
 
-export const ResolutionCard = () => {
+interface ResolutionCardProps {
+  isLoading?: boolean;
+}
+
+export const ResolutionCard = ({ isLoading = false }: ResolutionCardProps) => {
   const [resolution, setResolution] = useState("Waiting for live call data...");
-  const [isLoading, setIsLoading] = useState(true);
+  const [isCardLoading, setIsCardLoading] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
     const fetchResolution = async () => {
       try {
-        setIsLoading(true);
+        setIsCardLoading(true);
         const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/logs/live-resolution`);
         setResolution(data.resolution);
-        setIsLoading(false);
+        setIsCardLoading(false);
       } catch (error) {
         console.error("❌ Error fetching live resolution:", error);
-        setIsLoading(false);
+        setIsCardLoading(false);
       }
     };
 
@@ -53,11 +57,11 @@ export const ResolutionCard = () => {
             AI-Powered Resolutions
           </span>
         </CardTitle>
-        <RefreshCw className={`h-4 w-4 text-success/70 ${isLoading ? 'animate-spin' : ''}`} />
+        <RefreshCw className={`h-4 w-4 text-success/70 ${isCardLoading || isLoading ? 'animate-spin' : ''}`} />
       </CardHeader>
       <CardContent>
         <div className="p-4 rounded-lg bg-slate-50 border border-success/10 shadow-sm transition-all duration-300 hover:border-success/20">
-          {isLoading ? (
+          {isCardLoading || isLoading ? (
             <div className="flex items-center justify-center space-x-2 animate-pulse py-6">
               <div className="w-3 h-3 bg-success/60 rounded-full animate-bounce"></div>
               <div className="w-3 h-3 bg-success/60 rounded-full animate-bounce delay-100"></div>

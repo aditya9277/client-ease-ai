@@ -7,7 +7,11 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import axios from "axios";
 
-export const LiveKnowledgeBaseCard = () => {
+interface LiveKnowledgeBaseCardProps {
+  isLoading?: boolean;
+}
+
+export const LiveKnowledgeBaseCard = ({ isLoading = false }: LiveKnowledgeBaseCardProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [suggestions, setSuggestions] = useState<string[]>([]);
@@ -58,33 +62,40 @@ export const LiveKnowledgeBaseCard = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSearch} className="space-y-4">
-          <div className="flex gap-2">
-            <Input
-              placeholder="Ask AI a question..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-[#0F172A]/60 border-cyan-500/20 text-gray-200 placeholder:text-gray-500"
-            />
-            <Button type="submit" variant="outline" className="border-cyan-500/20 text-cyan-400 hover:text-cyan-300">
-              {loading ? "Searching..." : <Search className="h-4 w-4" />}
-            </Button>
+        {isLoading ? (
+          <div className="space-y-4">
+            <div className="h-10 bg-slate-200 rounded-md animate-pulse"></div>
+            <div className="h-32 bg-slate-200 rounded-md animate-pulse"></div>
           </div>
-
-          {suggestions.length > 0 && (
-            <div className="space-y-2 p-3 bg-[#0F172A]/60 border border-cyan-500/20 rounded-md">
-              {suggestions.map((s, idx) => (
-                <p key={idx} className="text-sm text-gray-300">{s}</p>
-              ))}
+        ) : (
+          <form onSubmit={handleSearch} className="space-y-4">
+            <div className="flex gap-2">
+              <Input
+                placeholder="Ask AI a question..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="bg-[#0F172A]/60 border-cyan-500/20 text-gray-200 placeholder:text-gray-500"
+              />
+              <Button type="submit" variant="outline" className="border-cyan-500/20 text-cyan-400 hover:text-cyan-300">
+                {loading ? "Searching..." : <Search className="h-4 w-4" />}
+              </Button>
             </div>
-          )}
 
-          {aiResponse && (
-            <div className="p-4 bg-[#0F172A]/60 border border-cyan-500/20 rounded-md text-gray-300">
-              <p className="text-sm">{aiResponse}</p>
-            </div>
-          )}
-        </form>
+            {suggestions.length > 0 && (
+              <div className="space-y-2 p-3 bg-[#0F172A]/60 border border-cyan-500/20 rounded-md">
+                {suggestions.map((s, idx) => (
+                  <p key={idx} className="text-sm text-gray-300">{s}</p>
+                ))}
+              </div>
+            )}
+
+            {aiResponse && (
+              <div className="p-4 bg-[#0F172A]/60 border border-cyan-500/20 rounded-md text-gray-300">
+                <p className="text-sm">{aiResponse}</p>
+              </div>
+            )}
+          </form>
+        )}
       </CardContent>
     </Card>
   );

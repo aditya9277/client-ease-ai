@@ -7,9 +7,10 @@ import { useState, useEffect } from "react";
 
 interface QuickResponseCardProps {
   sentiment: number;
+  isLoading?: boolean;
 }
 
-export const QuickResponseCard = ({ sentiment }: QuickResponseCardProps) => {
+export const QuickResponseCard = ({ sentiment, isLoading = false }: QuickResponseCardProps) => {
   const [suggestions, setSuggestions] = useState<string[]>([]);
 
   useEffect(() => {
@@ -38,6 +39,28 @@ export const QuickResponseCard = ({ sentiment }: QuickResponseCardProps) => {
   const handleSendResponse = (response: string) => {
     toast.success("Response sent to customer");
   };
+
+  if (isLoading) {
+    return (
+      <Card className="medical-card card-gradient-primary">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-slate-800">
+            <div className="icon-container icon-container-primary">
+              <MessageSquare className="h-5 w-5" />
+            </div>
+            Quick Responses
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            {[1, 2, 3].map((_, index) => (
+              <div key={index} className="h-16 bg-slate-200 rounded-lg animate-pulse"></div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
     <Card className="medical-card card-gradient-primary">
