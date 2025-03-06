@@ -72,7 +72,7 @@ export const CustomerInsightsCard = ({ isLoading = false }: CustomerInsightsCard
           <div className="flex items-center space-x-4 bg-slate-50 p-4 rounded-lg border border-slate-200">
             <div className="relative">
               <div className="h-14 w-14 rounded-full flex items-center justify-center bg-primary/20 text-primary text-2xl font-bold">
-                PS
+                KS
               </div>
               <span className="absolute -top-1 -right-1 h-4 w-4 bg-success rounded-full border-2 border-white" />
             </div>
