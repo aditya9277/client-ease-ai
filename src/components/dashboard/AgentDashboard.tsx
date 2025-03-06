@@ -105,8 +105,8 @@ const AgentDashboard = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-      setIsCallActive(!isCallActive);
-      setIsDialogOpen(!isDialogOpen);
+      setIsCallActive(true);
+      setIsDialogOpen(false);
 
       toast.success("Call initiated successfully!");
     } catch (error) {

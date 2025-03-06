@@ -73,7 +73,7 @@ export const EscalationAlertCard = ({ phoneNumber, isLoading = false }: Escalati
 
   if (isCardLoading || isLoading) {
     return (
-      <Card className="medical-card border-orange-400/20 hover:border-orange-400/40 animate-pulse">
+      <Card className="medical-card border-orange-400/20 hover:border-orange-400/40">
         <CardHeader className="bg-orange-500/10">
           <CardTitle className="flex items-center gap-2 text-orange-500">
             <AlertTriangle className="h-5 w-5" />
@@ -81,10 +81,10 @@ export const EscalationAlertCard = ({ phoneNumber, isLoading = false }: Escalati
           </CardTitle>
         </CardHeader>
         <CardContent className="p-4">
-          <div className="flex flex-col items-center justify-center space-y-3 py-6">
-            <div className="h-4 bg-slate-200 w-3/4 rounded"></div>
-            <div className="h-4 bg-slate-200 w-1/2 rounded"></div>
-            <div className="flex space-x-3 mt-4">
+          <div className="flex flex-col items-center justify-center space-y-4 py-6">
+            <div className="w-16 h-16 rounded-full border-4 border-orange-200 border-t-orange-500 animate-spin"></div>
+            <p className="text-sm text-slate-500">Analyzing conversation for escalation needs...</p>
+            <div className="flex space-x-3 mt-2 animate-pulse">
               <div className="h-8 w-24 bg-slate-200 rounded"></div>
               <div className="h-8 w-24 bg-slate-200 rounded"></div>
             </div>

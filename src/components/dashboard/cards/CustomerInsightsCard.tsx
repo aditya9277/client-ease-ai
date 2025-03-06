@@ -18,7 +18,7 @@ export const CustomerInsightsCard = ({ isLoading = false }: CustomerInsightsCard
 
   if (isLoading) {
     return (
-      <Card className="medical-card card-gradient-primary animate-pulse">
+      <Card className="medical-card card-gradient-primary">
         <CardHeader>
           <CardTitle className="text-slate-800">
             <div className="flex items-center gap-2">
@@ -29,16 +29,26 @@ export const CustomerInsightsCard = ({ isLoading = false }: CustomerInsightsCard
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <div className="flex items-center justify-center h-[180px]">
-              <div className="flex flex-col items-center space-y-4">
-                <div className="w-12 h-12 rounded-full bg-primary/20"></div>
+            <div className="flex items-center space-x-4 bg-slate-50 p-4 rounded-lg border border-slate-200 animate-pulse">
+              <div className="h-14 w-14 rounded-full bg-slate-200"></div>
+              <div className="space-y-2">
                 <div className="h-4 w-32 bg-slate-200 rounded"></div>
                 <div className="h-3 w-24 bg-slate-200 rounded"></div>
-                <div className="flex space-x-2">
-                  <div className="h-3 w-3 bg-slate-200 rounded-full"></div>
-                  <div className="h-3 w-3 bg-slate-200 rounded-full"></div>
-                  <div className="h-3 w-3 bg-slate-200 rounded-full"></div>
-                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 animate-pulse">
+                <div className="h-4 w-20 bg-slate-200 rounded mb-2"></div>
+                <div className="h-3 w-28 bg-slate-200 rounded"></div>
+              </div>
+              <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 animate-pulse">
+                <div className="h-4 w-20 bg-slate-200 rounded mb-2"></div>
+                <div className="h-3 w-24 bg-slate-200 rounded"></div>
+              </div>
+              <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 col-span-2 animate-pulse">
+                <div className="h-4 w-20 bg-slate-200 rounded mb-2"></div>
+                <div className="h-3 w-32 bg-slate-200 rounded"></div>
               </div>
             </div>
           </div>
