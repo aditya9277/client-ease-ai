@@ -49,7 +49,18 @@ export const ResolutionCard = () => {
               <div className="w-3 h-3 bg-success/60 rounded-full animate-bounce delay-200"></div>
             </div>
           ) : (
-            <p className="text-slate-700 animate-fade-in">{resolution}</p>
+            <div className="space-y-3">
+              <p className="text-slate-700 animate-fade-in">{resolution}</p>
+              <div className="flex justify-between items-center pt-2 border-t border-slate-100">
+                <div className="flex items-center space-x-1">
+                  <div className="w-2 h-2 rounded-full bg-success"></div>
+                  <span className="text-xs text-success font-medium">AI confidence: 92%</span>
+                </div>
+                <button className="text-xs text-primary hover:text-primary/80 font-medium transition-colors">
+                  Copy to response
+                </button>
+              </div>
+            </div>
           )}
         </div>
       </CardContent>

@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Lock, User } from "lucide-react";
+import { Lock, User, Headset, BarChart2 } from "lucide-react";
 import { toast } from "sonner";
 
 interface TopNavProps {
@@ -50,71 +50,92 @@ export default function TopNav({ isAgent, setIsAgent }: TopNavProps) {
   };
 
   return (
-    <div className="border-b border-cyan-500/20 backdrop-blur-sm px-6 py-3 shadow-lg shadow-cyan-500/5">
+    <div className="bg-white border-b border-slate-200 px-6 py-3 shadow-sm">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-teal-400">
-          Client Ease AI - BPO Workflow Dashboard
-        </h1>
-        <div className="flex items-center gap-3">
-          <Label htmlFor="role-switch" className="text-slate-800">
-            View as {isAgent ? "Agent" : "Manager"}
-          </Label>
-          <Switch
-            id="role-switch"
-            checked={isAgent}
-            onCheckedChange={handleRoleToggle}
-            className="data-[state=checked]:bg-cyan-600"
-          />
+        <div className="flex items-center space-x-2">
+          <h1 className="text-xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-primary via-info to-accent">
+            Client Ease AI - BPO Workflow Dashboard
+          </h1>
+          <span className="bg-success/10 text-success text-xs px-2 py-1 rounded-full font-medium">Beta</span>
+        </div>
+        <div className="flex items-center gap-5">
+          <div className="flex items-center text-sm text-slate-500 hover:text-slate-700 transition-colors cursor-pointer">
+            <User className="h-4 w-4 mr-1" />
+            <span>Profile</span>
+          </div>
+          <div className="flex items-center text-sm text-slate-500 hover:text-slate-700 transition-colors cursor-pointer">
+            <BarChart2 className="h-4 w-4 mr-1" />
+            <span>Reports</span>
+          </div>
+          <div className="h-5 w-px bg-slate-200"></div>
+          <div className="flex items-center gap-3 bg-slate-50 px-3 py-1.5 rounded-lg">
+            <div className="flex items-center">
+              {isAgent ? (
+                <Headset className="h-4 w-4 text-primary mr-2" />
+              ) : (
+                <BarChart2 className="h-4 w-4 text-accent mr-2" />
+              )}
+              <Label htmlFor="role-switch" className="text-slate-700 font-medium text-sm">
+                {isAgent ? "Agent View" : "Manager View"}
+              </Label>
+            </div>
+            <Switch
+              id="role-switch"
+              checked={isAgent}
+              onCheckedChange={handleRoleToggle}
+              className="data-[state=checked]:bg-primary"
+            />
+          </div>
         </div>
       </div>
 
       {/* Manager Login Dialog */}
       <Dialog open={showLoginDialog} onOpenChange={setShowLoginDialog}>
-        <DialogContent className="bg-gradient-to-b from-[#1E293B] to-[#0F172A] border border-cyan-500/20 sm:max-w-md">
+        <DialogContent className="bg-white border border-slate-200 sm:max-w-md rounded-xl shadow-lg">
           <DialogHeader>
-            <DialogTitle className="text-xl font-bold text-white text-center flex items-center justify-center gap-2">
-              <Lock className="h-5 w-5 text-cyan-400" />
+            <DialogTitle className="text-xl font-bold text-slate-800 text-center flex items-center justify-center gap-2">
+              <Lock className="h-5 w-5 text-primary" />
               Manager Authentication
             </DialogTitle>
-            <DialogDescription className="text-center text-gray-400">
+            <DialogDescription className="text-center text-slate-500">
               Enter your credentials to access the manager dashboard.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 py-4">
             <div className="space-y-2">
-              <Label htmlFor="manager-id" className="text-gray-300">Manager ID</Label>
+              <Label htmlFor="manager-id" className="text-slate-700">Manager ID</Label>
               <div className="relative">
-                <User className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+                <User className="absolute left-3 top-2.5 h-5 w-5 text-slate-400" />
                 <Input 
                   id="manager-id" 
                   placeholder="Enter manager ID" 
-                  className="bg-[#0F172A]/70 border-cyan-500/20 pl-10 text-white"
+                  className="bg-slate-50 border-slate-200 pl-10 text-slate-800"
                   value={managerId}
                   onChange={(e) => setManagerId(e.target.value)}
                 />
               </div>
-              <div className="text-xs text-cyan-400">Hint: manager123</div>
+              <div className="text-xs text-primary">Hint: manager123</div>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-gray-300">Password</Label>
+              <Label htmlFor="password" className="text-slate-700">Password</Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+                <Lock className="absolute left-3 top-2.5 h-5 w-5 text-slate-400" />
                 <Input 
                   id="password" 
                   type="password" 
                   placeholder="Enter password" 
-                  className="bg-[#0F172A]/70 border-cyan-500/20 pl-10 text-white"
+                  className="bg-slate-50 border-slate-200 pl-10 text-slate-800"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <div className="text-xs text-cyan-400">Hint: manager123</div>
+              <div className="text-xs text-primary">Hint: manager123</div>
             </div>
           </div>
           <DialogFooter>
             <Button 
               onClick={handleManagerLogin}
-              className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white"
+              className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white transition-all duration-300"
             >
               <Lock className="mr-2 h-4 w-4" /> Login
             </Button>
@@ -124,6 +145,3 @@ export default function TopNav({ isAgent, setIsAgent }: TopNavProps) {
     </div>
   );
 }
-
-
-// bg-[rgb(255,255,255)]/30
