@@ -12,7 +12,7 @@ const Dashboard = () => {
     // Simulate loading for a smooth transition effect
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 800); // Reduced loading time for better UX
     return () => clearTimeout(timer);
   }, []);
 
@@ -38,7 +38,7 @@ const Dashboard = () => {
   return (
     <DashboardLayout>
       {({ isAgent }) => (
-        <div className="animate-fade-in p-0">
+        <div className="animate-fade-in">
           {isAgent ? <AgentDashboard /> : <ManagerDashboard />}
         </div>
       )}

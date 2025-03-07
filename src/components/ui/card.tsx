@@ -11,7 +11,7 @@ const Card = React.forwardRef<
     className={cn(
       "rounded-xl border bg-white shadow-sm transition-all duration-300",
       "border-slate-100 hover:border-primary/20 hover:shadow-md",
-      "group animate-fade-in",
+      "group animate-fade-in h-full", // Added h-full for consistent heights
       className
     )}
     {...props}
@@ -26,7 +26,7 @@ const CardHeader = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "flex flex-col space-y-1.5 p-5",
+      "flex flex-col space-y-1.5 p-4", // Reduced padding for better spacing
       className
     )}
     {...props}
@@ -73,8 +73,8 @@ const CardContent = React.forwardRef<
   <div 
     ref={ref} 
     className={cn(
-      "p-5",
-      "space-y-4",
+      "p-4", // Reduced padding for better spacing
+      "space-y-3", // Reduced space between elements
       className
     )} 
     {...props} 
@@ -89,7 +89,7 @@ const CardFooter = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "flex items-center p-5 pt-0",
+      "flex items-center p-4 pt-0", // Reduced padding for better spacing
       className
     )}
     {...props}

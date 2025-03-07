@@ -114,10 +114,10 @@ const ManagerDashboard = () => {
   };
 
   return (
-    <div className="space-y-8 p-6 bg-gradient-to-b from-slate-100 to-slate-50 min-h-screen">
-      <div className="flex items-center justify-between">
-        <div className="space-y-2">
-          <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-info to-accent">
+    <div className="space-y-6 p-4 bg-gradient-to-b from-slate-100 to-slate-50 min-h-screen">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="space-y-1">
+          <h2 className="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-info to-accent">
             Call Center Analytics
           </h2>
           <p className="text-slate-500">
@@ -125,10 +125,10 @@ const ManagerDashboard = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <div className="bg-white rounded-lg shadow-sm p-1 flex items-center">
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="bg-white rounded-lg shadow-sm p-1 flex items-center flex-shrink-0">
             <button 
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
                 selectedPeriod === "day" 
                   ? "bg-primary text-white shadow-md" 
                   : "bg-white text-slate-600 hover:bg-slate-50"
@@ -138,7 +138,7 @@ const ManagerDashboard = () => {
               Daily
             </button>
             <button 
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
                 selectedPeriod === "week" 
                   ? "bg-primary text-white shadow-md" 
                   : "bg-white text-slate-600 hover:bg-slate-50"
@@ -148,7 +148,7 @@ const ManagerDashboard = () => {
               Weekly
             </button>
             <button 
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
                 selectedPeriod === "month" 
                   ? "bg-primary text-white shadow-md" 
                   : "bg-white text-slate-600 hover:bg-slate-50"
@@ -159,11 +159,11 @@ const ManagerDashboard = () => {
             </button>
           </div>
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <Select value={selectedTeam} onValueChange={handleTeamChange}>
-              <SelectTrigger className="w-[140px] bg-white">
+              <SelectTrigger className="w-[120px] sm:w-[140px] bg-white text-xs sm:text-sm">
                 <div className="flex items-center">
-                  <Filter className="h-4 w-4 mr-1 text-primary" />
+                  <Filter className="h-3 w-3 sm:h-4 sm:w-4 mr-1 text-primary" />
                   <SelectValue placeholder="Filter Team" />
                 </div>
               </SelectTrigger>
@@ -176,9 +176,9 @@ const ManagerDashboard = () => {
             </Select>
 
             <Select value={viewMode} onValueChange={handleViewModeChange}>
-              <SelectTrigger className="w-[150px] bg-white">
+              <SelectTrigger className="w-[130px] sm:w-[150px] bg-white text-xs sm:text-sm">
                 <div className="flex items-center">
-                  <ListFilter className="h-4 w-4 mr-1 text-primary" />
+                  <ListFilter className="h-3 w-3 sm:h-4 sm:w-4 mr-1 text-primary" />
                   <SelectValue placeholder="Dashboard View" />
                 </div>
               </SelectTrigger>
@@ -192,21 +192,21 @@ const ManagerDashboard = () => {
             <Button 
               variant="outline" 
               size="sm" 
-              className="bg-white"
+              className="bg-white h-9 px-2 text-xs sm:text-sm"
               onClick={handleRefresh}
               disabled={isRefreshing}
             >
-              <RefreshCcw className={cn("h-4 w-4 mr-1", isRefreshing && "animate-spin")} />
+              <RefreshCcw className={cn("h-3 w-3 sm:h-4 sm:w-4 mr-1", isRefreshing && "animate-spin")} />
               {isRefreshing ? "Refreshing..." : "Refresh"}
             </Button>
 
             <Button 
               variant="outline" 
               size="sm" 
-              className="bg-white hidden md:flex"
+              className="bg-white hidden md:flex h-9 px-2 text-xs sm:text-sm"
               onClick={handleExportReport}
             >
-              <FileText className="h-4 w-4 mr-1" />
+              <FileText className="h-3 w-3 sm:h-4 sm:w-4 mr-1" />
               Export Report
             </Button>
           </div>
@@ -217,16 +217,16 @@ const ManagerDashboard = () => {
       
       {viewMode === "standard" && (
         <>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             <div className="lg:col-span-2">
               <AnalyticsCharts selectedPeriod={selectedPeriod} selectedTeam={selectedTeam} />
             </div>
-            <div className="space-y-6">
+            <div>
               <AIInsights />
             </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2">
             <RecentClaims />
             <TeamCommunication />
           </div>
@@ -234,9 +234,9 @@ const ManagerDashboard = () => {
       )}
       
       {viewMode === "focus-agents" && (
-        <div className="grid gap-6 lg:grid-cols-2 md:grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-2">
           <LiveAgentMonitoring />
-          <div className="space-y-7">
+          <div className="space-y-4">
             <AIInsights />
             <TeamCommunication />
           </div>
@@ -244,16 +244,14 @@ const ManagerDashboard = () => {
       )}
       
       {viewMode === "focus-impact" && (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-2">
           <GenAIImpactMetrics />
-          <div className="space-y-6">
-            <AIInsights />
-          </div>
+          <AIInsights />
         </div>
       )}
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <Card className="medical-card card-gradient-accent hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 animate-fade-in">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <Card className="medical-card card-gradient-accent hover:shadow-lg transition-all duration-300">
           <CardHeader>
             <CardTitle className="text-slate-800 flex items-center">
               <div className="icon-container icon-container-accent mr-2">
@@ -263,7 +261,7 @@ const ManagerDashboard = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="h-[300px]">
+            <div className="h-[250px]"> {/* Reduced height */}
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
@@ -297,7 +295,7 @@ const ManagerDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="medical-card card-gradient-info hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 animate-fade-in">
+        <Card className="medical-card card-gradient-info hover:shadow-lg transition-all duration-300">
           <CardHeader>
             <CardTitle className="text-slate-800 flex items-center">
               <div className="icon-container icon-container-info mr-2">
@@ -307,15 +305,15 @@ const ManagerDashboard = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-3"> {/* Reduced spacing */}
               {[1, 2, 3].map((_, i) => (
-                <div key={i} className="bg-slate-50 p-4 rounded-lg border border-slate-200 hover:border-info/40 transition-all group">
+                <div key={i} className="bg-slate-50 p-3 rounded-lg border border-slate-200 hover:border-info/40 transition-all group">
                   <div className="flex justify-between items-start">
                     <div>
-                      <h4 className="font-medium text-slate-800 group-hover:text-info transition-colors">
+                      <h4 className="font-medium text-slate-800 text-sm group-hover:text-info transition-colors">
                         {["AI Assistant Mastery", "Customer De-escalation", "Claims Process Advanced"][i]}
                       </h4>
-                      <div className="flex items-center mt-1 text-sm text-slate-500">
+                      <div className="flex items-center mt-1 text-xs text-slate-500">
                         <Clock className="h-3 w-3 mr-1 text-info" />
                         <span>{["May 25, 10:00 AM", "May 28, 2:00 PM", "June 2, 11:00 AM"][i]}</span>
                       </div>
@@ -324,7 +322,7 @@ const ManagerDashboard = () => {
                       {["2h 30m", "1h 45m", "3h 15m"][i]}
                     </div>
                   </div>
-                  <div className="mt-3 flex justify-between items-center">
+                  <div className="mt-2 flex justify-between items-center">
                     <div className="flex items-center">
                       <Users className="h-3 w-3 text-slate-400 mr-1" />
                       <span className="text-xs text-slate-500">{["12", "8", "15"][i]} agents registered</span>
@@ -339,7 +337,7 @@ const ManagerDashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="medical-card card-gradient-success hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 animate-fade-in">
+        <Card className="medical-card card-gradient-success hover:shadow-lg transition-all duration-300">
           <CardHeader>
             <CardTitle className="text-slate-800 flex items-center">
               <div className="icon-container icon-container-success mr-2">
@@ -349,13 +347,13 @@ const ManagerDashboard = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-6">
+            <div className="space-y-4">
               {["Call Resolution Time", "Customer Satisfaction", "First Call Resolution"].map((metric, i) => (
-                <div key={i} className="space-y-2">
+                <div key={i} className="space-y-1">
                   <div className="flex justify-between">
-                    <span className="text-sm font-medium text-slate-700">{metric}</span>
+                    <span className="text-xs font-medium text-slate-700">{metric}</span>
                     <div className="flex items-center text-xs text-success">
-                      <ArrowUpRight className="h-3 w-3 mr-1" />
+                      <ArrowUpRight className="h-3 w-3 mr-0.5" />
                       {["12%", "8%", "5%"][i]} improvement
                     </div>
                   </div>
