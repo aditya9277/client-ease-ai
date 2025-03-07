@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StatsOverview } from "./manager/StatsOverview";
 import { AnalyticsCharts } from "./manager/AnalyticsCharts";
 import { AIInsights } from "./manager/AIInsights";
@@ -12,7 +12,9 @@ import {
   Clock, 
   ChartPie, 
   ArrowUpRight, 
-  TrendingUp
+  TrendingUp,
+  Filter,
+  RefreshCcw
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -23,17 +25,82 @@ import {
   Tooltip,
   Legend
 } from 'recharts';
+import { Button } from "@/components/ui/button";
+import { 
+  Select, 
+  SelectContent, 
+  SelectItem, 
+  SelectTrigger, 
+  SelectValue 
+} from "@/components/ui/select";
+import { CustomerInsightsCard } from "./cards/CustomerInsightsCard";
+import { toast } from "sonner";
+import { cn } from "@/lib/utils";
 
 const ManagerDashboard = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("week");
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [selectedTeam, setSelectedTeam] = useState("all");
+  const [performanceData, setPerformanceData] = useState([
+    { name: "Excellent", value: 18, color: "#00cc88" },
+    { name: "Good", value: 15, color: "#0088ff" },
+    { name: "Average", value: 8, color: "#ffc107" },
+    { name: "Needs Improvement", value: 4, color: "#ff3366" },
+  ]);
 
-  // Sample data for the agent performance pie chart
-  const performanceData = [
+  // Mock data for different periods
+  const dailyData = [
+    { name: "Excellent", value: 7, color: "#00cc88" },
+    { name: "Good", value: 5, color: "#0088ff" },
+    { name: "Average", value: 3, color: "#ffc107" },
+    { name: "Needs Improvement", value: 1, color: "#ff3366" },
+  ];
+  
+  const weeklyData = [
     { name: "Excellent", value: 18, color: "#00cc88" },
     { name: "Good", value: 15, color: "#0088ff" },
     { name: "Average", value: 8, color: "#ffc107" },
     { name: "Needs Improvement", value: 4, color: "#ff3366" },
   ];
+  
+  const monthlyData = [
+    { name: "Excellent", value: 45, color: "#00cc88" },
+    { name: "Good", value: 38, color: "#0088ff" },
+    { name: "Average", value: 20, color: "#ffc107" },
+    { name: "Needs Improvement", value: 12, color: "#ff3366" },
+  ];
+
+  // Effect to update data based on period selection
+  useEffect(() => {
+    if (selectedPeriod === "day") {
+      setPerformanceData(dailyData);
+    } else if (selectedPeriod === "week") {
+      setPerformanceData(weeklyData);
+    } else {
+      setPerformanceData(monthlyData);
+    }
+  }, [selectedPeriod]);
+
+  // Function to handle data refresh
+  const handleRefresh = () => {
+    setIsRefreshing(true);
+    // Simulate API call delay
+    setTimeout(() => {
+      toast.success("Dashboard data refreshed");
+      setIsRefreshing(false);
+    }, 1000);
+  };
+
+  // Function to handle team filter change
+  const handleTeamChange = (value: string) => {
+    setSelectedTeam(value);
+    toast.info(`Showing data for ${value === 'all' ? 'all teams' : `team ${value}`}`);
+  };
+
+  // Function to handle exporting analytics report
+  const handleExportReport = () => {
+    toast.success("Analytics report exported. Check your email.");
+  };
 
   return (
     <div className="space-y-8 p-6 bg-gradient-to-b from-slate-100 to-slate-50 min-h-screen">
@@ -47,37 +114,77 @@ const ManagerDashboard = () => {
           </p>
         </div>
 
-        <div className="flex space-x-2">
-          <button 
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-              selectedPeriod === "day" 
-                ? "bg-primary text-white shadow-md" 
-                : "bg-white text-slate-600 hover:bg-slate-50"
-            }`}
-            onClick={() => setSelectedPeriod("day")}
-          >
-            Daily
-          </button>
-          <button 
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-              selectedPeriod === "week" 
-                ? "bg-primary text-white shadow-md" 
-                : "bg-white text-slate-600 hover:bg-slate-50"
-            }`}
-            onClick={() => setSelectedPeriod("week")}
-          >
-            Weekly
-          </button>
-          <button 
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-              selectedPeriod === "month" 
-                ? "bg-primary text-white shadow-md" 
-                : "bg-white text-slate-600 hover:bg-slate-50"
-            }`}
-            onClick={() => setSelectedPeriod("month")}
-          >
-            Monthly
-          </button>
+        <div className="flex items-center gap-3">
+          <div className="bg-white rounded-lg shadow-sm p-1 flex items-center">
+            <button 
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                selectedPeriod === "day" 
+                  ? "bg-primary text-white shadow-md" 
+                  : "bg-white text-slate-600 hover:bg-slate-50"
+              }`}
+              onClick={() => setSelectedPeriod("day")}
+            >
+              Daily
+            </button>
+            <button 
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                selectedPeriod === "week" 
+                  ? "bg-primary text-white shadow-md" 
+                  : "bg-white text-slate-600 hover:bg-slate-50"
+              }`}
+              onClick={() => setSelectedPeriod("week")}
+            >
+              Weekly
+            </button>
+            <button 
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                selectedPeriod === "month" 
+                  ? "bg-primary text-white shadow-md" 
+                  : "bg-white text-slate-600 hover:bg-slate-50"
+              }`}
+              onClick={() => setSelectedPeriod("month")}
+            >
+              Monthly
+            </button>
+          </div>
+          
+          <div className="flex items-center gap-2">
+            <Select value={selectedTeam} onValueChange={handleTeamChange}>
+              <SelectTrigger className="w-[140px] bg-white">
+                <div className="flex items-center">
+                  <Filter className="h-4 w-4 mr-1 text-primary" />
+                  <SelectValue placeholder="Filter Team" />
+                </div>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Teams</SelectItem>
+                <SelectItem value="alpha">Team Alpha</SelectItem>
+                <SelectItem value="beta">Team Beta</SelectItem>
+                <SelectItem value="gamma">Team Gamma</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="bg-white"
+              onClick={handleRefresh}
+              disabled={isRefreshing}
+            >
+              <RefreshCcw className={cn("h-4 w-4 mr-1", isRefreshing && "animate-spin")} />
+              {isRefreshing ? "Refreshing..." : "Refresh"}
+            </Button>
+
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="bg-white hidden md:flex"
+              onClick={handleExportReport}
+            >
+              <FileText className="h-4 w-4 mr-1" />
+              Export Report
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -85,7 +192,7 @@ const ManagerDashboard = () => {
       
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div className="lg:col-span-2">
-          <AnalyticsCharts />
+          <AnalyticsCharts selectedPeriod={selectedPeriod} selectedTeam={selectedTeam} />
         </div>
         <div className="space-y-6">
           <AIInsights />

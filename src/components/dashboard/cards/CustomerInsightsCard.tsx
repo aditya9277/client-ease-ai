@@ -10,8 +10,8 @@ export const CustomerInsightsCard = ({ isLoading = false }: CustomerInsightsCard
   const customerInfo = {
     name: "Kanishk Shukla",
     age: 34,
-    memberSince: "March 2025",
-    planType: "Premium ",
+    memberSince: "March 2022",
+    planType: "Premium Plus",
     recentClaims: 3,
     careStatus: "Active",
   };
@@ -69,9 +69,9 @@ export const CustomerInsightsCard = ({ isLoading = false }: CustomerInsightsCard
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          <div className="flex items-center space-x-4 bg-slate-50 p-4 rounded-lg border border-slate-200">
+          <div className="flex items-center space-x-4 bg-slate-50 p-4 rounded-lg border border-slate-200 hover:border-primary/20 hover:shadow-sm transition-all duration-300">
             <div className="relative">
-              <div className="h-14 w-14 rounded-full flex items-center justify-center bg-primary/20 text-primary text-2xl font-bold">
+              <div className="h-14 w-14 rounded-full flex items-center justify-center bg-gradient-to-br from-primary/30 to-primary/10 text-primary text-2xl font-bold">
                 KS
               </div>
               <span className="absolute -top-1 -right-1 h-4 w-4 bg-success rounded-full border-2 border-white" />
@@ -86,26 +86,26 @@ export const CustomerInsightsCard = ({ isLoading = false }: CustomerInsightsCard
           </div>
 
           <div className="grid grid-cols-2 gap-3">
-            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
+            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 hover:border-primary/20 hover:shadow-sm transition-all duration-300 group">
               <div className="flex items-center space-x-2">
-                <CreditCard className="h-4 w-4 text-primary" />
+                <CreditCard className="h-4 w-4 text-primary group-hover:text-primary/80 transition-colors" />
                 <span className="text-xs font-medium text-slate-700">Plan Type</span>
               </div>
-              <p className="text-slate-900 text-sm mt-1">{customerInfo.planType}</p>
+              <p className="text-slate-900 text-sm mt-1 font-medium">{customerInfo.planType}</p>
             </div>
-            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
+            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 hover:border-primary/20 hover:shadow-sm transition-all duration-300 group">
               <div className="flex items-center space-x-2">
-                <CalendarDays className="h-4 w-4 text-primary" />
+                <CalendarDays className="h-4 w-4 text-primary group-hover:text-primary/80 transition-colors" />
                 <span className="text-xs font-medium text-slate-700">Recent Claims</span>
               </div>
-              <p className="text-slate-900 text-sm mt-1">{customerInfo.recentClaims} in last 90 days</p>
+              <p className="text-slate-900 text-sm mt-1 font-medium">{customerInfo.recentClaims} in last 90 days</p>
             </div>
-            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 col-span-2">
+            <div className="bg-slate-50 p-3 rounded-lg border border-slate-200 hover:border-primary/20 hover:shadow-sm transition-all duration-300 col-span-2 group">
               <div className="flex items-center space-x-2">
-                <Activity className="h-4 w-4 text-primary" />
+                <Activity className="h-4 w-4 text-primary group-hover:text-primary/80 transition-colors" />
                 <span className="text-xs font-medium text-slate-700">Last Claim Status</span>
               </div>
-              <p className="text-slate-900 text-sm mt-1">{customerInfo.careStatus}</p>
+              <p className="text-slate-900 text-sm mt-1 font-medium">{customerInfo.careStatus}</p>
             </div>
           </div>
         </div>

@@ -1,7 +1,10 @@
 
-import { FileBox, Banknote, Calendar, AlertCircle } from "lucide-react";
+import { FileBox, Banknote, Calendar, Download } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 export const RecentClaims = () => {
   const claims = [
@@ -28,6 +31,12 @@ export const RecentClaims = () => {
     },
   ];
 
+  const handleDownload = (claimId: string) => {
+    // This is a placeholder for the actual download function
+    // You can add the real download link here
+    toast.info(`Downloading claim document ${claimId}...`);
+  };
+
   return (
     <Card className="medical-card card-gradient-primary">
       <CardHeader className="pb-3">
@@ -43,7 +52,7 @@ export const RecentClaims = () => {
           {claims.map((claim) => (
             <div
               key={claim.id}
-              className="flex items-center justify-between p-4 bg-slate-50 rounded-lg border border-slate-200 hover:border-primary/20 hover:shadow-sm transition-all duration-300 group"
+              className="flex items-center justify-between p-4 bg-slate-50 rounded-lg border border-slate-200 hover:border-primary/20 hover:shadow-sm transition-all duration-300 group relative"
             >
               <div className="flex items-center gap-3">
                 <div className="bg-primary/10 p-2 rounded-lg group-hover:bg-primary/20 transition-colors">
@@ -66,15 +75,26 @@ export const RecentClaims = () => {
                   <Banknote className="h-4 w-4 text-success mr-1" />
                   <p className="font-medium text-slate-800 group-hover:text-slate-900 transition-colors">{claim.amount}</p>
                 </div>
-                <Badge className={
-                  claim.status === 'Approved' 
-                    ? 'badge-success' 
-                    : claim.status === 'Pending' 
-                    ? 'badge-warning' 
-                    : 'badge-info'
-                }>
-                  {claim.status}
-                </Badge>
+                <div className="flex items-center gap-2">
+                  <Badge className={
+                    claim.status === 'Approved' 
+                      ? 'badge-success' 
+                      : claim.status === 'Pending' 
+                      ? 'badge-warning' 
+                      : 'badge-info'
+                  }>
+                    {claim.status}
+                  </Badge>
+                  <Button 
+                    onClick={() => handleDownload(claim.id)} 
+                    variant="ghost" 
+                    size="sm" 
+                    className="h-8 w-8 p-0 text-slate-500 hover:text-primary hover:bg-primary/10"
+                  >
+                    <Download className="h-4 w-4" />
+                    <span className="sr-only">Download {claim.id}</span>
+                  </Button>
+                </div>
               </div>
             </div>
           ))}
@@ -82,4 +102,4 @@ export const RecentClaims = () => {
       </CardContent>
     </Card>
   );
-}
+};
