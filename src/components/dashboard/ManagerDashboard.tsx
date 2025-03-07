@@ -234,9 +234,9 @@ const ManagerDashboard = () => {
       )}
       
       {viewMode === "focus-agents" && (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 lg:grid-cols-2 md:grid-cols-2">
           <LiveAgentMonitoring />
-          <div className="space-y-6">
+          <div className="space-y-7">
             <AIInsights />
             <TeamCommunication />
           </div>
@@ -248,7 +248,6 @@ const ManagerDashboard = () => {
           <GenAIImpactMetrics />
           <div className="space-y-6">
             <AIInsights />
-            <RecentClaims />
           </div>
         </div>
       )}
