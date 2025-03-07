@@ -169,9 +169,9 @@ const ManagerDashboard = () => {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Teams</SelectItem>
-                <SelectItem value="alpha">Team Alpha</SelectItem>
-                <SelectItem value="beta">Team Beta</SelectItem>
-                <SelectItem value="gamma">Team Gamma</SelectItem>
+                <SelectItem value="alpha">Customer Support</SelectItem>
+                <SelectItem value="beta">Technical Team</SelectItem>
+                <SelectItem value="gamma">Refund team</SelectItem>
               </SelectContent>
             </Select>
 
@@ -237,16 +237,16 @@ const ManagerDashboard = () => {
         <div className="grid gap-4 md:grid-cols-2">
           <LiveAgentMonitoring />
           <div className="space-y-4">
-            <AIInsights />
-            <TeamCommunication />
+          <AIInsights />
+
           </div>
         </div>
       )}
       
       {viewMode === "focus-impact" && (
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-1">
           <GenAIImpactMetrics />
-          <AIInsights />
+
         </div>
       )}
 

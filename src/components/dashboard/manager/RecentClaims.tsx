@@ -12,44 +12,34 @@ export const RecentClaims = () => {
   // Mock data for claims
   const mockClaims = [
     {
-      id: "CLM-2023-001",
-      customer: "John Davis",
-      date: "2023-05-10",
-      type: "Health Insurance",
-      amount: "$1,250.00",
-      status: "approved",
+      id: "CLM-2025-003",
+      customer: "Kanishk Shukla",
+      date: "12-03-2025",
+      type: "TV Power on Issues",
+      amount: "Rs 1,250.00",
+      status: "Pending",
       aiAssisted: true,
-      processingTime: "1h 15m",
+      processingTime: "15m",
     },
     {
-      id: "CLM-2023-002",
-      customer: "Sarah Johnson",
-      date: "2023-05-09",
-      type: "Auto Insurance",
-      amount: "$3,750.00",
+      id: "CLM-2025-002",
+      customer: "Aditya Gupta",
+      date: "24-02-2025",
+      type: "Health Insurance",
+      amount: "Rs 3,750.00",
       status: "pending",
       aiAssisted: true,
       processingTime: "45m",
     },
     {
-      id: "CLM-2023-003",
-      customer: "Michael Brown",
-      date: "2023-05-08",
+      id: "CLM-2025-001",
+      customer: "Priyanshi Sharma",
+      date: "20-01-2025",
       type: "Home Insurance",
-      amount: "$5,200.00",
+      amount: "Rs 5,200.00",
       status: "rejected",
       aiAssisted: false,
       processingTime: "2h 30m",
-    },
-    {
-      id: "CLM-2023-004",
-      customer: "Lisa Wilson",
-      date: "2023-05-08",
-      type: "Health Insurance",
-      amount: "$950.00",
-      status: "approved",
-      aiAssisted: true,
-      processingTime: "1h 05m",
     }
   ];
 
@@ -111,7 +101,7 @@ export const RecentClaims = () => {
             </div>
           </div>
         ) : (
-          <div className="grid gap-3">
+          <div className="grid gap-2 ">
             {claims.map(claim => (
               <div key={claim.id} className="bg-white rounded-lg border border-slate-200 hover:border-primary/20 hover:shadow-sm transition-all p-3">
                 <div className="flex justify-between items-start gap-2">
@@ -128,15 +118,15 @@ export const RecentClaims = () => {
                       </div>
                       <div className="grid grid-cols-1 gap-0.5 mt-1">
                         <div className="flex items-center text-xs text-slate-500">
-                          <User className="h-3 w-3 mr-1" />
+                          <User className="h-2 w-3 mr-1" />
                           <span>{claim.customer}</span>
                         </div>
                         <div className="flex items-center text-xs text-slate-500">
-                          <Calendar className="h-3 w-3 mr-1" />
+                          <Calendar className="h-2 w-3 mr-1" />
                           <span>{claim.date}</span>
                         </div>
                         <div className="flex items-center text-xs text-slate-500">
-                          <Tag className="h-3 w-3 mr-1" />
+                          <Tag className="h-2 w-3 mr-1" />
                           <span>{claim.type}</span>
                         </div>
                       </div>
