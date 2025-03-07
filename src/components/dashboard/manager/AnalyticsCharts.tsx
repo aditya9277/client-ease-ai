@@ -42,7 +42,7 @@ export const AnalyticsCharts = ({ selectedPeriod, selectedTeam }: AnalyticsChart
     { name: '3 PM', calls: 38, resolution: 91 },
     { name: '4 PM', calls: 28, resolution: 93 },
   ];
-
+  
   // Mock weekly data
   const weeklyData = [
     { name: 'Mon', calls: 150, resolution: 92 },
@@ -51,7 +51,7 @@ export const AnalyticsCharts = ({ selectedPeriod, selectedTeam }: AnalyticsChart
     { name: 'Thu', calls: 218, resolution: 91 },
     { name: 'Fri', calls: 235, resolution: 88 },
   ];
-
+  
   // Mock monthly data
   const monthlyData = [
     { name: 'Week 1', calls: 850, resolution: 90 },
