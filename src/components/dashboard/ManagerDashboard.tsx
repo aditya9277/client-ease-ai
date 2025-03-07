@@ -5,6 +5,8 @@ import { AnalyticsCharts } from "./manager/AnalyticsCharts";
 import { AIInsights } from "./manager/AIInsights";
 import { RecentClaims } from "./manager/RecentClaims";
 import { TeamCommunication } from "./manager/TeamCommunication";
+import { LiveAgentMonitoring } from "./manager/LiveAgentMonitoring";
+import { GenAIImpactMetrics } from "./manager/GenAIImpactMetrics";
 import { 
   FileText, 
   Users, 
@@ -14,7 +16,8 @@ import {
   ArrowUpRight, 
   TrendingUp,
   Filter,
-  RefreshCcw
+  RefreshCcw,
+  ListFilter
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -41,6 +44,7 @@ const ManagerDashboard = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("week");
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [selectedTeam, setSelectedTeam] = useState("all");
+  const [viewMode, setViewMode] = useState("standard"); // standard, focus-agents, focus-impact
   const [performanceData, setPerformanceData] = useState([
     { name: "Excellent", value: 18, color: "#00cc88" },
     { name: "Good", value: 15, color: "#0088ff" },
@@ -100,6 +104,13 @@ const ManagerDashboard = () => {
   // Function to handle exporting analytics report
   const handleExportReport = () => {
     toast.success("Analytics report exported. Check your email.");
+  };
+
+  // Function to handle view mode change
+  const handleViewModeChange = (mode: string) => {
+    setViewMode(mode);
+    toast.info(`Dashboard view changed to ${mode === 'standard' ? 'Standard View' : 
+      mode === 'focus-agents' ? 'Agent Focus' : 'GenAI Impact Focus'}`);
   };
 
   return (
@@ -164,6 +175,20 @@ const ManagerDashboard = () => {
               </SelectContent>
             </Select>
 
+            <Select value={viewMode} onValueChange={handleViewModeChange}>
+              <SelectTrigger className="w-[150px] bg-white">
+                <div className="flex items-center">
+                  <ListFilter className="h-4 w-4 mr-1 text-primary" />
+                  <SelectValue placeholder="Dashboard View" />
+                </div>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="standard">Standard View</SelectItem>
+                <SelectItem value="focus-agents">Agent Focus</SelectItem>
+                <SelectItem value="focus-impact">GenAI Impact</SelectItem>
+              </SelectContent>
+            </Select>
+
             <Button 
               variant="outline" 
               size="sm" 
@@ -190,19 +215,43 @@ const ManagerDashboard = () => {
 
       <StatsOverview />
       
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <div className="lg:col-span-2">
-          <AnalyticsCharts selectedPeriod={selectedPeriod} selectedTeam={selectedTeam} />
-        </div>
-        <div className="space-y-6">
-          <AIInsights />
-        </div>
-      </div>
+      {viewMode === "standard" && (
+        <>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="lg:col-span-2">
+              <AnalyticsCharts selectedPeriod={selectedPeriod} selectedTeam={selectedTeam} />
+            </div>
+            <div className="space-y-6">
+              <AIInsights />
+            </div>
+          </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <RecentClaims />
-        <TeamCommunication />
-      </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            <RecentClaims />
+            <TeamCommunication />
+          </div>
+        </>
+      )}
+      
+      {viewMode === "focus-agents" && (
+        <div className="grid gap-6 md:grid-cols-2">
+          <LiveAgentMonitoring />
+          <div className="space-y-6">
+            <AIInsights />
+            <TeamCommunication />
+          </div>
+        </div>
+      )}
+      
+      {viewMode === "focus-impact" && (
+        <div className="grid gap-6 md:grid-cols-2">
+          <GenAIImpactMetrics />
+          <div className="space-y-6">
+            <AIInsights />
+            <RecentClaims />
+          </div>
+        </div>
+      )}
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <Card className="medical-card card-gradient-accent hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 animate-fade-in">
