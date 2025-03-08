@@ -29,7 +29,7 @@ export const PerformanceMetricsCard = () => {
   ];
 
   return (
-    <Card className="medical-card card-gradient-primary">
+    <Card className="medical-card card-gradient-destructive">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-slate-800">
           <div className="icon-container icon-container-primary">
