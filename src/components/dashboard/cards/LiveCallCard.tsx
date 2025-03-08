@@ -53,10 +53,10 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phone
     <Card className="medical-card card-gradient-primary">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
-          <span className="gradient-text text-md">Live Call Assistance</span>
+          <span className="gradient-text text-xl">Live Call Assistance</span>
           <div className="flex items-center gap-2">
             <Badge variant="outline" className="animate-pulse bg-success/20 text-success border-success/20">Live</Badge>
-            <span className="text-xs font-normal text-slate-600">
+            <span className="text-sm font-normal text-slate-600">
               Call Duration: {formatTime(callDuration)}
             </span>
           </div>
@@ -64,11 +64,11 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phone
         
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
-          <div className="space-y-1"> {/* Reduced from space-y-2 */}
+        <div className="space-y-6">
+          <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <h3 className="font-medium text-sm text-slate-700">Customer Sentiment</h3> {/* Reduced from default to text-sm */}
-              <span className={`text-xs font-medium ${getSentimentColor()}`}> {/* Reduced from text-sm to text-xs */}
+              <h3 className="font-medium text-slate-700">Customer Sentiment</h3>
+              <span className={`text-sm font-medium ${getSentimentColor()}`}>
                 {currentSentiment}%
               </span>
             </div>
@@ -77,27 +77,28 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phone
             </div>
           </div>
 
-          <div className="flex space-x-3"> {/* Reduced from space-x-4 */}
-            <div className="w-2/3 space-y-2"> {/* Reduced from space-y-4 */}
-              <h3 className="font-medium text-sm text-slate-700">AI Suggestions</h3> {/* Reduced from default to text-sm */}
-              <div className="space-y-2 max-h-[200px] overflow-y-auto pr-1 scrollbar-hide"> {/* Reduced height from 300px to 200px */}
+          <div className="flex space-x-4"> 
+            <div className="w-2/3 space-y-4">  
+              <h3 className="font-medium text-slate-700">AI Suggestions</h3>
+              <div className="space-y-2 max-h-[300px] overflow-y-auto pr-1 scrollbar-hide">
                 {suggestions.length > 0 ? (
                   suggestions.map((suggestion, index) => (
                     <div
                       key={index}
-                      className={`p-2 rounded-lg transition-all cursor-pointer ${
+                      className={`p-4 rounded-lg transition-all cursor-pointer ${
                         activeSuggestion === index
                           ? "bg-primary/10 border border-primary/40 shadow-sm"
                           : "bg-slate-50 hover:bg-primary/5 border border-slate-200 hover:border-primary/20"
                       }`}
+                      onClick={() => setActiveSuggestion(index)}
                     >
-                      <p className="text-xs text-slate-600">{suggestion}</p> {/* Reduced from text-sm to text-xs */}
+                      <p className="text-sm text-slate-600">{suggestion}</p>
                     </div>
                   ))
                 ) : (
-                  <div className="flex items-center justify-center h-20 bg-slate-50 rounded-lg border border-slate-200"> {/* Reduced height from h-32 to h-20 */}
-                    <div className="text-xs text-slate-500 flex flex-col items-center"> {/* Reduced from text-sm to text-xs */}
-                      <svg className="animate-spin h-5 w-5 text-primary mb-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"> {/* Reduced height, width from h-6 w-6 to h-5 w-5; mb-2 to mb-1 */}
+                  <div className="flex items-center justify-center h-32 bg-slate-50 rounded-lg border border-slate-200">
+                    <div className="text-sm text-slate-500 flex flex-col items-center">
+                      <svg className="animate-spin h-6 w-6 text-primary mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
@@ -111,6 +112,7 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phone
               <CustomerAlertsCard phoneNumber={phoneNumber} />
             </div>
           </div>
+
         </div>
       </CardContent>
     </Card>
