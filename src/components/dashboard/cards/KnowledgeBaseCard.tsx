@@ -17,8 +17,11 @@ export const KnowledgeBaseCard = () => {
   const dummySuggestions = [
     "What's the process for filing a claim?",
     "How long does claim review typically take?",
-    "What documents are required for auto insurance claims?"
-  ];
+    "What documents are required for insurance claims?",
+    "What is the time period of the return policy?",
+    "What is the company's holiday policy?"
+];
+
 
   useEffect(() => {
     if (!searchQuery.trim()) {

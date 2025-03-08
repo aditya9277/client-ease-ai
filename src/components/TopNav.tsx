@@ -63,10 +63,7 @@ export default function TopNav({ isAgent, setIsAgent }: TopNavProps) {
             <User className="h-4 w-4 mr-1" />
             <span>Profile</span>
           </div>
-          <div className="flex items-center text-sm text-slate-500 hover:text-slate-700 transition-colors cursor-pointer">
-            <BarChart2 className="h-4 w-4 mr-1" />
-            <span>Reports</span>
-          </div>
+          
           <div className="h-5 w-px bg-slate-200"></div>
           <div className="flex items-center gap-3 bg-slate-50 px-3 py-1.5 rounded-lg">
             <div className="flex items-center">
