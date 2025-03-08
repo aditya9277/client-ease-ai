@@ -35,6 +35,16 @@ export const LiveAgentMonitoring = () => {
       resolutionProbability: 78,
     },
     {
+      id: 5,
+      name: "Ananya Desai",
+      avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+      status: "active",
+      callDuration: 432,
+      sentiment: 28,
+      aiAssist: true,
+      resolutionProbability: 55,
+    },
+    {
       id: 3,
       name: "Priya Mehta",
       avatar: "https://randomuser.me/api/portraits/women/15.jpg",
@@ -53,16 +63,6 @@ export const LiveAgentMonitoring = () => {
       sentiment: 0,
       aiAssist: false,
       resolutionProbability: 0,
-    },
-    {
-      id: 5,
-      name: "Ananya Desai",
-      avatar: "https://randomuser.me/api/portraits/women/68.jpg",
-      status: "active",
-      callDuration: 432,
-      sentiment: 28,
-      aiAssist: true,
-      resolutionProbability: 55,
     }
   ];
 
@@ -178,7 +178,7 @@ export const LiveAgentMonitoring = () => {
             </div>
           </div>
         ) : (
-          <ScrollArea className="h-[350px] pr-4">
+          <ScrollArea className="h-[450px] pr-4">
             <div className="space-y-4">
               {agentActivities.map((agent) => (
                 <div

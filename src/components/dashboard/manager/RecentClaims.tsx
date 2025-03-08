@@ -40,15 +40,6 @@ export const RecentClaims = () => {
       status: "Approved",
       agent: "Taylor Wilson",
       priority: "low"
-    },
-    {
-      id: "CL-78905",
-      customer: "David Rodriguez",
-      type: "Liability",
-      date: "May 17, 2023",
-      status: "In Review",
-      agent: "Casey Jones",
-      priority: "medium"
     }
   ];
 

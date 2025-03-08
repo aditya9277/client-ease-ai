@@ -29,7 +29,7 @@ const initialReminders: Reminder[] = [
     text: "Schedule callback from senior team for insurance inquiry #INS005",
     completed: false,
     dueDate: "2025-02-25",
-  },
+  }
 ];
 
 export const SmartRemindersCard = () => {
@@ -47,7 +47,7 @@ export const SmartRemindersCard = () => {
   };
 
   return (
-    <Card className="medical-card card-gradient-warning">
+    <Card className="medical-card card-gradient-success">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-sm font-medium">Smart Reminders</CardTitle>
         <Bell className="h-4 w-4 text-muted-foreground" />

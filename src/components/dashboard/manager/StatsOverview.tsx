@@ -15,7 +15,7 @@ export const StatsOverview = () => (
   <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
     <StatsCard
       title="Total Claims"
-      value="1,234"
+      value="168"
       icon={<FileText className="h-4 w-4" />}
       description="+14% from last month"
       variant="success"
@@ -29,14 +29,14 @@ export const StatsOverview = () => (
     />
     <StatsCard
       title="Average Resolution Time"
-      value="24m"
+      value="9m"
       icon={<Clock className="h-4 w-4" />}
       description="-8% from last week"
       variant="info"
     />
     <StatsCard
       title="Customer Satisfaction"
-      value="92%"
+      value="97%"
       icon={<TrendingUp className="h-4 w-4" />}
       description="+5% this month"
       variant="warning"

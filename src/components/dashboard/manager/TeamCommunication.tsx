@@ -13,7 +13,7 @@ export const TeamCommunication = () => (
       </CardTitle>
     </CardHeader>
     <CardContent>
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2">
         <div className="space-y-2 p-4 bg-slate-50 rounded-lg border border-slate-200">
           <div className="flex items-center gap-2">
             <MessageSquare className="h-5 w-5 text-info" />
