@@ -33,7 +33,7 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phone
 
   useEffect(() => {
     // 🔄 Fetch AI suggestions every 3 seconds
-    const interval = setInterval(fetchSuggestions, 500);
+    const interval = setInterval(fetchSuggestions, 100);
     return () => clearInterval(interval); // ✅ Cleanup interval on unmount
   }, [phoneNumber]);
 

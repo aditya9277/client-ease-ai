@@ -24,7 +24,7 @@ export const CallTranscriptCard = ({ phoneNumber }: CallTranscriptCardProps) => 
 
   useEffect(() => {
     // 🔄 Fetch transcript every 1.5 seconds
-    const interval = setInterval(fetchTranscript, 1500);
+    const interval = setInterval(fetchTranscript, 500);
     return () => clearInterval(interval); // ✅ Cleanup interval on unmount
   }, [phoneNumber]);
 

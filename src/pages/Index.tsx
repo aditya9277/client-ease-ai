@@ -249,7 +249,7 @@ const Index = () => {
           <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
             <div className="flex justify-center mb-2">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 text-primary text-sm font-medium">
-                <Shield className="h-4 w-4 mr-2" />
+                <Shield className="h-1 w-4 mr-2" />
                 <span>Our Purpose</span>
               </div>
             </div>
@@ -273,24 +273,6 @@ const Index = () => {
           </div>
         </div>
       </div>
-
-      {/* Trust Badges Section */}
-      <div className="relative z-10 bg-white py-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <h3 className="text-2xl font-semibold text-slate-800">Trusted by Leading BPOs</h3>
-          </div>
-          
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-            {[1, 2, 3, 4, 5].map((item) => (
-              <div key={item} className="w-32 h-12 bg-slate-100/50 rounded-lg flex items-center justify-center">
-                <div className="w-24 h-4 bg-slate-200 rounded animate-pulse"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Footer */}
       <footer className="relative z-10 bg-slate-50 border-t border-slate-100">
         <div className="container mx-auto px-4 py-12">
