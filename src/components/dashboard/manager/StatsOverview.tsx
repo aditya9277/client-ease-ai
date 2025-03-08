@@ -12,7 +12,7 @@ import {
 import StatsCard from "@/components/dashboard/StatsCard";
 
 export const StatsOverview = () => (
-  <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
+  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
     <StatsCard
       title="Total Claims"
       value="1,234"
