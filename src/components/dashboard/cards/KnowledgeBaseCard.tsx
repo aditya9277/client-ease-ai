@@ -12,6 +12,13 @@ export const KnowledgeBaseCard = () => {
   const [loading, setLoading] = useState(false);
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [aiResponse, setAiResponse] = useState<string | null>(null);
+  const [hasInteracted, setHasInteracted] = useState(false);
+
+  const dummySuggestions = [
+    "What's the process for filing a claim?",
+    "How long does claim review typically take?",
+    "What documents are required for auto insurance claims?"
+  ];
 
   useEffect(() => {
     if (!searchQuery.trim()) {
@@ -20,6 +27,7 @@ export const KnowledgeBaseCard = () => {
       return;
     }
 
+    setHasInteracted(true);
     const fetchSuggestions = async () => {
       try {
         const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/knowledge-base/search?query=${searchQuery}`);
@@ -36,6 +44,7 @@ export const KnowledgeBaseCard = () => {
     e.preventDefault();
     if (!searchQuery.trim()) return;
 
+    setHasInteracted(true);
     setLoading(true);
     try {
       const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/knowledge-base/query?query=${searchQuery}`);
@@ -74,7 +83,19 @@ export const KnowledgeBaseCard = () => {
           {suggestions.length > 0 && (
             <div className="space-y-2 p-3 bg-white/60 border border-cyan-500/20 rounded-md">
               {suggestions.map((s, idx) => (
-                <p key={idx} className="text-sm text-gray-300">{s}</p>
+                <p key={idx} className="text-sm text-slate-300">{s}</p>
+              ))}
+            </div>
+          )}
+
+          {!hasInteracted && (
+            <div className="space-y-2 p-3 bg-white/60 border border-cyan-500/20 rounded-md">
+              <p className="text-sm text-slate-500 mb-2">Suggested queries:</p>
+              {dummySuggestions.map((s, idx) => (
+                <p key={idx} className="text-sm text-slate-800 hover:text-cyan-600 cursor-pointer" 
+                   onClick={() => setSearchQuery(s)}>
+                  {s}
+                </p>
               ))}
             </div>
           )}
