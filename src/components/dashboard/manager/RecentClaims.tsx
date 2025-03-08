@@ -69,32 +69,19 @@ export const RecentClaims = () => {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "approved":
-        return <Badge className="bg-success/10 text-success border-success/20">Approved</Badge>;
+        return <Badge variant="outline" className="bg-success/10 text-success border-success/20">Approved</Badge>;
       case "pending":
-        return <Badge className="bg-warning/10 text-warning border-warning/20">Pending</Badge>;
+        return <Badge variant="outline" className="bg-warning/10 text-warning border-warning/20">Pending</Badge>;
       case "rejected":
-        return <Badge className="bg-destructive/10 text-destructive border-destructive/20">Rejected</Badge>;
+        return <Badge variant="outline" className="bg-destructive/10 text-destructive border-destructive/20">Rejected</Badge>;
       default:
-        return <Badge>Unknown</Badge>;
-    }
-  };
-
-  const getTypeIcon = (type: string) => {
-    switch (type) {
-      case "Health Insurance":
-        return <div className="p-2 rounded-lg bg-info/10 text-info"><FileText className="h-5 w-5" /></div>;
-      case "Auto Insurance":
-        return <div className="p-2 rounded-lg bg-warning/10 text-warning"><FileText className="h-5 w-5" /></div>;
-      case "Home Insurance":
-        return <div className="p-2 rounded-lg bg-accent/10 text-accent"><FileText className="h-5 w-5" /></div>;
-      default:
-        return <div className="p-2 rounded-lg bg-primary/10 text-primary"><FileText className="h-5 w-5" /></div>;
+        return <Badge variant="outline">Unknown</Badge>;
     }
   };
 
   return (
-    <Card className="shadow-md border-slate-200 hover:shadow-lg transition-all duration-300">
-      <CardHeader className="bg-slate-50 border-b border-slate-100">
+    <Card className="medical-card card-gradient-primary">
+      <CardHeader>
         <CardTitle className="text-slate-800 flex items-center">
           <div className="icon-container icon-container-primary mr-2">
             <FileText className="h-5 w-5" />
@@ -102,7 +89,7 @@ export const RecentClaims = () => {
           Recent Claims
         </CardTitle>
       </CardHeader>
-      <CardContent className="p-5">
+      <CardContent>
         <div className="space-y-4">
           {isLoading ? (
             <div className="flex items-center justify-center h-40">
@@ -112,62 +99,65 @@ export const RecentClaims = () => {
               </div>
             </div>
           ) : (
-            <div className="grid gap-4">
-              {claims.map(claim => (
-                <div key={claim.id} className="bg-white rounded-lg border border-slate-200 hover:border-primary/20 hover:shadow-sm transition-all p-4">
-                  <div className="flex justify-between items-start">
-                    <div className="flex items-start space-x-3">
-                      {getTypeIcon(claim.type)}
-                      <div>
-                        <div className="flex items-center">
-                          <h4 className="font-medium text-slate-800">{claim.id}</h4>
-                          {claim.aiAssisted && (
-                            <span className="ml-2 px-2 py-0.5 rounded text-xs font-medium bg-primary/10 text-primary">
-                              AI Processed
-                            </span>
-                          )}
-                        </div>
-                        <div className="grid grid-cols-1 gap-1 mt-1">
-                          <div className="flex items-center text-xs text-slate-500">
-                            <User className="h-3 w-3 mr-1" />
-                            <span>{claim.customer}</span>
-                          </div>
-                          <div className="flex items-center text-xs text-slate-500">
-                            <Calendar className="h-3 w-3 mr-1" />
-                            <span>{claim.date}</span>
-                          </div>
-                          <div className="flex items-center text-xs text-slate-500">
-                            <Tag className="h-3 w-3 mr-1" />
-                            <span>{claim.type}</span>
-                          </div>
-                        </div>
-                      </div>
+            claims.map(claim => (
+              <div key={claim.id} className="p-4 bg-slate-50 rounded-lg border border-slate-200 hover:border-primary/20 hover:shadow-sm transition-all">
+                <div className="flex justify-between items-start">
+                  <div className="flex items-start space-x-3">
+                    <div className={`p-2 rounded-lg ${
+                      claim.type === "Health Insurance" ? "bg-info/10 text-info" :
+                      claim.type === "Auto Insurance" ? "bg-warning/10 text-warning" :
+                      "bg-accent/10 text-accent"
+                    }`}>
+                      <FileText className="h-5 w-5" />
                     </div>
-                    <div className="flex flex-col items-end">
-                      <div className="text-right">
-                        <div className="text-sm font-semibold text-slate-800">{claim.amount}</div>
-                        <div className="mt-1">
-                          {getStatusBadge(claim.status)}
-                        </div>
-                      </div>
-                      <div className="flex items-center space-x-2 mt-2">
+                    <div>
+                      <h4 className="font-medium text-slate-800 flex items-center">
+                        {claim.id}
+                        {claim.aiAssisted && (
+                          <span className="inline-flex items-center ml-2 px-1.5 py-0.5 rounded text-xs font-medium bg-primary/10 text-primary">
+                            AI Processed
+                          </span>
+                        )}
+                      </h4>
+                      <div className="flex flex-col space-y-1 mt-1">
                         <div className="flex items-center text-xs text-slate-500">
-                          <Clock className="h-3 w-3 mr-1" />
-                          {claim.processingTime}
+                          <User className="h-3 w-3 mr-1" />
+                          <span>{claim.customer}</span>
                         </div>
-                        <button
-                          onClick={() => handleDownloadClaim(claim.id)}
-                          className="p-1.5 bg-slate-50 hover:bg-slate-100 rounded-full transition-colors"
-                          aria-label="Download claim details"
-                        >
-                          <Download className="h-4 w-4 text-slate-400 hover:text-primary" />
-                        </button>
+                        <div className="flex items-center text-xs text-slate-500">
+                          <Calendar className="h-3 w-3 mr-1" />
+                          <span>{claim.date}</span>
+                        </div>
+                        <div className="flex items-center text-xs text-slate-500">
+                          <Tag className="h-3 w-3 mr-1" />
+                          <span>{claim.type}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <div className="flex flex-col items-end space-y-2">
+                    <div className="text-right">
+                      <div className="text-sm font-semibold text-slate-800">{claim.amount}</div>
+                      <div className="mt-1">
+                        {getStatusBadge(claim.status)}
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="flex items-center text-xs text-slate-500">
+                        <Clock className="h-3 w-3 mr-1" />
+                        {claim.processingTime}
+                      </div>
+                      <button
+                        onClick={() => handleDownloadClaim(claim.id)}
+                        className="p-1 hover:bg-slate-100 rounded-full transition-colors"
+                      >
+                        <Download className="h-4 w-4 text-slate-400 hover:text-primary" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))
           )}
         </div>
       </CardContent>

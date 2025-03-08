@@ -38,7 +38,7 @@ const Dashboard = () => {
   return (
     <DashboardLayout>
       {({ isAgent }) => (
-        <div className="animate-fade-in p-0">
+        <div className="animate-fade-in">
           {isAgent ? <AgentDashboard /> : <ManagerDashboard />}
         </div>
       )}
