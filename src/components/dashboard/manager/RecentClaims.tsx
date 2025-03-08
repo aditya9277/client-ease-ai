@@ -1,36 +1,35 @@
 
-import { 
-  FileText, 
-  Users, 
-  Clock, 
-  TrendingUp, 
-  ThumbsUp, 
-  AlertTriangle, 
-  CheckCircle 
-} from "lucide-react";
+import { useState, useEffect } from "react";
+import { FileText, Clock, Download, ArrowUpRight, Calendar, User, Tag } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { toast } from "sonner";
 
 export const RecentClaims = () => {
-  // Sample data for recent claims
-  const recentClaims = [
+  const [claims, setClaims] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Mock data for claims
+  const mockClaims = [
     {
-      id: "CL-78945",
-      customer: "Emily Johnson",
-      type: "Auto Accident",
-      date: "May 20, 2023",
-      status: "In Review",
-      agent: "Alex Rivera",
-      priority: "high"
+      id: "CLM-2023-001",
+      customer: "John Davis",
+      date: "2023-05-10",
+      type: "Health Insurance",
+      amount: "$1,250.00",
+      status: "approved",
+      aiAssisted: true,
+      processingTime: "1h 15m",
     },
     {
-      id: "CL-78932",
-      customer: "Michael Chen",
-      type: "Property Damage",
-      date: "May 19, 2023",
-      status: "Pending Info",
-      agent: "Jordan Smith",
-      priority: "medium"
+      id: "CLM-2023-002",
+      customer: "Sarah Johnson",
+      date: "2023-05-09",
+      type: "Auto Insurance",
+      amount: "$3,750.00",
+      status: "pending",
+      aiAssisted: true,
+      processingTime: "45m",
     },
     {
       id: "CL-78916",
@@ -43,89 +42,112 @@ export const RecentClaims = () => {
     }
   ];
 
-  // Function to determine status badge color
-  const getStatusBadge = (status: string) => {
-    switch (status) {
-      case "Approved":
-        return (
-          <Badge className="bg-success/20 text-success hover:bg-success/30 border-0">
-            <CheckCircle className="w-3 h-3 mr-1" />
-            {status}
-          </Badge>
-        );
-      case "In Review":
-        return (
-          <Badge className="bg-info/20 text-info hover:bg-info/30 border-0">
-            <Clock className="w-3 h-3 mr-1" />
-            {status}
-          </Badge>
-        );
-      case "Pending Info":
-        return (
-          <Badge className="bg-warning/20 text-warning hover:bg-warning/30 border-0">
-            <AlertTriangle className="w-3 h-3 mr-1" />
-            {status}
-          </Badge>
-        );
-      default:
-        return (
-          <Badge className="bg-slate-200 text-slate-700 hover:bg-slate-300 border-0">
-            {status}
-          </Badge>
-        );
-    }
+  // Simulate loading and fetch claims
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setClaims(mockClaims);
+      setIsLoading(false);
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleDownloadClaim = (id: string) => {
+    toast.success(`Downloading claim details for ${id}`);
   };
 
-  // Function to determine priority marker
-  const getPriorityMarker = (priority: string) => {
-    switch (priority) {
-      case "high":
-        return <span className="absolute left-0 top-0 bottom-0 w-1 bg-destructive rounded-l-lg"></span>;
-      case "medium":
-        return <span className="absolute left-0 top-0 bottom-0 w-1 bg-warning rounded-l-lg"></span>;
-      case "low":
-        return <span className="absolute left-0 top-0 bottom-0 w-1 bg-success rounded-l-lg"></span>;
+  const getStatusBadge = (status: string) => {
+    switch (status) {
+      case "approved":
+        return <Badge variant="outline" className="bg-success/10 text-success border-success/20">Approved</Badge>;
+      case "pending":
+        return <Badge variant="outline" className="bg-warning/10 text-warning border-warning/20">Pending</Badge>;
+      case "rejected":
+        return <Badge variant="outline" className="bg-destructive/10 text-destructive border-destructive/20">Rejected</Badge>;
       default:
-        return null;
+        return <Badge variant="outline">Unknown</Badge>;
     }
   };
 
   return (
-    <Card className="medical-card card-gradient-success h-full">
+    <Card className="medical-card card-gradient-primary">
       <CardHeader>
         <CardTitle className="text-slate-800 flex items-center">
-          <div className="icon-container icon-container-success mr-2">
+          <div className="icon-container icon-container-primary mr-2">
             <FileText className="h-5 w-5" />
           </div>
           Recent Claims
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="space-y-3">
-          {recentClaims.map((claim) => (
-            <div key={claim.id} className="relative bg-white rounded-lg shadow-sm border border-slate-100 hover:border-success/20 hover:shadow-md transition-all overflow-hidden group">
-              {getPriorityMarker(claim.priority)}
-              <div className="p-3 pl-4">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <div className="flex items-center">
-                      <h4 className="font-medium text-slate-800 group-hover:text-slate-900">{claim.customer}</h4>
-                      <span className="ml-2 text-xs text-slate-500">{claim.id}</span>
-                    </div>
-                    <p className="text-sm text-slate-500 mt-1">{claim.type}</p>
-                  </div>
-                  <div>{getStatusBadge(claim.status)}</div>
-                </div>
-                <div className="flex justify-between items-center mt-3 text-xs">
-                  <div className="flex items-center text-slate-500">
-                    <Users className="h-3 w-3 mr-1" />
-                    <span>{claim.agent}</span>
-                  </div>
-                  <div className="text-slate-500">{claim.date}</div>
-                </div>
+        <div className="space-y-4">
+          {isLoading ? (
+            <div className="flex items-center justify-center h-40">
+              <div className="flex flex-col items-center">
+                <div className="h-10 w-10 rounded-full border-4 border-slate-200 border-t-primary animate-spin"></div>
+                <p className="mt-3 text-sm text-slate-500">Loading claims...</p>
               </div>
             </div>
-          ))}
+          ) : (
+            claims.map(claim => (
+              <div key={claim.id} className="p-4 bg-slate-50 rounded-lg border border-slate-200 hover:border-primary/20 hover:shadow-sm transition-all">
+                <div className="flex justify-between items-start">
+                  <div className="flex items-start space-x-3">
+                    <div className={`p-2 rounded-lg ${
+                      claim.type === "Health Insurance" ? "bg-info/10 text-info" :
+                      claim.type === "Auto Insurance" ? "bg-warning/10 text-warning" :
+                      "bg-accent/10 text-accent"
+                    }`}>
+                      <FileText className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-slate-800 flex items-center">
+                        {claim.id}
+                        {claim.aiAssisted && (
+                          <span className="inline-flex items-center ml-2 px-1.5 py-0.5 rounded text-xs font-medium bg-primary/10 text-primary">
+                            AI Processed
+                          </span>
+                        )}
+                      </h4>
+                      <div className="flex flex-col space-y-1 mt-1">
+                        <div className="flex items-center text-xs text-slate-500">
+                          <User className="h-3 w-3 mr-1" />
+                          <span>{claim.customer}</span>
+                        </div>
+                        <div className="flex items-center text-xs text-slate-500">
+                          <Calendar className="h-3 w-3 mr-1" />
+                          <span>{claim.date}</span>
+                        </div>
+                        <div className="flex items-center text-xs text-slate-500">
+                          <Tag className="h-3 w-3 mr-1" />
+                          <span>{claim.type}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-end space-y-2">
+                    <div className="text-right">
+                      <div className="text-sm font-semibold text-slate-800">{claim.amount}</div>
+                      <div className="mt-1">
+                        {getStatusBadge(claim.status)}
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="flex items-center text-xs text-slate-500">
+                        <Clock className="h-3 w-3 mr-1" />
+                        {claim.processingTime}
+                      </div>
+                      <button
+                        onClick={() => handleDownloadClaim(claim.id)}
+                        className="p-1 hover:bg-slate-100 rounded-full transition-colors"
+                      >
+                        <Download className="h-4 w-4 text-slate-400 hover:text-primary" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </CardContent>
     </Card>
