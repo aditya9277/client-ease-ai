@@ -42,7 +42,7 @@ export const EscalationAlertCard = ({ phoneNumber }) => {
       }
     };
 
-    const interval = setInterval(fetchEscalations, 3000);
+    const interval = setInterval(fetchEscalations, 500);
     return () => clearInterval(interval);
   }, [phoneNumber]);
 
