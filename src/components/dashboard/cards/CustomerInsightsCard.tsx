@@ -8,7 +8,7 @@ interface CustomerInsightsCardProps {
 
 export const CustomerInsightsCard = ({ isLoading = false }: CustomerInsightsCardProps) => {
   const customerInfo = {
-    name: "Kanishk Shukla",
+    name: "Raj",
     age: 34,
     memberSince: "March 2022",
     planType: "Premium Plus",
