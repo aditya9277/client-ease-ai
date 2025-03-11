@@ -16,21 +16,21 @@ export const QuickResponseCard = ({ sentiment }: QuickResponseCardProps) => {
     // Update suggestions based on sentiment
     if (sentiment < 40) {
       setSuggestions([
-        "I understand your frustration. Let me help resolve this issue immediately.",
-        "I apologize for any inconvenience. Let's work together to find a solution.",
-        "Your satisfaction is our priority. Here's what I can do to help...",
+        "Refund terms and policy documents",
+        "Company TV Troubleshoot guide",
+        "Preferred time for our service agent's visit.",
       ]);
     } else if (sentiment < 70) {
       setSuggestions([
-        "Thank you for bringing this to our attention. Let me check that for you.",
-        "I'll be happy to assist you with this matter.",
-        "Let me guide you through the process step by step.",
+        "Refund terms and policy documents",
+        "Company TV Troubleshoot guide",
+        "Preferred time for our service agent's visit.",
       ]);
     } else {
       setSuggestions([
-        "I'm glad to hear that! Let me help you further optimize your experience.",
-        "That's great! Would you like to learn about our additional services?",
-        "Thank you for your positive feedback. Is there anything else I can help with?",
+        "Refund terms and policy documents",
+        "Company TV Troubleshoot guide",
+        "Preferred time for our service agent's visit.",
       ]);
     }
   }, [sentiment]);

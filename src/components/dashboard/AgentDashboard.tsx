@@ -267,10 +267,10 @@ const AgentDashboard = () => {
           <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-6">
               <CallTranscriptCard phoneNumber={phoneNumber} />
-              <CustomerInsightsCard />
+              <EscalationAlertCard phoneNumber={phoneNumber} />
             </div>
             <div className="space-y-6">
-              <EscalationAlertCard phoneNumber={phoneNumber} />
+              <CustomerInsightsCard />
               <LiveKnowledgeBaseCard />              
 
               <QuickResponseCard sentiment={currentSentiment} />              

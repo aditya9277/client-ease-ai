@@ -50,7 +50,7 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phone
   };
 
   return (
-    <Card className="medical-card card-gradient-primary">
+    <Card className="medical-card card-gradient-success">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span className="gradient-text text-xl">Live Call Assistance</span>
