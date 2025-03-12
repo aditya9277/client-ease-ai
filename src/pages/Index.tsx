@@ -285,7 +285,7 @@ const Index = () => {
               <span className="text-xl font-semibold text-slate-800">ClientEase AI</span>
             </div>
             <div className="text-slate-500 text-sm">
-              © 2024 ClientEase AI. All rights reserved.
+              © 2025 ClientEase AI. All rights reserved.
             </div>
             <div className="flex items-center gap-6">
               <a href="#" className="text-slate-600 hover:text-primary transition-colors">
