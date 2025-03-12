@@ -15,7 +15,7 @@ const initialReminders: Reminder[] = [
   {
     id: "1",
     text: "Follow up with customer regarding claim #CLM001",
-    completed: false,
+    completed: true,
     dueDate: "2025-02-21",
   },
   {
@@ -26,9 +26,9 @@ const initialReminders: Reminder[] = [
   },
   {
     id: "3",
-    text: "Schedule callback from senior team for insurance inquiry #INS005",
+    text: "Schedule callback from senior team for television inquiry #INS005",
     completed: false,
-    dueDate: "2025-02-25",
+    dueDate: "2025-03-12",
   }
 ];
 
