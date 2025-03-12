@@ -33,7 +33,7 @@ const AuthDialog = ({ open, onOpenChange }: AuthDialogProps) => {
         description: "Welcome to the dashboard."
       });
       onOpenChange(false);
-      navigate("/dashboard");
+      navigate("/dashboard"); // Direct navigation to dashboard
     } else {
       toast.error("Access denied", {
         description: "The password you entered is incorrect."
