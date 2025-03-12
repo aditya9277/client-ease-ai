@@ -1,4 +1,5 @@
 
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { 
   ArrowRight, Brain, Monitor, Rocket, Star, 
@@ -9,9 +10,11 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import AuthDialog from "@/components/AuthDialog";
 
 const Index = () => {
   const navigate = useNavigate();
+  const [showAuthDialog, setShowAuthDialog] = useState(false);
 
   const features = [
     {
@@ -103,7 +106,7 @@ const Index = () => {
           </div>
           <div className="flex gap-4">
             <Button 
-              onClick={() => navigate("/dashboard")} 
+              onClick={() => setShowAuthDialog(true)} 
               variant="outline"
               className="text-primary border-primary/30 hover:bg-primary/5"
             >
@@ -140,7 +143,7 @@ const Index = () => {
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
               <Button 
-                onClick={() => navigate("/dashboard")} 
+                onClick={() => setShowAuthDialog(true)} 
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-white w-full sm:w-auto px-8 py-6 text-lg rounded-xl transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-1"
               >
@@ -263,7 +266,7 @@ const Index = () => {
             </p>
             
             <Button 
-              onClick={() => navigate("/dashboard")} 
+              onClick={() => setShowAuthDialog(true)} 
               size="lg"
               className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-xl transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-1 mt-4"
             >
@@ -298,6 +301,9 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* Auth Dialog */}
+      <AuthDialog open={showAuthDialog} onOpenChange={setShowAuthDialog} />
     </div>
   );
 };
