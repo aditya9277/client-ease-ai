@@ -1,5 +1,4 @@
 
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { 
   ArrowRight, Brain, Monitor, Rocket, Star, 
@@ -10,11 +9,9 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import AuthDialog from "@/components/AuthDialog";
 
 const Index = () => {
   const navigate = useNavigate();
-  const [showAuthDialog, setShowAuthDialog] = useState(false);
 
   const features = [
     {
@@ -106,7 +103,7 @@ const Index = () => {
           </div>
           <div className="flex gap-4">
             <Button 
-              onClick={() => setShowAuthDialog(true)} 
+              onClick={() => navigate("/dashboard")} 
               variant="outline"
               className="text-primary border-primary/30 hover:bg-primary/5"
             >
@@ -143,7 +140,7 @@ const Index = () => {
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
               <Button 
-                onClick={() => setShowAuthDialog(true)} 
+                onClick={() => navigate("/dashboard")} 
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-white w-full sm:w-auto px-8 py-6 text-lg rounded-xl transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-1"
               >
@@ -266,7 +263,7 @@ const Index = () => {
             </p>
             
             <Button 
-              onClick={() => setShowAuthDialog(true)} 
+              onClick={() => navigate("/dashboard")} 
               size="lg"
               className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg rounded-xl transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-1 mt-4"
             >
@@ -285,7 +282,7 @@ const Index = () => {
               <span className="text-xl font-semibold text-slate-800">ClientEase AI</span>
             </div>
             <div className="text-slate-500 text-sm">
-              © 2025 ClientEase AI. All rights reserved.
+              © 2024 ClientEase AI. All rights reserved.
             </div>
             <div className="flex items-center gap-6">
               <a href="#" className="text-slate-600 hover:text-primary transition-colors">
@@ -301,9 +298,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-
-      {/* Auth Dialog */}
-      <AuthDialog open={showAuthDialog} onOpenChange={setShowAuthDialog} />
     </div>
   );
 };
