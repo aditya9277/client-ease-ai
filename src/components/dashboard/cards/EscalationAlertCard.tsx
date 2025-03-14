@@ -18,7 +18,7 @@ export const EscalationAlertCard = ({ phoneNumber }) => {
         if (!phoneNumber) return;
 
         const response = await axios.get(
-          `https://twilio-ai-backend-gegfdfd9gnf2g9hg.southindia-01.azurewebsites.net/logs/escalation_${phoneNumber}.txt`,
+          `https://client-ease-ai-bd.azurewebsites.net/logs/escalation_${phoneNumber}.txt`,
           { responseType: "text" }
         );
 
