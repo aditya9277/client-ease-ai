@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import { 
   ArrowRight, Brain, Monitor, Rocket, Star, 
@@ -6,7 +5,7 @@ import {
   MessageSquare, ClipboardCheck, 
   Database, Zap, Users, ExternalLink,
   Sparkles, CheckCircle, TrendingUp, Shield,
-  Wheat, Plant, Sun, CloudRain, Tractor
+  Wheat, Leaf, Sun, CloudRain, Tractor
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -43,7 +42,7 @@ const Index = () => {
         "Provides instant expert feedback",
         "Tracks seasonal performance dynamically"
       ],
-      icon: Plant
+      icon: Leaf
     },
     {
       title: "Consultation Summarization",
@@ -304,4 +303,3 @@ const Index = () => {
 };
 
 export default Index;
-
