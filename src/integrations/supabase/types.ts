@@ -9,13 +9,194 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          amount_paid: number
+          created_at: string | null
+          event_id: string
+          id: string
+          status: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          amount_paid: number
+          created_at?: string | null
+          event_id: string
+          id?: string
+          status?: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          amount_paid?: number
+          created_at?: string | null
+          event_id?: string
+          id?: string
+          status?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      events: {
+        Row: {
+          base_price: number
+          bookings_count: number | null
+          capacity: number
+          created_at: string | null
+          created_by: string | null
+          current_price: number
+          description: string | null
+          end_date: string
+          id: string
+          start_date: string
+          title: string
+          updated_at: string | null
+          venue: string
+        }
+        Insert: {
+          base_price: number
+          bookings_count?: number | null
+          capacity: number
+          created_at?: string | null
+          created_by?: string | null
+          current_price: number
+          description?: string | null
+          end_date: string
+          id?: string
+          start_date: string
+          title: string
+          updated_at?: string | null
+          venue: string
+        }
+        Update: {
+          base_price?: number
+          bookings_count?: number | null
+          capacity?: number
+          created_at?: string | null
+          created_by?: string | null
+          current_price?: number
+          description?: string | null
+          end_date?: string
+          id?: string
+          start_date?: string
+          title?: string
+          updated_at?: string | null
+          venue?: string
+        }
+        Relationships: []
+      }
+      points: {
+        Row: {
+          created_at: string | null
+          id: string
+          level: string | null
+          points: number | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          level?: string | null
+          points?: number | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          level?: string | null
+          points?: number | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          id: string
+          role: string | null
+          updated_at: string
+          username: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          id: string
+          role?: string | null
+          updated_at?: string
+          username?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          id?: string
+          role?: string | null
+          updated_at?: string
+          username?: string | null
+        }
+        Relationships: []
+      }
+      promotions: {
+        Row: {
+          created_at: string | null
+          created_by: string | null
+          description: string | null
+          discount_percentage: number | null
+          end_date: string
+          id: string
+          start_date: string
+          target_audience: string[] | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          discount_percentage?: number | null
+          end_date: string
+          id?: string
+          start_date: string
+          target_audience?: string[] | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          discount_percentage?: number | null
+          end_date?: string
+          id?: string
+          start_date?: string
+          target_audience?: string[] | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      calculate_dynamic_price: {
+        Args: { base_price: number; bookings_count: number; capacity: number }
+        Returns: number
+      }
     }
     Enums: {
       [_ in never]: never
