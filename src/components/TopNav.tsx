@@ -54,7 +54,7 @@ export default function TopNav({ isAgent, setIsAgent }: TopNavProps) {
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <h1 className="relative text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary via-info to-accent animate-gradient before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary before:via-info before:to-accent before:animate-shimmer before:bg-clip-text before:text-transparent ">
-            ClientEase AI
+            Kisan Mitraa
           </h1>
           
         </div>

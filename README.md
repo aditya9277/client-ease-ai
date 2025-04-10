@@ -1,48 +1,49 @@
-
-# 📊 Client Ease AI - AI-Driven Workflow and Efficiency Enhancement for Indian BPOs 🇮🇳
+# 📊 Kisan Mitraa - AI-Driven Farming Support for Indian Farmers 🇮🇳
 
 ## 🌟 Project Overview
 
-**Client Ease AI** is a comprehensive AI-powered solution designed to revolutionize claims processing and customer service operations in Indian BPOs. By leveraging the power of **Generative AI (Gemini API)**, **Twilio**, and **Google Cloud Speech-to-Text**, this platform streamlines workflows, enhances agent efficiency, and significantly improves client experiences.
+**Kisan Mitraa** is a comprehensive AI-powered solution designed to revolutionize agricultural support for Indian farmers. By leveraging the power of **Generative AI (Gemini API)**, **Twilio**, and **Google Cloud Speech-to-Text**, this platform streamlines consultations, enhances agricultural knowledge sharing, and significantly improves farmer experiences.
 
-Built to handle complex tasks, automate routine processes, and provide real-time insights, **Client Ease AI** ensures higher productivity and reduced operational costs while maintaining a human-centric approach.
+Built to handle complex farming issues, automate routine processes, and provide real-time insights, **Kisan Mitraa** ensures higher productivity and reduced knowledge gaps while maintaining a human-centric approach.
 
 ---
 
 ## 🚀 Key Features
 
-### 🔮 AI-Powered Sentiment Analysis Tool
-- Real-time sentiment tracking during calls using Google Cloud Speech-to-Text and Gemini AI.
-- Detects customer emotions (Positive, Neutral, Frustrated, Disappointed) and reflects live sentiment on the dashboard.
+### 🔮 AI-Powered Consultation Scheduler
+- Smart priority-based scheduling that automatically manages follow-ups based on crop urgency and farmer needs.
+- Ensures urgent crop issues are addressed first.
+- Reduces wait time and missed follow-ups.
 
-### 📅 Smart Reminders and Follow-Up Scheduler
-- AI analyzes call transcripts to schedule automatic follow-ups and callbacks.
-- Prioritizes claims based on urgency and customer sentiment.
+### 📅 Farming Knowledge Assistant
+- Dynamic knowledge base that provides instant, relevant agricultural solutions from past cases.
+- Searchable AI-powered farming FAQ bot.
+- Learns from previous agricultural cases.
+- Reduces crop issue resolution time.
 
-### 📚 AI Knowledge Base Assistant
-- Integrated Gemini AI searches knowledge base dynamically based on call context.
-- Instant recommendations and FAQs directly to the agent.
+### 📚 Crop Health Analysis
+- Continuous tracking of crop conditions through visual and descriptive analysis.
+- Detects crop health issues in real-time.
+- Provides instant expert feedback.
+- Tracks seasonal performance dynamically.
 
-### 📑 Generative AI for Automated Claim Resolution Documentation
-- Post-call, Gemini AI generates a professional claim document based on the transcript and agent notes.
-- Reduces manual documentation time and ensures consistency.
+### 📑 Consultation Summarization
+- AI-powered automatic generation of consultation summaries with actionable insights.
+- Generates professional advice summaries.
+- Stores for future reference.
+- Makes post-consultation processes instant.
 
-### 📊 Unified Dashboard and Integration Layer
-- Centralized dashboard for agents and managers.
-- Real-time data visualizations, KPIs, and sentiment insights.
-- **Manager View** for team monitoring and agent performance tracking.
+### 📊 Automated Documentation
+- AI-generated crop management documents from consultation transcripts and notes.
+- Auto-formats structured farming details.
+- Ensures accuracy in recommendations.
+- Reduces paperwork for farmers.
 
-### 🧠 AI-Powered Smart Summarization of Call Logs
-- Generates concise summaries for every completed call.
-- Stores summaries for historical reference and manager insights.
-
-### 🎯 Real-Time AI Sentiment & Call Quality Monitoring
-- Real-time call quality scoring based on customer interactions.
-- Alerts for high-risk calls and immediate manager intervention.
-
-### 📆 Smart AI-Powered Callback Scheduler (Priority-Based)
-- Intelligent scheduling system for callbacks and follow-ups.
-- Ensures no high-priority customer is left unattended.
+### 🧠 Seasonal Reminder System
+- AI-powered follow-up system ensuring no crop issue is overlooked across seasons.
+- Smart seasonal reminder scheduling.
+- Organized crop management workflow.
+- Efficient harvest tracking.
 
 ---
 
@@ -61,7 +62,7 @@ Built to handle complex tasks, automate routine processes, and provide real-time
 - **AI Integration**: Gemini API, Google Cloud Speech-to-Text, Twilio
 
 ### 🧠 AI/ML
-- **Sentiment Analysis**: Google Cloud Speech-to-Text + Gemini AI
+- **Sentiment Analysis**: Google Cloud Speech-to-Text + Gemini API
 - **Generative AI**: Gemini API for document creation and insights
 - **Natural Language Processing (NLP)**: Real-time transcription and knowledge extraction
 
@@ -75,16 +76,16 @@ Built to handle complex tasks, automate routine processes, and provide real-time
 ## 📁 Folder Structure
 
 ```
-Client_Ease_AI/
+Kisan_Mitraa/
 │
 ├── backend/                          # Backend code and services
 │   ├── .env                          # Environment variables
 │   ├── package.json                  # Backend dependencies
 │   ├── server.js                     # Main Express backend server
 │   ├── sentimentAnalyzer.js          # Sentiment analysis module
-│   ├── generateClaimDocument.js      # Claim document generation using Gemini API
+│   ├── generateConsultationSummary.js# Consultation summary generation using Gemini API
 │   ├── knowledgeBase.js              # Knowledge base integration
-│   └── callbacksHandler.js           # Callback scheduler logic
+│   └── remindersHandler.js           # Reminder scheduler logic
 │
 ├── public/                           # Static assets (images, icons, etc.)
 │   ├── favicon.ico
@@ -95,11 +96,11 @@ Client_Ease_AI/
 │   ├── App.tsx                       # Main React App
 │   ├── main.tsx                      # Entry point for React
 │
-│   ├── components/                   # Reusable UI and dashboard components
-│   │   ├── dashboard/                # Agent and Manager dashboards
-│   │   ├── cards/                    # Card Components
-│   │   ├── manager/                  # Manager-specific components
-│   │   └── ui/                       # UI Library Components
+│   ├── components/                   # Reusable UI components
+│   │   ├── Hero.tsx                  # Hero Section Component
+│   │   ├── Features.tsx              # Features Section Component
+│   │   ├── Stats.tsx                 # Stats Section Component
+│   │   └── Footer.tsx                # Footer Component
 │   ├── hooks/                        # Custom hooks
 │   ├── lib/                          # Utility functions
 │   └── pages/                        # React pages
@@ -129,7 +130,7 @@ Client_Ease_AI/
 
 1. **Clone the Repository**
     ```bash
-    git clone https://github.com/aditya9277/client-ease-ai.git
+    git clone https://github.com/aditya9277/kisan-mitraa.git
     cd backend
     ```
 
@@ -174,18 +175,18 @@ Client_Ease_AI/
 
 ## 🧪 Usage Guide
 
-### 📞 Start a Call
-1. Enter a verified phone number.
-2. Real-time transcription, sentiment analysis, and AI suggestions appear on the agent dashboard.
+### 🌾 Start a Consultation
+1. Provide details of the crop issue.
+2. Real-time AI suggestions and knowledge base appear on the consultation dashboard.
 
-### 📋 Post-Call Workflow
-1. Automatic claim document generated after call ends.
-2. AI-powered call summary and sentiment report.
-3. View call history and download call reports from the dashboard.
+### 📝 Post-Consultation Workflow
+1. Automatic consultation summary generated after the session.
+2. AI-powered insights and seasonal reminders.
+3. View consultation history and download reports from the dashboard.
 
-### 📊 Manager Dashboard
-- Monitor agent performance.
-- Access KPIs, call quality metrics, and team stats.
+### 🧑‍🌾 Farmer Dashboard
+- Access personalized advice.
+- View crop health analysis and seasonal performance.
 
 ---
 
@@ -220,9 +221,9 @@ Distributed under the **MIT License**. See `LICENSE` for more information.
 
 For queries, collaborations, or testing access, feel free to reach out:
 
-- **Email**: support@clienteaseai.com
+- **Email**: support@kisanmitraa.com
 - **GitHub**: [Your GitHub Profile](https://github.com/your-profile)
 
 ---
 
-🚀 _Empowering Indian BPOs with AI. One call at a time._ 🇮🇳
+🚀 _Empowering Indian Farmers with AI. One consultation at a time._ 🇮🇳

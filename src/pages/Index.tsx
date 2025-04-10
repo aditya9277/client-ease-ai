@@ -99,7 +99,7 @@ const Index = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Wheat className="h-8 w-8 text-primary" />
-            <h1 className="text-2xl font-bold text-slate-800 tracking-tight">KisanSahayak AI</h1>
+            <h1 className="text-2xl font-bold text-slate-800 tracking-tight">Kisan Mitraa</h1>
           </div>
           <div className="flex gap-4">
             <Button 
@@ -279,10 +279,10 @@ const Index = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-2">
               <Wheat className="h-6 w-6 text-primary" />
-              <span className="text-xl font-semibold text-slate-800">KisanSahayak AI</span>
+              <span className="text-xl font-semibold text-slate-800">Kisan Mitraa</span>
             </div>
             <div className="text-slate-500 text-sm">
-              © 2024 KisanSahayak AI. All rights reserved.
+              © 2024 Kisan Mitraa. All rights reserved.
             </div>
             <div className="flex items-center gap-6">
               <a href="#" className="text-slate-600 hover:text-primary transition-colors">
