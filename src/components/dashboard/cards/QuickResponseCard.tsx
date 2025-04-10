@@ -16,27 +16,27 @@ export const QuickResponseCard = ({ sentiment }: QuickResponseCardProps) => {
     // Update suggestions based on sentiment
     if (sentiment < 40) {
       setSuggestions([
-        "Refund terms and policy documents",
-        "Company TV Troubleshoot guide",
-        "Preferred time for our service agent's visit.",
+        "Comprehensive soil test guide document",
+        "Local agriculture office contact details",
+        "Crop disease diagnostic checklist",
       ]);
     } else if (sentiment < 70) {
       setSuggestions([
-        "Refund terms and policy documents",
-        "Company TV Troubleshoot guide",
-        "Preferred time for our service agent's visit.",
+        "Seasonal crop rotation recommendations",
+        "Water conservation techniques document",
+        "Local government subsidy application form",
       ]);
     } else {
       setSuggestions([
-        "Refund terms and policy documents",
-        "Company TV Troubleshoot guide",
-        "Preferred time for our service agent's visit.",
+        "High-yield farming techniques guide",
+        "Organic certification process document",
+        "Modern agricultural equipment catalog",
       ]);
     }
   }, [sentiment]);
 
   const handleSendResponse = (response: string) => {
-    toast.success("Response sent to customer");
+    toast.success("Resource sent to farmer");
   };
 
   return (
@@ -46,7 +46,7 @@ export const QuickResponseCard = ({ sentiment }: QuickResponseCardProps) => {
           <div className="icon-container icon-container-primary">
             <MessageSquare className="h-5 w-5" />
           </div>
-          Quick Responses
+          Quick Resources
         </CardTitle>
       </CardHeader>
       <CardContent>

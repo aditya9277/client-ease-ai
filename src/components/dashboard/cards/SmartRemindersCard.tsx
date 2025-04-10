@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Bell, Check } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,19 +15,19 @@ interface Reminder {
 const initialReminders: Reminder[] = [
   {
     id: "1",
-    text: "Follow up with customer regarding claim #CLM001",
+    text: "Follow up with farmer regarding soil testing request #ST001",
     completed: true,
     dueDate: "2025-02-21",
   },
   {
     id: "2",
-    text: "Review documentation for warranty case #WAR003",
+    text: "Review documentation for crop insurance case #INS003",
     completed: false,
     dueDate: "2025-02-19",
   },
   {
     id: "3",
-    text: "Schedule callback from senior team for television inquiry #INS005",
+    text: "Schedule callback with agricultural expert for pest control inquiry #PC005",
     completed: false,
     dueDate: "2025-03-12",
   }
@@ -49,7 +50,7 @@ export const SmartRemindersCard = () => {
   return (
     <Card className="medical-card card-gradient-warning">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium">Smart Reminders</CardTitle>
+        <CardTitle className="text-sm font-medium">Farm Task Reminders</CardTitle>
         <Bell className="h-4 w-4 text-muted-foreground" />
       </CardHeader>
       <CardContent>

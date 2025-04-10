@@ -31,12 +31,12 @@ export const CallbackSchedulerCard = () => {
           <div className="icon-container icon-container-info">
             <PhoneIncoming className="h-5 w-5" />
           </div>
-          Scheduled Callbacks
+          Scheduled Follow-ups
         </CardTitle>
       </CardHeader>
       <CardContent>
         {callbacks.length === 0 ? (
-          <p className="text-sm text-slate-600">No callbacks scheduled</p>
+          <p className="text-sm text-slate-600">No follow-ups scheduled</p>
         ) : (
           <div className="max-h-64 overflow-y-auto space-y-3 scrollbar-hide">
             {callbacks.map((callback, index) => (

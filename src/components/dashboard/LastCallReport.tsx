@@ -1,3 +1,4 @@
+
 import { FileText, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -6,7 +7,7 @@ interface LastCallReportProps {
   customerId?: string;
 }
 
-export const LastCallReport = ({ phoneNumber, customerId = "CUS-001" }: LastCallReportProps) => {
+export const LastCallReport = ({ phoneNumber, customerId = "FRM-001" }: LastCallReportProps) => {
   if (!phoneNumber) return null;
 
   // ✅ Construct the file download URL
@@ -16,8 +17,8 @@ export const LastCallReport = ({ phoneNumber, customerId = "CUS-001" }: LastCall
     <div className="mt-6 border rounded-lg p-4">
       <div className="flex items-center justify-between">
         <div className="space-y-1">
-          <h3 className="text-lg font-medium">Last Call Report</h3>
-          <p className="text-sm text-muted-foreground">Customer ID: {customerId}</p>
+          <h3 className="text-lg font-medium">Last Consultation Report</h3>
+          <p className="text-sm text-muted-foreground">Farmer ID: {customerId}</p>
         </div>
         <Button
           variant="outline"

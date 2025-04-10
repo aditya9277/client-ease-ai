@@ -1,3 +1,4 @@
+
 import { AlertTriangle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useEffect, useState } from "react";
@@ -34,18 +35,18 @@ export const CustomerAlertsCard = ({ phoneNumber }) => {
       <CardHeader className="bg-orange-500/10">
         <CardTitle className="flex items-center gap-2 text-orange-500">
           <AlertTriangle className="h-5 w-5" />
-          Customer Alert
+          Farmer Alert
         </CardTitle>
       </CardHeader>
       <CardContent>
         <p className="text-slate-800">
-          <strong>🚨 Risk Score:</strong> {alertData.riskScore}/10
+          <strong>🚨 Priority Level:</strong> {alertData.riskScore}/10
         </p>
         <p className="text-red-400">
           <strong>⚠️ Warning:</strong> {alertData.agentWarning}
         </p>
         <p className="text-green-600">
-          <strong>💡 Suggested Action:</strong> {alertData.agentSuggestion}
+          <strong>💡 Recommended Action:</strong> {alertData.agentSuggestion}
         </p>
       </CardContent>
     </Card>

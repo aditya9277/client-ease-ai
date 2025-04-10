@@ -1,3 +1,4 @@
+
 import { FileText, Download } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -33,7 +34,7 @@ export const ClaimDocumentsCard = () => {
       window.open(url, "_blank", "noopener,noreferrer");
   
     } catch (error) {
-      console.error("Error fetching claim document:", error);
+      console.error("Error fetching crop document:", error);
     }
   };  
   return (
@@ -41,12 +42,12 @@ export const ClaimDocumentsCard = () => {
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-slate-800">
           <FileText className="h-5 w-5 text-cyan-400" />
-          Claim Documents
+          Crop Documents
         </CardTitle>
       </CardHeader>
       <CardContent>
         {claimDocs.length === 0 ? (
-          <p className="text-slate-800">No claim documents found.</p>
+          <p className="text-slate-800">No crop documents found.</p>
         ) : (
           <ul className="max-h-64 overflow-y-auto space-y-3 scrollbar-hide">
             {claimDocs.map((doc) => (

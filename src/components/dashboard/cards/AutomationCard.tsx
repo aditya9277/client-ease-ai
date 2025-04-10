@@ -15,7 +15,7 @@ export const AutomationCard = () => {
             <div className="icon-container icon-container-warning">
               <Bot className="h-4 w-4" />
             </div>
-            Workflow Automation
+            Farm Automation
           </div>
         </CardTitle>
       </CardHeader>
@@ -27,10 +27,10 @@ export const AutomationCard = () => {
           </div>
           <div className="space-y-2">
             <Button onClick={handleButtonClick} variant="outline" className="w-full justify-start text-left font-normal border-warning/20 text-slate-700 hover:bg-warning/5">
-              <span>Data Entry Assistant</span>
+              <span>Irrigation Controller</span>
             </Button>
             <Button variant="outline" className="w-full justify-start text-left font-normal border-warning/20 text-slate-700 hover:bg-warning/5">
-              <span>Form Auto-Fill</span>
+              <span>Soil Monitoring System</span>
             </Button>
           </div>
         </div>
