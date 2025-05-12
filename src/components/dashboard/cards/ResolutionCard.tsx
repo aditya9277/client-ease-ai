@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export const ResolutionCard = () => {
-  const [resolution, setResolution] = useState("Waiting for live consultation data...");
+  const [resolution, setResolution] = useState("Waiting for live call data...");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export const ResolutionCard = () => {
             <ClipboardList className="h-4 w-4" />
           </div>
           <span className="bg-gradient-to-r from-success to-success-600 bg-clip-text text-transparent">
-            AI-Powered Farm Solutions
+            AI-Powered Resolutions
           </span>
         </CardTitle>
         <RefreshCw className="h-4 w-4 animate-spin text-success/70" />
@@ -57,7 +57,7 @@ export const ResolutionCard = () => {
                   <span className="text-xs text-success font-medium">AI confidence: 92%</span>
                 </div>
                 <button className="text-xs text-primary hover:text-primary/80 font-medium transition-colors">
-                  Send to farmer
+                  Copy to response
                 </button>
               </div>
             </div>

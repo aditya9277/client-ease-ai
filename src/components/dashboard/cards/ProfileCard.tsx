@@ -10,16 +10,16 @@ export const ProfileCard = () => {
         <div className="flex items-center space-x-4">
           <div className="relative group">
             <Avatar className="h-14 w-14 border-2 border-primary shadow-lg ring-2 ring-white transition-all duration-300 group-hover:scale-105">
-              <AvatarImage src="https://randomuser.me/api/portraits/men/92.jpg" alt="Rajesh Kumar" />
-              <AvatarFallback className="bg-gradient-to-br from-primary to-accent text-white">RK</AvatarFallback>
+              <AvatarImage src="https://randomuser.me/api/portraits/women/25.jpg" alt="Nisha Sharma" />
+              <AvatarFallback className="bg-gradient-to-br from-primary to-accent text-white">NS</AvatarFallback>
             </Avatar>
             <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-success border-2 border-white animate-pulse"></span>
           </div>
           <div>
             <div className="flex items-center">
-              <h3 className="text-lg font-semibold text-slate-800">Rajesh Kumar</h3>
+              <h3 className="text-lg font-semibold text-slate-800">Nisha Sharma</h3>
               <Badge className="ml-2 bg-gradient-to-r from-primary to-accent text-white animate-pulse">
-                <Crown className="h-3 w-3 mr-1" /> Model Farmer
+                <Crown className="h-3 w-3 mr-1" /> Top Agent
               </Badge>
             </div>
             <div className="flex items-center text-sm text-slate-500 mt-1">
@@ -46,19 +46,19 @@ export const ProfileCard = () => {
             </div>
             <div className="bg-primary/10 px-3 py-1 rounded-full flex items-center">
               <MessageSquare className="h-3 w-3 text-primary mr-1" />
-              <span className="text-sm font-medium text-primary">24 Consultations</span>
+              <span className="text-sm font-medium text-primary">24 Calls Today</span>
             </div>
             <div className="bg-accent/10 px-3 py-1 rounded-full flex items-center">
               <Activity className="h-3 w-3 text-accent mr-1" />
-              <span className="text-sm font-medium text-accent">96% Success Rate</span>
+              <span className="text-sm font-medium text-accent">96% Resolution Rate</span>
             </div>
           </div>
           <div className="h-2 bg-slate-100 rounded-full w-full">
             <div className="h-2 bg-gradient-to-r from-success to-primary rounded-full w-[85%]"></div>
           </div>
           <div className="flex justify-between text-xs text-slate-500">
-            <span>Seasonal Goal: 85%</span>
-            <span>30/35 Issues Resolved</span>
+            <span>Daily Goal: 85%</span>
+            <span>30/35 Resolved</span>
           </div>
         </div>
       </div>

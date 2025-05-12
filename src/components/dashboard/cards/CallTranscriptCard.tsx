@@ -10,7 +10,7 @@ interface CallTranscriptCardProps {
 }
 
 export const CallTranscriptCard = ({ phoneNumber }: CallTranscriptCardProps) => {
-  const [transcriptText, setTranscriptText] = useState("Waiting for consultation to begin...");
+  const [transcriptText, setTranscriptText] = useState("Waiting for call to begin...");
 
   // ✅ Fetch transcript in real-time
   const fetchTranscript = async () => {
@@ -36,7 +36,7 @@ export const CallTranscriptCard = ({ phoneNumber }: CallTranscriptCardProps) => 
             <div className="icon-container icon-container-info">
               <MessageSquareText className="h-5 w-5" />
             </div>
-            Live Consultation Transcript
+            Live Call Transcript
           </div>
         </CardTitle>
       </CardHeader>

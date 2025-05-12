@@ -17,7 +17,7 @@ export const PreCallCard = () => {
       <CardContent>
         <div className="space-y-4">
           <p className="text-sm text-slate-600">
-            Get instant context and insights before your next consultation
+            Get instant context and insights before your next call
           </p>
           <div className="space-y-2">
             <div className="flex items-center gap-2 text-sm text-slate-700">
@@ -26,11 +26,11 @@ export const PreCallCard = () => {
             </div>
             <div className="flex items-center gap-2 text-sm text-slate-700">
               <Users className="h-4 w-4 text-info" />
-              <span>Farmer: Ramesh Singh</span>
+              <span>Customer: John Smith</span>
             </div>
           </div>
           <Button className="w-full bg-info hover:bg-info/90 text-white" asChild>
-            <a href="#">Prepare for Consultation</a>
+            <a href="#">Prepare for Call</a>
           </Button>
         </div>
       </CardContent>

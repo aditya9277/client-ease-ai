@@ -39,12 +39,12 @@ export const CallHistoryCard = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-slate-800">
             <History className="h-5 w-5 text-cyan-400" />
-            Past Consultations
+            Call History
           </CardTitle>
         </CardHeader>
         <CardContent>
           {callHistory.length === 0 ? (
-            <p className="text-sm text-slate-600">No past consultations found.</p>
+            <p className="text-sm text-slate-600">No past calls found.</p>
           ) : (
             <ul className="max-h-64 overflow-y-auto space-y-3 scrollbar-hide">
               {callHistory.map((call) => (
@@ -68,7 +68,7 @@ export const CallHistoryCard = () => {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="bg-[#1E293B]/90 border border-cyan-500/20">
           <DialogHeader>
-            <DialogTitle className="text-gray-100">Consultation Summary</DialogTitle>
+            <DialogTitle className="text-gray-100">Call Summary</DialogTitle>
           </DialogHeader>
           <div className="p-4 bg-[#0F172A]/60 rounded-lg">
             <pre className="text-sm text-gray-300 whitespace-pre-wrap">{selectedSummary || "Loading..."}</pre>

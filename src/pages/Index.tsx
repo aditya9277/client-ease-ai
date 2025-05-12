@@ -1,11 +1,11 @@
+
 import { useNavigate } from "react-router-dom";
 import { 
   ArrowRight, Brain, Monitor, Rocket, Star, 
   BarChart3, Clock, FileCheck, 
   MessageSquare, ClipboardCheck, 
   Database, Zap, Users, ExternalLink,
-  Sparkles, CheckCircle, TrendingUp, Shield,
-  Wheat, Leaf, Sun, CloudRain, Tractor
+  Sparkles, CheckCircle, TrendingUp, Shield
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -15,72 +15,72 @@ const Index = () => {
 
   const features = [
     {
-      title: "AI-Powered Consultation Scheduler",
-      description: "Smart priority-based scheduling that automatically manages follow-ups based on crop urgency and farmer needs.",
+      title: "AI-Powered Callback Scheduler",
+      description: "Smart priority-based scheduling that automatically manages follow-ups based on urgency and sentiment.",
       items: [
-        "Auto-schedules follow-up consultations based on priority",
-        "Ensures urgent crop issues are addressed first",
-        "Reduces wait time and missed follow-ups"
+        "Auto-schedules follow-up calls based on priority",
+        "Ensures urgent claims are addressed first",
+        "Reduces agent workload and missed follow-ups"
       ],
       icon: Clock
     },
     {
-      title: "Farming Knowledge Assistant",
-      description: "Dynamic knowledge base that provides instant, relevant agricultural solutions from past cases.",
+      title: "AI Knowledge Base Assistant",
+      description: "Dynamic knowledge base that provides instant, relevant solutions from past cases.",
       items: [
-        "Searchable AI-powered farming FAQ bot",
-        "Learns from previous agricultural cases",
-        "Reduces crop issue resolution time"
+        "Searchable AI-powered FAQ bot",
+        "Learns from previous cases",
+        "Reduces resolution time"
       ],
       icon: Database
     },
     {
-      title: "Crop Health Analysis",
-      description: "Continuous tracking of crop conditions through visual and descriptive analysis.",
+      title: "Real-Time Sentiment Analysis",
+      description: "Continuous tracking of customer emotions during calls for better service delivery.",
       items: [
-        "Detects crop health issues in real-time",
-        "Provides instant expert feedback",
-        "Tracks seasonal performance dynamically"
+        "Detects customer emotions in real-time",
+        "Provides instant agent feedback",
+        "Tracks performance dynamically"
       ],
-      icon: Leaf
+      icon: BarChart3
     },
     {
-      title: "Consultation Summarization",
-      description: "AI-powered automatic generation of consultation summaries with actionable insights.",
+      title: "Smart Call Summarization",
+      description: "AI-powered automatic generation of call summaries from transcripts.",
       items: [
-        "Generates professional advice summaries",
+        "Generates professional summaries",
         "Stores for future reference",
-        "Makes post-consultation processes instant"
+        "Makes post-call processes instant"
       ],
       icon: FileCheck
     },
     {
       title: "Automated Documentation",
-      description: "AI-generated crop management documents from consultation transcripts and notes.",
+      description: "AI-generated claim resolution documents from call transcripts and notes.",
       items: [
-        "Auto-formats structured farming details",
-        "Ensures accuracy in recommendations",
-        "Reduces paperwork for farmers"
+        "Auto-formats structured details",
+        "Ensures accuracy",
+        "Reduces paperwork"
       ],
       icon: ClipboardCheck
     },
     {
-      title: "Seasonal Reminder System",
-      description: "AI-powered follow-up system ensuring no crop issue is overlooked across seasons.",
+      title: "Smart Reminders System",
+      description: "AI-powered follow-up system ensuring no claim is overlooked.",
       items: [
-        "Smart seasonal reminder scheduling",
-        "Organized crop management workflow",
-        "Efficient harvest tracking"
+        "Smart reminder scheduling",
+        "Organized workflow",
+        "Efficient claim tracking"
       ],
-      icon: Sun
+      icon: MessageSquare
     }
   ];
 
   const stats = [
-    { value: "50%", label: "Faster Crop Issue Resolution", icon: Zap, color: "primary" },
-    { value: "70%", label: "Less Paperwork for Farmers", icon: FileCheck, color: "success" },
-    { value: "99%", label: "Agricultural Guidance Accuracy", icon: CheckCircle, color: "secondary" },
-    { value: "24/7", label: "AI Farming Support", icon: Wheat, color: "accent" }
+    { value: "50%", label: "Manual Effort Reduced", icon: Zap, color: "primary" },
+    { value: "70%", label: "Less Paperwork Time", icon: FileCheck, color: "success" },
+    { value: "99%", label: "Accuracy Rate", icon: CheckCircle, color: "secondary" },
+    { value: "24/7", label: "AI Support", icon: Brain, color: "accent" }
   ];
 
   return (
@@ -98,8 +98,8 @@ const Index = () => {
       <header className="relative z-10 container mx-auto py-6 px-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Wheat className="h-8 w-8 text-primary" />
-            <h1 className="text-2xl font-bold text-slate-800 tracking-tight">Kisan Mitraa</h1>
+            <Brain className="h-8 w-8 text-primary" />
+            <h1 className="text-2xl font-bold text-slate-800 tracking-tight">ClientEase AI</h1>
           </div>
           <div className="flex gap-4">
             <Button 
@@ -126,16 +126,16 @@ const Index = () => {
             <div className="flex justify-center mb-4">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 text-primary text-sm font-medium">
                 <Sparkles className="h-4 w-4 mr-2" />
-                <span>Empowering Indian Farmers with AI</span>
+                <span>The Future of BPO Customer Experience</span>
               </div>
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold text-slate-800 leading-tight">
-              AI for <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-600">Agricultural Enhancement</span> in Rural India
+              AI for <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-600">Workflow Enhancement</span> in Indian BPOs
             </h1>
             
             <h2 className="text-xl md:text-2xl text-slate-600 max-w-2xl mx-auto">
-              Transforming Farming Support for a More Productive, Knowledgeable, and Resilient Agricultural Future
+              Transforming Customer Support for a Faster, Smarter, and More Efficient Future
             </h2>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
@@ -145,7 +145,7 @@ const Index = () => {
                 className="bg-primary hover:bg-primary/90 text-white w-full sm:w-auto px-8 py-6 text-lg rounded-xl transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-1"
               >
                 Try It Now
-                <Tractor className="ml-2 h-5 w-5" />
+                <Rocket className="ml-2 h-5 w-5" />
               </Button>
               <Button 
                 onClick={() => window.open("https://drive.google.com/file/d/1PkOEKa1KfzJxh4YU_5WWwqPvnM0z81D7/view?usp=sharing", "_blank")}
@@ -196,14 +196,14 @@ const Index = () => {
             <div className="flex justify-center mb-2">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-secondary-50 text-secondary text-sm font-medium">
                 <TrendingUp className="h-4 w-4 mr-2" />
-                <span>Supercharge Your Farming</span>
+                <span>Supercharge Your Workflow</span>
               </div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800">
               Key Features & Capabilities
             </h2>
             <p className="text-slate-600 text-lg">
-              Our AI-driven Smart Farming Assistant harnesses the power of AI to streamline agricultural support
+              Our AI-driven Smart Call Management System harnesses the power of AI to streamline claim processing
             </p>
           </div>
 
@@ -249,17 +249,17 @@ const Index = () => {
           <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
             <div className="flex justify-center mb-2">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 text-primary text-sm font-medium">
-                <Shield className="h-4 w-4 mr-2" />
+                <Shield className="h-1 w-4 mr-2" />
                 <span>Our Purpose</span>
               </div>
             </div>
             
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800">
-              Our Mission: <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-600">Harnessing AI</span> to Power Bharat's Agricultural Progress
+              Our Mission: <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-600">Harnessing AI</span> to Power Bharat's Progress
             </h2>
             
             <p className="text-xl text-slate-600">
-              We leverage cutting-edge AI to redefine agricultural support for rural India, empowering farmers to handle crop issues faster, smarter, and with expert guidance.
+              We leverage cutting-edge AI to redefine customer service for BPOs, empowering agents to handle claims faster, smarter, and stress-free.
             </p>
             
             <Button 
@@ -278,11 +278,11 @@ const Index = () => {
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-2">
-              <Wheat className="h-6 w-6 text-primary" />
-              <span className="text-xl font-semibold text-slate-800">Kisan Mitraa</span>
+              <Brain className="h-6 w-6 text-primary" />
+              <span className="text-xl font-semibold text-slate-800">ClientEase AI</span>
             </div>
             <div className="text-slate-500 text-sm">
-              © 2024 Kisan Mitraa. All rights reserved.
+              © 2024 ClientEase AI. All rights reserved.
             </div>
             <div className="flex items-center gap-6">
               <a href="#" className="text-slate-600 hover:text-primary transition-colors">

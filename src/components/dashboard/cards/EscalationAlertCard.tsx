@@ -58,10 +58,10 @@ export const EscalationAlertCard = ({ phoneNumber }) => {
       // ✅ Simulating escalation process (Replace with real API)
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      toast.success(`Issue escalated to agricultural expert: ${selectedEscalation.reason}`);
+      toast.success(`Escalation sent to manager: ${selectedEscalation.reason}`);
       setOpen(false);
     } catch (error) {
-      toast.error("Failed to escalate to agricultural expert.");
+      toast.error("Failed to escalate to manager.");
       console.error("Escalation error:", error);
     }
   };
@@ -74,13 +74,13 @@ export const EscalationAlertCard = ({ phoneNumber }) => {
             <div className="icon-container icon-container-destructive">
               <AlertTriangle className="h-4 w-4" />
             </div>
-            Critical Farm Issues
+            Critical Escalations
           </CardTitle>
         </CardHeader>
         <CardContent>
           {escalations.length === 0 ? (
             <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center h-32">
-              <p className="text-slate-500">No critical issues at the moment.</p>
+              <p className="text-slate-500">No escalations at the moment.</p>
             </div>
           ) : (
             <ul className="space-y-3 max-h-60 overflow-y-auto scrollbar-hide">
@@ -90,8 +90,8 @@ export const EscalationAlertCard = ({ phoneNumber }) => {
                   className="flex justify-between items-center p-3 bg-slate-50 rounded-lg border border-destructive/10 hover:border-destructive/30 transition-all duration-300"
                 >
                   <div>
-                    <p className="text-slate-700">📞 Issue reported at: {new Date(escalation.timestamp).toLocaleString()}</p>
-                    <p className="text-sm text-destructive">Issue: {escalation.reason}</p>
+                    <p className="text-slate-700">📞 Escalation at: {new Date(escalation.timestamp).toLocaleString()}</p>
+                    <p className="text-sm text-destructive">Reason: {escalation.reason}</p>
                   </div>
                   <Button
                     size="sm"
@@ -112,21 +112,21 @@ export const EscalationAlertCard = ({ phoneNumber }) => {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="bg-white border border-destructive/10 rounded-xl">
           <DialogHeader>
-            <DialogTitle className="text-slate-800">Farm Issue Details</DialogTitle>
+            <DialogTitle className="text-slate-800">Escalation Details</DialogTitle>
           </DialogHeader>
           {selectedEscalation && (
             <div className="p-4 bg-slate-50 rounded-lg border border-destructive/10">
               <p className="text-sm text-slate-700">
-                <strong className="text-destructive">📞 Farmer:</strong> {selectedEscalation.phoneNumber}
+                <strong className="text-destructive">📞 Customer:</strong> {selectedEscalation.phoneNumber}
               </p>
               <p className="text-sm text-slate-700">
                 <strong className="text-destructive">🕒 Time:</strong> {new Date(selectedEscalation.timestamp).toLocaleString()}
               </p>
               <p className="text-sm text-destructive mt-2">
-                <strong>⚠️ Issue:</strong> {selectedEscalation.reason}
+                <strong>⚠️ Reason:</strong> {selectedEscalation.reason}
               </p>
               <p className="text-sm text-slate-700">
-                <strong>🧠 Urgency Level:</strong> {selectedEscalation.sentiment}
+                <strong>🧠 Sentiment:</strong> {selectedEscalation.sentiment}
               </p>
             </div>
           )}
@@ -137,7 +137,7 @@ export const EscalationAlertCard = ({ phoneNumber }) => {
               className="text-destructive border-destructive/20 hover:text-destructive hover:bg-destructive/5"
               onClick={handleEscalateToManager}
             >
-              <Send className="h-4 w-4 mr-1" /> Escalate to Agricultural Expert
+              <Send className="h-4 w-4 mr-1" /> Escalate to Manager
             </Button>
           </DialogFooter>
         </DialogContent>
