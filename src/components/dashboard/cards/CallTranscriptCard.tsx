@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { FileText, MessageSquareText } from "lucide-react";
+import { Brain, MessageSquareText } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
@@ -10,7 +10,7 @@ interface CallTranscriptCardProps {
 }
 
 export const CallTranscriptCard = ({ phoneNumber }: CallTranscriptCardProps) => {
-  const [transcriptText, setTranscriptText] = useState("Waiting for call to begin...");
+  const [transcriptText, setTranscriptText] = useState("Waiting for startup consultation to begin...");
 
   // ✅ Fetch transcript in real-time
   const fetchTranscript = async () => {
@@ -18,7 +18,7 @@ export const CallTranscriptCard = ({ phoneNumber }: CallTranscriptCardProps) => 
       const response = await axios.get(`${import.meta.env.VITE_API_URL}/logs/transcript/${phoneNumber}`);
       setTranscriptText(response.data);
     } catch (error) {
-      console.error("❌ Failed to fetch transcript:", error);
+      console.error("❌ Failed to fetch consultation transcript:", error);
     }
   };
 
@@ -34,9 +34,9 @@ export const CallTranscriptCard = ({ phoneNumber }: CallTranscriptCardProps) => 
         <CardTitle className="text-md font-medium text-slate-800">
           <div className="flex items-center gap-2">
             <div className="icon-container icon-container-info">
-              <MessageSquareText className="h-5 w-5" />
+              <Brain className="h-5 w-5" />
             </div>
-            Live Call Transcript
+            Live AI Business Consultation
           </div>
         </CardTitle>
       </CardHeader>
