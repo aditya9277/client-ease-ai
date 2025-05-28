@@ -12,9 +12,13 @@ export const CallbackSchedulerCard = () => {
     const fetchCallbacks = async () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/callbacks`);
-        setCallbacks(response.data);
+        // Ensure data is always an array
+        const callbacksArray = Array.isArray(response.data) ? response.data : [];
+        setCallbacks(callbacksArray);
       } catch (error) {
         console.error("Failed to fetch callbacks:", error);
+        // Set empty array on error to prevent map errors
+        setCallbacks([]);
       }
     };
 
@@ -35,7 +39,7 @@ export const CallbackSchedulerCard = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        {callbacks.length === 0 ? (
+        {!Array.isArray(callbacks) || callbacks.length === 0 ? (
           <p className="text-sm text-slate-600">No callbacks scheduled</p>
         ) : (
           <div className="max-h-64 overflow-y-auto space-y-3 scrollbar-hide">
