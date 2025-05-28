@@ -1,3 +1,4 @@
+
 import { FileText, Download } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -11,9 +12,13 @@ export const ClaimDocumentsCard = () => {
     const fetchClaimDocuments = async () => {
       try {
         const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/logs/claim-documents`);
-        setClaimDocs(data);
+        // Ensure data is always an array
+        const docsArray = Array.isArray(data) ? data : [];
+        setClaimDocs(docsArray);
       } catch (error) {
         console.error("Error fetching claim documents:", error);
+        // Set empty array on error to prevent map errors
+        setClaimDocs([]);
       }
     };
     fetchClaimDocuments();
@@ -45,7 +50,7 @@ export const ClaimDocumentsCard = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        {claimDocs.length === 0 ? (
+        {!Array.isArray(claimDocs) || claimDocs.length === 0 ? (
           <p className="text-slate-800">No claim documents found.</p>
         ) : (
           <ul className="max-h-64 overflow-y-auto space-y-3 scrollbar-hide">
