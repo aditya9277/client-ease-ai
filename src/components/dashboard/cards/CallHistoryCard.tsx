@@ -15,9 +15,13 @@ export const CallHistoryCard = () => {
     const fetchCallHistory = async () => {
       try {
         const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/logs/call-history`);
-        setCallHistory(data);
+        // Ensure data is always an array
+        const historyArray = Array.isArray(data) ? data : [];
+        setCallHistory(historyArray);
       } catch (error) {
         console.error("Error fetching call history:", error);
+        // Set empty array on error to prevent map errors
+        setCallHistory([]);
       }
     };
     fetchCallHistory();
@@ -43,12 +47,12 @@ export const CallHistoryCard = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          {callHistory.length === 0 ? (
+          {!Array.isArray(callHistory) || callHistory.length === 0 ? (
             <p className="text-sm text-slate-600">No past calls found.</p>
           ) : (
             <ul className="max-h-64 overflow-y-auto space-y-3 scrollbar-hide">
-              {callHistory.map((call) => (
-                <li key={call.phoneNumber} className="flex items-center justify-between p-3 rounded-md bg-slate-50 border border-slate-200 text-slate-800">
+              {callHistory.map((call, index) => (
+                <li key={call.phoneNumber || index} className="flex items-center justify-between p-3 rounded-md bg-slate-50 border border-slate-200 text-slate-800">
                   <span className="text-slate-800">📞 {call.phoneNumber}</span>
                   <Button
                     size="sm"
