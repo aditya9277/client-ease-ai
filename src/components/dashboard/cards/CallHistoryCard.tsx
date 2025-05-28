@@ -43,17 +43,17 @@ export const CallHistoryCard = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-slate-800">
             <History className="h-5 w-5 text-cyan-400" />
-            Call History
+            AI Session History
           </CardTitle>
         </CardHeader>
         <CardContent>
           {!Array.isArray(callHistory) || callHistory.length === 0 ? (
-            <p className="text-sm text-slate-600">No past calls found.</p>
+            <p className="text-sm text-slate-600">No previous AI sessions found.</p>
           ) : (
             <ul className="max-h-64 overflow-y-auto space-y-3 scrollbar-hide">
               {callHistory.map((call, index) => (
                 <li key={call.phoneNumber || index} className="flex items-center justify-between p-3 rounded-md bg-slate-50 border border-slate-200 text-slate-800">
-                  <span className="text-slate-800">📞 {call.phoneNumber}</span>
+                  <span className="text-slate-800">🚀 {call.phoneNumber}</span>
                   <Button
                     size="sm"
                     variant="outline"
@@ -72,7 +72,7 @@ export const CallHistoryCard = () => {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="bg-[#1E293B]/90 border border-cyan-500/20">
           <DialogHeader>
-            <DialogTitle className="text-gray-100">Call Summary</DialogTitle>
+            <DialogTitle className="text-gray-100">AI Session Summary</DialogTitle>
           </DialogHeader>
           <div className="p-4 bg-[#0F172A]/60 rounded-lg">
             <pre className="text-sm text-gray-300 whitespace-pre-wrap">{selectedSummary || "Loading..."}</pre>
