@@ -6,6 +6,7 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import axios from "axios";
 import { StartupAlertsCard } from "./StartupAlertsCard";
+import { AIMarketIntelligenceCard } from "./AIMarketIntelligenceCard";
 
 interface LiveCallCardProps {
   currentSentiment: number;
@@ -79,8 +80,8 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phone
             </div>
           </div>
 
-          <div className="flex space-x-4"> 
-            <div className="w-2/3 space-y-4">  
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4"> 
+            <div className="lg:col-span-2 space-y-4">  
               <h3 className="font-medium text-slate-700">AI Strategic Recommendations</h3>
               <div className="space-y-2 max-h-[300px] overflow-y-auto pr-1 scrollbar-hide">
                 {aiInsights.length > 0 ? (
@@ -110,8 +111,10 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phone
                 )}
               </div>
             </div>
-            <div className="w-1/3">
+            
+            <div className="space-y-4">
               <StartupAlertsCard phoneNumber={phoneNumber} />
+              <AIMarketIntelligenceCard />
             </div>
           </div>
 
