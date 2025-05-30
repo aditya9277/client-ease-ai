@@ -30,7 +30,7 @@ export const CallTranscriptCard = ({ phoneNumber }: CallTranscriptCardProps) => 
 
   return (
     <Card className="medical-card card-gradient-info">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
         <CardTitle className="text-md font-medium text-slate-800">
           <div className="flex items-center gap-2">
             <div className="icon-container icon-container-info">
@@ -40,8 +40,8 @@ export const CallTranscriptCard = ({ phoneNumber }: CallTranscriptCardProps) => 
           </div>
         </CardTitle>
       </CardHeader>
-      <CardContent>
-        <ScrollArea className="h-[300px] w-full rounded-md border border-slate-200 bg-slate-50 p-4 shadow-sm">
+      <CardContent className="pt-0">
+        <ScrollArea className="h-[250px] w-full rounded-md border border-slate-200 bg-slate-50 p-3 shadow-sm">
           <pre className="text-sm whitespace-pre-wrap font-mono text-slate-600 leading-relaxed">
             {transcriptText}
           </pre>

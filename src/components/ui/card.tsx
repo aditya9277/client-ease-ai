@@ -13,6 +13,7 @@ const Card = React.forwardRef<
       "bg-white",
       "border-slate-100 hover:border-primary/20 hover:shadow-md",
       "group animate-fade-in",
+      "h-fit", // This ensures content-based height
       className
     )}
     {...props}
@@ -27,7 +28,7 @@ const CardHeader = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "flex flex-col space-y-1.5 p-6",
+      "flex flex-col space-y-1.5 p-4", // Reduced padding from p-6 to p-4
       className
     )}
     {...props}
@@ -42,7 +43,7 @@ const CardTitle = React.forwardRef<
   <h3
     ref={ref}
     className={cn(
-      "text-xl font-semibold leading-none tracking-tight",
+      "text-lg font-semibold leading-none tracking-tight", // Reduced from text-xl
       "text-slate-800 group-hover:text-slate-900 transition-colors",
       "flex items-center gap-2",
       className
@@ -74,8 +75,7 @@ const CardContent = React.forwardRef<
   <div 
     ref={ref} 
     className={cn(
-      "p-6 pt-0",
-      "space-y-4",
+      "p-4 pt-0", // Reduced padding from p-6 to p-4
       className
     )} 
     {...props} 
@@ -90,7 +90,7 @@ const CardFooter = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "flex items-center p-6 pt-0",
+      "flex items-center p-4 pt-0", // Reduced padding from p-6 to p-4
       className
     )}
     {...props}
