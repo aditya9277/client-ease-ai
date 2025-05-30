@@ -1,147 +1,99 @@
 
-  import { AlertTriangle, Eye, Send } from "lucide-react";
-  import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-  import { Button } from "@/components/ui/button";
-  import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-  import { useState, useEffect } from "react";
-  import axios from "axios";
-  import { toast } from "sonner";
+import { useState, useEffect } from "react";
+import { AlertTriangle, Zap, TrendingDown } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import axios from "axios";
 
-  export const EscalationAlertCard = ({ phoneNumber }) => {
-    const [escalations, setEscalations] = useState([]);
-    const [selectedEscalation, setSelectedEscalation] = useState(null);
-    const [open, setOpen] = useState(false);
+interface EscalationAlertCardProps {
+  phoneNumber: string;
+}
 
-    useEffect(() => {
-      const fetchEscalations = async () => {
-        try {
-          if (!phoneNumber) return;
+export const EscalationAlertCard = ({ phoneNumber }: EscalationAlertCardProps) => {
+  const [escalationData, setEscalationData] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(true);
 
-          const response = await axios.get(
-            `https://client-ease-ai-bd.azurewebsites.net/logs/escalation_${phoneNumber}.txt`,
-            { responseType: "text" }
-          );
-
-          const escalations = response.data
-            .split("\n")
-            .filter(Boolean)
-            .map((line) => {
-              try {
-                return JSON.parse(line);
-              } catch (error) {
-                console.error("❌ JSON Parse Error:", line, error);
-                return null;
-              }
-            })
-            .filter(Boolean);
-
-          setEscalations(escalations);
-        } catch (error) {
-          console.error("❌ Error fetching escalations:", error);
-          setEscalations([]);
-        }
-      };
-
-      const interval = setInterval(fetchEscalations, 500);
-      return () => clearInterval(interval);
-    }, [phoneNumber]);
-
-    const handleViewEscalation = (escalation) => {
-      setSelectedEscalation(escalation);
-      setOpen(true);
-    };
-
-    const handleEscalateToManager = async () => {
+  useEffect(() => {
+    const fetchEscalationData = async () => {
       try {
-        if (!selectedEscalation) return;
-
-        // ✅ Simulating escalation process (Replace with real API)
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-
-        toast.success(`Escalation sent to manager: ${selectedEscalation.reason}`);
-        setOpen(false);
+        setIsLoading(true);
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/logs/escalation/${phoneNumber}`);
+        setEscalationData(data);
+        setIsLoading(false);
       } catch (error) {
-        toast.error("Failed to escalate to manager.");
-        console.error("Escalation error:", error);
+        console.error("❌ Error fetching business risk data:", error);
+        setEscalationData("No critical risks detected. Your startup is on track! 🚀");
+        setIsLoading(false);
       }
     };
 
-    return (
-      <>
-        <Card className="medical-card card-gradient-destructive">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-slate-800">
-              <div className="icon-container icon-container-destructive">
-                <AlertTriangle className="h-4 w-4" />
-              </div>
-              Critical Escalations
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            {escalations.length === 0 ? (
-              <div className="p-4 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center h-32">
-                <p className="text-slate-500">No escalations at the moment.</p>
-              </div>
-            ) : (
-              <ul className="space-y-3 max-h-60 overflow-y-auto scrollbar-hide">
-                {escalations.map((escalation, index) => (
-                  <li
-                    key={index}
-                    className="flex justify-between items-center p-3 bg-slate-50 rounded-lg border border-destructive/10 hover:border-destructive/30 transition-all duration-300"
-                  >
-                    <div>
-                      <p className="text-slate-700">📞 Escalation at: {new Date(escalation.timestamp).toLocaleString()}</p>
-                      <p className="text-sm text-destructive">Reason: {escalation.reason}</p>
-                    </div>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="text-destructive border-destructive/20 hover:text-destructive hover:bg-destructive/5"
-                      onClick={() => handleViewEscalation(escalation)}
-                    >
-                      <Eye className="h-4 w-4 mr-1" /> View
-                    </Button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </CardContent>
-        </Card>
+    // ✅ Fetch risk data every 2 seconds
+    const interval = setInterval(fetchEscalationData, 2000);
 
-        {/* 📌 Escalation Details Modal */}
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogContent className="bg-white border border-destructive/10 rounded-xl">
-            <DialogHeader>
-              <DialogTitle className="text-slate-800">Escalation Details</DialogTitle>
-            </DialogHeader>
-            {selectedEscalation && (
-              <div className="p-4 bg-slate-50 rounded-lg border border-destructive/10">
-                <p className="text-sm text-slate-700">
-                  <strong className="text-destructive">📞 Customer:</strong> {selectedEscalation.phoneNumber}
-                </p>
-                <p className="text-sm text-slate-700">
-                  <strong className="text-destructive">🕒 Time:</strong> {new Date(selectedEscalation.timestamp).toLocaleString()}
-                </p>
-                <p className="text-sm text-destructive mt-2">
-                  <strong>⚠️ Reason:</strong> {selectedEscalation.reason}
-                </p>
-                <p className="text-sm text-slate-700">
-                  <strong>🧠 Sentiment:</strong> {selectedEscalation.sentiment}
-                </p>
-              </div>
-            )}
-            <DialogFooter>
-              <Button
-                size="sm"
-                variant="outline"
-                className="text-destructive border-destructive/20 hover:text-destructive hover:bg-destructive/5"
-                onClick={handleEscalateToManager}
-              >
-                <Send className="h-4 w-4 mr-1" /> Escalate to Manager
-              </Button>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
-      </>
-    );
+    return () => clearInterval(interval);
+  }, [phoneNumber]);
+
+  const getRiskLevel = () => {
+    if (escalationData.toLowerCase().includes("critical") || escalationData.toLowerCase().includes("urgent")) {
+      return { level: "High Risk", color: "destructive", icon: AlertTriangle };
+    } else if (escalationData.toLowerCase().includes("warning") || escalationData.toLowerCase().includes("attention")) {
+      return { level: "Medium Risk", color: "warning", icon: TrendingDown };
+    } else {
+      return { level: "Low Risk", color: "success", icon: Zap };
+    }
   };
+
+  const risk = getRiskLevel();
+  const RiskIcon = risk.icon;
+
+  return (
+    <Card className="medical-card card-gradient-warning hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+      <CardHeader className="flex items-center justify-between">
+        <CardTitle className="flex items-center gap-2 text-slate-800">
+          <div className="icon-container icon-container-warning animate-pulse">
+            <AlertTriangle className="h-4 w-4" />
+          </div>
+          <span className="bg-gradient-to-r from-warning to-warning-600 bg-clip-text text-transparent">
+            Business Risk Monitor
+          </span>
+        </CardTitle>
+        <Badge 
+          variant="outline" 
+          className={`bg-${risk.color}/10 text-${risk.color} border-${risk.color}/20 animate-pulse`}
+        >
+          <RiskIcon className="h-3 w-3 mr-1" />
+          {risk.level}
+        </Badge>
+      </CardHeader>
+      <CardContent>
+        <div className="p-4 rounded-lg bg-slate-50 border border-warning/10 shadow-sm transition-all duration-300 hover:border-warning/20">
+          {isLoading ? (
+            <div className="flex items-center justify-center space-x-2 animate-pulse">
+              <div className="w-3 h-3 bg-warning/60 rounded-full animate-bounce"></div>
+              <div className="w-3 h-3 bg-warning/60 rounded-full animate-bounce delay-100"></div>
+              <div className="w-3 h-3 bg-warning/60 rounded-full animate-bounce delay-200"></div>
+            </div>
+          ) : (
+            <div className="space-y-3">
+              <p className="text-slate-700 animate-fade-in">{escalationData}</p>
+              <div className="flex justify-between items-center pt-2 border-t border-slate-100">
+                <div className="flex items-center space-x-1">
+                  <div className={`w-2 h-2 rounded-full bg-${risk.color}`}></div>
+                  <span className={`text-xs text-${risk.color} font-medium`}>AI Risk Assessment</span>
+                </div>
+                <Button 
+                  size="sm" 
+                  variant="ghost" 
+                  className="text-xs text-primary hover:text-primary/80 font-medium"
+                >
+                  Take Action
+                </Button>
+              </div>
+            </div>
+          )}
+        </div>
+      </CardContent>
+    </Card>
+  );
+};

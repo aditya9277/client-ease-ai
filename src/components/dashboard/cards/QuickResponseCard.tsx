@@ -1,5 +1,5 @@
 
-import { MessageSquare, Send } from "lucide-react";
+import { Rocket, Send, TrendingUp } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -10,33 +10,33 @@ interface QuickResponseCardProps {
 }
 
 export const QuickResponseCard = ({ sentiment }: QuickResponseCardProps) => {
-  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [businessActions, setBusinessActions] = useState<string[]>([]);
 
   useEffect(() => {
-    // Update suggestions based on sentiment
+    // Update business actions based on business health score
     if (sentiment < 40) {
-      setSuggestions([
-        "Refund terms and policy documents",
-        "Company TV Troubleshoot guide",
-        "Preferred time for our service agent's visit.",
+      setBusinessActions([
+        "Critical: Review cash flow and cut non-essential expenses",
+        "Urgent: Contact investors for bridge funding options",
+        "Emergency: Pivot strategy discussion needed",
       ]);
     } else if (sentiment < 70) {
-      setSuggestions([
-        "Refund terms and policy documents",
-        "Company TV Troubleshoot guide",
-        "Preferred time for our service agent's visit.",
+      setBusinessActions([
+        "Optimize: Review operational efficiency metrics",
+        "Improve: Customer acquisition cost analysis",
+        "Focus: Product-market fit validation needed",
       ]);
     } else {
-      setSuggestions([
-        "Refund terms and policy documents",
-        "Company TV Troubleshoot guide",
-        "Preferred time for our service agent's visit.",
+      setBusinessActions([
+        "Scale: Prepare for Series A fundraising",
+        "Expand: Market expansion opportunity analysis",
+        "Accelerate: Team hiring and growth planning",
       ]);
     }
   }, [sentiment]);
 
-  const handleSendResponse = (response: string) => {
-    toast.success("Response sent to customer");
+  const handleExecuteAction = (action: string) => {
+    toast.success("Business action queued for execution");
   };
 
   return (
@@ -44,26 +44,26 @@ export const QuickResponseCard = ({ sentiment }: QuickResponseCardProps) => {
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-slate-800">
           <div className="icon-container icon-container-primary">
-            <MessageSquare className="h-5 w-5" />
+            <TrendingUp className="h-5 w-5" />
           </div>
-          Quick Responses
+          Smart Business Actions
         </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          {suggestions.map((suggestion, index) => (
+          {businessActions.map((action, index) => (
             <div
               key={index}
               className="flex items-center justify-between gap-2 p-3 bg-slate-50 rounded-lg border border-slate-200"
             >
-              <p className="text-sm text-slate-700">{suggestion}</p>
+              <p className="text-sm text-slate-700">{action}</p>
               <Button
                 size="sm"
                 variant="ghost"
-                onClick={() => handleSendResponse(suggestion)}
+                onClick={() => handleExecuteAction(action)}
                 className="text-primary hover:text-primary hover:bg-primary/10"
               >
-                <Send className="h-4 w-4" />
+                <Rocket className="h-4 w-4" />
               </Button>
             </div>
           ))}
