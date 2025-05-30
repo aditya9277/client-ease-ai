@@ -27,7 +27,7 @@ const Index = () => {
       color: "primary"
     },
     {
-      title: "Smart Resource Optimizer",
+      title: "Smart Cost Optimizer",
       description: "Automatically identify cost savings and efficiency opportunities across your operations.",
       items: [
         "40-60% reduction in operational costs",
@@ -49,8 +49,8 @@ const Index = () => {
       color: "secondary"
     },
     {
-      title: "Unified Command Center",
-      description: "One dashboard to rule them all - manage finances, team, operations, and growth.",
+      title: "Unified Business Dashboard",
+      description: "One intelligent dashboard to manage finances, team, operations, and growth metrics.",
       items: [
         "Replace 10+ separate tools with one platform",
         "Real-time KPI tracking and alerts",
@@ -60,8 +60,8 @@ const Index = () => {
       color: "info"
     },
     {
-      title: "Startup DNA Analysis",
-      description: "Deep analysis of your startup's unique profile with personalized growth recommendations.",
+      title: "Business Health Monitor",
+      description: "Deep analysis of your startup's performance with personalized growth recommendations.",
       items: [
         "Comprehensive business health scoring",
         "Industry-specific benchmarking and insights",
@@ -71,8 +71,8 @@ const Index = () => {
       color: "accent"
     },
     {
-      title: "Innovation Labs",
-      description: "AI-powered ideation and product development acceleration tools.",
+      title: "Innovation Accelerator",
+      description: "AI-powered idea validation and product development acceleration tools.",
       items: [
         "Market validation algorithms for new ideas",
         "Patent landscape analysis and IP strategy",
@@ -92,7 +92,7 @@ const Index = () => {
 
   const testimonials = [
     {
-      quote: "StartupOS is like having a team of expert consultants, analysts, and advisors working 24/7 for a fraction of the cost.",
+      quote: "StartupOS AI Platform is like having a team of expert consultants, analysts, and advisors working 24/7 for a fraction of the cost.",
       author: "Sarah Chen",
       role: "CEO, TechFlow",
       company: "Raised $2M Series A"
@@ -104,7 +104,7 @@ const Index = () => {
       company: "3x revenue growth"
     },
     {
-      quote: "It's not just a tool, it's like having an operating system that makes every part of our startup smarter.",
+      quote: "It's not just a tool, it's like having an intelligent platform that makes every part of our startup smarter.",
       author: "Priya Patel",
       role: "Co-founder, DataVerse",
       company: "Exited for $50M"
@@ -130,8 +130,8 @@ const Index = () => {
               <div className="absolute -top-1 -right-1 w-4 h-4 bg-success rounded-full animate-pulse"></div>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-slate-800 tracking-tight">StartupOS</h1>
-              <p className="text-xs text-slate-500">AI-Powered Startup Operating System</p>
+              <h1 className="text-2xl font-bold text-slate-800 tracking-tight">StartupOS AI Platform</h1>
+              <p className="text-xs text-slate-500">Smart Business Intelligence for Startups</p>
             </div>
           </div>
           <div className="flex gap-4">
@@ -159,8 +159,8 @@ const Index = () => {
             <div className="flex justify-center mb-6">
               <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20">
                 <Sparkles className="h-5 w-5 mr-3 text-primary" />
-                <span className="text-primary font-semibold">The World's First AI Operating System for Startups</span>
-                <div className="ml-3 px-2 py-1 bg-success text-white text-xs rounded-full">NEW</div>
+                <span className="text-primary font-semibold">AI-Powered Business Intelligence Platform for Startups</span>
+                <div className="ml-3 px-2 py-1 bg-success text-white text-xs rounded-full">INNOVATION</div>
               </div>
             </div>
             
@@ -168,14 +168,14 @@ const Index = () => {
               Your Startup's
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">
-                AI Operating System
+                AI Business Partner
               </span>
             </h1>
             
             <h2 className="text-2xl md:text-3xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
-              From ideation to IPO - One intelligent platform that replaces dozens of tools, 
-              <span className="text-primary font-semibold"> cuts costs by 60%</span>, and 
-              <span className="text-secondary font-semibold"> boosts revenue by 3.5x</span>
+              From idea validation to scale-up success - One intelligent platform that 
+              <span className="text-primary font-semibold"> cuts costs by 60%</span>, 
+              <span className="text-secondary font-semibold"> boosts revenue by 3.5x</span>, and provides 24/7 AI business guidance
             </h2>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8">
@@ -184,7 +184,7 @@ const Index = () => {
                 size="lg"
                 className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white w-full sm:w-auto px-10 py-7 text-xl rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-primary/25 hover:-translate-y-2 group"
               >
-                Experience StartupOS
+                Experience AI Platform
                 <Rocket className="ml-3 h-6 w-6 group-hover:animate-bounce" />
               </Button>
               <Button 
@@ -218,7 +218,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-slate-800 mb-4">Real Results, Real Impact</h3>
-            <p className="text-xl text-slate-600">See how StartupOS transforms businesses</p>
+            <p className="text-xl text-slate-600">See how our AI platform transforms startup success</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {stats.map((stat, index) => (
@@ -246,14 +246,14 @@ const Index = () => {
             <div className="flex justify-center mb-4">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
                 <TrendingUp className="h-4 w-4 mr-2" />
-                <span>Revolutionary Features</span>
+                <span>Powerful AI Features</span>
               </div>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-800">
-              Everything Your Startup Needs
+              Everything Your Startup Needs to Succeed
             </h2>
             <p className="text-xl text-slate-600">
-              Six powerful AI-driven modules that work together as your startup's operating system
+              Six powerful AI-driven modules that work together as your startup's intelligent business partner
             </p>
           </div>
 
@@ -296,7 +296,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-slate-800 mb-4">Success Stories</h2>
-            <p className="text-xl text-slate-600">See how startups are winning with StartupOS</p>
+            <p className="text-xl text-slate-600">See how startups are winning with our AI platform</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
@@ -328,7 +328,7 @@ const Index = () => {
               Ready to Transform Your Startup?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Join the AI revolution. Get StartupOS and turn your startup into an unstoppable force.
+              Join the AI revolution. Get StartupOS AI Platform and turn your startup into an unstoppable force.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button 
@@ -358,10 +358,10 @@ const Index = () => {
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-4">
                 <Brain className="h-8 w-8 text-primary" />
-                <span className="text-2xl font-bold">StartupOS</span>
+                <span className="text-2xl font-bold">StartupOS AI Platform</span>
               </div>
               <p className="text-slate-400 text-lg mb-4">
-                The AI-powered operating system that transforms startups into market leaders.
+                The AI-powered business intelligence platform that transforms startups into market leaders.
               </p>
               <div className="text-slate-500">
                 © 2024 StartupOS. All rights reserved.
@@ -371,9 +371,9 @@ const Index = () => {
               <h4 className="font-semibold mb-4">Platform</h4>
               <ul className="space-y-2 text-slate-400">
                 <li><a href="#" className="hover:text-white transition-colors">AI Business Advisor</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Resource Optimizer</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Cost Optimizer</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Revenue Intelligence</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Command Center</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Business Dashboard</a></li>
               </ul>
             </div>
             <div>

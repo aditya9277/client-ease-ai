@@ -80,7 +80,7 @@ const AgentDashboard = () => {
       setIsCallActive(!isCallActive);
       setIsDialogOpen(!isDialogOpen);
 
-      toast.success("StartupOS AI Assistant initiated!");
+      toast.success("StartupOS AI Business Advisor connected!");
     } catch (error) {
       console.error("Connection failed:", error);
       toast.error("Connection failed! Check console.");
@@ -125,16 +125,16 @@ const AgentDashboard = () => {
       <div className="flex items-center justify-between p-6 rounded-xl border border-slate-200 bg-white shadow-sm">
         <div className="space-y-1">
           <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent">
-            StartupOS Command Center
+            StartupOS AI Platform Dashboard
           </h2>
           <p className="text-slate-500">
-            Your AI-powered startup operating system in action
+            Your intelligent business partner for startup success
           </p>
         </div>
 
         <div className="flex items-center">
           <div className="mr-4 flex items-center">
-            <span className="text-slate-700 font-medium mr-2">Experience the future of startup management!</span>
+            <span className="text-slate-700 font-medium mr-2">Experience AI-powered business intelligence!</span>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
@@ -156,23 +156,23 @@ const AgentDashboard = () => {
               }
             }}>
             <Brain className="h-4 w-4" />
-            {isCallActive ? "End AI Session" : "Start AI Session"}
+            {isCallActive ? "End AI Consultation" : "Start AI Consultation"}
             {!isCallActive && <Sparkles className="h-3 w-3 ml-1 text-yellow-200" />}
           </Button>
         </div>
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent className="bg-white border border-slate-200 shadow-lg rounded-xl">
-            <DialogTitle className="text-slate-800">Connect to StartupOS AI</DialogTitle>
+            <DialogTitle className="text-slate-800">Connect to StartupOS AI Platform</DialogTitle>
             <DialogDescription className="text-md text-slate-500">
               <div className="flex items-start gap-2">
                 <span className="text-primary">
                   🚀
                 </span>
                 <span>
-                  <strong>Welcome to StartupOS!</strong> Enter your startup ID to connect with our AI-powered business advisor.  
+                  <strong>Welcome to StartupOS AI Platform!</strong> Enter your startup ID to connect with our AI business advisor.  
                   <br />
-                  Experience real-time strategic guidance, cost optimization, and revenue intelligence.
+                  Get real-time strategic guidance, cost optimization insights, and revenue intelligence.
                 </span>
               </div>
             </DialogDescription>
@@ -191,7 +191,7 @@ const AgentDashboard = () => {
                 className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white rounded-lg transition-all duration-300 hover:shadow-md"
               >
                 <Brain className="h-4 w-4 mr-2" />
-                Connect to AI
+                Connect to AI Advisor
               </Button>
             </DialogFooter>
           </DialogContent>

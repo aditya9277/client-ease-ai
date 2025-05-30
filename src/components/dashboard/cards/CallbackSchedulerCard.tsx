@@ -35,12 +35,12 @@ export const CallbackSchedulerCard = () => {
           <div className="icon-container icon-container-info">
             <Rocket className="h-5 w-5" />
           </div>
-          Scheduled Growth Reviews
+          Scheduled Business Reviews
         </CardTitle>
       </CardHeader>
       <CardContent>
         {!Array.isArray(followUps) || followUps.length === 0 ? (
-          <p className="text-sm text-slate-600">No growth reviews scheduled</p>
+          <p className="text-sm text-slate-600">No business reviews scheduled</p>
         ) : (
           <div className="max-h-64 overflow-y-auto space-y-3 scrollbar-hide">
             {followUps.map((followUp, index) => (
@@ -52,7 +52,7 @@ export const CallbackSchedulerCard = () => {
                 </p>
                 <p className="text-xs text-slate-600">
                   <Clock className="inline-block h-4 w-4 text-info mr-1" />
-                  Growth Review at:{" "}
+                  Business Review at:{" "}
                   {new Date(followUp.callbackTime).toLocaleString()}
                 </p>
                 <p className="text-xs text-slate-600">

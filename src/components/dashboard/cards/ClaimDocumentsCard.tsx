@@ -46,7 +46,7 @@ export const ClaimDocumentsCard = () => {
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-slate-800">
           <FileText className="h-5 w-5 text-cyan-400" />
-          Business Intelligence Reports
+          AI-Generated Business Reports
         </CardTitle>
       </CardHeader>
       <CardContent>

@@ -43,7 +43,7 @@ export const CallHistoryCard = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-slate-800">
             <History className="h-5 w-5 text-cyan-400" />
-            AI Consultation History
+            AI Business Consultation History
           </CardTitle>
         </CardHeader>
         <CardContent>

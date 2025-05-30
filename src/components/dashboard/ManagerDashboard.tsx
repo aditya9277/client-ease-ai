@@ -115,10 +115,10 @@ const ManagerDashboard = () => {
       <div className="flex items-center justify-between">
         <div className="space-y-2">
           <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent">
-            StartupOS Analytics Hub
+            StartupOS AI Platform Analytics
           </h2>
           <p className="text-slate-500">
-            Real-time insights across your startup portfolio
+            Real-time business intelligence across your startup portfolio
           </p>
         </div>
 
@@ -340,7 +340,7 @@ const ManagerDashboard = () => {
               <div className="icon-container icon-container-success mr-2">
                 <TrendingUp className="h-5 w-5" />
               </div>
-              AI Impact Metrics
+              AI Platform Impact Metrics
             </CardTitle>
           </CardHeader>
           <CardContent>

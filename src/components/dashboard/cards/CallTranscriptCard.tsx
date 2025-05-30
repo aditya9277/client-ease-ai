@@ -10,7 +10,7 @@ interface CallTranscriptCardProps {
 }
 
 export const CallTranscriptCard = ({ phoneNumber }: CallTranscriptCardProps) => {
-  const [transcriptText, setTranscriptText] = useState("Waiting for startup consultation to begin...");
+  const [transcriptText, setTranscriptText] = useState("Waiting for AI business consultation to begin...");
 
   // ✅ Fetch transcript in real-time
   const fetchTranscript = async () => {
@@ -18,7 +18,7 @@ export const CallTranscriptCard = ({ phoneNumber }: CallTranscriptCardProps) => 
       const response = await axios.get(`${import.meta.env.VITE_API_URL}/logs/transcript/${phoneNumber}`);
       setTranscriptText(response.data);
     } catch (error) {
-      console.error("❌ Failed to fetch consultation transcript:", error);
+      console.error("❌ Failed to fetch business consultation transcript:", error);
     }
   };
 
