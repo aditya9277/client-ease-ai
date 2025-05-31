@@ -113,7 +113,7 @@ export const LiveCallCard = ({ currentSentiment, callDuration, formatTime, phone
           
           <div className="space-y-2">
             <StartupAlertsCard phoneNumber={phoneNumber} />
-            <AIMarketIntelligenceCard />
+            
           </div>
         </div>
       </CardContent>
