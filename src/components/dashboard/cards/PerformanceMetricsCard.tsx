@@ -1,30 +1,30 @@
 
-import { TrendingUp, DollarSign, Users, Target } from "lucide-react";
+import { BarChart2, TrendingUp, Clock, ThumbsUp } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 
 export const PerformanceMetricsCard = () => {
   const metrics = [
     {
-      title: "Monthly Recurring Revenue",
-      value: "$45K",
+      title: "Average Call Duration",
+      value: "4:30",
       progress: 75,
-      icon: DollarSign,
-      trend: "+28%",
+      icon: Clock,
+      trend: "+5%",
     },
     {
-      title: "Customer Acquisition",
-      value: "156",
+      title: "Customer Satisfaction",
+      value: "92%",
       progress: 92,
-      icon: Users,
-      trend: "+12%",
+      icon: ThumbsUp,
+      trend: "+2%",
     },
     {
-      title: "Product-Market Fit",
+      title: "Resolution Rate",
       value: "88%",
       progress: 88,
-      icon: Target,
-      trend: "+15%",
+      icon: TrendingUp,
+      trend: "+3%",
     },
   ];
 
@@ -33,9 +33,9 @@ export const PerformanceMetricsCard = () => {
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-slate-800">
           <div className="icon-container icon-container-primary">
-            <TrendingUp className="h-5 w-5" />
+            <BarChart2 className="h-5 w-5" />
           </div>
-          Growth Metrics
+          Performance Metrics
         </CardTitle>
       </CardHeader>
       <CardContent>

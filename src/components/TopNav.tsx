@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Lock, User, Headset, BarChart2, Brain } from "lucide-react";
+import { Lock, User, Headset, BarChart2 } from "lucide-react";
 import { toast } from "sonner";
 
 interface TopNavProps {
@@ -52,16 +52,11 @@ export default function TopNav({ isAgent, setIsAgent }: TopNavProps) {
   return (
     <div className="bg-white border-b border-slate-200 px-6 py-3 shadow-sm">
       <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-3">
-          <div className="flex items-center gap-2">
-            <Brain className="h-8 w-8 text-primary" />
-            <div>
-              <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent">
-                StartupOS
-              </h1>
-              <p className="text-xs text-slate-500">AI-Powered Startup Operating System</p>
-            </div>
-          </div>
+        <div className="flex items-center space-x-2">
+          <h1 className="relative text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary via-info to-accent animate-gradient before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary before:via-info before:to-accent before:animate-shimmer before:bg-clip-text before:text-transparent ">
+            ClientEase AI
+          </h1>
+          
         </div>
         <div className="flex items-center gap-5">
           <div className="flex items-center text-sm text-slate-500 hover:text-slate-700 transition-colors cursor-pointer">
@@ -75,14 +70,14 @@ export default function TopNav({ isAgent, setIsAgent }: TopNavProps) {
               {isAgent ? (
                 <Headset className="h-4 w-4 text-primary mr-2" />
               ) : (
-                <BarChart2 className="h-4 w-4 text-secondary mr-2" />
+                <BarChart2 className="h-4 w-4 text-accent mr-2" />
               )}
-              <Label htmlFor="role-toggle" className="text-sm font-medium text-slate-700 cursor-pointer">
-                {isAgent ? "Startup Founder" : "Portfolio Manager"}
+              <Label htmlFor="role-switch" className="text-slate-700 font-medium text-sm">
+                {isAgent ? "Agent View" : "Manager View"}
               </Label>
             </div>
             <Switch
-              id="role-toggle"
+              id="role-switch"
               checked={isAgent}
               onCheckedChange={handleRoleToggle}
               className="data-[state=checked]:bg-primary"
@@ -91,63 +86,55 @@ export default function TopNav({ isAgent, setIsAgent }: TopNavProps) {
         </div>
       </div>
 
+      {/* Manager Login Dialog */}
       <Dialog open={showLoginDialog} onOpenChange={setShowLoginDialog}>
-        <DialogContent className="bg-white border border-slate-200 shadow-lg rounded-xl">
+        <DialogContent className="bg-white border border-slate-200 sm:max-w-md rounded-xl shadow-lg">
           <DialogHeader>
-            <DialogTitle className="flex items-center gap-2 text-slate-800">
+            <DialogTitle className="text-xl font-bold text-slate-800 text-center flex items-center justify-center gap-2">
               <Lock className="h-5 w-5 text-primary" />
-              Portfolio Manager Access
+              Manager Authentication
             </DialogTitle>
-            <DialogDescription className="text-slate-600">
-              Enter your portfolio manager credentials to access the analytics dashboard.
+            <DialogDescription className="text-center text-slate-500">
+              Enter your credentials to access the manager dashboard.
             </DialogDescription>
           </DialogHeader>
-          
-          <div className="space-y-4">
+          <div className="space-y-4 py-4">
             <div className="space-y-2">
-              <Label htmlFor="managerId" className="text-sm font-medium text-slate-700">
-                Manager ID
-              </Label>
-              <Input
-                id="managerId"
-                type="text"
-                placeholder="Enter your manager ID"
-                value={managerId}
-                onChange={(e) => setManagerId(e.target.value)}
-                className="bg-slate-50 border-slate-200 focus:ring-2 focus:ring-primary/20"
-              />
+              <Label htmlFor="manager-id" className="text-slate-700">Manager ID</Label>
+              <div className="relative">
+                <User className="absolute left-3 top-2.5 h-5 w-5 text-slate-400" />
+                <Input 
+                  id="manager-id" 
+                  placeholder="Enter manager ID" 
+                  className="bg-slate-50 border-slate-200 pl-10 text-slate-800"
+                  value={managerId}
+                  onChange={(e) => setManagerId(e.target.value)}
+                />
+              </div>
+              <div className="text-xs text-primary">Hint: manager</div>
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-sm font-medium text-slate-700">
-                Password
-              </Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="bg-slate-50 border-slate-200 focus:ring-2 focus:ring-primary/20"
-              />
-            </div>
-            <div className="text-xs text-slate-500 bg-slate-50 p-2 rounded">
-              Demo credentials: manager / manager
+              <Label htmlFor="password" className="text-slate-700">Password</Label>
+              <div className="relative">
+                <Lock className="absolute left-3 top-2.5 h-5 w-5 text-slate-400" />
+                <Input 
+                  id="password" 
+                  type="password" 
+                  placeholder="Enter password" 
+                  className="bg-slate-50 border-slate-200 pl-10 text-slate-800"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <div className="text-xs text-primary">Hint: manager</div>
             </div>
           </div>
-
           <DialogFooter>
             <Button 
-              variant="outline" 
-              onClick={() => setShowLoginDialog(false)}
-              className="text-slate-600 hover:text-slate-700"
-            >
-              Cancel
-            </Button>
-            <Button 
               onClick={handleManagerLogin}
-              className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white"
+              className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white transition-all duration-300"
             >
-              Access Dashboard
+              <Lock className="mr-2 h-4 w-4" /> Login
             </Button>
           </DialogFooter>
         </DialogContent>

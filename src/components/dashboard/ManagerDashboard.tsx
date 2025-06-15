@@ -17,11 +17,7 @@ import {
   TrendingUp,
   Filter,
   RefreshCcw,
-  ListFilter,
-  Brain,
-  Target,
-  Rocket,
-  DollarSign
+  ListFilter
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -48,35 +44,37 @@ const ManagerDashboard = () => {
   const [selectedPeriod, setSelectedPeriod] = useState("week");
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [selectedTeam, setSelectedTeam] = useState("all");
-  const [viewMode, setViewMode] = useState("standard");
+  const [viewMode, setViewMode] = useState("standard"); // standard, focus-agents, focus-impact
   const [performanceData, setPerformanceData] = useState([
-    { name: "Scaling Fast", value: 18, color: "#00cc88" },
-    { name: "Growing Steady", value: 15, color: "#0088ff" },
-    { name: "Early Stage", value: 8, color: "#ffc107" },
-    { name: "Ideation", value: 4, color: "#ff3366" },
+    { name: "Excellent", value: 18, color: "#00cc88" },
+    { name: "Good", value: 15, color: "#0088ff" },
+    { name: "Average", value: 8, color: "#ffc107" },
+    { name: "Needs Improvement", value: 4, color: "#ff3366" },
   ]);
 
+  // Mock data for different periods
   const dailyData = [
-    { name: "Scaling Fast", value: 7, color: "#00cc88" },
-    { name: "Growing Steady", value: 5, color: "#0088ff" },
-    { name: "Early Stage", value: 3, color: "#ffc107" },
-    { name: "Ideation", value: 1, color: "#ff3366" },
+    { name: "Excellent", value: 7, color: "#00cc88" },
+    { name: "Good", value: 5, color: "#0088ff" },
+    { name: "Average", value: 3, color: "#ffc107" },
+    { name: "Needs Improvement", value: 1, color: "#ff3366" },
   ];
   
   const weeklyData = [
-    { name: "Scaling Fast", value: 18, color: "#00cc88" },
-    { name: "Growing Steady", value: 15, color: "#0088ff" },
-    { name: "Early Stage", value: 8, color: "#ffc107" },
-    { name: "Ideation", value: 4, color: "#ff3366" },
+    { name: "Excellent", value: 18, color: "#00cc88" },
+    { name: "Good", value: 15, color: "#0088ff" },
+    { name: "Average", value: 8, color: "#ffc107" },
+    { name: "Needs Improvement", value: 4, color: "#ff3366" },
   ];
   
   const monthlyData = [
-    { name: "Scaling Fast", value: 45, color: "#00cc88" },
-    { name: "Growing Steady", value: 38, color: "#0088ff" },
-    { name: "Early Stage", value: 20, color: "#ffc107" },
-    { name: "Ideation", value: 12, color: "#ff3366" },
+    { name: "Excellent", value: 45, color: "#00cc88" },
+    { name: "Good", value: 38, color: "#0088ff" },
+    { name: "Average", value: 20, color: "#ffc107" },
+    { name: "Needs Improvement", value: 12, color: "#ff3366" },
   ];
 
+  // Effect to update data based on period selection
   useEffect(() => {
     if (selectedPeriod === "day") {
       setPerformanceData(dailyData);
@@ -87,38 +85,43 @@ const ManagerDashboard = () => {
     }
   }, [selectedPeriod]);
 
+  // Function to handle data refresh
   const handleRefresh = () => {
     setIsRefreshing(true);
+    // Simulate API call delay
     setTimeout(() => {
-      toast.success("StartupOS analytics refreshed");
+      toast.success("Dashboard data refreshed");
       setIsRefreshing(false);
     }, 1000);
   };
 
+  // Function to handle team filter change
   const handleTeamChange = (value: string) => {
     setSelectedTeam(value);
-    toast.info(`Showing data for ${value === 'all' ? 'all startups' : `${value} portfolio`}`);
+    toast.info(`Showing data for ${value === 'all' ? 'all teams' : `team ${value}`}`);
   };
 
+  // Function to handle exporting analytics report
   const handleExportReport = () => {
-    toast.success("Startup performance report exported. Check your email.");
+    toast.success("Analytics report exported. Check your email.");
   };
 
+  // Function to handle view mode change
   const handleViewModeChange = (mode: string) => {
     setViewMode(mode);
-    toast.info(`Dashboard view changed to ${mode === 'standard' ? 'Portfolio Overview' : 
-      mode === 'focus-agents' ? 'Startup Focus' : 'AI Impact Analysis'}`);
+    toast.info(`Dashboard view changed to ${mode === 'standard' ? 'Standard View' : 
+      mode === 'focus-agents' ? 'Agent Focus' : 'GenAI Impact Focus'}`);
   };
 
   return (
     <div className="space-y-8 p-6 bg-gradient-to-b from-slate-100 to-slate-50 min-h-screen">
       <div className="flex items-center justify-between">
         <div className="space-y-2">
-          <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent">
-            StartupOS AI Platform Analytics
+          <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-info to-accent">
+            Call Center Analytics
           </h2>
           <p className="text-slate-500">
-            Real-time business intelligence across your startup portfolio
+            Real-time insights and performance metrics
           </p>
         </div>
 
@@ -161,14 +164,14 @@ const ManagerDashboard = () => {
               <SelectTrigger className="w-[140px] bg-white">
                 <div className="flex items-center">
                   <Filter className="h-4 w-4 mr-1 text-primary" />
-                  <SelectValue placeholder="Filter Portfolio" />
+                  <SelectValue placeholder="Filter Team" />
                 </div>
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All Startups</SelectItem>
-                <SelectItem value="tech">Tech Startups</SelectItem>
-                <SelectItem value="fintech">FinTech Portfolio</SelectItem>
-                <SelectItem value="saas">SaaS Companies</SelectItem>
+                <SelectItem value="all">All Teams</SelectItem>
+                <SelectItem value="alpha">Customer Support Team</SelectItem>
+                <SelectItem value="beta">Technical Support Team</SelectItem>
+                <SelectItem value="gamma">Finance Team</SelectItem>
               </SelectContent>
             </Select>
 
@@ -180,9 +183,9 @@ const ManagerDashboard = () => {
                 </div>
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="standard">Portfolio Overview</SelectItem>
-                <SelectItem value="focus-agents">Startup Focus</SelectItem>
-                <SelectItem value="focus-impact">AI Impact</SelectItem>
+                <SelectItem value="standard">Standard View</SelectItem>
+                <SelectItem value="focus-agents">Agent Focus</SelectItem>
+                <SelectItem value="focus-impact">GenAI Impact</SelectItem>
               </SelectContent>
             </Select>
 
@@ -244,6 +247,8 @@ const ManagerDashboard = () => {
           <div className="md:col-span-12">
             <GenAIImpactMetrics />
           </div>
+          <div className="md:col-span-5 space-y-6">
+          </div>
         </div>
       )}
 
@@ -254,7 +259,7 @@ const ManagerDashboard = () => {
               <div className="icon-container icon-container-accent mr-2">
                 <ChartPie className="h-5 w-5" />
               </div>
-              Startup Growth Distribution
+              Agent Performance Distribution
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -276,7 +281,7 @@ const ManagerDashboard = () => {
                     ))}
                   </Pie>
                   <Tooltip 
-                    formatter={(value) => [`${value} Startups`, 'Count']}
+                    formatter={(value) => [`${value} Agents`, 'Count']}
                     contentStyle={{ 
                       backgroundColor: 'white',
                       border: '1px solid #e2e8f0',
@@ -298,7 +303,7 @@ const ManagerDashboard = () => {
               <div className="icon-container icon-container-info mr-2">
                 <Calendar className="h-5 w-5" />
               </div>
-              Upcoming Milestones
+              Upcoming Training
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -308,24 +313,24 @@ const ManagerDashboard = () => {
                   <div className="flex justify-between items-start">
                     <div>
                       <h4 className="font-medium text-slate-800 group-hover:text-info transition-colors">
-                        {["Series A Demo Day", "Product Launch: TechFlow", "Beta Release: DataVerse"][i]}
+                        {["AI Assistant Mastery", "Customer De-escalation", "Claims Process Advanced"][i]}
                       </h4>
                       <div className="flex items-center mt-1 text-sm text-slate-500">
                         <Clock className="h-3 w-3 mr-1 text-info" />
-                        <span>{["June 15, 2024", "July 2, 2024", "July 20, 2024"][i]}</span>
+                        <span>{["May 25, 10:00 AM", "May 28, 2:00 PM", "June 2, 11:00 AM"][i]}</span>
                       </div>
                     </div>
                     <div className="bg-info/10 px-2 py-1 rounded text-xs font-medium text-info">
-                      {["3 weeks", "5 weeks", "7 weeks"][i]}
+                      {["2h 30m", "1h 45m", "3h 15m"][i]}
                     </div>
                   </div>
                   <div className="mt-3 flex justify-between items-center">
                     <div className="flex items-center">
-                      <Target className="h-3 w-3 text-slate-400 mr-1" />
-                      <span className="text-xs text-slate-500">{["$2M target", "$50K MRR", "100 beta users"][i]}</span>
+                      <Users className="h-3 w-3 text-slate-400 mr-1" />
+                      <span className="text-xs text-slate-500">{["12", "8", "15"][i]} agents registered</span>
                     </div>
                     <button className="text-xs text-info font-medium flex items-center hover:underline">
-                      Track <ArrowUpRight className="h-3 w-3 ml-1" />
+                      Register <ArrowUpRight className="h-3 w-3 ml-1" />
                     </button>
                   </div>
                 </div>
@@ -340,29 +345,29 @@ const ManagerDashboard = () => {
               <div className="icon-container icon-container-success mr-2">
                 <TrendingUp className="h-5 w-5" />
               </div>
-              AI Platform Impact Metrics
+              Performance Trends
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-6">
-              {["Cost Optimization", "Revenue Intelligence", "Growth Acceleration"].map((metric, i) => (
+              {["Call Resolution Time", "Customer Satisfaction", "First Call Resolution"].map((metric, i) => (
                 <div key={i} className="space-y-2">
                   <div className="flex justify-between">
                     <span className="text-sm font-medium text-slate-700">{metric}</span>
                     <div className="flex items-center text-xs text-success">
                       <ArrowUpRight className="h-3 w-3 mr-1" />
-                      {["60%", "3.5x", "85%"][i]} improvement
+                      {["12%", "8%", "5%"][i]} improvement
                     </div>
                   </div>
                   <div className="h-2 bg-slate-100 rounded-full">
                     <div 
                       className="h-2 bg-gradient-to-r from-success/70 to-success rounded-full transition-all duration-1000"
-                      style={{ width: ["85%", "92%", "78%"][i] }}
+                      style={{ width: ["78%", "92%", "65%"][i] }}
                     ></div>
                   </div>
                   <div className="flex justify-between text-xs text-slate-500">
-                    <span>Baseline: {["25%", "1.2x", "45%"][i]}</span>
-                    <span>Current: {["85%", "4.2x", "83%"][i]}</span>
+                    <span>Previous: {["5.2m", "87%", "62%"][i]}</span>
+                    <span>Current: {["4.6m", "94%", "65%"][i]}</span>
                   </div>
                 </div>
               ))}

@@ -18,10 +18,7 @@ import {
   Bell,
   Crown,
   Star,
-  Sparkles,
-  Target,
-  TrendingUp,
-  DollarSign
+  Sparkles
 } from "lucide-react";
 import {
   Dialog,
@@ -80,10 +77,10 @@ const AgentDashboard = () => {
       setIsCallActive(!isCallActive);
       setIsDialogOpen(!isDialogOpen);
 
-      toast.success("StartupOS AI Business Advisor connected!");
+      toast.success("Call initiated successfully!");
     } catch (error) {
-      console.error("Connection failed:", error);
-      toast.error("Connection failed! Check console.");
+      console.error("Call failed:", error);
+      toast.error("Call failed! Check console.");
     }
   };
 
@@ -124,17 +121,17 @@ const AgentDashboard = () => {
     <div className="space-y-8 p-4 min-h-screen bg-gradient-to-b from-slate-100 to-slate-50">
       <div className="flex items-center justify-between p-6 rounded-xl border border-slate-200 bg-white shadow-sm">
         <div className="space-y-1">
-          <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent">
-            StartupOS AI Platform Dashboard
+          <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-info to-accent">
+            AI-Powered Agent Assistance Hub
           </h2>
           <p className="text-slate-500">
-            Your intelligent business partner for startup success
+            Enhance your customer interactions with AI-driven insights
           </p>
         </div>
 
         <div className="flex items-center">
           <div className="mr-4 flex items-center">
-            <span className="text-slate-700 font-medium mr-2">Experience AI-powered business intelligence!</span>
+            <span className="text-slate-700 font-medium mr-2">Click here to test our prototype!</span>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
@@ -146,7 +143,7 @@ const AgentDashboard = () => {
             className={`gap-2 transition-all duration-300 shadow-md hover:shadow-lg ${
               isCallActive
                 ? "bg-destructive hover:bg-destructive/90 animate-pulse"
-                : "bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 animate-float"
+                : "bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 animate-float"
             } text-white font-medium rounded-full`}
             onClick={() => {
               if (isCallActive) {
@@ -155,31 +152,31 @@ const AgentDashboard = () => {
                 setIsDialogOpen(true);
               }
             }}>
-            <Brain className="h-4 w-4" />
-            {isCallActive ? "End AI Consultation" : "Start AI Consultation"}
+            <Phone className="h-4 w-4" />
+            {isCallActive ? "End Call" : "Start Call"}
             {!isCallActive && <Sparkles className="h-3 w-3 ml-1 text-yellow-200" />}
           </Button>
         </div>
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogContent className="bg-white border border-slate-200 shadow-lg rounded-xl">
-            <DialogTitle className="text-slate-800">Connect to StartupOS AI Platform</DialogTitle>
+            <DialogTitle className="text-slate-800">Enter Phone Number</DialogTitle>
             <DialogDescription className="text-md text-slate-500">
               <div className="flex items-start gap-2">
-                <span className="text-primary">
-                  🚀
+                <span className="text-destructive">
+                  ⚠️
                 </span>
                 <span>
-                  <strong>Welcome to StartupOS AI Platform!</strong> Enter your startup ID to connect with our AI business advisor.  
+                  <strong>NOTE:</strong> As we are using Twilio for call functionality, free-tier limitations prevent direct calls to unverified numbers.  
                   <br />
-                  Get real-time strategic guidance, cost optimization insights, and revenue intelligence.
+                  To test our prototype, please email us, so we can add it to our verified list for the trial period and ensure your successful testing.
                 </span>
               </div>
             </DialogDescription>
 
             <Input
               type="tel"
-              placeholder="STARTUP-ID-001"
+              placeholder="91XXXXXXXXXX"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               className="bg-slate-50 border-slate-200 text-slate-800 rounded-lg focus:ring-2 focus:ring-primary/20 transition-all"
@@ -188,74 +185,76 @@ const AgentDashboard = () => {
             <DialogFooter>
               <Button 
                 onClick={startCall}
-                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white rounded-lg transition-all duration-300 hover:shadow-md"
+                className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white rounded-lg transition-all duration-300 hover:shadow-md"
               >
-                <Brain className="h-4 w-4 mr-2" />
-                Connect to AI Advisor
+                <Phone className="h-4 w-4 mr-2" />
+                Start Call
               </Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
       </div>
-
-      {/* Startup Profile Header */}
-      {!isCallActive && (
-        <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm animate-fade-in">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="relative group">
-                <Avatar className="h-14 w-14 border-2 border-primary shadow-lg ring-2 ring-white transition-all duration-300 group-hover:scale-105">
-                  <AvatarImage src="https://randomuser.me/api/portraits/men/32.jpg" alt="Alex Chen" />
-                  <AvatarFallback className="bg-gradient-to-br from-primary to-accent text-white">AC</AvatarFallback>
-                </Avatar>
-                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-success border-2 border-white animate-pulse"></span>
-              </div>
-              <div>
-                <div className="flex items-center">
-                  <h3 className="text-lg font-semibold text-slate-800">Alex Chen</h3>
-                  <Badge className="ml-2 bg-gradient-to-r from-primary to-accent text-white animate-pulse">
-                    <Crown className="h-3 w-3 mr-1" /> Founder
-                  </Badge>
-                </div>
-                <div className="flex items-center text-sm text-slate-500 mt-1">
-                  <div className="flex items-center mr-3">
-                    <Clock className="h-3 w-3 mr-1" /> 
-                    <span>Building since 6 months</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
-                    <span className="ml-1">TechFlow AI - Series A Ready</span>
-                  </div>
-                </div>
-              </div>
+      {/* Agent Profile Header */}
+      {!isCallActive && <ProfileCard/> }
+      
+      {/* <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm animate-fade-in">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <div className="relative group">
+              <Avatar className="h-14 w-14 border-2 border-primary shadow-lg ring-2 ring-white transition-all duration-300 group-hover:scale-105">
+                <AvatarImage src="https://randomuser.me/api/portraits/women/40.jpg" alt="Nisha Sharma" />
+                <AvatarFallback className="bg-gradient-to-br from-primary to-accent text-white">NS</AvatarFallback>
+              </Avatar>
+              <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-success border-2 border-white animate-pulse"></span>
             </div>
-            
-            <div className="space-y-2">
-              <div className="flex items-center space-x-3">
-                <div className="bg-success/10 px-3 py-1 rounded-full flex items-center">
-                  <div className="h-2 w-2 bg-success rounded-full animate-pulse mr-2"></div>
-                  <span className="text-sm font-medium text-success">Growing</span>
-                </div>
-                <div className="bg-primary/10 px-3 py-1 rounded-full flex items-center">
-                  <TrendingUp className="h-3 w-3 text-primary mr-1" />
-                  <span className="text-sm font-medium text-primary">3.2x Revenue Growth</span>
-                </div>
-                <div className="bg-accent/10 px-3 py-1 rounded-full flex items-center">
-                  <DollarSign className="h-3 w-3 text-accent mr-1" />
-                  <span className="text-sm font-medium text-accent">$50K MRR</span>
-                </div>
+            <div>
+              <div className="flex items-center">
+                <h3 className="text-lg font-semibold text-slate-800">Nisha Sharma</h3>
+                <Badge className="ml-2 bg-gradient-to-r from-primary to-accent text-white animate-pulse">
+                  <Crown className="h-3 w-3 mr-1" /> Top Agent
+                </Badge>
               </div>
-              <div className="h-2 bg-slate-100 rounded-full w-full">
-                <div className="h-2 bg-gradient-to-r from-success to-primary rounded-full w-[78%]"></div>
-              </div>
-              <div className="flex justify-between text-xs text-slate-500">
-                <span>Funding Goal: $2M</span>
-                <span>$1.56M Raised</span>
+              <div className="flex items-center text-sm text-slate-500 mt-1">
+                <div className="flex items-center mr-3">
+                  <Clock className="h-3 w-3 mr-1" /> 
+                  <span>Active since 08:30 AM</span>
+                </div>
+                <div className="flex items-center">
+                  <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
+                  <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
+                  <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
+                  <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
+                  <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
+                </div>
               </div>
             </div>
           </div>
+          
+          <div className="space-y-2">
+            <div className="flex items-center space-x-3">
+              <div className="bg-success/10 px-3 py-1 rounded-full flex items-center">
+                <div className="h-2 w-2 bg-success rounded-full animate-pulse mr-2"></div>
+                <span className="text-sm font-medium text-success">Available</span>
+              </div>
+              <div className="bg-primary/10 px-3 py-1 rounded-full flex items-center">
+                <MessageSquare className="h-3 w-3 text-primary mr-1" />
+                <span className="text-sm font-medium text-primary">24 Calls Today</span>
+              </div>
+              <div className="bg-accent/10 px-3 py-1 rounded-full flex items-center">
+                <Activity className="h-3 w-3 text-accent mr-1" />
+                <span className="text-sm font-medium text-accent">96% Resolution Rate</span>
+              </div>
+            </div>
+            <div className="h-2 bg-slate-100 rounded-full w-full">
+              <div className="h-2 bg-gradient-to-r from-success to-primary rounded-full w-[85%]"></div>
+            </div>
+            <div className="flex justify-between text-xs text-slate-500">
+              <span>Daily Goal: 85%</span>
+              <span>30/35 Resolved</span>
+            </div>
+          </div>
         </div>
-      )}
+      </div> */}
 
       {isCallActive ? (
         <div className="space-y-6 animate-fade-in">
@@ -268,9 +267,12 @@ const AgentDashboard = () => {
           <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-6">
               <CallTranscriptCard phoneNumber={phoneNumber} />
+              <EscalationAlertCard phoneNumber={phoneNumber} />
             </div>
             <div className="space-y-6">
+              <CustomerInsightsCard />
               <LiveKnowledgeBaseCard />              
+
               <QuickResponseCard sentiment={currentSentiment} />              
             </div>
           </div>
@@ -294,7 +296,7 @@ const AgentDashboard = () => {
             </div>
             {lastCallReport && (
               <div className="mt-6">
-                <LastCallReport phoneNumber={phoneNumber} customerId="STARTUP-001" />
+                <LastCallReport phoneNumber={phoneNumber} customerId="CUS-001" />
               </div>
             )}
           </div>

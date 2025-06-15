@@ -25,10 +25,10 @@ const Dashboard = () => {
             <Sparkles className="h-6 w-6 text-primary absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
           </div>
           <h3 className="text-xl font-medium text-slate-700 animate-pulse">
-            Loading StartupOS AI Platform
+            Loading AI-Powered Dashboard
           </h3>
           <p className="text-sm text-slate-500">
-            Preparing your intelligent business dashboard...
+            Preparing your personalized experience...
           </p>
         </div>
       </div>
